@@ -1,0 +1,3 @@
+**/*.map
+/public
+/node_modules 

@@ -1,0 +1,16 @@
+{
+  "name": "sanity-eleventy-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build:eleventy": "eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

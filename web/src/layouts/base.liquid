@@ -1,0 +1,38 @@
+---
+eleventyComputed: 
+    metaTitle: "My Eleventy Website"
+    metaDescription: "A website created with Sanity and Eleventy"
+    metaUrl: "https://site.com"
+    metaImageUrl: "{{ metaUrl }}/images/something.jpg"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ metaTitle }}</title>
+    <meta name="description" content="{{ metaDescription }}" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ metaUrl }}" />
+    <meta property="og:title" content="{{ metaTitle }}" />
+    <meta property="og:description" content="{{ metaDescription }}" />
+    <meta property="og:image" content="{{ metaImageUrl }}">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="{{ metaUrl }}" />
+    <meta property="twitter:title" content="{{ metaTitle }}" />
+    <meta property="twitter:description" content="{{ metaDescription }}" />
+    <meta property="twitter:image" content="{{ metaImageUrl }}" />
+    <!-- -->
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link
+      rel="shortcut icon"
+      type="image/svg"
+      href="/assets/images/favicon.svg" />
+  </head>
+  <body>
+    {{ content }}
+  </body>
+</html>
