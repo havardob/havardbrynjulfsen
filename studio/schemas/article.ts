@@ -1,6 +1,7 @@
 import { BiFile } from "react-icons/bi";
 import { richTextMain } from "./templates/richText";
 import { externalLinkUrl, internalLinkRef } from "./templates/linkObject";
+import { slug } from "./templates/slug";
 
 export default {
   title: 'Articles',
@@ -24,10 +25,7 @@ export default {
       validation: (Rule: any) => Rule.required()
     },
     {
-      ...externalLinkUrl
-    },
-    {
-      ...internalLinkRef, 
+      ...slug
     },
     {
       name: "publishedDate",
@@ -47,7 +45,7 @@ export default {
     },
     {
       title: "Leading Text",
-      description: "Write a short introduction that summarizes this article in maxiumum one or two sentences. This will also show in any preview, either on the front page or when sharing to SoMe",
+      description: "Write a short introduction that summarizes this article in one or two sentences. This will also show in any preview, either on the front page or when sharing to SoMe",
       name: "leading",
       type: "text",
       rows: 4

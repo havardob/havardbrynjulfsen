@@ -1,0 +1,61 @@
+<header class="header">
+  <div class="l-constraint">
+    <div class="header__inner">
+      <a
+        class="header__logo"
+        href="/"
+        aria-label="Go to the front page">
+        <svg
+          width="24"
+          height="20"
+          viewBox="0 0 24 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M12.0005 0L0.742188 19.5H23.2589L12.0005 0ZM12.0005 4L4.20629 17.5H19.7947L12.0005 4Z"
+            fill="currentColor" />
+        </svg>
+
+      </a>
+      <div class="header__actions">
+        <nav class="main-nav">
+          <ul class="main-nav__list">
+            <li class="main-nav__item">
+              <a href="/creations" class="main-nav__link">
+                <span>Home</span>
+              </a>
+            </li>
+            <li class="main-nav__item">
+              <a href="/creations" class="main-nav__link | has-icon">
+                <span>Creations</span>
+                {% include "icons/chevronDown" %}
+              </a>
+            </li>
+            <li class="main-nav__item">
+              <a href="/writing" class="main-nav__link | has-icon">
+                <span>Writing</span>
+                {% include "icons/chevronDown" %}
+              </a>
+            </li>
+            <li class="main-nav__item">
+              <a href="/about" class="main-nav__link">
+                <span>About</span>
+              </a>
+            </li>
+            <li class="main-nav__item">
+              <a href="/resume" class="main-nav__link">
+                <span>Resumé</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <button class="header__theme-toggle">
+          <span class="u-hidden">Change theme</span>
+          {% include "icons/moon" %}
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

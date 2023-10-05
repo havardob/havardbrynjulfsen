@@ -1,0 +1,23 @@
+.hero {
+    padding-block-start: 6rem;
+    padding-block-end: 10rem;
+    & > * {
+        max-width: 35rem; // ~550px
+    }
+    
+    &__title {
+        font-size: 2.25rem;
+        line-height: 1.125;
+        font-weight: 650;
+        color: #292A2D;
+    }
+
+    &__intro {
+        margin-block-start: 1.5rem;
+        font-size: 1.25rem;
+        line-height: 1.375;
+        & > * + * {
+            margin-top: 1em;
+        }
+    }
+}

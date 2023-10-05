@@ -1,0 +1,72 @@
+.header {
+    --header-nav-gap: .25rem;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        padding-block: 2rem;
+        border-bottom: .0625rem solid #DDD;
+    }
+
+    &__logo {
+        font-weight: 600;
+        text-decoration: none; 
+    }
+
+    &__actions {
+        display: flex;
+        gap: var(--header-nav-gap);
+        flex: 0 0 auto;
+    }
+
+    &__theme-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-inline: .5rem;
+        border-radius: .25rem;
+        &:hover {
+            background-color: #EEE;
+        }
+    }
+}
+
+.main-nav {
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: var(--header-nav-gap);
+    }
+    
+    &__item {
+        
+    }
+    
+    &__link {
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: .125rem;
+        padding-block: .5rem;
+        padding-inline: .75rem;
+        border-radius: .25rem;
+
+        &.has-icon {
+            padding-inline-end: .5rem;
+            svg {
+                height: 1.25em;
+                width: 1.25em;
+            }
+        }
+
+
+        &:hover {
+            background-color: #EEE;
+        }
+    }
+}

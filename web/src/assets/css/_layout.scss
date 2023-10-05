@@ -1,5 +1,5 @@
 .l-constraint {
     margin-inline: auto;
-    width: 90%;
-    max-width: 1200px;
+    width: calc(100% - 2rem); // minus gutter on each side
+    max-width: 50rem; // 800px
 }
