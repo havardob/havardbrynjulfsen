@@ -5,7 +5,6 @@
 }
 
 .project-preview {
-    margin-top: 9rem;
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
@@ -22,17 +21,18 @@
     }
     
     &__image-wrapper {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 16 / 9;
         background-color: #eee;
         border-radius: .375rem;
         width: 100%;
         
         @container project-preview (min-width: 25rem ) {
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 4 / 3;
             max-width: 12.5rem; // 200px
         }
-
+        
         @container project-preview (min-width: 37.5rem ) {
+            aspect-ratio: 16 / 9;
             max-width: 18.75rem; // 300px
         }
     }
@@ -47,19 +47,6 @@
 
     &__tagline {
         font-size: 1rem;
-    }
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    
-    &__column {
-
-    }
-
-    @media (min-width: 600px) {
-        grid-template-columns: repeat(2, 1fr);
+        margin-bottom: .75rem;
     }
 }

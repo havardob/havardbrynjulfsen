@@ -1,0 +1,15 @@
+.tag {
+    text-decoration: none;
+    font-size: .875rem;
+    display: inline-block;
+    padding: .375rem .625rem;
+    border-radius: .25rem;
+    line-height: 1;
+    font-weight: 500;
+    color: #787A85;
+    background-color: #EEE;
+
+    &:hover {
+        background-color: #DDD;
+    }
+}

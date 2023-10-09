@@ -150,6 +150,90 @@ body {
   background-color: #EEE;
 }
 
+.footer {
+  margin-top: 4rem;
+}
+.footer__inner {
+  position: relative;
+  border-top: 0.0625rem solid #DDD;
+  padding-block: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.footer__marquee {
+  color: #787A85;
+  text-underline-offset: 0.125em;
+}
+.footer__menu {
+  color: #787A85;
+  margin-left: auto;
+  padding-right: 3rem;
+}
+.footer__menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer__menu-link {
+  text-underline-offset: 0.125em;
+}
+.footer__back-to-top {
+  text-decoration: none;
+  line-height: 1;
+  position: absolute;
+  top: -1.25rem;
+  right: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EEE;
+}
+.footer__back-to-top:hover {
+  background-color: #ddd;
+}
+
+.some-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding-right: 0.75rem;
+  border-right: 0.0625rem solid #DDD;
+}
+.some-list__link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+}
+.some-list__link:hover {
+  background-color: #EEE;
+}
+
+.tag {
+  text-decoration: none;
+  font-size: 0.875rem;
+  display: inline-block;
+  padding: 0.375rem 0.625rem;
+  border-radius: 0.25rem;
+  line-height: 1;
+  font-weight: 500;
+  color: #787A85;
+  background-color: #EEE;
+}
+.tag:hover {
+  background-color: #DDD;
+}
+
 .hero {
   padding-block-start: 6rem;
   padding-block-end: 10rem;
@@ -178,7 +262,6 @@ body {
 }
 
 .project-preview {
-  margin-top: 9rem;
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
@@ -197,19 +280,20 @@ body {
   }
 }
 .project-preview__image-wrapper {
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/9;
   background-color: #eee;
   border-radius: 0.375rem;
   width: 100%;
 }
 @container project-preview (min-width: 25rem ) {
   .project-preview__image-wrapper {
-    aspect-ratio: 16/9;
+    aspect-ratio: 4/3;
     max-width: 12.5rem;
   }
 }
 @container project-preview (min-width: 37.5rem ) {
   .project-preview__image-wrapper {
+    aspect-ratio: 16/9;
     max-width: 18.75rem;
   }
 }
@@ -219,17 +303,7 @@ body {
 }
 .project-preview__tagline {
   font-size: 1rem;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-}
-@media (min-width: 600px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  margin-bottom: 0.75rem;
 }
 
 .u-hidden {
