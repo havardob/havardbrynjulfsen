@@ -27,10 +27,27 @@
               </a>
             </li>
             <li class="main-nav__item">
-              <a href="/creations" class="main-nav__link | has-icon">
+              <button class="main-nav__dropdown-toggle | has-icon">
                 <span>Creations</span>
                 {% include "icons/chevronDown" %}
-              </a>
+              </button>
+              <ul class="dropdown-menu">
+                <li class="dropdown-menu__item">
+                  <a href="#" class="dropdown-menu__link">
+                    <span>Websites</span>
+                  </a>
+                </li>
+                <li class="dropdown-menu__item">
+                  <a href="#" class="dropdown-menu__link">
+                    <span>Misc</span>
+                  </a>
+                </li>
+                <li class="dropdown-menu__item">
+                  <a href="#" class="dropdown-menu__link">
+                    <span>Codepens</span>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="main-nav__item">
               <a href="/writing" class="main-nav__link | has-icon">

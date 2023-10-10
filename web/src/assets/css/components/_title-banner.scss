@@ -1,0 +1,30 @@
+.title-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+    margin-top: 4rem;
+
+    @media (max-width: 40rem) {
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+
+    &__title {
+        font-size: 2rem;
+        line-height: 1.125;
+        color: #292a2d;
+    }
+
+    &__intro {
+        margin-top: .75rem;
+        font-size: 1.375rem;
+    }
+
+    &__image {
+        max-width: 12.5rem;
+        border-radius: 50%;
+        outline: .125rem solid #DDD;
+        outline-offset: .5rem;
+        margin: .5rem;
+    }
+}

@@ -1,9 +1,14 @@
 html {
     scroll-behavior: smooth;
+    background-color: #EEE;
 }
 
 body {
     font-family: var(--ff-primary);
     font-weight: 450;
     color: #565862; 
+    background-color: #FFF;
+    max-width: 65rem;
+    margin-inline: auto;
 }  
+

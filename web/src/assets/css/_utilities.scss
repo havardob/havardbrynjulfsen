@@ -7,3 +7,53 @@
     white-space: nowrap;
     width: 1px;
 }
+
+.u-rich-text {
+    &>*+* {
+        margin-top: 1.25em;
+    }
+
+    &>*+ :is(h1, h2, h3, h4) {
+        margin-top: 2em;
+    }
+
+    &> :is(h1, h2, h3, h4)+* {
+        margin-top: .375em;
+    }
+
+    &> :is(p)+ :is(ul, ol) {
+        margin-top: .75em;
+    }
+
+    &> :is(ul, ol) li {
+        margin-top: .5em;
+    }
+
+    // Styling
+
+    &>ul:not([class]),
+    &>ol:not([class]) {
+        ::marker {
+            color: #292a2d;
+        }
+    }
+
+    &>blockquote:not([class]) {
+        padding-left: 1em;
+        border-left: .25rem solid #DDD;
+        padding-block: 1em;
+    }
+
+    & > :is(h1, h2, h3, h4, h5, h6) {
+        color: #292a2d;
+    }
+
+    & > h2:not([class]) {
+        font-size: 1.5rem;
+        line-height: 1.375;
+    }
+
+    & > h3:not([class]) {
+        font-size: 1.125rem;
+    }
+}
