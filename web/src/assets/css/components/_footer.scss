@@ -1,14 +1,21 @@
 .footer {
     margin-top: 4rem;
+
     &__inner {
         position: relative;
         border-top: .0625rem solid #DDD;
         padding-block: 1rem;
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         gap: 1rem;
+
+        @media (max-width: 40rem) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
     }
-    
+
     &__marquee {
         color: #787A85;
         text-underline-offset: .125em;
@@ -18,6 +25,11 @@
         color: #787A85;
         margin-left: auto;
         padding-right: 3rem;
+
+        @media (max-width: 40rem) {
+            margin-left: initial;
+        }
+
         &-list {
             list-style: none;
             margin: 0;
@@ -42,12 +54,12 @@
         align-items: center;
         justify-content: center;
         background-color: #EEE;
-        
+
         &:hover {
             background-color: #ddd;
         }
     }
-} 
+}
 
 .some-list {
     list-style: none;
@@ -58,9 +70,12 @@
     gap: .25rem;
     padding-right: .75rem;
     border-right: 0.0625rem solid #DDD;
-    &__item {
 
+    @media (max-width: 40rem) {
+        border-right: 0;
     }
+
+    &__item {}
 
     &__link {
         text-decoration: none;

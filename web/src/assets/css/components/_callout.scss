@@ -1,0 +1,33 @@
+.cq--callout {
+    container-type: inline-size;
+    container-name: callout;
+}
+
+.callout {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #787A85;
+    padding: 1rem; 
+    border-radius: .375rem;
+    border: 0.0625rem solid #DDD;
+
+    @container callout (max-width: 25rem) {
+        padding: .75rem .5rem;
+        gap: .75rem;
+        font-size: .875rem;
+        align-items: flex-start;
+    }
+
+    &__image {
+        flex-shrink: 0;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        border: 0.0625rem solid #DDD;
+    }
+
+    &__text {
+        max-width: 60ch;
+    }
+}

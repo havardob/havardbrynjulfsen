@@ -8,17 +8,22 @@
         gap: 2rem;
         padding-block: 2rem;
         border-bottom: .0625rem solid #DDD;
+        width: 100%;
     }
 
     &__logo {
         font-weight: 600;
-        text-decoration: none; 
+        text-decoration: none;
+        flex-shrink: 0;
     }
 
     &__actions {
         display: flex;
         gap: var(--header-nav-gap);
-        flex: 0 0 auto;
+        container-name: header-actions;
+        container-type: inline-size;
+        justify-content: flex-end;
+        flex-grow: 1;
     }
 
     &__theme-toggle {
@@ -27,6 +32,8 @@
         justify-content: center;
         padding-inline: .5rem;
         border-radius: .25rem;
+        flex-shrink: 0;
+
         &:hover {
             background-color: #EEE;
         }
@@ -34,6 +41,10 @@
 }
 
 .main-nav {
+    @container header-actions (max-width: 40rem) {
+        display: none;
+    }
+
     &__list {
         list-style: none;
         padding: 0;
@@ -42,11 +53,9 @@
         align-items: center;
         gap: var(--header-nav-gap);
     }
-    
-    &__item {
-        
-    }
-    
+
+    &__item {}
+
     &__link {
         text-decoration: none;
         display: inline-flex;
@@ -58,6 +67,7 @@
 
         &.has-icon {
             padding-inline-end: .5rem;
+
             svg {
                 height: 1.25em;
                 width: 1.25em;

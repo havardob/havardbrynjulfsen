@@ -1,0 +1,36 @@
+.more-button {
+    margin-block: 4rem; // TODO
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(
+        to bottom, 
+        transparent, 
+        transparent calc(50% - .5px), 
+        #DDD calc(50% - .5px), 
+        #DDD calc(50% + .5px), 
+        transparent calc(50% + .5px), 
+        transparent 100%
+    );
+
+    a {
+        background-color: #eee;
+        border-radius: .25rem;
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        padding: .5em .75em .5em 1em;
+        line-height: 1;
+        gap: .25rem;
+        font-size: 1rem;
+
+        svg {
+            width: 1.25em;
+            height: 1.25em;
+        }
+
+        &:hover {
+            background-color: #DDD;
+        }
+    }
+}
