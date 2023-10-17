@@ -14,5 +14,31 @@
 @import 'components/more-button';
 @import 'components/title-banner';
 @import 'components/post';
+@import 'components/some-list';
+@import 'components/tooltip';
 // Utilities
 @import 'utilities'; 
+
+
+.page {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-block: 4rem;
+    gap: 2rem;
+    
+    @media (min-width: 600px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__column {
+        &:first-of-type {
+            width: min(100%, 30rem);
+        }
+    }
+
+    &__body {
+        margin-top: 2rem;
+        font-size: 1.125rem;
+    }
+}

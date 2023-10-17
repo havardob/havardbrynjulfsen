@@ -56,4 +56,15 @@
     & > h3:not([class]) {
         font-size: 1.125rem;
     }
+
+    a:not([class]) {
+        font-weight: 500;
+        color: #292a2d;
+        text-underline-offset: .125em;
+        text-decoration-thickness: .125em;
+        &:hover {
+            color: #565862;
+            text-decoration-thickness: .25em;
+        }
+    }
 }

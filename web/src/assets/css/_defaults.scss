@@ -5,10 +5,16 @@ html {
 
 body {
     font-family: var(--ff-primary);
-    font-weight: 450;
+    font-weight: 400;
     color: #565862; 
     background-color: #FFF;
     max-width: 65rem;
     margin-inline: auto;
 }  
+
+:focus-visible {
+    outline-offset: .125rem;
+    outline-width: .125rem;
+    outline-style: solid;
+}
 

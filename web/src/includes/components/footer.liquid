@@ -2,32 +2,7 @@
   <div class="l-constraint">
     <div class="footer__inner">
       <div class="footer__some">
-        <ul class="some-list">
-          <li class="some-list__item">
-            <a href="#" class="some-list__link">
-              <span class="u-hidden">My Codepen profile</span>
-              {% include "icons/codepen" %}
-            </a>
-          </li>
-          <li class="some-list__item">
-            <a href="#" class="some-list__link">
-              <span class="u-hidden">My X profile</span>
-              {% include "icons/x" %}
-            </a>
-          </li>
-          <li class="some-list__item">
-            <a href="#" class="some-list__link">
-              <span class="u-hidden">My Medium profile</span>
-              {% include "icons/medium" %}
-            </a>
-          </li>
-          <li class="some-list__item">
-            <a href="#" class="some-list__link">
-              <span class="u-hidden">My GitHub profile</span>
-              {% include "icons/github" %}
-            </a>
-          </li>
-        </ul>
+        {% include "components/someList" %}
       </div>
       <div class="footer__marquee">
         <div class="marquee">
@@ -44,8 +19,8 @@
           </li>
         </ul>
       </div>
-      <a href="#top" class="footer__back-to-top">
-        <span class="u-hidden">To the top</span>
+      <a href="#top" class="footer__back-to-top | has-tooltip">
+        <span class="tooltip tooltip--rb">To the top</span>
         {% include "icons/chevronUp" %}
       </a>
     </div>

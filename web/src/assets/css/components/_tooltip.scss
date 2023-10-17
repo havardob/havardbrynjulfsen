@@ -1,0 +1,36 @@
+.has-tooltip {
+    &:hover, &:focus-visible {
+        .tooltip {
+            scale: 1 1;
+            opacity: 1;
+        }
+    }
+}
+
+.tooltip {
+    position: absolute;
+    display: inline-block;
+    border-radius: .25rem;
+    background-color: #565862;
+    color: #eee;
+    width: auto;
+    white-space: nowrap;
+    font-size: .875rem;
+    padding: .375rem .625rem;
+    font-weight: 500;
+    opacity: 0;
+    scale: 0 0;
+    transition: .15s ease;
+
+    &--lb {
+        left: 0;
+        top: calc(-100% - .5rem);
+        transform-origin: bottom left;    
+    }
+    
+    &--rb {
+        right: 0;
+        bottom: calc(100% + .5rem);
+        transform-origin: bottom right;    
+    }
+}

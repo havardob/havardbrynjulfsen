@@ -1,0 +1,26 @@
+---
+layout: base
+---
+
+<main>
+  <div class="l-constraint">
+    <div class="page">
+      <div class="page__column">
+        <div class="title-banner">
+          <div class="title-banner__content">
+            <h2 class="title-banner__title">{{ aboutPage.title }}</h2>
+            <p class="title-banner__intro">
+              {{ aboutPage.leading }}
+            </p>
+          </div>
+        </div>
+        <div class="page__body | u-rich-text">
+          {{ aboutPage.body }}
+        </div>
+      </div>
+      <div class="page__column">
+        <img src="{{ aboutPage.profileImage }}" class="title-banner__image" />
+      </div>
+    </div>
+  </div>
+</main>

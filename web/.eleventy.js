@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const config = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("./src/assets/**/**");
     return {

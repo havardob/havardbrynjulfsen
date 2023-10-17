@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&family=Gabarito:wght@400;500;600;700&family=Noto+Color+Emoji&family=Onest:wght@400;500;600;700&display=swap");
 *,
 *::before,
 *::after {
@@ -76,7 +77,7 @@ ol {
   font-stretch: 75% 125%;
 }
 :root {
-  --ff-primary: "Satoshi", "Schibsted Grotesk", "Mona Sans", "Inter", sans-serif;
+  --ff-primary: "Gabarito", "Onest", "Satoshi", "Schibsted Grotesk", "Mona Sans", "Inter", sans-serif;
 }
 
 html {
@@ -86,11 +87,17 @@ html {
 
 body {
   font-family: var(--ff-primary);
-  font-weight: 450;
+  font-weight: 400;
   color: #565862;
   background-color: #FFF;
   max-width: 65rem;
   margin-inline: auto;
+}
+
+:focus-visible {
+  outline-offset: 0.125rem;
+  outline-width: 0.125rem;
+  outline-style: solid;
 }
 
 .l-constraint {
@@ -270,36 +277,8 @@ body {
   justify-content: center;
   background-color: #EEE;
 }
-.footer__back-to-top:hover {
+.footer__back-to-top:hover, .footer__back-to-top:focus-visible {
   background-color: #ddd;
-}
-
-.some-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding-right: 0.75rem;
-  border-right: 0.0625rem solid #DDD;
-}
-@media (max-width: 40rem) {
-  .some-list {
-    border-right: 0;
-  }
-}
-.some-list__link {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 0.25rem;
-}
-.some-list__link:hover {
-  background-color: #EEE;
 }
 
 .tag {
@@ -539,7 +518,6 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 4rem;
-  margin-top: 4rem;
 }
 @media (max-width: 40rem) {
   .title-banner {
@@ -557,10 +535,11 @@ body {
   font-size: 1.375rem;
 }
 .title-banner__image {
-  max-width: 12.5rem;
-  border-radius: 50%;
-  outline: 0.125rem solid #DDD;
-  outline-offset: 0.5rem;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: 50% 50%;
+  max-width: 15rem;
+  border-radius: 0.5rem;
   margin: 0.5rem;
 }
 
@@ -624,6 +603,84 @@ body {
   grid-column-start: 2;
 }
 
+.some-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding-right: 0.75rem;
+  border-right: 0.0625rem solid #DDD;
+}
+@media (max-width: 40rem) {
+  .some-list {
+    border-right: 0;
+  }
+}
+.some-list__link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  position: relative;
+}
+.some-list__link:hover, .some-list__link:focus-visible {
+  background-color: #EEE;
+}
+.some-list__tooltip {
+  position: absolute;
+  top: calc(-100% - 0.5rem);
+  display: inline-block;
+  border-radius: 0.25rem;
+  background-color: #565862;
+  color: #eee;
+  left: 0;
+  width: auto;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  padding: 0.375rem 0.625rem;
+  font-weight: 500;
+  opacity: 0;
+  scale: 0 0;
+  transform-origin: bottom left;
+  transition: 0.15s ease;
+}
+
+.has-tooltip:hover .tooltip, .has-tooltip:focus-visible .tooltip {
+  scale: 1 1;
+  opacity: 1;
+}
+
+.tooltip {
+  position: absolute;
+  display: inline-block;
+  border-radius: 0.25rem;
+  background-color: #565862;
+  color: #eee;
+  width: auto;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  padding: 0.375rem 0.625rem;
+  font-weight: 500;
+  opacity: 0;
+  scale: 0 0;
+  transition: 0.15s ease;
+}
+.tooltip--lb {
+  left: 0;
+  top: calc(-100% - 0.5rem);
+  transform-origin: bottom left;
+}
+.tooltip--rb {
+  right: 0;
+  bottom: calc(100% + 0.5rem);
+  transform-origin: bottom right;
+}
+
 .u-hidden {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -665,5 +722,35 @@ body {
   line-height: 1.375;
 }
 .u-rich-text > h3:not([class]) {
+  font-size: 1.125rem;
+}
+.u-rich-text a:not([class]) {
+  font-weight: 500;
+  color: #292a2d;
+  text-underline-offset: 0.125em;
+  text-decoration-thickness: 0.125em;
+}
+.u-rich-text a:not([class]):hover {
+  color: #565862;
+  text-decoration-thickness: 0.25em;
+}
+
+.page {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-block: 4rem;
+  gap: 2rem;
+}
+@media (min-width: 600px) {
+  .page {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.page__column:first-of-type {
+  width: min(100%, 30rem);
+}
+.page__body {
+  margin-top: 2rem;
   font-size: 1.125rem;
 }

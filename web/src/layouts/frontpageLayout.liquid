@@ -7,17 +7,9 @@ layout: base
     {% include "components/hero" %}
     {% include "components/projectPreview" %}
     {% include "components/moreButton" url: "#" text: "More creations" %}
-    {% include "components/postPreview" %}
-    {% include "components/moreButton" url: "#" text: "More in writing" %}
-    <div class="title-banner">
-      <div class="title-banner__content">
-        <h2 class="title-banner__title">About</h2>
-        <p class="title-banner__intro">
-          I’m a front-end designer based in Bergen, Norway.
-        </p>
-      </div>
-      <img src="https://pbs.twimg.com/profile_images/1585254175977472003/U_kMScBD_400x400.jpg" class="title-banner__image" />
-    </div>
-
+    <section class="section section--featured-posts">
+      {% include "components/postPreview" %}
+      {% include "components/moreButton" url: "#" text: "More in writing" %}
+    </section>
   </div>
 </main>
