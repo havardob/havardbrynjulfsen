@@ -12,6 +12,18 @@ permalink: "/{{ aboutPage.slug }}/index.html"
           {{ aboutPage.leading }}
         </p>
         <div class="page__body | u-rich-text">
+          {% if aboutPage.callout %}
+            <div class="[ cq--callout ]">
+              <a href="{{ aboutPage.callout.href }}" class="callout">
+                <img
+                  src="{{ aboutPage.callout.image }}"
+                  alt=""
+                  class="callout__image" />
+                <span class="callout__text">{{ aboutPage.callout.text }}</span>
+                <span class="callout__icon">{% include "icons/arrowUp" %}</span>
+              </a>
+            </div>
+          {% endif %}
           {{ aboutPage.body }}
         </div>
       </div>

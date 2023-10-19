@@ -1,4 +1,4 @@
-import { BiDetail, BiLinkAlt, BiLinkExternal } from "react-icons/bi";
+import { BiCard, BiDetail, BiImage, BiLinkAlt, BiLinkExternal } from "react-icons/bi";
 import { externalLinkUrl, internalLinkRef } from "./linkObject";
 import { descriptionList } from "./descriptionList";
 
@@ -58,6 +58,8 @@ export const richTextMain = {
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
     {
+      title: "Image",
+      icon: BiImage,
       type: 'image',
       options: {hotspot: true},
     },

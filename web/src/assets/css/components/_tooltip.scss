@@ -21,7 +21,7 @@
     font-weight: 500;
     opacity: 0;
     transform: scale(0);
-    transition: transform .25s ease, opacity .15s ease;
+    transition: transform .2s linear, opacity .35s ease;
     pointer-events: none;
 
     &--lb {

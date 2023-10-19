@@ -8,16 +8,20 @@
     align-items: center;
     gap: 1rem;
     color: #787A85;
-    padding: 1rem; 
+    padding: 1rem;
     border-radius: .375rem;
     border: 0.0625rem solid #DDD;
     font-size: 1rem;
+    text-decoration: none;
+
+    &:hover {
+        outline: .0625rem solid #DDD;
+    }
 
     @container callout (max-width: 25rem) {
         padding: .75rem .5rem;
         gap: .75rem;
         font-size: .875rem;
-        align-items: flex-start;
     }
 
     &__image {
@@ -26,9 +30,22 @@
         height: 3rem;
         border-radius: 50%;
         border: 0.0625rem solid #DDD;
+
+        @container callout (max-width: 25rem) {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
     }
 
     &__text {
         max-width: 60ch;
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        margin-left: .5rem;
+        svg {
+            rotate: 45deg;
+        }
     }
 }
