@@ -1,7 +1,8 @@
 .has-tooltip {
+    position: relative;
     &:hover, &:focus-visible {
         .tooltip {
-            scale: 1 1;
+            transform: scale(1);
             opacity: 1;
         }
     }
@@ -19,12 +20,13 @@
     padding: .375rem .625rem;
     font-weight: 500;
     opacity: 0;
-    scale: 0 0;
-    transition: .15s ease;
+    transform: scale(0);
+    transition: transform .25s ease, opacity .15s ease;
+    pointer-events: none;
 
     &--lb {
         left: 0;
-        top: calc(-100% - .5rem);
+        bottom: calc(100% + .5rem);
         transform-origin: bottom left;    
     }
     
@@ -32,5 +34,17 @@
         right: 0;
         bottom: calc(100% + .5rem);
         transform-origin: bottom right;    
+    }
+
+    &--lt {
+        left: 0;
+        top: calc(100% + .5rem);
+        transform-origin: top left;    
+    }
+
+    &--rt {
+        right: 0;
+        top: calc(100% + .5rem);
+        transform-origin: top right;    
     }
 }

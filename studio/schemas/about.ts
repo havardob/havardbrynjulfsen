@@ -20,6 +20,16 @@ export default {
             rows: 2,
         },
         {
+            title: "Parent Page",
+            name: "parent",
+            type: "reference",
+            to: [
+                { type: "frontPage" },
+                { type: "article" },
+                { type: "creation" },
+            ]
+        },
+        {
             ...slug
         },
         {

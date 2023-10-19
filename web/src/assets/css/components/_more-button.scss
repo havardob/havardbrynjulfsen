@@ -6,10 +6,10 @@
     background-image: linear-gradient(
         to bottom, 
         transparent, 
-        transparent calc(50% - .5px), 
-        #DDD calc(50% - .5px), 
-        #DDD calc(50% + .5px), 
-        transparent calc(50% + .5px), 
+        transparent 50%, 
+        #DDD 50%, 
+        #DDD calc(50% + 1px), 
+        transparent calc(50% + 1px), 
         transparent 100%
     );
 

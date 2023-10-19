@@ -2,7 +2,7 @@
   <div class="l-constraint">
     <div class="header__inner">
       <a
-        class="header__logo"
+        class="header__logo | has-tooltip"
         href="/"
         aria-label="Go to the front page">
         <svg
@@ -17,6 +17,7 @@
             d="M12.0005 0L0.742188 19.5H23.2589L12.0005 0ZM12.0005 4L4.20629 17.5H19.7947L12.0005 4Z"
             fill="currentColor" />
         </svg>
+        <span class="tooltip tooltip--lt">Home</span>
       </a>
       <div class="header__actions">
         <nav class="main-nav">
@@ -67,8 +68,8 @@
             </li>
           </ul>
         </nav>
-        <button class="header__theme-toggle">
-          <span class="u-hidden">Change theme</span>
+        <button class="header__theme-toggle | has-tooltip">
+          <span class="tooltip tooltip--rt">Change theme</span>
           {% include "icons/moon" %}
         </button>
       </div>

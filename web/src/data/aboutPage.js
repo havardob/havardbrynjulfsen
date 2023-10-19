@@ -4,7 +4,9 @@ const portableTextToHtml = require('./_portableTextToHtml');
 
 const query = `*[_id == "about"][0] {
     ...,
-    "profileImage": profileImage.asset -> url 
+    "profileImage": profileImage.asset -> url,
+    "parentSlug": parent -> slug.current, 
+    "slug": slug.current,
 }`  
 
 
@@ -13,9 +15,9 @@ const getAboutPageData = async function () {
     if (data.body) {
         data.body = toHTML(data.body, { components: portableTextToHtml });
     }
-
+    data.fullSlug = data.parentSlug + "/" + data.slug;
     console.log(data);
-    return data;  
+    return data;   
  
 }
 
