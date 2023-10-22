@@ -1,0 +1,14 @@
+---
+layout: postLayout
+tags: 
+ - articlesCollection
+pagination: 
+  data: article
+  alias: article
+  size: 1
+  addAllPagesToCollections: true 
+eleventyComputed: 
+  metaTitle: "{{ article.title }}"
+  metaDescription: "{{ article.leading }}"
+permalink: "{{ article.fullSlug }}/"    
+---

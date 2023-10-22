@@ -26,7 +26,7 @@
     }
 
     &> :is(ul, ol) li {
-        margin-top: .5em;
+        margin-top: 1em;
     }
 
     // Styling
@@ -66,5 +66,22 @@
             color: #565862;
             text-decoration-thickness: .25em;
         }
+    }
+    
+    strong {
+        font-weight: 700;
+        color: #292a2d;
+    }
+
+    & > *:not(.code-block) code {
+        background-color: #eee;
+        display: inline-block;
+        padding: .0125em .25em;
+        border-radius: .25rem;
+        font-size: .875em;
+    }
+
+    & > * + .image-block {
+        margin-top: 2em;
     }
 }

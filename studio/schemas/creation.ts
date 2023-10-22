@@ -1,12 +1,21 @@
-import { BiPen } from "react-icons/bi";
+import { BiDetail, BiPen } from "react-icons/bi";
 import { slug } from "./templates/slug";
 import { richTextMain } from "./templates/richText";
+import { descriptionList } from "./templates/descriptionList";
+import { externalLinkUrl, internalLinkRef } from "./templates/linkObject";
 
 export default {
     name: 'creation',
     title: 'Creations',
     icon: BiPen,
     type: 'document',
+    preview: {
+        select: {
+            title: "title",
+            subtitle: "leading",
+            media: "featuredImage"
+        }
+    },
     fields: [
         {
             title: "Title",
@@ -35,13 +44,78 @@ export default {
             options: {
                 layout: "checkbox"
             },
-            intialValue: false
+            initialValue: false
+        },
+        {
+            title: "Tag",
+            name: "tag",
+            type: "reference",
+            to: [{ type: "tag" }],
         },
         {
             title: "Intro",
             name: "leading",
             type: "text",
-            rows: 4   
+            rows: 4
+        },
+        {
+            title: "Details",
+            name: "detailsList",
+            type: "array",
+            of: [
+                {
+                    title: "List Item",
+                    name: "item",
+                    type: "object",
+                    icon: BiDetail,
+                    preview: {
+                        select: {
+                            title: "title",
+                            subtitle: "subtitle",
+                        }
+                    },
+                    fields: [
+
+                        {
+                            title: "Term",
+                            name: "title",
+                            type: "string",
+                        },
+                        {
+                            title: "Details",
+                            name: "subtitle",
+                            type: "string"
+                        },
+                        {
+                            title: "Is Linked",
+                            name: "isLinked",
+                            type: "boolean",
+                            initialValue: false,
+                            options: {
+                                layout: "checkbox"
+                            }
+                        },
+                        {
+                            title: "Is External Page",
+                            name: "isExternal",
+                            type: "boolean",
+                            initialValue: true,
+                            options: {
+                                layout: "checkbox"
+                            },
+                            hidden: ({ parent }: any) => parent?.isLinked !== true,
+                        },
+                        {
+                            ...internalLinkRef,
+                            hidden: ({ parent }: any) => parent?.isLinked !== true || parent?.isExternal === true,
+                        },
+                        {
+                            ...externalLinkUrl,
+                            hidden: ({ parent }: any) => parent?.isLinked !== true || parent?.isExternal !== true,
+                        }
+                    ]
+                }
+            ]
         },
         {
             ...richTextMain,

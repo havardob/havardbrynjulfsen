@@ -1,33 +1,44 @@
-const mql = require('@microlink/mql');
-const portableTextToHtml = async function () {
-    return {
-        marks: {
-            externalLink: ({ children, value }) => {
-                return `<a href="${value.href}">${children}</a>`;
-            },
+const hljs = require('highlight.js');
+
+
+const portableTextToHtml = {
+    marks: {
+        externalLink: ({ children, value }) => {
+            return `<a href="${value.href}">${children}</a>`;
         },
-        types: {
-            callout: async ({ value }) => {
-                const text = value.text;
-                const href = value.href;
-                const image = "";
-                return `
-                    <div class="[ cq--callout ]">
-                        <a href="${href}" class="callout">
-                            <img src="${image}" class="callout__image" />
-                            <span class="callout__text">${text}</span>
-                        </a>
+    },
+    types: {
+        codeBlock: ({ value }) => {
+            const highlightedCode = hljs.highlight(
+                `${value.code.code}`,
+                { language: value.code.language }
+            ).value
+
+            return `<div class="code-block">
+                <div class="code-block__code">
+                    <span class="code-block__lang">
+                        <span class="u-hidden">Language:</span>
+                        ${value.code.language}
+                    </span>
+                    <pre>${highlightedCode}</pre>
+                </div>
+            </div>`
+        },
+        imageBlock: ({ value }) => {
+            return `
+                <figure class="image-block | ${value.size}">
+                    <div class="image-block__frame">
+                        <img src="${value.imageFile}" alt="" loading="lazy" />
                     </div>
-            `
-            }
+                    ${value.text || value.credits ? `
+                        <figcaption class="image-block__caption">
+                            ${!value.text ? "" : `<span class="image-block__description">${value.text}</span>`}
+                            ${!value.credits ? "" : `<span class="image-block__source">${value.credits}</span>`}
+                        </figcaption>
+                    ` : ''}
+                </figure>`
         }
-    };
-}
-
-
-const getMetadataFromSite = async function (url) {
-    const { data } = await mql(url)
-    return data.logo.url;
-}
+    }
+};
 
 module.exports = portableTextToHtml;

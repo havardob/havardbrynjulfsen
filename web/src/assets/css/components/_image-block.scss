@@ -1,0 +1,20 @@
+.image-block {
+    &__frame {
+        img {
+            border-radius: .375rem;
+        }
+    }
+
+    &__caption {
+        padding-block: .5rem;
+        display: flex;
+        flex-direction: column;
+        gap: .125em;
+    }
+
+    &__source {
+        text-transform: uppercase;
+        font-size: .75em;
+        letter-spacing: .05em;
+    }
+}

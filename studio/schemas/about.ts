@@ -1,4 +1,4 @@
-import { BiCard, BiUser } from "react-icons/bi";
+import { BiUser } from "react-icons/bi";
 import { slug } from "./templates/slug";
 import { richTextMain } from "./templates/richText";
 
@@ -45,31 +45,6 @@ export default {
             options: {
                 hotspot: true
             }
-        },
-        {
-            title: "Callout",
-            name: "callout",
-            type: "object",
-            icon: BiCard,
-            preview: {
-                select: {
-                    title: "text",
-                    subtitle: "href"
-                }
-            },
-            fields: [
-                {
-                    title: "Text",
-                    name: "text",
-                    type: "text",
-                    rows: 2,
-                },
-                {
-                    title: "Url",
-                    name: "href",
-                    type: "url",
-                },
-            ]
         },
         {
             ...richTextMain,

@@ -6,38 +6,30 @@ layout: base
   <div class="l-constraint">
     <article class="post">
       <header class="post__header">
-        <figure class="post__featured-image">
-          <img src="https://images.unsplash.com/photo-1579762593175-20226054cad0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2136&q=80" alt="" />
-        </figure>
+        {% if article.featuredImage and article.showAsBanner == true %}
+          <figure class="post__featured-image">
+            <img src="{{ article.featuredImage }}" alt="" />
+          </figure>
+        {% endif %}
         <div class="post__meta">
-          <a href="#" class="tag">Posts</a>
-          <span class="post__meta-item">3 minutes read</span>
-          <span class="post__meta-item">Feb 07, 2023</span>
+          {% if article.tagSlug %}
+            <a href="/{{ articleArchive.slug }}/{{ article.tagSlug }}" class="tag">{{ article.tag.title }}</a>
+          {% endif %}
+          {% if article.readingTime %}
+            <span class="post__meta-item">{{ article.readingTime }} minute read</span>
+          {% endif %}
+          <span class="post__meta-item">{{ article.publishedDate }}</span>
         </div>
-        <h1 class="post__title">On reaching 3500 followers on Codepen</h1>
-        <p class="post__leading">Some stats from my Codepen profile.</p>
+        <h1 class="post__title">{{ article.title }}</h1>
+        {% if article.leading %}
+          <p class="post__leading">{{ article.leading }}</p>
+        {% endif %}
       </header>
-      <div class="post__body | u-rich-text">
-        <p>I've been experimenting on Codepen for over 8 years now. Every time I need to try a new thing I go to pen.new and start writing. It's such an easy way to test someting really quickly. And in the beginning I only used Codepen for just that: testing.</p>
-        {% include "components/callout" image: frontPage.logo.url %}
-        <p>One day I needed a toogle for something (I don't even remember what), and I hated Javascript. I was desperate to find out how to create a toogle without resorting to a JS-library or similar. I went on Codepen and started experimenting with checkboxes and the :checked selector. This was the first time I really started to understand complex selectors like adjecent sibling selectors or psuedo-selectors like :checked. This resulted in an iOS-like toggle, which promted me to create an iPhone-mockup for something to wrap it in. The rest is history.</p>
-        <h2>Some stats</h2>
-        <p>Here are some stats from my profile</p>
-        <ul>
-          <li>45 of my most popular pens amount to over 1 million+ views in total</li>
-          <li>My top 50 most popular fonts have a total of 20 000 likes.</li>
-          <li>I've been paying for Codepen Pro for 4 years - about 300 dollars total. You're welcome Chris</li>
-          <li>10 of my top 50 most popular pens have a black-white color scheme.</li>
-          <li>My best pen is this. It averages 1 like per 5 view, which is a lot.</li>
-        </ul>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere reprehenderit dolores amet blanditiis officia odit eius doloribus recusandae nisi non itaque, unde consequuntur commodi voluptates animi praesentium eligendi voluptatem sunt!</p>
-        <h3>Amet consectetur</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt beatae perferendis recusandae laudantium, fugiat quos voluptate ducimus corporis, veritatis asperiores sunt nulla doloribus impedit animi repellendus magni maiores? Nam, cupiditate.</p>
-        <blockquote>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt beatae perferendis recusandae laudantium, fugiat quos voluptate ducimus corporis, veritatis asperiores sunt nulla doloribus impedit animi repellendus magni maiores? Nam, cupiditate.</p>
-        </blockquote>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt beatae perferendis recusandae laudantium, fugiat quos voluptate ducimus corporis, veritatis asperiores sunt nulla doloribus impedit animi repellendus magni maiores? Nam, cupiditate.</p>
-      </div>
+      {% if article.body %}
+        <div class="post__body | u-rich-text">
+          {{ article.body }}
+        </div>
+      {% endif %}
     </article>
   </div>
 </main>

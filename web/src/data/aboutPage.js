@@ -13,15 +13,12 @@ const query = `*[_id == "about"][0] {
 
 const getAboutPageData = async function () {
     const data = await client.fetch(query);
-    if (data.body) {
+    if (data.body !== undefined) {
         data.body = toHTML(data.body, { components: portableTextToHtml });
     }
-    const calloutImageData = await mql(data.callout.href);
-    console.log(calloutImageData.data);
-    data.callout.image = calloutImageData.data.logo.url;
-    data.fullSlug = data.parentSlug + "/" + data.slug;
-    return data;   
+
+    return data;    
  
 }
 
-module.exports = getAboutPageData();
+module.exports = getAboutPageData(); 

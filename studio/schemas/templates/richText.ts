@@ -1,4 +1,4 @@
-import { BiCard, BiDetail, BiImage, BiLinkAlt, BiLinkExternal } from "react-icons/bi";
+import { BiCard, BiCode, BiDetail, BiImage, BiLinkAlt, BiLinkExternal } from "react-icons/bi";
 import { externalLinkUrl, internalLinkRef } from "./linkObject";
 import { descriptionList } from "./descriptionList";
 
@@ -15,21 +15,22 @@ export const richTextMain = {
       // you want and decide how you want to deal with it where you want to
       // use your content.
       styles: [
-        {title: 'Normal', value: 'normal'},
-        {title: 'H1', value: 'h1'},
-        {title: 'H2', value: 'h2'},
-        {title: 'H3', value: 'h3'},
-        {title: 'H4', value: 'h4'},
-        {title: 'Quote', value: 'blockquote'},
+        { title: 'Normal', value: 'normal' },
+        { title: 'H1', value: 'h1' },
+        { title: 'H2', value: 'h2' },
+        { title: 'H3', value: 'h3' },
+        { title: 'H4', value: 'h4' },
+        { title: 'Quote', value: 'blockquote' },
       ],
-      lists: [{title: 'Bullet', value: 'bullet'}],
+      lists: [{ title: 'Bullet', value: 'bullet' }],
       // Marks let you mark up inline text in the block editor.
       marks: {
         // Decorators usually describe a single property – e.g. a typographic
         // preference or highlighting by editors.
         decorators: [
-          {title: 'Strong', value: 'strong'},
-          {title: 'Emphasis', value: 'em'},
+          { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' },
+          { title: 'Code', value: 'code' },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -60,8 +61,54 @@ export const richTextMain = {
     {
       title: "Image",
       icon: BiImage,
-      type: 'image',
-      options: {hotspot: true},
+      type: 'object',
+      name: "imageBlock",
+      fields: [
+        {
+          title: "Image File",
+          name: "imageFile",
+          type: "image",
+          options: { hotspot: true },
+        },
+        {
+          title: "Text",
+          name: "text",
+          type: "text",
+          rows: 3
+        },
+        {
+          title: "Creditation",
+          name: "credits",
+          type: "string"
+        },
+        {
+          title: "Alternative Text",
+          name: "alt",
+          type: "text",
+        },
+        {
+          title: "Show border",
+          name: "hasBorder",
+          type: "boolean",
+          options: {
+            layout: "checkbox"
+          },
+          initialValue: false
+        },
+        {
+          title: "Size",
+          name: "size",
+          type: "string",
+          options: {
+            list: [
+              { title: "Stretch", value: "stretch"},
+              { title: "Original size", value: "original"},
+              { title: "Full Bleed", value: "fullBleed"},
+            ],
+            layout: "radio"
+          }
+        }
+      ]
     },
     {
       title: "Description List",
@@ -84,6 +131,20 @@ export const richTextMain = {
           ...descriptionList,
         }
       ]
+    },
+    {
+      type: "object",
+      name: "codeBlock",
+      title: "Code Snippet",
+      icon: BiCode,
+      fields: [
+        {
+          title: "Code Snippet",
+          icon: BiCode,
+          type: "code",
+          name: "code",
+        }
+      ]
     }
   ],
 }
@@ -102,7 +163,7 @@ export const richTextSimple = {
       // you want and decide how you want to deal with it where you want to
       // use your content.
       styles: [
-        {title: 'Normal', value: 'normal'},
+        { title: 'Normal', value: 'normal' },
       ],
       lists: [],
       // Marks let you mark up inline text in the block editor.
@@ -110,8 +171,8 @@ export const richTextSimple = {
         // Decorators usually describe a single property – e.g. a typographic
         // preference or highlighting by editors.
         decorators: [
-          {title: 'Strong', value: 'strong'},
-          {title: 'Emphasis', value: 'em'},
+          { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -135,6 +196,7 @@ export const richTextSimple = {
           },
         ],
       },
-    },
-  ],
+
+    }
+  ]
 }

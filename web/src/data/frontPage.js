@@ -1,11 +1,88 @@
+const client = require("./_sanityClient").client;
+const toHTML = require('@portabletext/to-html').toHTML;
+const portableTextToHtml = require('./_portableTextToHtml');
 const mql = require('@microlink/mql');
 
-const getPageMeta = async function() {
-    // const { data } = await mql('https://css-tricks.com')
-    // console.log(data.description);
+const getReadingTime = function (bodyText) {
+    const text = bodyText;
+    const wpm = 265;
+    const words = text.trim().split(/\s+/).length;
+    const time = Math.ceil(words / wpm);
 
-    const data = { logo: { url: "https://i0.wp.com/css-tricks.com/wp-content/uploads/2021/07/star.png?fit=180%2C180&ssl=1"}}
-    return data;
+    return time;
 }
 
-module.exports = getPageMeta(); 
+const formatDate = function (date) {
+    const newDate = new Date(date);
+    const month = newDate.getMonth();
+    const day = newDate.getDate();
+    const year = newDate.getFullYear();
+
+    var monthNames = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec'
+    ];
+
+    const formattedDate = `${monthNames[month]} ${day}, ${year}` 
+    return formattedDate;
+}
+
+
+const query = `*[_id == "frontPage"][0] {
+    ...,
+    articles {
+        ...,
+        items[] -> {
+            ...,
+            "featuredImage": featuredImage.asset->url,
+            "tagSlug": tag -> slug.current,
+            "slug": slug.current,
+            tag -> {
+                ...
+            }
+        }
+    }
+}`
+
+const getFrontPageData = async function () {
+
+    const data = await client.fetch(query);
+
+    for (let article of data.articles.items) {
+        
+        if (article.publishedDate) {
+            article.publishedDate = formatDate(article.publishedDate);
+        }
+
+        if (article.body) {
+            article.body = toHTML(article.body, { components: portableTextToHtml });
+            article.readingTime = getReadingTime(article.body);
+            if (article.publishedExternally) {
+                const externalSiteData = await mql(article.publishedExternally.href);
+                article.publishedExternally.image = externalSiteData.data.logo.url;
+            } 
+        }  
+
+        if (article.tagSlug) {
+            article.fullSlug = article.tagSlug + "/" + article.slug;
+        } else {
+            article.fullSlug = article.slug;
+        }
+    }
+
+
+    return data; 
+}
+
+module.exports = getFrontPageData();  
+ 

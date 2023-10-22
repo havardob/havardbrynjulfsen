@@ -84,6 +84,59 @@ export default {
                     ]
                 }
             ]
+        },
+        {
+            title: "Articles Section",
+            name: "articles",
+            type: "object",
+            fields: [
+                {
+                    title: "Heading",
+                    name: "title",
+                    type: "string",
+                },
+                {
+                    title: "Featured Articles",
+                    name: "items",
+                    type: "array",
+                    of: [
+                        {
+                            title: "Article",
+                            type: "reference",
+                            to: [{ type: "article" }]
+                        }
+                    ]
+                },
+                {
+                    title: "More Link",
+                    name: "moreLink",
+                    type: "object",
+                    fields: [
+                        {
+                            title: "Link Text",
+                            name: "text",
+                            type: "string"
+                        },
+                        {
+                            title: "Is External Page",
+                            name: "isExternal",
+                            type: "boolean",
+                            initialValue: false,
+                            options: {
+                                layout: "checkbox"
+                            }
+                        },
+                        {
+                            ...internalLinkRef,
+                            hidden: ({ parent }: any) => parent?.isExternal === true,
+                        },
+                        {
+                            ...externalLinkUrl,
+                            hidden: ({ parent }: any) => parent?.isExternal !== true,
+                        }
+                    ]
+                }
+            ]
         }
     ],
 }

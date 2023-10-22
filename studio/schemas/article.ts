@@ -44,6 +44,39 @@ export default {
       type: "image"
     },
     {
+      title: "Show Image As Banner",
+      description: "Decide if you want to also show this image as a banner on this page",
+      name: "showAsBanner",
+      type: "boolean",
+      initialValue: false,
+      options: {
+        layout: "checkbox"
+      },
+    },
+    {
+      title: "Tag",
+      name: "tag",
+      type: "reference",
+      to: [{ type: "tag" }],
+    },
+    {
+      title: "Published Externally?",
+      name: "publishedExternally",
+      type: "object",
+      fields: [
+        {
+          title: "Text",
+          name: "text",
+          type: "string"
+        },
+        {
+          ...externalLinkUrl,
+          title: "URL",
+          description: "Pase in the url for the article on the external website",
+        }
+      ]
+    },
+    {
       title: "Leading Text",
       description: "Write a short introduction that summarizes this article in one or two sentences. This will also show in any preview, either on the front page or when sharing to SoMe",
       name: "leading",

@@ -1,17 +1,25 @@
 .page {
     display: flex;
     flex-direction: column-reverse;
-    margin-block: 4rem;
+    margin-block: 4rem 8rem;
     gap: 2rem;
 
     @media (min-width: 600px) {
         flex-direction: row;
         justify-content: space-between;
+        gap: 6rem;
     }
 
     &__column {
         &:first-of-type {
             width: min(100%, 30rem);
+        }
+    }
+    
+    &:has(:not(.page__column:nth-child(2))) {
+        .page__column:first-of-type {
+            margin-inline: auto;
+            width: min(100%, 35rem);
         }
     }
 
