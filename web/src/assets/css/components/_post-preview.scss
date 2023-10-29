@@ -32,9 +32,9 @@
         font-weight: 600;
         font-size: 1.375rem;
         color: #292a2d;
+        text-wrap: pretty;
 
         a {
-            display: block;
             
             &:hover {
                 text-underline-offset: .125em;

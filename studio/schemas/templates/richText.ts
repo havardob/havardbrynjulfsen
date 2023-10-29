@@ -85,6 +85,7 @@ export const richTextMain = {
           title: "Alternative Text",
           name: "alt",
           type: "text",
+          rows: 2,
         },
         {
           title: "Show border",

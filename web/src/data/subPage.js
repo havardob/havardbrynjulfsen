@@ -7,9 +7,9 @@ const query = `*[_type == "subPage"] {
     ...,
     "parentSlug": parent -> slug.current, 
     "slug": slug.current,
-    body[] {
+    body[] { 
         ...
-    } 
+    }  
 }`
 
 const getSubPageData = async function () {

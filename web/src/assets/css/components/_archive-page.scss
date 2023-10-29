@@ -1,0 +1,18 @@
+.archive-page {
+    &__header {
+        padding-top: 3rem;
+        width: min(100%, 40rem);
+    }
+
+    &__title {
+        font-size: 2rem;
+        line-height: 1.125;
+        color: #292a2d;
+    }
+
+    &__intro {
+        margin-top: .75rem;
+        font-size: 1.375rem;
+    }
+
+}

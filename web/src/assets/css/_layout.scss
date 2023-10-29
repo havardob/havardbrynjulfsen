@@ -3,3 +3,9 @@
     width: calc(100% - 2rem); // minus gutter on each side
     max-width: 50rem; // 800px
 }
+
+.l-site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}

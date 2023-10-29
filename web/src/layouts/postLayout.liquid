@@ -4,6 +4,22 @@ layout: base
 
 <main>
   <div class="l-constraint">
+    <ol class="breadcrumbs">
+      <li class="breadcrumbs__item">
+        <a href="/" class="breadcrumbs__link">Home</a>
+      </li>
+      {% for item in article.breadcrumbs %}
+        <li class="breadcrumbs__item">
+          {% if item.slug %}
+            <a href="/{{ item.slug }}" class="breadcrumbs__link">{{ item.title }}</a>
+          {% else %}
+          {% endif %}
+        </li>
+      {% endfor %}
+      <li class="breadcrumbs__item">
+        <span title="{{ article.title }}">{{ article.title }}</span>
+      </li>
+    </ol>
     <article class="post">
       <header class="post__header">
         {% if article.featuredImage and article.showAsBanner == true %}

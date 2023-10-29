@@ -13,7 +13,7 @@ export const internalLinkRef = {
     description: "Choose the internal document you want to link to",
     name: "internalDocument",
     type: "reference",
-    to: [{type: "article"}, { type: "creation"}, {type: "frontPage"}],
+    to: [{type: "article"}, { type: "creation"}, {type: "frontPage"}, {type: "tag"}],
     options: {
         disableNew: true,
     }

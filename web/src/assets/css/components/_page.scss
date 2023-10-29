@@ -10,6 +10,10 @@
         gap: 6rem;
     }
 
+    &__header {
+        width: min(100%, 40rem);
+    }
+ 
     &__column {
         &:first-of-type {
             width: min(100%, 30rem);

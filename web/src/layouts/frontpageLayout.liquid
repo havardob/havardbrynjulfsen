@@ -11,18 +11,22 @@ layout: base
       <h2 class="section__title">{{ frontPage.articles.title }}</h2>
       <ul class="section__list">
         {% for item in frontPage.articles.items %}
-          <li class="section__list-item">
-            {% include "components/postPreview" 
- title: item.title
- leading: item.leading
- readingTime: item.readingTime
- publishedDate: item.publishedDate
- tag: item.tag
- tagSlug: item.tagSlug
- fullSlug: item.fullSlug
- publishedExternally: item.publishedExternally
-            %}
-          </li>
+          {% for article in collections.articlesCollection %}
+            {% if item._ref == article.data.id %}
+              <li class="section__list-item">
+                {% include "components/postPreview" 
+ title: article.data.article.title
+ leading: article.data.article.leading
+ readingTime: article.data.article.readingTime
+ publishedDate: article.data.article.publishedDate
+ tag: article.data.article.tag
+ tagSlug: article.data.article.tagSlug
+ fullSlug: article.data.page.url
+ publishedExternally: article.data.article.publishedExternally
+                %}
+              </li>
+            {% endif %}
+          {% endfor %}
         {% endfor %}
       </ul>
       {% include "components/moreButton" url: "#" text: frontPage.articles.moreLink.text %}

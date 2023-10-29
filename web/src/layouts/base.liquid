@@ -7,8 +7,10 @@ eleventyComputed:
 ---
 
 {% include "parts/head" %}
-<div id="#top"></div>
-{% include "components/header" %}
-{{ content }}
-{% include "components/footer" %}
+<div class="l-site">
+  <div id="#top"></div>
+  {% include "components/header" %}
+  {{ content }}
+  {% include "components/footer" %}
+</div>
 {% include "parts/foot" %}

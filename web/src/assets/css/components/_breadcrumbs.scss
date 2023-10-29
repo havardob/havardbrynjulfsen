@@ -1,0 +1,41 @@
+.breadcrumbs {
+    padding: 0;
+    margin: 0;
+    ::marker {
+        color: transparent;
+    }
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem .75rem;
+    padding-block: 1rem;
+    font-size: .875rem;
+    &__item {
+        display: inline-flex;
+        &:not(:last-child) {
+            &::after {
+                content: "/";
+                display: inline-flex;
+                margin-left: .75rem;
+            }
+        }
+
+        &:last-child {
+            display: inline-block;
+            overflow: hidden;
+            max-width: 25ch;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+
+    &__link {
+        text-decoration: underline;
+        text-underline-offset: .125em;
+        text-decoration-color: transparent;
+
+        &:hover {
+            text-decoration-color: currentColor;
+        }
+    }
+}

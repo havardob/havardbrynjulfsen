@@ -81,6 +81,13 @@
         font-size: .875em;
     }
 
+    & > .code-block {
+        @media (min-width: 45rem) {
+            width: calc(100% + 4rem);
+            margin-left: -2rem;
+        }
+    }
+
     & > * + .image-block {
         margin-top: 2em;
     }

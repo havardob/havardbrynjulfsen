@@ -6,6 +6,9 @@ const portableTextToHtml = {
         externalLink: ({ children, value }) => {
             return `<a href="${value.href}">${children}</a>`;
         },
+        internalLink: ({ children, value }) => {
+            return `<a href="/${value.href}">${children}</a>`;
+        },
     },
     types: {
         codeBlock: ({ value }) => {
@@ -15,11 +18,11 @@ const portableTextToHtml = {
             ).value
 
             return `<div class="code-block">
+                <span class="code-block__lang">
+                    <span class="u-hidden">Language:</span>
+                    ${value.code.language}
+                </span>
                 <div class="code-block__code">
-                    <span class="code-block__lang">
-                        <span class="u-hidden">Language:</span>
-                        ${value.code.language}
-                    </span>
                     <pre>${highlightedCode}</pre>
                 </div>
             </div>`
@@ -33,7 +36,7 @@ const portableTextToHtml = {
                     ${value.text || value.credits ? `
                         <figcaption class="image-block__caption">
                             ${!value.text ? "" : `<span class="image-block__description">${value.text}</span>`}
-                            ${!value.credits ? "" : `<span class="image-block__source">${value.credits}</span>`}
+                            ${!value.credits ? "" : `<span class="image-block__source"><span class="u-hidden">Credit:</span>${value.credits}</span>`}
                         </figcaption>
                     ` : ''}
                 </figure>`

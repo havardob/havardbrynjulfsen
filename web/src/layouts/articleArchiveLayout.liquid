@@ -1,0 +1,44 @@
+---
+layout: base
+permalink: "/{{ articleArchive.slug }}/index.html"
+---
+
+<main>
+  <div class="l-constraint">
+    <ol class="breadcrumbs">
+      <li class="breadcrumbs__item">
+        <a href="/" class="breadcrumbs__link">Home</a>
+      </li>
+      <li class="breadcrumbs__item">
+        <span title="{{ articleArchive.title }}">{{ articleArchive.title }}</span>
+      </li>
+    </ol>
+    <div class="archive-page">
+      <div class="archive-page__header">
+        <h2 class="archive-page__title">{{ articleArchive.title }}</h2>
+        <div class="archive-page__intro | u-rich-text">
+          {{ articleArchive.leading }}
+        </div>
+      </div>
+      <div class="posts">
+        <ul class="posts-list">
+          {% assign sortedArticles = collections.articlesCollection | sort: "data.article.dateForSorting" | reverse %}
+          {% for post in sortedArticles %}
+            <li class="posts-list__item">
+              {% include "components/postPreview" 
+ title: post.data.article.title
+ leading: post.data.article.leading
+ readingTime: post.data.article.readingTime
+ publishedDate: post.data.article.publishedDate
+ tag: post.data.article.tag
+ tagSlug: post.data.article.tagSlug
+ fullSlug: post.data.page.url
+ publishedExternally: post.data.article.publishedExternally
+              %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
