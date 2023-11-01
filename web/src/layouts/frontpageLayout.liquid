@@ -4,9 +4,16 @@ layout: base
 
 <main>
   <div class="l-constraint">
-    {% include "components/hero" %}
+    {% include "components/hero" 
+ title: frontPage.hero.title
+ intro: frontPage.hero.intro
+    %}
+
+
     {% include "components/projectPreview" %}
     {% include "components/moreButton" url: "#" text: "More creations" %}
+
+
     <section class="section section--featured-posts">
       <h2 class="section__title">{{ frontPage.articles.title }}</h2>
       <ul class="section__list">

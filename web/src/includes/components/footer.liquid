@@ -2,7 +2,9 @@
   <div class="l-constraint">
     <div class="footer__inner">
       <div class="footer__some">
-        {% include "components/someList" %}
+        {% include "components/someList" 
+ items: siteSettings.someLinks
+        %}
       </div>
       <div class="footer__marquee">
         <div class="marquee">
@@ -14,9 +16,11 @@
       </div>
       <div class="footer__menu">
         <ul class="footer__menu-list">
-          <li class="footer__menu-item">
-            <a href="/about-this-site" class="footer__menu-link">About this site</a>
-          </li>
+          {% for item in siteSettings.footerNav %}
+            <li class="footer__menu-item">
+              <a href="{{ item.href }}" class="footer__menu-link">{{ item.text }}</a>
+            </li>
+          {% endfor %}
         </ul>
       </div>
       <a href="#top" class="footer__back-to-top | has-tooltip">

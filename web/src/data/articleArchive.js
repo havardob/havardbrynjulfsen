@@ -8,7 +8,7 @@ const query = `*[_id == "articleArchive"] {
     "slug": slug.current,
     leading
 }[0]` 
-
+ 
 const getArticleArchiveData = async function () {
     const data = await client.fetch(query);
 

@@ -7,6 +7,11 @@ export default {
     title: 'Sub Pages',
     type: 'document',
     icon: BiLayout,
+    preview: {
+        select: {
+            title: "title"
+        }
+    },
     fields: [
         {
             title: "Title", 

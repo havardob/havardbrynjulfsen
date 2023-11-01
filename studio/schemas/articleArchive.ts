@@ -7,7 +7,12 @@ export default {
     name: 'articleArchive',
     title: 'Articles Landing',
     icon: BiArchive,
-    type: 'document',
+    type: 'document', 
+    preview: {
+        select: {
+            title: "title"
+        }
+    },
     fields: [
         {
             title: "Title",

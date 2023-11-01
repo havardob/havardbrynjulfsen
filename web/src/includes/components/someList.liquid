@@ -1,32 +1,10 @@
 <ul class="some-list">
-  <li class="some-list__item">
-    <a href="#" class="some-list__link | has-tooltip">
-      <span class="tooltip tooltip--lb">Codepen profile</span>
-      {% include "icons/codepen" %}
-    </a>
-  </li>
-  <li class="some-list__item">
-    <a href="#" class="some-list__link | has-tooltip">
-      <span class="tooltip tooltip--lb">Twitter / X profile</span>
-      {% include "icons/x" %}
-    </a>
-  </li>
-  <li class="some-list__item">
-    <a href="#" class="some-list__link | has-tooltip">
-      <span class="tooltip tooltip--lb">Medium profile</span>
-      {% include "icons/medium" %}
-    </a>
-  </li>
-  <li class="some-list__item">
-    <a href="https://www.sanity.io/exchange/community/havardob" class="some-list__link | has-tooltip">
-      <span class="tooltip tooltip--lb">Sanity profile</span>
-      {% include "icons/sanity" %}
-    </a>
-  </li>
-  <li class="some-list__item">
-    <a href="#" class="some-list__link | has-tooltip">
-      <span class="tooltip tooltip--lb">GitHub profile</span>
-      {% include "icons/github" %}
-    </a>
-  </li>
+  {% for item in items %}
+    <li class="some-list__item">
+      <a href="{{ item.href }}" class="some-list__link | has-tooltip">
+        <span class="tooltip tooltip--lb">{{ item.label }}</span>
+        {% include "icons/{{ item.icon }}" %}
+      </a>
+    </li>
+  {% endfor %}
 </ul>

@@ -3,19 +3,19 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ metaTitle }}</title>
-    <meta name="description" content="{{ metaDescription }}" />
+<title>{% if metaTitle %}{{ metaTitle }} | {% endif %}{{ siteSettings.metaTitle }}</title>
+    <meta name="description" content="{{ siteSettings.metaDescription }}" />
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ metaUrl }}" />
-    <meta property="og:title" content="{{ metaTitle }}" />
-    <meta property="og:description" content="{{ metaDescription }}" />
+    <meta property="og:title" content="{{ siteSettings.metaTitle }}" />
+    <meta property="og:description" content="{{ siteSettings.metaDescription }}" />
     <meta property="og:image" content="{{ metaImageUrl }}">
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="{{ metaUrl }}" />
-    <meta property="twitter:title" content="{{ metaTitle }}" />
-    <meta property="twitter:description" content="{{ metaDescription }}" />
+    <meta property="twitter:title" content="{{ siteSettings.metaTitle }}" />
+    <meta property="twitter:description" content="{{ siteSettings.metaDescription }}" />
     <meta property="twitter:image" content="{{ metaImageUrl }}" />
     <!-- -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/panda-syntax-dark.min.css">

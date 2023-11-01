@@ -7,6 +7,11 @@ export default {
     title: 'Creations Landing',
     icon: BiPackage,
     type: 'document',
+    preview: {
+        select: {
+            title: "title"
+        }
+    },
     fields: [
         {
             title: "Title",
