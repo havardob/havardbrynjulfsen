@@ -1,7 +1,4 @@
 const client = require("./_sanityClient").client;
-const toHTML = require('@portabletext/to-html').toHTML;
-const portableTextToHtml = require('./_portableTextToHtml');
-const mql = require('@microlink/mql');
 const { generateRichText, generateSlug } = require("./_utils");
 
 const query = `*[_type == "subPage"] {

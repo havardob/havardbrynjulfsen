@@ -5,7 +5,10 @@ const client = require("./_sanityClient").client;
 const generateSlug = async function (id) {
     const query = `*[_id == "${id}"][0] {
         title,
-        "slug": slug.current,
+        "slug":  "/" + slug.current,
+        _type == "frontPage" => {
+            "slug":  "/",
+        },
         _type == "article" => {
             "slug": *[_type == "articleArchive"]{ "slug": slug.current }[0].slug + "/" + tag -> slug.current + "/" + slug.current
         },

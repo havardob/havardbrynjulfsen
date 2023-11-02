@@ -22,50 +22,13 @@
       <div class="header__actions">
         <nav class="main-nav">
           <ul class="main-nav__list">
-            <li class="main-nav__item">
-              <a href="/" class="main-nav__link">
-                <span>Home</span>
-              </a>
-            </li>
-            <li class="main-nav__item">
-              <button class="main-nav__dropdown-toggle | has-icon">
-                <span>Creations</span>
-                {% include "icons/chevronDown" %}
-              </button>
-              <ul class="dropdown-menu">
-                <li class="dropdown-menu__item">
-                  <a href="#" class="dropdown-menu__link">
-                    <span>Websites</span>
-                  </a>
-                </li>
-                <li class="dropdown-menu__item">
-                  <a href="#" class="dropdown-menu__link">
-                    <span>Misc</span>
-                  </a>
-                </li>
-                <li class="dropdown-menu__item">
-                  <a href="#" class="dropdown-menu__link">
-                    <span>Codepens</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="main-nav__item">
-              <a href="/writing" class="main-nav__link | has-icon">
-                <span>Writing</span>
-                {% include "icons/chevronDown" %}
-              </a>
-            </li>
-            <li class="main-nav__item">
-              <a href="/about" class="main-nav__link">
-                <span>About</span>
-              </a>
-            </li>
-            <li class="main-nav__item">
-              <a href="/resume" class="main-nav__link">
-                <span>Resumé</span>
-              </a>
-            </li>
+            {% for item in siteSettings.mainNav %}
+              <li class="main-nav__item">
+                <a href="{{ item.href }}" class="main-nav__link">
+                  <span>{{ item.text }}</span>
+                </a>
+              </li>
+            {% endfor %}
           </ul>
         </nav>
         <button class="header__theme-toggle | has-tooltip">

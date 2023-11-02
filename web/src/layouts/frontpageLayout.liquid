@@ -36,7 +36,7 @@ layout: base
           {% endfor %}
         {% endfor %}
       </ul>
-      {% include "components/moreButton" url: "#" text: frontPage.articles.moreLink.text %}
+      {% include "components/moreButton" url: frontPage.articles.moreLink.href text: frontPage.articles.moreLink.text %}
     </section>
   </div>
 </main>

@@ -1,5 +1,5 @@
 const client = require("./_sanityClient").client;
-const { generateRichText } = require('./_utils')
+const { generateRichText, generateSlug } = require('./_utils')
 
 
 const query = `*[_id == "frontPage"][0] {
@@ -15,7 +15,19 @@ const query = `*[_id == "frontPage"][0] {
                 }
             }
         } 
-    }  
+    },
+    articles {
+        title, 
+        items[] {
+            ...,
+        },
+        moreLink {
+            ...,
+            internalDocument {
+                ...
+            }
+        }
+    } 
 }` 
 
 const getFrontPageData = async function () {
@@ -23,6 +35,13 @@ const getFrontPageData = async function () {
     if (data.hero.intro !== undefined) {
         data.hero.intro = generateRichText(data.hero.intro);
     }
+
+    if (data.articles.moreLink) {
+        const moreLink = await generateSlug(data.articles.moreLink.internalDocument._ref);
+        data.articles.moreLink.href = moreLink.slug;
+    }
+
+    console.log(data.articles.moreLink);
     return data;
 } 
 

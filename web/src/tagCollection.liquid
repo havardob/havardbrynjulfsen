@@ -1,0 +1,14 @@
+---
+layout: tagPageLayout
+tags: 
+  - tagCollection
+pagination: 
+  data: tag
+  alias: tag
+  size: 1
+  addAllPagesToCollections: true 
+eleventyComputed: 
+  metaTitle: "{{ tag.title }}"
+  metaDescription: "{{ tag.type }}"
+permalink: "{{ tag.fullSlug }}/"    
+---

@@ -6,6 +6,12 @@ const query = `*[_id == "siteSettings"][0]{
     metaTitle,
     metaDescription,
     "metaImage": metaImage.asset->url,
+    mainNav[] {
+        ...,
+        internalDocument {
+            ...
+        }
+    },
     someLinks[] {
         isExternal,
         label,
@@ -13,19 +19,26 @@ const query = `*[_id == "siteSettings"][0]{
         isExternal,
         href,
         internalDocument {
-            ...
+            ... 
         }
-    },
+    }, 
     footerNav[] {
         ...,
         internalDocument {
             ...
         }
-    }
+    } 
 }`
 
 const getSiteSettingsData = async function() {
     const data = await client.fetch(query);
+    for (let link of data.mainNav) { 
+        if (link._type == "internalLink") {
+            const internalLink = await generateSlug(link.internalDocument._ref);
+            link.href = internalLink.slug
+        }
+    }
+
     for (let link of data.someLinks) {
         if (!link.isExternal) {
             const internalLink = await generateSlug(link.internalDocument._ref);

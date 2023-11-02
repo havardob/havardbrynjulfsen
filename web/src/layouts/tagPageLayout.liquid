@@ -1,0 +1,44 @@
+---
+layout: base
+---
+
+<main>
+  <div class="l-constraint">
+    <div class="archive-page">
+      <div class="archive-page__header">
+        <h2 class="archive-page__title">Tagged: {{ tag.title }}</h2>
+        <div class="archive-page__intro | u-rich-text">
+          {% if tag.type == "article" %}
+            All articles tagged: {{ tag.title }}
+          {% endif %}
+          {% if tag.type == "creation" %}
+            All creations tagged: {{ tag.title }}
+          {% endif %}
+        </div>
+        {% if tag.type == "article" %}
+          <div class="posts">
+            <ul class="posts-list">
+              {% assign sortedArticles = collections.articlesCollection | sort: "data.article.dateForSorting" | reverse %}
+              {% for post in sortedArticles %}
+                {% if post.data.article.tag.title == tag.title %}
+                  <li class="posts-list__item">
+                    {% include "components/postPreview" 
+ title: post.data.article.title
+ leading: post.data.article.leading
+ readingTime: post.data.article.readingTime
+ publishedDate: post.data.article.publishedDate
+ tag: post.data.article.tag
+ tagSlug: post.data.article.tagSlug
+ fullSlug: post.data.page.url
+ publishedExternally: post.data.article.publishedExternally
+                    %}
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</main>

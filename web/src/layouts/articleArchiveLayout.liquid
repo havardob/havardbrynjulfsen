@@ -21,6 +21,15 @@ permalink: "/{{ articleArchive.slug }}/index.html"
         </div>
       </div>
       <div class="posts">
+        <ul class="posts__tags">
+          {% for tag in collections.tagCollection %}
+            {% if tag.data.tag.type == "article" %}
+              <li class="posts__tag">
+                <a href="/{{ tag.data.tag.fullSlug }}" class="posts__tag-link">{{ tag.data.tag.title }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
         <ul class="posts-list">
           {% assign sortedArticles = collections.articlesCollection | sort: "data.article.dateForSorting" | reverse %}
           {% for post in sortedArticles %}
