@@ -27,7 +27,7 @@ layout: base
           {% for tag in collections.tagCollection %}
             {% if tag.data.tag.type == "article" %}
               <li class="tag-list__item">
-                <a href="/{{ tag.data.tag.fullSlug }}" class="tag-list__link">{{ tag.data.tag.title }}</a>
+                <a href="{{ tag.data.tag.fullSlug }}" class="tag-list__link">{{ tag.data.tag.title }}</a>
               </li>
             {% endif %}
           {% endfor %}
