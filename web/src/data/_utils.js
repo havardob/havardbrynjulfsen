@@ -10,20 +10,20 @@ const generateSlug = async function (id) {
             "slug":  "/",
         },
         _type == "article" => {
-            "slug": *[_type == "articleArchive"]{ "slug": slug.current }[0].slug + "/" + tag -> slug.current + "/" + slug.current
+            "slug": "/" + *[_type == "articleArchive"]{ "slug": slug.current }[0].slug + "/" + tag -> slug.current + "/" + slug.current
         },
         _type == "creation" => {
-            "slug": *[_type == "creationArchive"]{ "slug": slug.current }[0].slug + "/" + tag -> slug.current + "/" + slug.current
+            "slug": "/" + *[_type == "creationArchive"]{ "slug": slug.current }[0].slug + "/" + tag -> slug.current + "/" + slug.current
         },
         _type == "subPage" => {
             "slug": "/" + slug.current
         }, 
         _type == "tag" => {
             type == "article" => {
-                "slug": *[_type == "articleArchive"]{ "slug": slug.current }[0].slug + "/" + slug.current
+                "slug": "/" + *[_type == "articleArchive"]{ "slug": slug.current }[0].slug + "/" + slug.current
             },
             type == "creation" => {
-                "slug": *[_type == "creationArchive"]{ "slug": slug.current }[0].slug + "/" + slug.current
+                "slug": "/" + *[_type == "creationArchive"]{ "slug": slug.current }[0].slug + "/" + slug.current
             },
         }
     }`

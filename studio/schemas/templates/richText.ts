@@ -104,7 +104,7 @@ export const richTextMain = {
             list: [
               { title: "Stretch", value: "stretch"},
               { title: "Original size", value: "original"},
-              { title: "Full Bleed", value: "fullBleed"},
+              { title: "Full Bleed", value: "full-bleed"},
             ],
             layout: "radio"
           }

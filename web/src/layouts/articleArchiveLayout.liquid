@@ -1,6 +1,5 @@
 ---
 layout: base
-permalink: "/{{ articleArchive.slug }}/index.html"
 ---
 
 <main>
@@ -21,11 +20,14 @@ permalink: "/{{ articleArchive.slug }}/index.html"
         </div>
       </div>
       <div class="posts">
-        <ul class="posts__tags">
+        <ul class="tag-list">
+          <li class="tag-list__item">
+            <a href="/{{ articleArchive.slug }}" class="tag-list__link | active">All</a>
+          </li>
           {% for tag in collections.tagCollection %}
             {% if tag.data.tag.type == "article" %}
-              <li class="posts__tag">
-                <a href="/{{ tag.data.tag.fullSlug }}" class="posts__tag-link">{{ tag.data.tag.title }}</a>
+              <li class="tag-list__item">
+                <a href="/{{ tag.data.tag.fullSlug }}" class="tag-list__link">{{ tag.data.tag.title }}</a>
               </li>
             {% endif %}
           {% endfor %}

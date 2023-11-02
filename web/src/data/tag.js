@@ -16,7 +16,6 @@ const getTagPageData = async function () {
         tagPage.fullSlug = fullSlug.slug;
     }
 
-    console.log(data);
     return data;
 }
 

@@ -7,10 +7,10 @@ const portableTextToHtml = {
             return `<a href="${value.href}">${children}</a>`;
         },
         internalLink: ({ children, value }) => {
-            return `<a href="/${value.href}">${children}</a>`;
+            return `<a href="${value.href}">${children}</a>`;
         },
     },
-    types: {
+    types: { 
         codeBlock: ({ value }) => {
             const highlightedCode = hljs.highlight(
                 `${value.code.code}`,

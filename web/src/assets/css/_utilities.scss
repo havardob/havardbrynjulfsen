@@ -87,8 +87,19 @@
             margin-left: -2rem;
         }
     }
-
+    
     & > * + .image-block {
         margin-top: 2em;
+        &.full-bleed {
+            @media (min-width: 45rem) {
+                width: calc(100% + 4rem);
+                margin-left: -2rem;
+            }
+
+            @media (min-width: 50rem) {
+                width: calc(100% + 12rem);
+                margin-left: -6rem;
+            }
+        }
     }
 }

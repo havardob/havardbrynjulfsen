@@ -11,7 +11,7 @@ layout: base
       {% for item in article.breadcrumbs %}
         <li class="breadcrumbs__item">
           {% if item.slug %}
-            <a href="/{{ item.slug }}" class="breadcrumbs__link">{{ item.title }}</a>
+            <a href="{{ item.slug }}" class="breadcrumbs__link">{{ item.title }}</a>
           {% else %}
           {% endif %}
         </li>

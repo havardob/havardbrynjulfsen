@@ -66,7 +66,7 @@ const getArticleData = async function () {
         // Generate tag slug 
         if (article.tag) {
             const tag = await generateSlug(article.tag._id)
-            article.tagSlug = tag.slug;
+            article.tagSlug = tag.slug; 
         }
 
         let breadcrumbs = [];
@@ -76,7 +76,7 @@ const getArticleData = async function () {
         article.breadcrumbs = breadcrumbs;
     }
 
-    return data;  
+    return data;   
 }
  
-module.exports = getArticleData();   
+module.exports = getArticleData();      
