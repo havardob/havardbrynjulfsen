@@ -6,10 +6,10 @@ layout: base
   <div class="l-constraint">
     <div class="archive-page">
       <div class="archive-page__header">
-        <h2 class="archive-page__title">Tagged: {{ tag.title }}</h2>
+        <h2 class="archive-page__title">{{ articleArchive.title }}: {{ tag.title }}</h2>
         <div class="archive-page__intro | u-rich-text">
           {% if tag.type == "article" %}
-            All articles tagged: {{ tag.title }}
+            {{ articleArchive.leading }}
           {% endif %}
           {% if tag.type == "creation" %}
             All creations tagged: {{ tag.title }}
@@ -17,6 +17,18 @@ layout: base
         </div>
         {% if tag.type == "article" %}
           <div class="posts">
+            <div class="tags">
+              <p class="tags__label">Tags:</p>
+              <ul class="tag-list">
+                {% for item in collections.tagCollection %}
+                  {% if item.data.tag.type == "article" %}
+                    <li class="tag-list__item">
+                      <a href="{{ item.data.tag.fullSlug }}" class="tag | {% if item.data.tag.title == tag.title %}active{% endif %}">{{ item.data.tag.title }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
             <ul class="posts-list">
               {% assign sortedArticles = collections.articlesCollection | sort: "data.article.dateForSorting" | reverse %}
               {% for post in sortedArticles %}

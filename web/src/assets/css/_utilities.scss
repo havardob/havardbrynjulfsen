@@ -34,18 +34,14 @@
     &>ul:not([class]),
     &>ol:not([class]) {
         ::marker {
-            color: #292a2d;
+            color: var(--listMarker-color);
         }
     }
 
     &>blockquote:not([class]) {
         padding-left: 1em;
-        border-left: .25rem solid #DDD;
+        border-left: .25rem solid var(--blockquote-divider-color);
         padding-block: 1em;
-    }
-
-    & > :is(h1, h2, h3, h4, h5, h6) {
-        color: #292a2d;
     }
 
     & > h2:not([class]) {
@@ -59,26 +55,28 @@
 
     a:not([class]) {
         font-weight: 500;
-        color: #292a2d;
+        color: var(--textLink-color);
         text-underline-offset: .125em;
-        text-decoration-thickness: .125em;
+        text-decoration-thickness: .0625em;
         &:hover {
-            color: #565862;
-            text-decoration-thickness: .25em;
+            color: var(--textLink-color-hover);
+            text-decoration-thickness: .125em;
         }
     }
     
     strong {
         font-weight: 700;
-        color: #292a2d;
+        color: var(--text-secondary-color);
     }
 
     & > *:not(.code-block) code {
-        background-color: #eee;
-        display: inline-block;
-        padding: .0125em .25em;
+        background-color: var(--codeMark-bg-color);
+        color: var(--codeMark-text-color);
+        display: inline;
+        padding: .125em .25em;
         border-radius: .25rem;
         font-size: .875em;
+        -webkit-box-decoration-break: clone;
     }
 
     & > .code-block {

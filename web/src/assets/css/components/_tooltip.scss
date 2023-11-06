@@ -12,8 +12,8 @@
     position: absolute;
     display: inline-block;
     border-radius: .25rem;
-    background-color: #565862;
-    color: #eee;
+    background-color: var(--tooltip-bg-color);
+    color: var(--tooltip-text-color);
     width: auto;
     white-space: nowrap;
     font-size: .875rem;

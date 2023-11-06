@@ -1,15 +1,24 @@
 .tag {
     text-decoration: none;
     font-size: .875rem;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: .375rem .625rem;
     border-radius: .25rem;
     line-height: 1;
     font-weight: 500;
-    color: #565862;
-    background-color: #EEE;
+    background-color: var(--tag-bg-color);
+    color: var(--tag-text-color);
+    gap: .375em;
 
     &:hover {
-        background-color: #DDD;
+        background-color: var(--tag-bg-color-hover);
+    }
+
+    &.active {
+        &:after {
+            content: "•";
+            display: inline-flex;
+        }
     }
 }

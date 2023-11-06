@@ -14,19 +14,19 @@ const query = `*[_type == "article"] {
     "tagSlug": tag -> slug.current, 
     "tagTitle": tag -> title, 
     "slug": slug.current,
-    body[] {
+    body[] { 
         ...,
         _type == "imageBlock" => {
             "imageFile": imageFile.asset->url,
         }, 
-        markDefs[] {
+        markDefs[] { 
             ..., 
             _type == "internalLink" => {
                 "href": internalDocument-> slug.current
             }
-        }
+        } 
     }     
-}`
+}` 
 
 
 
@@ -53,8 +53,8 @@ const getArticleData = async function () {
         // Get external data with MQL
         if (article.publishedExternally) {
             const externalSiteData = await mql(article.publishedExternally.href);
-            article.publishedExternally.image = externalSiteData.data.logo.url;
-        }
+            article.publishedExternally.image = externalSiteData.data.logo.url;  
+        }   
 
         // Get a sortable date format and a formatted date
         if (article.publishedDate) {

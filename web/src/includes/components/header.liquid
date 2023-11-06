@@ -31,11 +31,34 @@
             {% endfor %}
           </ul>
         </nav>
-        <button class="header__theme-toggle | has-tooltip">
+        <button class="header__theme-toggle | has-tooltip" id="themeToggle">
           <span class="tooltip tooltip--rt">Change theme</span>
           {% include "icons/moon" %}
+        </button>
+        <button
+          class="header__menu-toggle"
+          id="menuToggle"
+          aria-label="Open menu">
+          <span class="header__menu-toggle-label">Menu</span>
+          {% include "icons/menu" %}
         </button>
       </div>
     </div>
   </div>
 </header>
+<div class="menu">
+  <div class="l-constraint">
+    <nav class="menu__nav">
+      <ul class="menu__list">
+        {% for item in siteSettings.mainNav %}
+          <li class="menu__item">
+            <a href="{{ item.href }}" class="menu__link">
+              <span class="menu__link-label">{{ item.text }}</span>
+              {% include "icons/chevronRight" %}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</div>

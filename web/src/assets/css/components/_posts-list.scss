@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
-    border-top: 0.125rem solid #DDD;
+    border-top: 0.0625rem solid var(--border-primary-color);
 
     &>li::marker {
         color: transparent;
@@ -17,7 +17,7 @@
 
     &__item {
         padding-top: 2.5rem;
-        border-top: 0.125rem dashed #DDD;
+        border-top: 0.0625rem dashed var(--border-primary-color);
         &:first-child {
             border-top: 0;
         }

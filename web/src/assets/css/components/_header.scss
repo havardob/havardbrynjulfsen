@@ -7,8 +7,11 @@
         justify-content: space-between;
         gap: 2rem;
         padding-block: 2rem;
-        border-bottom: .0625rem solid #DDD;
+        border-bottom: .0625rem solid var(--border-primary-color);
         width: 100%;
+        @media (max-width: 40rem) {
+            padding-block: 1rem;
+        }
     }
 
     &__logo {
@@ -24,6 +27,7 @@
         container-name: header-actions;
         container-type: inline-size;
         justify-content: flex-end;
+        align-items: center;
         flex-grow: 1;
     }
 
@@ -31,12 +35,32 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-inline: .5rem;
         border-radius: .25rem;
+        width: 2.5rem;
+        height: 2.5rem;
         flex-shrink: 0;
+        background-color: var(--headerLink-bg-color);
+
+        @container header-actions (max-width: 40rem) {
+            display: none;
+        }
 
         &:hover {
-            background-color: #EEE;
+            background-color: var(--headerLink-bg-color-hover);
+        }
+    }
+
+    &__menu-toggle {
+        display: flex;
+        align-items: center;
+        gap: .25rem;
+        border-radius: .25rem;
+        padding-inline: .75em;
+        margin-right: -.75em;
+        height: 2.5rem;
+
+        @container header-actions (min-width: 40rem) {
+            display: none;
         }
     }
 }
@@ -67,9 +91,11 @@
         display: inline-flex;
         align-items: center;
         gap: .125rem;
-        padding-block: .5rem;
+        height: 2.5rem;
         padding-inline: .75rem;
         border-radius: .25rem;
+        background-color: var(--headerLink-bg-color);
+        color: var(--headerLink-text-color);
 
         &.has-icon {
             padding-inline-end: .5rem;
@@ -80,15 +106,15 @@
             }
         }
 
-
         &:hover {
-            background-color: #EEE;
+            color: var(--headerLink-text-color-hover);
+            background-color: var(--headerLink-bg-color-hover);
         }
     }
 
     &__dropdown-toggle {
         &:focus {
-            background-color: #EEE;
+            background-color: var(--headerLink-bg-color-hover);
 
             &+.dropdown-menu {
                 scale: 1 1;
@@ -104,7 +130,7 @@
     align-items: stretch;
     gap: .25rem;
     padding: .5rem;
-    background-color: #EEE;
+    background-color: var(--headerDropdown-bg-color);
     border-radius: .375rem;
     opacity: 0;
     scale: 1 0;
@@ -130,10 +156,12 @@
         padding-block: .5rem;
         padding-inline: .75rem;
         text-decoration: none;
+        background-color: var(--headerDropdownLink-bg-color);
+        color: var(--headerDropdownLink-text-color);
 
         &:hover,
         &:focus {
-            background-color: #FFF;
+            background-color: var(--headerDropdownLink-bg-color-hover);
             border-radius: .25rem;
         }
     }

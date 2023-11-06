@@ -29,7 +29,7 @@ layout: base
         {% endif %}
         <div class="post__meta">
           {% if article.tagSlug %}
-            <a href="/{{ articleArchive.slug }}/{{ article.tagSlug }}" class="tag">{{ article.tag.title }}</a>
+            <a href="{{ article.tagSlug }}" class="tag">{{ article.tag.title }}</a>
           {% endif %}
           {% if article.readingTime %}
             <span class="post__meta-item">{{ article.readingTime }} minute read</span>

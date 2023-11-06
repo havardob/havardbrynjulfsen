@@ -23,7 +23,7 @@
     &__image-wrapper {
         width: 100%;
         aspect-ratio: 16 / 9;
-        background-color: #eee;
+        background-color: var(--projectImage-bg-color);
         border-radius: .375rem;
         
         @container project-preview (min-width: 25rem ) {

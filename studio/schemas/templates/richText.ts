@@ -107,7 +107,8 @@ export const richTextMain = {
               { title: "Full Bleed", value: "full-bleed"},
             ],
             layout: "radio"
-          }
+          },
+          initialValue: "stretch"
         }
       ]
     },

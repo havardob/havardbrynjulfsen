@@ -4,7 +4,7 @@
 
     &__inner {
         position: relative;
-        border-top: .0625rem solid #DDD;
+        border-top: .0625rem solid var(--border-primary-color);
         padding-block: 1rem;
         display: flex;
         flex-wrap: wrap;
@@ -18,27 +18,27 @@
     }
 
     &__marquee {
-        color: #787A85;
+        color: var(--footerMarquee-text-color);
         text-underline-offset: .125em;
     }
 
     &__menu {
-        color: #787A85;
         margin-left: auto;
         padding-right: 3rem;
-
+        
         @media (max-width: 40rem) {
             margin-left: initial;
         }
-
+        
         &-list {
             list-style: none;
             margin: 0;
             padding: 0;
         }
-
+        
         &-link {
             text-underline-offset: .125em;
+            color: var(--footerLink-text-color);
         }
     }
 
@@ -54,10 +54,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #EEE;
-
+        background-color: var(--toTopButton-bg-color);
+        color: var(--toTopButton-text-color);
+        
         &:hover, &:focus-visible {
-            background-color: #ddd;
+            background-color: var(--toTopButton-bg-color-hover);
+            color: var(--toTopButton-text-color-hover);
         }
     }
 }

@@ -6,7 +6,7 @@
     align-items: center;
     gap: .25rem;
     padding-right: .75rem;
-    border-right: 0.0625rem solid #DDD;
+    border-right: 0.0625rem solid var(--border-primary-color);
 
     @media (max-width: 40rem) {
         border-right: 0;
@@ -23,28 +23,10 @@
         height: 2rem;
         border-radius: .25rem;
         position: relative;
+        background-color: var(--someLink-bg-color);
 
         &:hover, &:focus-visible {
-            background-color: #EEE;
+            background-color: var(--someLink-bg-color-hover);
         }
-    }
-
-    &__tooltip {
-        position: absolute;
-        top: calc(-100% - .5rem);
-        display: inline-block;
-        border-radius: .25rem;
-        background-color: #565862;
-        color: #eee;
-        left: 0;
-        width: auto;
-        white-space: nowrap;
-        font-size: .875rem;
-        padding: .375rem .625rem;
-        font-weight: 500;
-        opacity: 0;
-        scale: 0 0;
-        transform-origin: bottom left;
-        transition: .15s ease;
     }
 }

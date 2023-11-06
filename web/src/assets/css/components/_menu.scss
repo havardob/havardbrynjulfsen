@@ -1,0 +1,37 @@
+.menu {
+    background-color: var(--menu-bg-color);
+    padding-block: 1.25rem;
+
+    @media (min-width: 40rem) {
+        display: none;
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        ::marker {
+            color: transparent;
+        }
+    }
+
+    &__item {
+        border-bottom: 0.0625rem solid var(--border-primary-color);
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+
+    &__link {
+        display: flex;
+        justify-content: space-between;
+        gap: .5rem;
+        text-decoration: none;
+        padding-block: .75rem;
+
+        svg {
+            flex-shrink: 0;
+        }
+    }
+}

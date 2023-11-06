@@ -20,18 +20,18 @@ layout: base
         </div>
       </div>
       <div class="posts">
-        <ul class="tag-list">
-          <li class="tag-list__item">
-            <a href="/{{ articleArchive.slug }}" class="tag-list__link | active">All</a>
-          </li>
-          {% for tag in collections.tagCollection %}
-            {% if tag.data.tag.type == "article" %}
-              <li class="tag-list__item">
-                <a href="{{ tag.data.tag.fullSlug }}" class="tag-list__link">{{ tag.data.tag.title }}</a>
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
+        <div class="tags">
+          <p class="tags__label">Tags:</p>
+          <ul class="tag-list">
+            {% for item in collections.tagCollection %}
+              {% if item.data.tag.type == "article" %}
+                <li class="tag-list__item">
+                  <a href="{{ item.data.tag.fullSlug }}" class="tag | {% if item.data.tag.title == tag.title %}active{% endif %}">{{ item.data.tag.title }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
         <ul class="posts-list">
           {% assign sortedArticles = collections.articlesCollection | sort: "data.article.dateForSorting" | reverse %}
           {% for post in sortedArticles %}

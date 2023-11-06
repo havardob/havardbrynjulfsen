@@ -1,11 +1,23 @@
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .5rem;
+    margin-bottom: 1rem;
+    &__label {
+        font-size: .875rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+    }
+}
+
 .tag-list {
     margin: 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
-    color: #787A85;
-    margin-bottom: 1rem;
+    gap: .375rem;
 
     ::marker {
         color: transparent;
@@ -34,14 +46,14 @@
         }
 
         &.active {
-            color: #292a2d;
+            color: var(--text-secondary-color);
             &:before {
                 background-color: currentColor;
             }
         }
 
         &:hover {
-            color: #292a2d;
+            color: var(--text-secondary-color);
         }
     }
 }

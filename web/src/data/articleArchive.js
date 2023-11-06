@@ -19,4 +19,4 @@ const getArticleArchiveData = async function () {
     return data;  
 }
 
-module.exports = getArticleArchiveData();  
+module.exports = getArticleArchiveData();   
