@@ -7,18 +7,19 @@ const query = `*[_type == "creation"] {
     tagline,
     leading,
     tag ->,
-    "featuredImage": featuredImage.asset->url,
+    "featuredImage": featuredImage.asset->url, 
     showAsBanner,
     "tagSlug": tag -> slug.current, 
     "tagTitle": tag -> title, 
-    "slug": slug.current,
-    detailsList[] {  
-        ...,
+    "slug": slug.current, 
+    detailsList[] {     
+        ...,  
     }, 
-    body[] { 
+    body[] {  
         ...,
         _type == "imageBlock" => {
-            "imageFile": imageFile.asset->url,
+            ...,
+            "imageFile": imageFile.asset->url, 
         }, 
         markDefs[] { 
             ..., 

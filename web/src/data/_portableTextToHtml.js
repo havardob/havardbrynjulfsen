@@ -31,7 +31,7 @@ const portableTextToHtml = {
             return `
                 <figure class="image-block | ${value.size}">
                     <div class="image-block__frame">
-                        <img src="${value.imageFile}" alt="" loading="lazy" />
+                        <img src="${value.imageFile}" alt="" loading="lazy" class="${value.hasBorder && "has-border"}"/>
                     </div>
                     ${value.text || value.credits ? `
                         <figcaption class="image-block__caption">
@@ -43,7 +43,7 @@ const portableTextToHtml = {
         },
         embedBlock: ({value}) => {
             return `
-                <div class="embed-block">
+                <div class="embed-block ${value.size}">
                     ${value.code}
                 </div>
             `

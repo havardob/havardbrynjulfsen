@@ -14,7 +14,7 @@ const query = `*[_type == "article"] {
     "tagSlug": tag -> slug.current, 
     "tagTitle": tag -> title, 
     "slug": slug.current, 
-    body[] { 
+    body[] {  
         ...,
         _type == "imageBlock" => {
             "imageFile": imageFile.asset->url,

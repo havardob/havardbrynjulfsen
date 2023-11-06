@@ -62,4 +62,4 @@ const getFrontPageData = async function () {
     return data;
 } 
 
-module.exports = getFrontPageData(); 
+module.exports = getFrontPageData();    

@@ -80,9 +80,12 @@
     }
 
     & > .code-block, & > .embed-block {
-        @media (min-width: 45rem) {
-            width: calc(100% + 4rem);
-            margin-left: -2rem;
+        width: 100%;
+        &.full-bleed {
+            @media (min-width: 45rem) {
+                width: calc(100% + 4rem);
+                margin-left: -2rem;
+            }
         }
     } 
     

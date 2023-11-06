@@ -1,7 +1,12 @@
 .image-block {
+
+    
     &__frame {
         img {
             border-radius: .375rem;
+            &.has-border {
+                border: 0.0625rem solid var(--border-primary-color);
+            }
         }
     }
 
@@ -18,4 +23,5 @@
         font-size: .75rem;
         letter-spacing: .05em;
     }
+
 } 

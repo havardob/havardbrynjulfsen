@@ -12,13 +12,13 @@ export default {
     preview: {
         select: {
             title: "title",
-            subtitle: "leading",
+            subtitle: "tagline",
             media: "featuredImage"
         }
     },
     fields: [
         {
-            title: "Title",
+            title: "Title", 
             name: "title",
             type: "text",
             rows: 2,

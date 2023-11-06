@@ -145,6 +145,19 @@ export const richTextMain = {
           icon: BiCode,
           type: "code",
           name: "code",
+        }, 
+        {
+          title: "Size",
+          name: "size",
+          type: "string",
+          options: {
+            list: [
+              { title: "Original size", value: "original" },
+              { title: "Full Bleed", value: "full-bleed" },
+            ],
+            layout: "radio"
+          },
+          initialValue: "original"
         }
       ]
     },
@@ -158,6 +171,19 @@ export const richTextMain = {
           title: "Embed code",
           name: "code",
           type: "text"
+        },
+        {
+          title: "Size",
+          name: "size",
+          type: "string",
+          options: {
+            list: [
+              { title: "Original size", value: "original" },
+              { title: "Full Bleed", value: "full-bleed" },
+            ],
+            layout: "radio"
+          },
+          initialValue: "original"
         }
       ]
     }
