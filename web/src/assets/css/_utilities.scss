@@ -79,12 +79,12 @@
         -webkit-box-decoration-break: clone;
     }
 
-    & > .code-block {
+    & > .code-block, & > .embed-block {
         @media (min-width: 45rem) {
             width: calc(100% + 4rem);
             margin-left: -2rem;
         }
-    }
+    } 
     
     & > * + .image-block {
         margin-top: 2em;
@@ -100,4 +100,8 @@
             }
         }
     }
-}
+
+    & > .details-block + * {
+        margin-top: 2em;
+    }
+} 

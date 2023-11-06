@@ -79,8 +79,8 @@ const generateRichText = async function (source) {
                 }
             }
         }
-        return source = toHTML(source, { components: portableTextToHtml });
+        return source = toHTML(source, { components: portableTextToHtml }); 
     }
 }
 
-module.exports = { generateSlug, formatDate, getReadingTime, generateRichText };
+module.exports = { generateSlug, formatDate, getReadingTime, generateRichText }; 

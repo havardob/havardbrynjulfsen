@@ -13,21 +13,21 @@ const query = `*[_type == "article"] {
     "featuredImage": featuredImage.asset->url,
     "tagSlug": tag -> slug.current, 
     "tagTitle": tag -> title, 
-    "slug": slug.current,
+    "slug": slug.current, 
     body[] { 
         ...,
         _type == "imageBlock" => {
             "imageFile": imageFile.asset->url,
         }, 
-        markDefs[] { 
+        markDefs[] {  
             ..., 
             _type == "internalLink" => {
                 "href": internalDocument-> slug.current
             }
         } 
     }     
-}` 
-
+}`    
+ 
 
 
 

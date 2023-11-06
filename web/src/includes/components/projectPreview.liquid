@@ -1,21 +1,23 @@
 <div class="[ cq--project-preview ]">
   <article class="project-preview">
     <div class="project-preview__image-wrapper">
-      <img
-        src=""
-        alt=""
-        class="project-preview__image" />
+      {% if featuredImage %}
+        <img
+          src="{{ featuredImage }}"
+          alt=""
+          class="project-preview__image" />
+      {% endif %}
     </div>
     <div class="project-preview__content">
       <h2 class="project-preview__title">
-        <a href="#">
-          Noel.fun
+        <a href="{{ fullSlug }}">
+          {{ title }}
         </a>
       </h2>
       <p class="project-preview__tagline">
-        An award winning fun fact database
+        {{ tagline }}
       </p>
-      <a href="#" class="tag">Website</a>
+      <a href="{{ tagSlug }}" class="tag">{{ tag.title }}</a>
     </div>
   </article>
 </div>

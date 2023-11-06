@@ -1,0 +1,41 @@
+---
+layout: base
+---
+
+<main>
+  <div class="l-constraint">
+    <article class="post">
+      <header class="post__header">
+        {% if creation.featuredImage and creation.showAsBanner == true %}
+          <figure class="post__featured-image">
+            <img src="{{ creation.featuredImage }}" alt="" />
+          </figure>
+        {% endif %}
+        <div class="post__meta">
+          {% if creation.tagSlug %}
+            <a href="{{ creation.tagSlug }}" class="tag">{{ creation.tag.title }}</a>
+          {% endif %}
+        </div>
+        <h1 class="post__title">{{ creation.title }}</h1>
+        {% if creation.leading %}
+          <p class="post__leading">{{ creation.leading }}</p>
+        {% endif %}
+      </header>
+      {% if creation.body %}
+        <div class="post__body | u-rich-text">
+          {% if creation.detailsList %}
+            <dl class="details-block">
+              {% for item in creation.detailsList %}
+                <div class="details-block__item">
+                  <dt class="details-block__term">{{ item.title }}</dt>
+                  <dd class="details-block__detail">{{ item.subtitle }}</dd>
+                </div>
+              {% endfor %}
+            </dl>
+          {% endif %}
+          {{ creation.body }}
+        </div>
+      {% endif %}
+    </article>
+  </div>
+</main>

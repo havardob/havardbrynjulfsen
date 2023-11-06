@@ -40,7 +40,14 @@ const portableTextToHtml = {
                         </figcaption>
                     ` : ''}
                 </figure>`
-        }
+        },
+        embedBlock: ({value}) => {
+            return `
+                <div class="embed-block">
+                    ${value.code}
+                </div>
+            `
+        } 
     }
 };
 

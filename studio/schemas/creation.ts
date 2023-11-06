@@ -21,8 +21,14 @@ export default {
             title: "Title",
             name: "title",
             type: "text",
-            rows: 3,
+            rows: 2,
             validation: (Rule: any) => Rule.required()
+        },
+        {
+            title: "Tagline",
+            name: "tagline",
+            type: "text",
+            rows: 2
         },
         {
             ...slug

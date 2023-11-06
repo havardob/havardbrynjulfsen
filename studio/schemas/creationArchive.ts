@@ -26,6 +26,17 @@ export default {
             ...richTextSimple,
             title: "Leading",
             name: "leading",
+        },
+        {
+            title: "Order creations",
+            name: "creationList",
+            type: "array",
+            of: [
+                {
+                    type: "reference",
+                    to: [{type: "creation"}]
+                }
+            ]
         }
     ],
-}
+} 

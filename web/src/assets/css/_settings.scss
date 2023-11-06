@@ -9,8 +9,10 @@
     font-stretch: 75% 125%;
 }
 
+
+
 :root {
-    --ff-primary: "Gabarito", "Schibsted Grotesk", "Mona Sans", "Inter", sans-serif;
+    --ff-primary: "Geist Sans", "Gabarito", "Schibsted Grotesk", "Mona Sans", "Inter", sans-serif;
 
     --color-white: #FFF;
     --color-mist: #EEE;
@@ -87,6 +89,10 @@
 
     --projectImage-bg-color: var(--color-mist);
 
+    --detailsBlock-bg-color: var(--color-mist);
+    --detailsBlock-divider-color: var(--color-fog);
+    --detailsBlock-term-color: var(--color-void);
+    --detailsBlock-detail-color: var(--color-concrete);
 
     &.dark-theme {
 
@@ -140,8 +146,8 @@
         --textLink-color: var(--color-malibu);
         --textLink-color-hover: var(--color-violet);
 
-        --codeMark-bg-color: var(--color-scale-gray-10);
-        --codeMark-text-color: var(--color-scale-gray-0);
+        --codeMark-bg-color: var(--color-scale-gray-1);
+        --codeMark-text-color: var(--color-scale-gray-10);
 
         --codeBlock-bg-color: var(--color-scale-gray-10);
         --codeBlock-text-color: var(--color-scale-gray-0);
@@ -156,5 +162,10 @@
 
         --postFooter-text-color: var(--color-scale-gray-1);
         --postFooterImage-bg-color: var(--color-scale-gray-0);
+
+        --detailsBlock-bg-color: var(--color-scale-gray-8);
+        --detailsBlock-divider-color: var(--color-scale-gray-7);
+        --detailsBlock-term-color: var(--color-scale-gray-0);
+        --detailsBlock-detail-color: var(--color-scale-gray-2);
     }
 }

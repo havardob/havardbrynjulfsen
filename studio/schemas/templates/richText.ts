@@ -1,4 +1,4 @@
-import { BiCard, BiCode, BiDetail, BiImage, BiLinkAlt, BiLinkExternal } from "react-icons/bi";
+import { BiCard, BiCode, BiCodeAlt, BiCodeBlock, BiDetail, BiImage, BiLinkAlt, BiLinkExternal } from "react-icons/bi";
 import { externalLinkUrl, internalLinkRef } from "./linkObject";
 import { descriptionList } from "./descriptionList";
 
@@ -145,6 +145,19 @@ export const richTextMain = {
           icon: BiCode,
           type: "code",
           name: "code",
+        }
+      ]
+    },
+    {
+      type: "object",
+      name: "embedBlock",
+      title: "Embed",
+      icon: BiCodeBlock,
+      fields: [
+        {
+          title: "Embed code",
+          name: "code",
+          type: "text"
         }
       ]
     }

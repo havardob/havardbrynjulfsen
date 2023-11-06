@@ -16,6 +16,18 @@ const query = `*[_id == "frontPage"][0] {
             }
         } 
     },
+    creations {
+        title, 
+        items[] {
+            ...,
+        },
+        moreLink {
+            ...,
+            internalDocument {
+                ...
+            }
+        }
+    },
     articles {
         title, 
         items[] {
@@ -36,6 +48,11 @@ const getFrontPageData = async function () {
         data.hero.intro = generateRichText(data.hero.intro);
     }
 
+    if (data.creations.moreLink) {
+        const moreLink = await generateSlug(data.creations.moreLink.internalDocument._ref);
+        data.creations.moreLink.href = moreLink.slug;
+    }
+    
     if (data.articles.moreLink) {
         const moreLink = await generateSlug(data.articles.moreLink.internalDocument._ref);
         data.articles.moreLink.href = moreLink.slug;
@@ -45,4 +62,4 @@ const getFrontPageData = async function () {
     return data;
 } 
 
-module.exports = getFrontPageData();
+module.exports = getFrontPageData(); 

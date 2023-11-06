@@ -18,6 +18,11 @@
 
     &__featured-image {
         margin-bottom: 2rem;
+        margin-left: -6rem;
+        width: calc(100% + 12rem);
+        border: .0625rem solid var(--border-primary-color);
+        border-radius: .375rem;
+        overflow: hidden;
 
         img {
             border-radius: .375rem;
