@@ -46,7 +46,7 @@
     </div>
   </div>
 </header>
-<div class="menu">
+<div class="menu" id="menuContainer">
   <div class="l-constraint">
     <nav class="menu__nav">
       <ul class="menu__list">
@@ -60,5 +60,9 @@
         {% endfor %}
       </ul>
     </nav>
+    <button class="menu__toggle-theme" id="menuThemeToggle">
+      {% include "icons/moon" %}
+      <span>Change theme</span>
+    </button>
   </div>
 </div>

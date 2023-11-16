@@ -1,9 +1,25 @@
 .menu {
     background-color: var(--menu-bg-color);
     padding-block: 1.25rem;
+    display: none;
+    
+    &.is-open {
+        display: block;
+    }
+    
+    &__toggle-theme {
+        display: flex;
+        gap: .5rem;
+        margin: auto;
+        margin-top: 1em;
+        padding: .375em .75em;
+        border-radius: .25rem;
+        align-items: center;
+        background-color: var(--menuThemeToggle-bg-color);
 
-    @media (min-width: 40rem) {
-        display: none;
+        svg {
+            flex-shrink: 0;
+        }
     }
 
     &__list {
@@ -18,10 +34,7 @@
     }
 
     &__item {
-        border-bottom: 0.0625rem solid var(--border-primary-color);
-        &:last-child {
-            border-bottom: 0;
-        }
+        border-top: 0.0625rem solid var(--border-primary-color);
     }
 
     &__link {

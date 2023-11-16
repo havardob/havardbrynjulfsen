@@ -104,6 +104,7 @@ ol {
   --textLink-color: var(--color-void);
   --textLink-color-hover: var(--color-concrete);
   --menu-bg-color: var(--color-mist);
+  --menuThemeToggle-bg-color: var(--color-fog);
   --moreLink-bg-color: var(--color-mist);
   --moreLink-bg-color-hover: var(--color-fog);
   --moreLink-text-color: var(--color-concrete);
@@ -1170,11 +1171,23 @@ body {
 .menu {
   background-color: var(--menu-bg-color);
   padding-block: 1.25rem;
+  display: none;
 }
-@media (min-width: 40rem) {
-  .menu {
-    display: none;
-  }
+.menu.is-open {
+  display: block;
+}
+.menu__toggle-theme {
+  display: flex;
+  gap: 0.5rem;
+  margin: auto;
+  margin-top: 1em;
+  padding: 0.375em 0.75em;
+  border-radius: 0.25rem;
+  align-items: center;
+  background-color: var(--menuThemeToggle-bg-color);
+}
+.menu__toggle-theme svg {
+  flex-shrink: 0;
 }
 .menu__list {
   margin: 0;
@@ -1187,10 +1200,7 @@ body {
   font-size: 0;
 }
 .menu__item {
-  border-bottom: 0.0625rem solid var(--border-primary-color);
-}
-.menu__item:last-child {
-  border-bottom: 0;
+  border-top: 0.0625rem solid var(--border-primary-color);
 }
 .menu__link {
   display: flex;
