@@ -27,7 +27,8 @@ const query = `*[_id == "siteSettings"][0]{
         internalDocument {
             ...
         }
-    } 
+    }, 
+    topBanner
 }`
 
 const getSiteSettingsData = async function() {

@@ -1,4 +1,4 @@
-import { BiCog, BiDockBottom, BiDockTop, BiLink, BiLogoMedium, BiShare } from "react-icons/bi";
+import { BiCog, BiDockBottom, BiDockTop, BiInfoCircle, BiLink, BiLogoMedium, BiShare } from "react-icons/bi";
 import { externalLinkUrl, internalLinkRef } from "./templates/linkObject";
 
 export default {
@@ -22,6 +22,11 @@ export default {
             title: "Metadata",
             name: "metaGroup",
             icon: BiShare
+        },
+        {
+            title: "Banner",
+            name: "bannerGroup",
+            icon: BiInfoCircle
         }
     ],
     fields: [
@@ -87,6 +92,13 @@ export default {
                     ]
                 }
             ]
+        },
+        {
+            title: "Banner Text",
+            group: "bannerGroup",
+            name: "topBanner",
+            type: "text",
+            rows: 2,
         },
         {
             title: "SoMe Links",

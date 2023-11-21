@@ -96,6 +96,8 @@ ol {
   --headerLink-text-color-hover: var(--color-void);
   --headerLink-bg-color: var(--color-white);
   --headerLink-bg-color-hover: var(--color-mist);
+  --banner-bg-color: var(--color-void);
+  --banner-text-color: var(--color-white);
   --breadcrumbLink-text-color: var(--color-concrete);
   --blockquote-divider-color: var(--color-fog);
   --callout-border-color: var(--color-fog);
@@ -145,6 +147,7 @@ ol {
   --color-cement: #b4bcd0;
   --color-malibu: #828fff;
   --color-violet: #5e6ad2;
+  --color-fall: #FFD966;
   --color-abyss: #000313;
   --color-scale-white: #cdd9e5;
   --color-scale-gray-0: #cdd9e5;
@@ -169,6 +172,8 @@ ol {
   --headerLink-text-color-hover: var(--color-scale-gray-1);
   --headerLink-bg-color: var(--color-scale-gray-9);
   --headerLink-bg-color-hover: var(--color-scale-gray-8);
+  --banner-bg-color: var(--color-fall);
+  --banner-text-color: var(--color-abyss);
   --tooltip-bg-color: var(--color-scale-gray-8);
   --tooltip-text-color: var(--color-scale-gray-1);
   --border-primary-color: var(--color-scale-gray-8);
@@ -206,9 +211,6 @@ body {
   font-family: var(--ff-primary);
   font-weight: 400;
   color: var(--text-primary-color);
-  background-color: var(--body-bg-color);
-  max-width: 65rem;
-  margin-inline: auto;
   min-height: 100dvh;
 }
 
@@ -233,6 +235,9 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
+  background-color: var(--body-bg-color);
+  max-width: 65rem;
+  margin-inline: auto;
 }
 
 .has-tooltip {
@@ -278,6 +283,17 @@ body {
   right: 0;
   top: calc(100% + 0.5rem);
   transform-origin: top right;
+}
+
+.banner {
+  text-align: center;
+  background-color: var(--banner-bg-color);
+  color: var(--banner-text-color);
+  padding-block: 0.75rem;
+  font-size: 0.875rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
 .header {

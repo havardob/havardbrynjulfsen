@@ -39,6 +39,9 @@
     --headerLink-bg-color: var(--color-white);
     --headerLink-bg-color-hover: var(--color-mist);
 
+    --banner-bg-color: var(--color-void);
+    --banner-text-color: var(--color-white);
+
     --breadcrumbLink-text-color: var(--color-concrete);
 
     --blockquote-divider-color: var(--color-fog);
@@ -106,6 +109,7 @@
         --color-cement: #b4bcd0;
         --color-malibu: #828fff;
         --color-violet: #5e6ad2;
+        --color-fall: #FFD966;
         --color-abyss: #000313;
 
         --color-scale-white: #cdd9e5;
@@ -135,6 +139,9 @@
         --headerLink-text-color-hover: var(--color-scale-gray-1);
         --headerLink-bg-color: var(--color-scale-gray-9);
         --headerLink-bg-color-hover: var(--color-scale-gray-8);
+
+        --banner-bg-color: var(--color-fall);
+        --banner-text-color: var(--color-abyss);
 
         --tooltip-bg-color: var(--color-scale-gray-8);
         --tooltip-text-color: var(--color-scale-gray-1);
