@@ -35,6 +35,9 @@
 
     &__item {
         border-top: 0.0625rem solid var(--border-primary-color);
+        &:last-child {
+            border-bottom: 0.0625rem solid var(--border-primary-color);
+        }
     }
 
     &__link {

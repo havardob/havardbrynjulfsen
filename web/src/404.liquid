@@ -1,0 +1,19 @@
+---
+layout: base
+permalink: 404.html
+title: "Page not found"
+leading: "This page must have been moved or deleted. I know, it's annoying, but that's just how it is sometimes (¬_¬ )"
+---
+
+<main>
+  <div class="l-constraint">
+    <article class="post">
+      <header class="post__header">
+        <h1 class="post__title">{{ title }}</h1>
+        {% if leading %}
+          <p class="post__leading">{{ leading }}</p>
+        {% endif %}
+      </header>
+    </article>
+  </div>
+</main>

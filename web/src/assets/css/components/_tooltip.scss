@@ -2,6 +2,7 @@
     position: relative;
     &:hover, &:focus-visible {
         .tooltip {
+            transition: transform .2s linear, opacity .35s ease;
             transform: scale(1);
             opacity: 1;
         }
@@ -21,7 +22,6 @@
     font-weight: 500;
     opacity: 0;
     transform: scale(0);
-    transition: transform .2s linear, opacity .35s ease;
     pointer-events: none;
 
     &--lb {

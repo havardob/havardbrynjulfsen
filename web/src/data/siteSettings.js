@@ -37,7 +37,7 @@ const getSiteSettingsData = async function() {
             const internalLink = await generateSlug(link.internalDocument._ref);
             link.href = internalLink.slug
         }
-    }
+    } 
 
     for (let link of data.someLinks) {
         if (!link.isExternal) {

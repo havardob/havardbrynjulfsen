@@ -17,11 +17,11 @@ const getSubPageData = async function () {
         page.fullSlug = fullSlug.slug;
 
         if (page.body) {
-            page.body = await generateRichText(page.body);
+            page.body = await generateRichText(page.body); 
         }
     }
 
-    return data; 
+    return data;  
 }
 
 module.exports = getSubPageData(); 

@@ -30,7 +30,7 @@ const query = `*[_id == "frontPage"][0] {
     },
     articles {
         title, 
-        items[] {
+        items[] { 
             ...,
         },
         moreLink {

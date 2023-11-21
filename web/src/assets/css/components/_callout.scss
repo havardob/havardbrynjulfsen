@@ -14,11 +14,32 @@
     border: 0.0625rem solid var(--callout-border-color);
     font-size: 1rem;
     text-decoration: none;
-
+    cursor: pointer;
+    position: relative;
+    
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 20rem;
+        bottom: calc(100% + 0.0625rem);
+        right: 0; 
+        left: 0;
+        background-image: linear-gradient(to top, var(--body-bg-color), transparent);
+        pointer-events: none;
+        z-index: -1;
+    }
+    
     @container callout (max-width: 25rem) {
         padding: .75rem .5rem;
         gap: .75rem;
         font-size: .875rem;
+    }
+    
+    &:hover {
+        // background-color: var(--callout-bg-color-hover);
+        box-shadow: 0 0 0 0.0625rem var(--callout-border-color);
+        transition: .15s ease;
     }
 
     &__image {

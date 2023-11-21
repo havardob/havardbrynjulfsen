@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     menuToggle.addEventListener('click', function () {
         menuToggle.classList.toggle('is-open');
         menuContainer.classList.toggle('is-open');
+        html.classList.toggle('menu-is-open');
     })
 
     function setStoredTheme() {

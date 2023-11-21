@@ -19,4 +19,4 @@ const getTagPageData = async function () {
     return data;
 }
  
-module.exports = getTagPageData();    
+module.exports = getTagPageData();     

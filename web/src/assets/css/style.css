@@ -62,8 +62,8 @@ ol {
 
 @media (prefers-reduced-motion: reduce) {
   *,
-*::before,
-*::after {
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -98,6 +98,10 @@ ol {
   --headerLink-bg-color-hover: var(--color-mist);
   --breadcrumbLink-text-color: var(--color-concrete);
   --blockquote-divider-color: var(--color-fog);
+  --callout-border-color: var(--color-fog);
+  --callout-bg-color: var(--color-white);
+  --callout-bg-color-hover: var(--color-mist);
+  --callout-text-color: var(--color-concrete);
   --tag-bg-color: var(--color-mist);
   --tag-bg-color-hover: var(--color-fog);
   --tag-text-color: var(--color-concrete);
@@ -235,6 +239,7 @@ body {
   position: relative;
 }
 .has-tooltip:hover .tooltip, .has-tooltip:focus-visible .tooltip {
+  transition: transform 0.2s linear, opacity 0.35s ease;
   transform: scale(1);
   opacity: 1;
 }
@@ -252,7 +257,6 @@ body {
   font-weight: 500;
   opacity: 0;
   transform: scale(0);
-  transition: transform 0.2s linear, opacity 0.35s ease;
   pointer-events: none;
 }
 .tooltip--lb {
@@ -292,6 +296,9 @@ body {
   .header__inner {
     padding-block: 1rem;
   }
+}
+.menu-is-open .header__inner {
+  border-bottom: 0;
 }
 .header__logo {
   font-weight: 600;
@@ -377,7 +384,7 @@ body {
   height: 1.25em;
   width: 1.25em;
 }
-.main-nav__link:hover, .main-nav__dropdown-toggle:hover {
+.main-nav__link:hover, .main-nav__link.active, .main-nav__dropdown-toggle:hover, .main-nav__dropdown-toggle.active {
   color: var(--headerLink-text-color-hover);
   background-color: var(--headerLink-bg-color-hover);
 }
@@ -548,6 +555,20 @@ body {
   border: 0.0625rem solid var(--callout-border-color);
   font-size: 1rem;
   text-decoration: none;
+  cursor: pointer;
+  position: relative;
+}
+.callout:before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 20rem;
+  bottom: calc(100% + 0.0625rem);
+  right: 0;
+  left: 0;
+  background-image: linear-gradient(to top, var(--body-bg-color), transparent);
+  pointer-events: none;
+  z-index: -1;
 }
 @container callout (max-width: 25rem) {
   .callout {
@@ -555,6 +576,10 @@ body {
     gap: 0.75rem;
     font-size: 0.875rem;
   }
+}
+.callout:hover {
+  box-shadow: 0 0 0 0.0625rem var(--callout-border-color);
+  transition: 0.15s ease;
 }
 .callout__image {
   flex-shrink: 0;
@@ -643,13 +668,15 @@ body {
   .project-preview {
     flex-direction: row;
     align-items: flex-start;
-    column-gap: 1.25rem;
+    -moz-column-gap: 1.25rem;
+         column-gap: 1.25rem;
   }
 }
 @container project-preview (min-width: 37.5rem) {
   .project-preview {
     align-items: center;
-    column-gap: 1.5rem;
+    -moz-column-gap: 1.5rem;
+         column-gap: 1.5rem;
   }
 }
 .project-preview__image-wrapper {
@@ -661,7 +688,8 @@ body {
   flex-shrink: 0;
 }
 .project-preview__image-wrapper img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -821,8 +849,10 @@ body {
 .page__image {
   width: 100%;
   aspect-ratio: 1/1;
-  object-fit: cover;
-  object-position: 50% 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 50% 50%;
+     object-position: 50% 50%;
   max-width: 15rem;
   border-radius: 0.5rem;
   margin: 0.5rem;
@@ -1021,6 +1051,10 @@ body {
   color: var(--codeBlock-text-color);
   position: relative;
 }
+.code-block ::-moz-selection {
+  background-color: #19f9d8;
+  color: var(--codeBlock-bg-color);
+}
 .code-block ::selection {
   background-color: #19f9d8;
   color: var(--codeBlock-bg-color);
@@ -1202,6 +1236,9 @@ body {
 .menu__item {
   border-top: 0.0625rem solid var(--border-primary-color);
 }
+.menu__item:last-child {
+  border-bottom: 0.0625rem solid var(--border-primary-color);
+}
 .menu__link {
   display: flex;
   justify-content: space-between;
@@ -1262,7 +1299,8 @@ body {
 
 .u-hidden {
   clip: rect(0 0 0 0);
-  clip-path: inset(50%);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
   height: 1px;
   overflow: hidden;
   position: absolute;

@@ -8,9 +8,14 @@
         gap: 2rem;
         padding-block: 2rem;
         border-bottom: .0625rem solid var(--border-primary-color);
+
         width: 100%;
         @media (max-width: 40rem) {
             padding-block: 1rem;
+        }
+
+        .menu-is-open & {
+            border-bottom: 0;
         }
     }
 
@@ -106,7 +111,7 @@
             }
         }
 
-        &:hover {
+        &:hover, &.active {
             color: var(--headerLink-text-color-hover);
             background-color: var(--headerLink-bg-color-hover);
         }

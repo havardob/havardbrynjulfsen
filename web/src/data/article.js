@@ -73,10 +73,10 @@ const getArticleData = async function () {
         const grandParent = await generateSlug('articleArchive');
         breadcrumbs.push({ title: grandParent.title, slug: grandParent.slug});
         breadcrumbs.push({ title: article.tag.title, slug: article.tagSlug});
-        article.breadcrumbs = breadcrumbs;
+        article.breadcrumbs = breadcrumbs; 
     }
 
-    return data;   
-}
+    return data;     
+} 
  
-module.exports = getArticleData();      
+module.exports = getArticleData();             
