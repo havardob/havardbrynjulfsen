@@ -23,12 +23,12 @@ const query = `*[_id == "frontPage"][0] {
         },
         moreLink {
             ...,
-            internalDocument {
+            internalDocument { 
                 ...
             }
         }
     },
-    articles {
+    articles { 
         title, 
         items[] { 
             ...,

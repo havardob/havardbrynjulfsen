@@ -53,7 +53,7 @@ const getSiteSettingsData = async function() {
             link.href = internalLink.slug
         }
     }
-    return data;
+    return data; 
 } 
 
 module.exports = getSiteSettingsData();

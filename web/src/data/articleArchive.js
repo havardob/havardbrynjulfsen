@@ -16,7 +16,7 @@ const getArticleArchiveData = async function () {
         data.leading = toHTML(data.leading, { components: portableTextToHtml });
     }
 
-    return data;  
+    return data; 
 }
 
 module.exports = getArticleArchiveData();    

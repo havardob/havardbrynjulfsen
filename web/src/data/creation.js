@@ -12,7 +12,7 @@ const query = `*[_type == "creation"] {
     "tagSlug": tag -> slug.current, 
     "tagTitle": tag -> title, 
     "slug": slug.current, 
-    detailsList[] {     
+    detailsList[] {      
         ...,  
     }, 
     body[] {  

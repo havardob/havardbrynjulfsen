@@ -13,6 +13,21 @@
     font-size: .875rem;
     &__item {
         display: inline-flex;
+
+        @media (max-width: 40rem) {
+            &:not(:nth-last-child(2)) {
+                display: none;
+            }
+
+            &:nth-last-child(2) {
+                &::before {
+                    content: "⇽";
+                    margin-right: .25rem;
+                    display: inline-flex;
+                }
+            }
+        }
+
         &:not(:last-child) {
             &::after {
                 content: "/";
@@ -24,9 +39,9 @@
         &:last-child {
             display: inline-block;
             overflow: hidden;
-            max-width: 25ch;
+            max-width: 20ch;
             white-space: nowrap;
-            text-overflow: ellipsis;
+            text-overflow: ellipsis; 
         }
     }
 

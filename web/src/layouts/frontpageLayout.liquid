@@ -9,29 +9,6 @@ layout: base
  intro: frontPage.hero.intro
     %}
 
-    <section class="section section--featured-creations">
-      <h2 class="section__title">{{ frontPage.creations.title }}</h2>
-      <ul class="section__grid">
-        {% for selectedCreation in frontPage.creations.items %}
-          {% for item in collections.creationCollection %}
-            {% if selectedCreation._ref == item.data.id %}
-              <li class="section__grid-item">
-                {% include "components/projectPreview"
- featuredImage: item.data.creation.featuredImage
- title: item.data.creation.title
- fullSlug: item.data.creation.fullSlug 
- tagline: item.data.creation.tagline
- tag: item.data.creation.tag
- tagSlug: item.data.creation.tagSlug
-                %}
-              </li>
-            {% endif %}
-          {% endfor %}
-        {% endfor %}
-      </ul>
-      {% include "components/moreButton" url: frontPage.creations.moreLink.href text: frontPage.creations.moreLink.text %}
-    </section>
-
 
     <section class="section section--featured-posts">
       <h2 class="section__title">{{ frontPage.articles.title }}</h2>
@@ -56,6 +33,29 @@ layout: base
         {% endfor %}
       </ul>
       {% include "components/moreButton" url: frontPage.articles.moreLink.href text: frontPage.articles.moreLink.text %}
+    </section>
+
+    <section class="section section--featured-creations">
+      <h2 class="section__title">{{ frontPage.creations.title }}</h2>
+      <ul class="section__grid">
+        {% for selectedCreation in frontPage.creations.items %}
+          {% for item in collections.creationCollection %}
+            {% if selectedCreation._ref == item.data.id %}
+              <li class="section__grid-item">
+                {% include "components/projectPreview"
+ featuredImage: item.data.creation.featuredImage
+ title: item.data.creation.title
+ fullSlug: item.data.creation.fullSlug 
+ tagline: item.data.creation.tagline
+ tag: item.data.creation.tag
+ tagSlug: item.data.creation.tagSlug
+                %}
+              </li>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </ul>
+      {% include "components/moreButton" url: frontPage.creations.moreLink.href text: frontPage.creations.moreLink.text %}
     </section>
   </div>
 </main>

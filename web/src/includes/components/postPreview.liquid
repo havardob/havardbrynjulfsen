@@ -15,7 +15,10 @@
     </p>
     {% if publishedExternally %}
       <div class="post-preview__footer">
-        <img src="{{ publishedExternally.image }}" class="post-preview__footer-image" />
+        <img
+          src="{{ publishedExternally.image }}"
+          class="post-preview__footer-image"
+          alt="" />
         <p>Published at
           <a href="{{ publishedExternally.href }}" target="_blank">{{ publishedExternally.text }}</a>
         </p>

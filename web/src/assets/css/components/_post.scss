@@ -18,13 +18,16 @@
 
     &__featured-image {
         margin-bottom: 2rem;
-        margin-left: -6rem;
-        width: calc(100% + 12rem);
-        border-radius: .375rem;
+        margin-left: -1rem;
+        width: calc(100% + 2rem);
         overflow: hidden;
+        @media (min-width: 60rem) {
+            width: calc(100% + 12rem);
+            margin-left: -6rem;
+            border-radius: .375rem;
+        }
 
         img {
-            border-radius: .375rem;
         }
     }
 

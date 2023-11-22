@@ -10,7 +10,7 @@ const query = `*[_id == "creationArchive"] {
     creationList[] {
         ...
     }
-}[0]`
+}[0]` 
 
 const getCreationArchiveData = async function () {
     const data = await client.fetch(query);

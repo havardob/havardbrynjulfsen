@@ -6,29 +6,36 @@ layout: base
   <div class="l-constraint">
     <div class="archive-page">
       <div class="archive-page__header">
-        <h2 class="archive-page__title">{{ articleArchive.title }}: {{ tag.title }}</h2>
-        <div class="archive-page__intro | u-rich-text">
+        <h2 class="archive-page__title">
           {% if tag.type == "article" %}
-            {{ articleArchive.leading }}
+            {{ articleArchive.title }}
           {% endif %}
           {% if tag.type == "creation" %}
-            All creations tagged: {{ tag.title }}
+            {{ creationArchive.title }}
+          {% endif %}
+        </h2>
+        <div class="archive-page__intro | u-rich-text">
+          {% if tag.type == "article" %}
+            Posts tagged "{{ tag.title }}"
+          {% endif %}
+          {% if tag.type == "creation" %}
+            Creations tagged "{{ tag.title }}""
           {% endif %}
         </div>
         {% if tag.type == "article" %}
           <div class="posts">
             {% comment %} <div class="tags">
-                            <p class="tags__label">Tags:</p>
-                            <ul class="tag-list">
-                              {% for item in collections.tagCollection %}
-                                {% if item.data.tag.type == "article" %}
-                                  <li class="tag-list__item">
-                                    <a href="{{ item.data.tag.fullSlug }}" class="tag | {% if item.data.tag.title == tag.title %}active{% endif %}">{{ item.data.tag.title }}</a>
-                                  </li>
-                                {% endif %}
-                              {% endfor %}
-                            </ul>
-                        </div> {% endcomment %}
+                                                        <p class="tags__label">Tags:</p>
+                                                        <ul class="tag-list">
+                                                          {% for item in collections.tagCollection %}
+                                                            {% if item.data.tag.type == "article" %}
+                                                              <li class="tag-list__item">
+                                                                <a href="{{ item.data.tag.fullSlug }}" class="tag | {% if item.data.tag.title == tag.title %}active{% endif %}">{{ item.data.tag.title }}</a>
+                                                              </li>
+                                                            {% endif %}
+                                                          {% endfor %}
+                                                        </ul>
+                                                </div> {% endcomment %}
             <ul class="posts-list">
               {% assign sortedArticles = collections.articlesCollection | sort: "data.article.dateForSorting" | reverse %}
               {% for post in sortedArticles %}

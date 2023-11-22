@@ -18,7 +18,7 @@ const getSubPageData = async function () {
 
         if (page.body) {
             page.body = await generateRichText(page.body); 
-        }
+        } 
     }
 
     return data;  

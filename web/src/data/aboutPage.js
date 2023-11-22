@@ -18,7 +18,7 @@ const getAboutPageData = async function () {
         data.body = generateRichText(data.body);
     } 
 
-    return data;    
+    return data;
  
 }
 
