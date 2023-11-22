@@ -18,7 +18,7 @@
     }
 
     &> :is(h1, h2, h3, h4)+* {
-        margin-top: .375em;
+        margin-top: .75em;
     }
 
     &> :is(p)+ :is(ul, ol) {
@@ -45,12 +45,18 @@
     }
 
     & > h2:not([class]) {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         line-height: 1.375;
+        @media (min-width: 40rem) {
+            font-size: 1.5rem;
+        }
     }
-
+    
     & > h3:not([class]) {
-        font-size: 1.125rem;
+        font-size: 1rem;
+        @media (min-width: 40rem) {
+            font-size: 1.125rem;
+        }
     }
 
     a:not([class]) {

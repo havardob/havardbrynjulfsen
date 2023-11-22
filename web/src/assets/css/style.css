@@ -866,7 +866,7 @@ body {
   margin-block: 4rem 8rem;
   gap: 2rem;
 }
-@media (min-width: 600px) {
+@media (min-width: 40rem) {
   .page {
     flex-direction: row;
     justify-content: space-between;
@@ -884,12 +884,23 @@ body {
   width: min(100%, 35rem);
 }
 .page__title {
-  font-size: 2rem;
-  line-height: 1.125;
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+@media (min-width: 40rem) {
+  .page__title {
+    font-size: 2.25rem;
+    line-height: 1.125;
+  }
 }
 .page__intro {
-  margin-top: 0.75rem;
-  font-size: 1.375rem;
+  margin-top: 0.875em;
+  font-size: 1.25rem;
+}
+@media (min-width: 40rem) {
+  .page__intro {
+    font-size: 1.375rem;
+  }
 }
 .page__image {
   width: 100%;
@@ -908,7 +919,12 @@ body {
 }
 .page__body {
   margin-top: 2rem;
-  font-size: 1.125rem;
+  font-size: 1rem;
+}
+@media (min-width: 40rem) {
+  .page__body {
+    font-size: 1.125rem;
+  }
 }
 
 .post {
@@ -1393,7 +1409,7 @@ body {
   margin-top: 2em;
 }
 .u-rich-text > :is(h1, h2, h3, h4) + * {
-  margin-top: 0.375em;
+  margin-top: 0.75em;
 }
 .u-rich-text > :is(p) + :is(ul, ol) {
   margin-top: 0.75em;
@@ -1410,11 +1426,21 @@ body {
   padding-block: 1em;
 }
 .u-rich-text > h2:not([class]) {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1.375;
 }
+@media (min-width: 40rem) {
+  .u-rich-text > h2:not([class]) {
+    font-size: 1.5rem;
+  }
+}
 .u-rich-text > h3:not([class]) {
-  font-size: 1.125rem;
+  font-size: 1rem;
+}
+@media (min-width: 40rem) {
+  .u-rich-text > h3:not([class]) {
+    font-size: 1.125rem;
+  }
 }
 .u-rich-text a:not([class]) {
   font-weight: 500;
