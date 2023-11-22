@@ -48,11 +48,11 @@ const getCreationData = async function () {
             creation.tagSlug = tag.slug;
         }  
  
-        // let breadcrumbs = [];
-        // const grandParent = await generateSlug('creationArchive');
-        // breadcrumbs.push({ title: grandParent.title, slug: grandParent.slug });
-        // breadcrumbs.push({ title: creation.tag.title, slug: creation.tagSlug });
-        // creation.breadcrumbs = breadcrumbs;
+        let breadcrumbs = [];
+        const grandParent = await generateSlug('creationArchive');
+        breadcrumbs.push({ title: grandParent.title, slug: grandParent.slug });
+        breadcrumbs.push({ title: creation.tag.title, slug: creation.tagSlug });
+        creation.breadcrumbs = breadcrumbs;
     }
 
     return data;

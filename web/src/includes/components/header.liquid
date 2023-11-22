@@ -37,6 +37,13 @@
         </button>
         <button
           class="header__menu-toggle"
+          id="menuThemeToggle"
+          aria-label="Change theme">
+          <span class="header__menu-toggle-label">Theme</span>
+          {% include "icons/moon" %}
+        </button>
+        <button
+          class="header__menu-toggle"
           id="menuToggle"
           aria-label="Open menu">
           <span class="header__menu-toggle-label">Menu</span>
@@ -60,9 +67,5 @@
         {% endfor %}
       </ul>
     </nav>
-    <button class="menu__toggle-theme" id="menuThemeToggle">
-      {% include "icons/moon" %}
-      <span>Change theme</span>
-    </button>
   </div>
 </div>

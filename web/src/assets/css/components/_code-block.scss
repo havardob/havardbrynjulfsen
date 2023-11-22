@@ -1,11 +1,18 @@
 .code-block {
-    font-size: .875em;
     color: var(--codeBlock-text-color);
     position: relative;
+    font-size: .75rem;
+    @media (min-width: 40rem) {
+        font-size: .875rem;
+    }
     
     ::selection {
         background-color: #19f9d8;
         color: var(--codeBlock-bg-color);
+    }
+
+    pre, code {
+        font-size: inherit;
     }
     
     &__code {

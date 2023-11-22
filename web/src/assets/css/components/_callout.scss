@@ -38,7 +38,7 @@
     
     &:hover {
         // background-color: var(--callout-bg-color-hover);
-        box-shadow: 0 0 0 0.0625rem var(--callout-border-color);
+        box-shadow: 0 0 0 0.125rem var(--callout-border-color);
         transition: .15s ease;
     }
 
@@ -48,6 +48,7 @@
         height: 3rem;
         border-radius: 50%;
         border: 0.0625rem solid var(--callout-border-color);
+        background-color: var(--color-white);
 
         @container callout (max-width: 25rem) {
             width: 2.5rem;

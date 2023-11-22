@@ -1,6 +1,5 @@
 .menu {
     background-color: var(--menu-bg-color);
-    padding-block: 1.25rem;
     display: none;
     
     &.is-open {
@@ -34,9 +33,9 @@
     }
 
     &__item {
-        border-top: 0.0625rem solid var(--border-primary-color);
+        border-bottom: 0.0625rem solid var(--border-primary-color);
         &:last-child {
-            border-bottom: 0.0625rem solid var(--border-primary-color);
+            border-bottom: 0;
         }
     }
 

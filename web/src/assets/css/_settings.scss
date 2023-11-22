@@ -1,18 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&family=Gabarito:wght@400;500;600;700&family=Noto+Color+Emoji&family=Onest:wght@400;500;600;700&display=swap');
-
 @font-face {
-    font-family: 'Mona Sans';
-    src:
-        url('../fonts/Mona-Sans.woff2') format('woff2 supports variations'),
-        url('../fonts/Mona-Sans.woff2') format('woff2-variations');
-    font-weight: 200 900;
-    font-stretch: 75% 125%;
+    font-family: 'Gabarito';
+    src: url('../fonts/Gabarito-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
 }
 
+@font-face {
+    font-family: 'Gabarito';
+    src: url('../fonts/Gabarito-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
 
+@font-face {
+    font-family: 'Gabarito';
+    src: url('../fonts/Gabarito-SemiBold.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gabarito';
+    src: url('../fonts/Gabarito-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+}
 
 :root {
-    --ff-primary: "Geist Sans", "Gabarito", "Schibsted Grotesk", "Mona Sans", "Inter", sans-serif;
+    --ff-primary: "Gabarito", sans-serif;
 
     --color-white: #FFF;
     --color-mist: #EEE;
@@ -22,6 +37,8 @@
     --color-concrete: #565862;
     --color-grit: #353738;
     --color-void: #292a2d;
+    --color-royal: #2554e4;
+    --color-cobalt: #1b3b9a;
 
     // naming convention: 
     //[targetName]-[partName]-color-[state]
@@ -48,15 +65,14 @@
 
     --callout-border-color: var(--color-fog);
     --callout-bg-color: var(--color-white);
-    --callout-bg-color-hover: var(--color-mist);
     --callout-text-color: var(--color-concrete);
 
     --tag-bg-color: var(--color-mist);
     --tag-bg-color-hover: var(--color-fog);
     --tag-text-color: var(--color-concrete);
 
-    --textLink-color: var(--color-void);
-    --textLink-color-hover: var(--color-concrete);
+    --textLink-color: var(--color-royal);
+    --textLink-color-hover: var(--color-cobalt);
 
     --menu-bg-color: var(--color-mist);
     --menuThemeToggle-bg-color: var(--color-fog);
@@ -128,11 +144,16 @@
         --html-bg-color: var(--color-scale-gray-10);
         --body-bg-color: var(--color-scale-gray-9);
 
+
         --text-primary-color: var(--color-scale-gray-2);
         --text-secondary-color: var(--color-scale-white);
         --text-tertiary-color: var(--color-scale-gray-3);
 
+        --menu-bg-color: var(--color-scale-gray-10);
+        --menuThemeToggle-bg-color: var(--color-scale-gray-8);
+
         --tag-bg-color: var(--color-scale-gray-8);
+        --tag-bg-color-hover: var(--color-scale-gray-7);
         --tag-text-color: var(--color-scale-gray-2);
 
         --headerLink-text-color: var(--color-scale-gray-2);
@@ -142,6 +163,11 @@
 
         --banner-bg-color: var(--color-fall);
         --banner-text-color: var(--color-abyss);
+
+        --toTopButton-text-color: var(--color-scale-gray-2);
+        --toTopButton-text-color-hover: var(--color-scale-gray-1);
+        --toTopButton-bg-color: var(--color-scale-gray-8);
+        --toTopButton-bg-color-hover: var(--color-scale-gray-7);
 
         --tooltip-bg-color: var(--color-scale-gray-8);
         --tooltip-text-color: var(--color-scale-gray-1);
@@ -156,11 +182,15 @@
         --someLink-bg-color-hover: var(--color-scale-gray-8);
         --someLink-text-color: var(--color-scale-gray-2);
 
+        --callout-border-color: var(--color-scale-gray-7);
+        --callout-bg-color: var(--color-scale-gray-8);
+        --callout-text-color: var(--color-scale-gray-2);
+
         --textLink-color: var(--color-malibu);
         --textLink-color-hover: var(--color-violet);
 
-        --codeMark-bg-color: var(--color-scale-gray-1);
-        --codeMark-text-color: var(--color-scale-gray-10);
+        --codeMark-bg-color: var(--color-scale-gray-10);
+        --codeMark-text-color: var(--color-scale-gray-2);
 
         --codeBlock-bg-color: var(--color-scale-gray-10);
         --codeBlock-text-color: var(--color-scale-gray-0);

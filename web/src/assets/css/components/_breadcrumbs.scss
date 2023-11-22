@@ -9,8 +9,13 @@
     display: flex;
     flex-wrap: wrap;
     gap: .5rem .75rem;
-    padding-block: 1rem;
+    padding-block: .5rem;
     font-size: .875rem;
+    
+    @media (min-width: 50rem) {
+        padding-block: 1rem;
+    }
+
     &__item {
         display: inline-flex;
 
