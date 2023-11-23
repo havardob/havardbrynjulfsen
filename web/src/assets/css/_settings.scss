@@ -1,29 +1,7 @@
 @font-face {
-    font-family: 'Gabarito';
-    src: url('../fonts/Gabarito-Regular.ttf');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Gabarito';
-    src: url('../fonts/Gabarito-Medium.ttf');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Gabarito';
-    src: url('../fonts/Gabarito-SemiBold.ttf');
-    font-weight: 600;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Gabarito';
-    src: url('../fonts/Gabarito-Bold.ttf');
-    font-weight: 700;
-    font-style: normal;
+    font-family: "Gabarito";
+    src: url("../fonts/Gabarito-VariableFont_wght.ttf");
+    font-weight: 400 900;
 }
 
 :root {
