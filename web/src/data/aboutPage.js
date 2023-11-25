@@ -22,4 +22,4 @@ const getAboutPageData = async function () {
  
 }
 
-module.exports = getAboutPageData(); 
+module.exports = getAboutPageData();

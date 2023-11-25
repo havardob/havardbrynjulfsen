@@ -233,7 +233,7 @@ export default {
         {
             title: "Meta Description",
             group: "metaGroup",
-            name: "metaDescripton",
+            name: "metaDescription",
             description: "The following text will appear in SoMe share-previews and in search results on e.g Bing or Google",
             type: "text",
             rows: 3
