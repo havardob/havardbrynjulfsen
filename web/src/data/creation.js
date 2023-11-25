@@ -16,7 +16,7 @@ const query = `*[_type == "creation"] {
         ...,  
     }, 
     body[] {  
-        ...,
+        ..., 
         _type == "imageBlock" => {
             ...,
             "imageFile": imageFile.asset->url, 

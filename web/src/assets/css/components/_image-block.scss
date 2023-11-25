@@ -11,11 +11,14 @@
     }
 
     &__caption {
-        padding-block: .5rem;
+        padding-block: .5em;
         display: flex;
         flex-direction: column;
         gap: .125em;
-        font-size: 1rem;
+        font-size: .875rem;
+        @media (min-width: 50rem) {
+            font-size: 1rem;
+        }
     }
 
     &__source {

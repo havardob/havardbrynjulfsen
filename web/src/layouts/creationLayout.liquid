@@ -46,7 +46,10 @@ layout: base
                   <dt class="details-block__term">{{ item.title }}</dt>
                   <dd class="details-block__detail">
                     {% if item.isLinked %}
-                      <a href="{{ item.href }}" target="_blank">
+                      <a
+                        href="{{ item.href }}"
+                        target="_blank"
+                        class="details-block__link">
                         {{ item.subtitle }}
                       </a>
                     {% else %}

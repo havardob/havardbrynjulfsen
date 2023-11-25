@@ -10,6 +10,7 @@
         border-top: 0.0625rem solid var(--detailsBlock-divider-color);
         padding-block: .75rem;
         padding-inline: 1rem;
+
         &:first-child {
             border-top: 0;
         }
@@ -22,5 +23,14 @@
 
     &__detail {
         color: var(--detailsBlock-detail-color);
+    }
+
+    &__link {
+        text-underline-offset: .125em;
+        text-decoration-thickness: .0625em;
+
+        &:hover {
+            text-decoration-thickness: .125em;
+        }
     }
 }

@@ -1192,11 +1192,16 @@ body {
   border: 0.0625rem solid var(--border-primary-color);
 }
 .image-block__caption {
-  padding-block: 0.5rem;
+  padding-block: 0.5em;
   display: flex;
   flex-direction: column;
   gap: 0.125em;
-  font-size: 1rem;
+  font-size: 0.875rem;
+}
+@media (min-width: 50rem) {
+  .image-block__caption {
+    font-size: 1rem;
+  }
 }
 .image-block__source {
   text-transform: uppercase;
@@ -1379,6 +1384,13 @@ body {
 }
 .details-block__detail {
   color: var(--detailsBlock-detail-color);
+}
+.details-block__link {
+  text-underline-offset: 0.125em;
+  text-decoration-thickness: 0.0625em;
+}
+.details-block__link:hover {
+  text-decoration-thickness: 0.125em;
 }
 
 .projects {
