@@ -1,10 +1,12 @@
 {% include "parts/head" %}
 <div id="#top"></div>
-<div class="banner">
-  <div class="l-constraint">
-    <p>{{ siteSettings.topBanner }}</p>
+{% if siteSettings.topBanner %}
+  <div class="banner">
+    <div class="l-constraint">
+      <p>{{ siteSettings.topBanner }}</p>
+    </div>
   </div>
-</div>
+{% endif %}
 <div class="l-site">
   {% if siteSettings.topBanner %}
   {% endif %}
