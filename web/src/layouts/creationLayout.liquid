@@ -44,7 +44,15 @@ layout: base
               {% for item in creation.detailsList %}
                 <div class="details-block__item">
                   <dt class="details-block__term">{{ item.title }}</dt>
-                  <dd class="details-block__detail">{{ item.subtitle }}</dd>
+                  <dd class="details-block__detail">
+                    {% if item.isLinked %}
+                      <a href="{{ item.href }}" target="_blank">
+                        {{ item.subtitle }}
+                      </a>
+                    {% else %}
+                      {{ item.subtitle }}
+                    {% endif %}
+                  </dd>
                 </div>
               {% endfor %}
             </dl>
