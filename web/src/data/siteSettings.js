@@ -5,7 +5,7 @@ const client = require("./_sanityClient").client;
 const query = `*[_id == "siteSettings"][0]{
     metaTitle,
     metaDescripton,
-    "metaImage": metaImage.asset->url,
+    "metaImageUrl": metaImage.asset->url,
     mainNav[] {
         ...,
         internalDocument {
