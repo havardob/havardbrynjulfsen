@@ -4,8 +4,14 @@
     font-weight: 400 900;
 }
 
+@font-face {
+    font-family: "Cabinet Grotesk";
+    src: url("../fonts/CabinetGrotesk-Variable.ttf");
+    font-weight: 400 900;
+}
+
 :root {
-    --ff-primary: "Gabarito", sans-serif;
+    --ff-primary: "Cabinet Grotesk", sans-serif;
 
     --color-white: #FFF;
     --color-mist: #EEE;
@@ -13,7 +19,7 @@
     --color-fog: #DDD;
     --color-stone: #787A85;
     --color-concrete: #565862;
-    --color-grit: #353738;
+    --color-grit: #353738; 
     --color-void: #292a2d;
     --color-royal: #2554e4;
     --color-cobalt: #1b3b9a;

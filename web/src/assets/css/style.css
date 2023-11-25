@@ -74,8 +74,13 @@ ol {
   src: url("../fonts/Gabarito-VariableFont_wght.ttf");
   font-weight: 400 900;
 }
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../fonts/CabinetGrotesk-Variable.ttf");
+  font-weight: 400 900;
+}
 :root {
-  --ff-primary: "Gabarito", sans-serif;
+  --ff-primary: "Cabinet Grotesk", sans-serif;
   --color-white: #FFF;
   --color-mist: #EEE;
   --color-ivory: #E6E6E6;
@@ -218,7 +223,7 @@ html {
 
 body {
   font-family: var(--ff-primary);
-  font-weight: 400;
+  font-weight: 500;
   color: var(--text-primary-color);
   min-height: 100dvh;
 }
