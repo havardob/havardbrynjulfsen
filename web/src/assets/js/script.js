@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     
     function toggleDarkTheme() {
-        html.classList.toggle('dark-theme');
-        if (localStorage.getItem('theme') == "dark-theme") {
+        html.classList.toggle('theme-inverted');
+        if (localStorage.getItem('theme') === "theme-inverted") {
             localStorage.removeItem('theme')
         } else {
-            localStorage.setItem('theme', 'dark-theme')
+            localStorage.setItem('theme', 'theme-inverted')
         }
     }
     
@@ -32,7 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function setStoredTheme() {
         let storedTheme = localStorage.getItem("theme");
-        html.classList.add(storedTheme);
+        if (storedTheme) {
+            html.classList.add(storedTheme);
+        }
     }
 
     document.onload = setStoredTheme();
