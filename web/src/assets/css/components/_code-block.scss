@@ -24,7 +24,7 @@
         padding-inline: 1.5em 2.5em;
 
         &::-webkit-scrollbar {
-            background-color: var(--codeBlock-text-color);
+            background-color: var(--codeBlock-bg-color);
             border-radius: .375rem;
             overflow: hidden;
         }
@@ -34,8 +34,8 @@
         
         &::-webkit-scrollbar-thumb {
             height: .375rem;
-            border: .25rem solid var(--codeBlock-text-color);
-            background-color: var(--codeBlockLang-text-color);
+            border: .25rem solid var(--codeBlock-bg-color);
+            background-color: var(--codeBlock-text-color);
             border-radius: 99em;
         }
     }

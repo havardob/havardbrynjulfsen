@@ -26,7 +26,7 @@
     }
 
     &> :is(ul, ol) li {
-        margin-top: 1em;
+        margin-top: .5em;
     }
 
     // Styling
@@ -42,6 +42,8 @@
         padding-left: 1em;
         border-left: .25rem solid var(--blockquote-divider-color);
         padding-block: 1em;
+        font-size: 1.25em;
+        line-height: 1.375;
     }
 
     & > h2:not([class]) {
