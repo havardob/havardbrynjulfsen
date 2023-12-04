@@ -10,12 +10,12 @@ const query = `*[_type == "article"] {
     publishedDate,
     publishedExternally,
     tag ->,
-    "featuredImage": featuredImage.asset->url,
+    "featuredImage": featuredImage.asset->url, 
     "tagSlug": tag -> slug.current, 
     "tagTitle": tag -> title, 
     "slug": slug.current, 
     body[] {  
-        ...,
+        ..., 
         _type == "imageBlock" => {
             "imageFile": imageFile.asset->url,
         }, 
@@ -35,7 +35,7 @@ const query = `*[_type == "article"] {
 
 
 
-const getArticleData = async function () {
+const getArticleData = async function () {  
     const data = await client.fetch(query);
     for (let article of data) {
         // Get fullSlug

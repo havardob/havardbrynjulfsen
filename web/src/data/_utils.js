@@ -7,7 +7,7 @@ const generateSlug = async function (id) {
         title,
         "slug":  "/" + slug.current,
         _type == "frontPage" => {
-            "slug":  "/",
+            "slug":  "/", 
         },
         _type == "article" => {
             "slug": "/" + *[_type == "articleArchive"]{ "slug": slug.current }[0].slug + "/" + tag -> slug.current + "/" + slug.current

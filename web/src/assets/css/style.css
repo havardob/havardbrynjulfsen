@@ -12,6 +12,7 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
 }
 
 img,
@@ -50,7 +51,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+li {
   overflow-wrap: break-word;
 }
 
@@ -1293,7 +1295,7 @@ body {
   color: var(--codeBlock-bg-color);
 }
 .code-block pre, .code-block code {
-  font-size: inherit;
+  font-size: inherit !important;
 }
 .code-block__code {
   background-color: var(--codeBlock-bg-color);
@@ -1588,11 +1590,22 @@ body {
 .u-rich-text > ul:not([class]) ::marker, .u-rich-text > ol:not([class]) ::marker {
   color: var(--listMarker-color);
 }
+.u-rich-text > hr {
+  border: 0;
+  margin-top: 4em;
+  margin-bottom: 4em;
+  background-color: var(--border-primary-color);
+  height: 0.0625rem;
+}
+.u-rich-text > hr.dashed {
+  background-color: transparent;
+  background-image: repeating-linear-gradient(to right, var(--border-primary-color) 0, var(--border-primary-color) 0.625rem, transparent 0.625rem, transparent 1.25rem);
+}
 .u-rich-text > blockquote:not([class]) {
   padding-left: 1em;
   border-left: 0.25rem solid var(--blockquote-divider-color);
   padding-block: 1em;
-  font-size: 1.25em;
+  font-size: 1.125em;
   line-height: 1.375;
 }
 .u-rich-text > h2:not([class]) {
@@ -1605,11 +1618,11 @@ body {
   }
 }
 .u-rich-text > h3:not([class]) {
-  font-size: 1rem;
+  font-size: 1.125rem;
 }
 @media (min-width: 40rem) {
   .u-rich-text > h3:not([class]) {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
   }
 }
 .u-rich-text a:not([class]) {

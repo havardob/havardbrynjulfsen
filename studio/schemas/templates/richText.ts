@@ -1,4 +1,4 @@
-import { BiCard, BiCode, BiCodeAlt, BiCodeBlock, BiDetail, BiImage, BiLinkAlt, BiLinkExternal } from "react-icons/bi";
+import { BiCard, BiCode, BiCodeAlt, BiCodeBlock, BiDetail, BiImage, BiLinkAlt, BiLinkExternal, BiReflectHorizontal } from "react-icons/bi";
 import { externalLinkUrl, internalLinkRef } from "./linkObject";
 import { descriptionList } from "./descriptionList";
 
@@ -59,6 +59,20 @@ export const richTextMain = {
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
     {
+      type: "object",
+      name: "horizontalRule",
+      title: "HR",
+      icon: BiReflectHorizontal,
+      fields: [
+        {
+          type: "boolean",
+          name: "isDashed",
+          title: "Dashed?",
+          initialValue: false
+        }
+      ],
+    }, 
+    {
       title: "Image",
       icon: BiImage,
       type: 'object',
@@ -102,9 +116,9 @@ export const richTextMain = {
           type: "string",
           options: {
             list: [
-              { title: "Stretch", value: "stretch"},
-              { title: "Original size", value: "original"},
-              { title: "Full Bleed", value: "full-bleed"},
+              { title: "Stretch", value: "stretch" },
+              { title: "Original size", value: "original" },
+              { title: "Full Bleed", value: "full-bleed" },
             ],
             layout: "radio"
           },
@@ -145,7 +159,7 @@ export const richTextMain = {
           icon: BiCode,
           type: "code",
           name: "code",
-        }, 
+        },
         {
           title: "Size",
           name: "size",

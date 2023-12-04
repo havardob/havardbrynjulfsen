@@ -11,6 +11,11 @@ const portableTextToHtml = {
         },
     },
     types: { 
+        horizontalRule: ({ value }) => {
+            return `
+                <hr style="${value.isDashed && 'dashed'}" />
+            `
+        },
         codeBlock: ({ value }) => {
             const highlightedCode = hljs.highlight(
                 `${value.code.code}`,
@@ -46,7 +51,7 @@ const portableTextToHtml = {
                 <div class="embed-block ${value.size}">
                     ${value.code}
                 </div>
-            `
+            ` 
         } 
     }
 };
