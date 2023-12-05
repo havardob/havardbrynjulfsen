@@ -11,6 +11,7 @@ const query = `*[_type == "article"] {
     publishedExternally,
     tag ->, 
     "featuredImage": featuredImage.asset->url, 
+    showAsBanner,
     "tagSlug": tag -> slug.current, 
     "tagTitle": tag -> title, 
     "slug": slug.current, 
