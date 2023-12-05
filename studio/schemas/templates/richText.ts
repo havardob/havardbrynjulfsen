@@ -161,6 +161,11 @@ export const richTextMain = {
           name: "code",
         },
         {
+          title: "Language override",
+          name: "altTitle",
+          type: "string"
+        },
+        {
           title: "Size",
           name: "size",
           type: "string",

@@ -22,13 +22,14 @@ const portableTextToHtml = {
                 { language: value.code.language }
             ).value
 
-            return `<div class="code-block">
+
+            return `<div class="code-block ${ value.size }">
                 <span class="code-block__lang">
                     <span class="u-hidden">Language:</span>
-                    ${value.code.language}
+                    ${value.altTitle ? value.altTitle : value.code.language }
                 </span>
                 <div class="code-block__code">
-                    <pre>${highlightedCode}</pre>
+                    <pre>${highlightedCode}</pre> 
                 </div>
             </div>`
         },

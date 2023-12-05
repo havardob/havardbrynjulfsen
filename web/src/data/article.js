@@ -9,7 +9,7 @@ const query = `*[_type == "article"] {
     leading,
     publishedDate,
     publishedExternally,
-    tag ->,
+    tag ->, 
     "featuredImage": featuredImage.asset->url, 
     "tagSlug": tag -> slug.current, 
     "tagTitle": tag -> title, 
@@ -22,13 +22,13 @@ const query = `*[_type == "article"] {
         markDefs[] {  
             ..., 
             _type == "internalLink" => {
-                "href": internalDocument-> slug.current
+                "href": internalDocument-> slug.current 
             }
         } 
     }     
-}`    
+}`     
  
-
+ 
 
 
 
