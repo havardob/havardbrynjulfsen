@@ -82,7 +82,7 @@ ol {
   font-weight: 400 900;
 }
 :root {
-  --ff-primary: "Cabinet Grotesk", sans-serif;
+  --ff-primary: "Gabarito", sans-serif;
 }
 @media (prefers-color-scheme: light) {
   :root.theme-inverted {
@@ -368,7 +368,7 @@ html {
 
 body {
   font-family: var(--ff-primary);
-  font-weight: 500;
+  font-weight: 400;
   color: var(--text-primary-color);
   min-height: 100dvh;
 }
