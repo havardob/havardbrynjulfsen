@@ -220,6 +220,11 @@ ol {
     --detailsBlock-divider-color: var(--color-fog);
     --detailsBlock-term-color: var(--color-void);
     --detailsBlock-detail-color: var(--color-concrete);
+    --imageDialog-bg-color: var(--color-void);
+    --imageDialogCloseButton-bg-color: var(--color-concrete);
+    --imageDialogCloseButton-text-color: var(--color-mist);
+    --imageDialogFigcaption-bg-color: var(--color-void);
+    --imageDialogFigcaption-text-color: var(--color-mist);
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -288,6 +293,11 @@ ol {
     --detailsBlock-divider-color: var(--color-fog);
     --detailsBlock-term-color: var(--color-void);
     --detailsBlock-detail-color: var(--color-concrete);
+    --imageDialog-bg-color: var(--color-void);
+    --imageDialogCloseButton-bg-color: var(--color-concrete);
+    --imageDialogCloseButton-text-color: var(--color-mist);
+    --imageDialogFigcaption-bg-color: var(--color-void);
+    --imageDialogFigcaption-text-color: var(--color-mist);
   }
   :root:not(.theme-inverted) {
     --color-milk: #f7f8f8;
@@ -1558,6 +1568,66 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
   }
+}
+
+.image-dialog {
+  inset: 0;
+  max-height: 100%;
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  z-index: 100;
+  background-color: var(--imageDialog-bg-color);
+  position: fixed;
+}
+.image-dialog figure {
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.image-dialog figure img {
+  margin-inline: auto;
+  border-radius: 0.5rem;
+  min-height: 0;
+  min-width: 0;
+  max-height: 100%;
+  max-width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.image-dialog figcaption {
+  color: var(--imageDialogFigcaption-text-color);
+  background-color: var(--imageDialogFigcaption-bg-color);
+  position: absolute;
+  bottom: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  margin-inline: auto;
+  max-width: 600px;
+  text-align: center;
+}
+.image-dialog button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--imageDialogCloseButton-bg-color);
+  color: var(--imageDialogCloseButton-text-color);
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.image-dialog button svg {
+  width: 2rem;
+  height: 2rem;
 }
 
 .u-hidden {

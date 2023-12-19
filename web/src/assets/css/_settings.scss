@@ -98,6 +98,12 @@
     --detailsBlock-divider-color: var(--color-fog);
     --detailsBlock-term-color: var(--color-void);
     --detailsBlock-detail-color: var(--color-concrete);
+
+    --imageDialog-bg-color: var(--color-void);
+    --imageDialogCloseButton-bg-color: var(--color-concrete);
+    --imageDialogCloseButton-text-color: var(--color-mist);
+    --imageDialogFigcaption-bg-color: var(--color-void);
+    --imageDialogFigcaption-text-color: var(--color-mist);
 }
 
 @mixin dark-mode() {

@@ -28,7 +28,7 @@ const query = `*[_type == "creation"] {
             } 
         }   
     }      
-}`      
+}`       
 
 const getCreationData = async function () {
     const data = await client.fetch(query);
