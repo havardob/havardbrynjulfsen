@@ -21,9 +21,12 @@
     --color-void: #292a2d;
     --color-royal: #2554e4;
     --color-cobalt: #1b3b9a;
+    --color-fall: #FFD966;
 
     --body-bg-color: var(--color-white);
     --html-bg-color: var(--color-mist);
+
+    --focus-outline-color: var(--color-royal);
 
     --text-secondary-color: var(--color-void);
     --text-primary-color: var(--color-concrete);
@@ -42,27 +45,27 @@
     --breadcrumbLink-text-color: var(--color-concrete);
 
     --blockquote-divider-color: var(--color-fog);
-    
+
     --callout-border-color: var(--color-fog);
     --callout-bg-color: var(--color-white);
     --callout-text-color: var(--color-concrete);
-    
+
     --tag-bg-color: var(--color-mist);
     --tag-bg-color-hover: var(--color-fog);
     --tag-text-color: var(--color-concrete);
-    
+
     --textLink-color: var(--color-royal);
     --textLink-color-hover: var(--color-cobalt);
 
     --menu-bg-color: var(--color-mist);
     --menuThemeToggle-bg-color: var(--color-fog);
-    
+
     --moreLink-bg-color: var(--color-mist);
     --moreLink-bg-color-hover: var(--color-fog);
     --moreLink-text-color: var(--color-concrete);
     --moreLink-text-color-hover: var(--color-void);
     --moreLink-divider-color: var(--color-fog);
-    
+
     --codeMark-bg-color: var(--color-mist);
     --codeMark-text-color: var(--color-concrete);
 
@@ -70,30 +73,30 @@
     --codeBlock-text-color: var(--color-ivory);
     --codeBlockLang-bg-color: var(--color-grit);
     --codeBlockLang-text-color: var(--color-fog);
-    
+
     --someLink-bg-color: var(--color-white);
     --someLink-bg-color-hover: var(--color-mist);
     --someLink-text-color: var(--color-void);
-    
+
     --footerMarquee-text-color: var(--color-stone);
-    
+
     --tooltip-bg-color: var(--color-concrete);
     --tooltip-text-color: var(--color-mist);
-    
+
     --footerLink-text-color: var(--color-stone);
 
     --toTopButton-text-color: var(--color-concrete);
     --toTopButton-text-color-hover: var(--color-void);
     --toTopButton-bg-color: var(--color-mist);
     --toTopButton-bg-color-hover: var(--color-fog);
-    
+
     --listMarker-color: var(--color-royal);
-    
+
     --postFooter-text-color: var(--color-stone);
     --postFooterImage-bg-color: var(--color-white);
-    
+
     --projectImage-bg-color: var(--color-mist);
-    
+
     --detailsBlock-bg-color: var(--color-mist);
     --detailsBlock-divider-color: var(--color-fog);
     --detailsBlock-term-color: var(--color-void);
@@ -104,6 +107,7 @@
     --imageDialogCloseButton-text-color: var(--color-mist);
     --imageDialogFigcaption-bg-color: var(--color-void);
     --imageDialogFigcaption-text-color: var(--color-mist);
+    --imageDialogCloseButton-color-focus: var(--color-fall);
 }
 
 @mixin dark-mode() {
@@ -113,7 +117,7 @@
     --color-violet: #5e6ad2;
     --color-fall: #FFD966;
     --color-abyss: #000313;
-    
+
     --color-scale-white: #cdd9e5;
     --color-scale-gray-0: #cdd9e5;
     --color-scale-gray-1: #adbac7;
@@ -126,42 +130,43 @@
     --color-scale-gray-8: #2d333b;
     --color-scale-gray-9: #22272e;
     --color-scale-gray-10: #1c1f27;
-    
+
     --html-bg-color: var(--color-scale-gray-10);
     --body-bg-color: var(--color-scale-gray-9);
-    
-    
+
+    --focus-outline-color: var(--color-malibu);
+
     --text-primary-color: var(--color-scale-gray-2);
     --text-secondary-color: var(--color-scale-white);
     --text-tertiary-color: var(--color-scale-gray-3);
-    
+
     --menu-bg-color: var(--color-scale-gray-10);
     --menuThemeToggle-bg-color: var(--color-scale-gray-8);
-    
+
     --tag-bg-color: var(--color-scale-gray-8);
     --tag-bg-color-hover: var(--color-scale-gray-7);
     --tag-text-color: var(--color-scale-gray-2);
-    
+
     --headerLink-text-color: var(--color-scale-gray-2);
     --headerLink-text-color-hover: var(--color-scale-gray-1);
     --headerLink-bg-color: var(--color-scale-gray-9);
     --headerLink-bg-color-hover: var(--color-scale-gray-8);
-    
+
     --banner-bg-color: var(--color-fall);
     --banner-text-color: var(--color-abyss);
-    
+
     --blockquote-divider-color: var(--color-malibu);
 
     --toTopButton-text-color: var(--color-scale-gray-2);
     --toTopButton-text-color-hover: var(--color-scale-gray-1);
     --toTopButton-bg-color: var(--color-scale-gray-8);
     --toTopButton-bg-color-hover: var(--color-scale-gray-7);
-    
+
     --tooltip-bg-color: var(--color-scale-gray-8);
     --tooltip-text-color: var(--color-scale-gray-1);
-    
+
     --border-primary-color: var(--color-scale-gray-8);
-    
+
     --moreLink-bg-color: var(--color-scale-gray-8);
     --moreLink-text-color: var(--color-scale-gray-1);
     --moreLink-divider-color: var(--color-scale-gray-8);
@@ -171,7 +176,7 @@
     --someLink-text-color: var(--color-scale-gray-2);
 
     --callout-border-color: var(--color-scale-gray-7);
-    --callout-bg-color: var(--color-scale-gray-8);
+    --callout-bg-color: var(--color-scale-gray-9);
     --callout-text-color: var(--color-scale-gray-2);
 
     --textLink-color: var(--color-malibu);
@@ -198,6 +203,13 @@
     --detailsBlock-divider-color: var(--color-scale-gray-7);
     --detailsBlock-term-color: var(--color-scale-gray-0);
     --detailsBlock-detail-color: var(--color-scale-gray-2);
+
+    --imageDialog-bg-color: var(--color-scale-gray-9);
+    --imageDialogCloseButton-bg-color: var(--color-scale-gray-7);
+    --imageDialogCloseButton-text-color: var(--color-scale-gray-1);
+    --imageDialogFigcaption-bg-color: var(--color-scale-gray-7);
+    --imageDialogFigcaption-text-color: var(--color-scale-gray-1);
+    --imageDialogCloseButton-color-focus: var(--color-malibu);
 }
 
 :root {
@@ -207,7 +219,7 @@
         &.theme-inverted {
             @include dark-mode();
         }
-    
+
         &:not(.theme-inverted) {
             @include light-mode();
         }

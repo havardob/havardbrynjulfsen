@@ -37,6 +37,7 @@ button {
     border-radius: 0;
     padding: 0;
     cursor: pointer;
+    touch-action: manipulation;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
