@@ -28,5 +28,10 @@
         &:hover, &:focus-visible {
             background-color: var(--someLink-bg-color-hover);
         }
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
     }
 }

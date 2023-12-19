@@ -10,6 +10,7 @@
         border-bottom: .0625rem solid var(--border-primary-color);
 
         width: 100%;
+
         @media (max-width: 40rem) {
             padding-block: 1rem;
         }
@@ -24,6 +25,11 @@
         text-decoration: none;
         flex-shrink: 0;
         position: relative;
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
     }
 
     &__actions {
@@ -53,6 +59,11 @@
         &:hover {
             background-color: var(--headerLink-bg-color-hover);
         }
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
     }
 
     &__menu-toggle {
@@ -66,6 +77,11 @@
 
         @container header-actions (min-width: 40rem) {
             display: none;
+        }
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
         }
     }
 }
@@ -111,7 +127,8 @@
             }
         }
 
-        &:hover, &.active {
+        &:hover,
+        &.active {
             color: var(--headerLink-text-color-hover);
             background-color: var(--headerLink-bg-color-hover);
         }

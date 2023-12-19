@@ -38,6 +38,7 @@ button {
   border-radius: 0;
   padding: 0;
   cursor: pointer;
+  touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -106,6 +107,7 @@ ol {
     --color-scale-gray-10: #1c1f27;
     --html-bg-color: var(--color-scale-gray-10);
     --body-bg-color: var(--color-scale-gray-9);
+    --focus-outline-color: var(--color-malibu);
     --text-primary-color: var(--color-scale-gray-2);
     --text-secondary-color: var(--color-scale-white);
     --text-tertiary-color: var(--color-scale-gray-3);
@@ -135,7 +137,7 @@ ol {
     --someLink-bg-color-hover: var(--color-scale-gray-8);
     --someLink-text-color: var(--color-scale-gray-2);
     --callout-border-color: var(--color-scale-gray-7);
-    --callout-bg-color: var(--color-scale-gray-8);
+    --callout-bg-color: var(--color-scale-gray-9);
     --callout-text-color: var(--color-scale-gray-2);
     --textLink-color: var(--color-malibu);
     --textLink-color-hover: var(--color-violet);
@@ -154,6 +156,12 @@ ol {
     --detailsBlock-divider-color: var(--color-scale-gray-7);
     --detailsBlock-term-color: var(--color-scale-gray-0);
     --detailsBlock-detail-color: var(--color-scale-gray-2);
+    --imageDialog-bg-color: var(--color-scale-gray-9);
+    --imageDialogCloseButton-bg-color: var(--color-scale-gray-7);
+    --imageDialogCloseButton-text-color: var(--color-scale-gray-1);
+    --imageDialogFigcaption-bg-color: var(--color-scale-gray-7);
+    --imageDialogFigcaption-text-color: var(--color-scale-gray-1);
+    --imageDialogCloseButton-color-focus: var(--color-malibu);
   }
   :root:not(.theme-inverted) {
     --color-white: #FFF;
@@ -166,8 +174,10 @@ ol {
     --color-void: #292a2d;
     --color-royal: #2554e4;
     --color-cobalt: #1b3b9a;
+    --color-fall: #FFD966;
     --body-bg-color: var(--color-white);
     --html-bg-color: var(--color-mist);
+    --focus-outline-color: var(--color-royal);
     --text-secondary-color: var(--color-void);
     --text-primary-color: var(--color-concrete);
     --text-tertiary-color: var(--color-stone);
@@ -220,6 +230,12 @@ ol {
     --detailsBlock-divider-color: var(--color-fog);
     --detailsBlock-term-color: var(--color-void);
     --detailsBlock-detail-color: var(--color-concrete);
+    --imageDialog-bg-color: var(--color-void);
+    --imageDialogCloseButton-bg-color: var(--color-concrete);
+    --imageDialogCloseButton-text-color: var(--color-mist);
+    --imageDialogFigcaption-bg-color: var(--color-void);
+    --imageDialogFigcaption-text-color: var(--color-mist);
+    --imageDialogCloseButton-color-focus: var(--color-fall);
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -234,8 +250,10 @@ ol {
     --color-void: #292a2d;
     --color-royal: #2554e4;
     --color-cobalt: #1b3b9a;
+    --color-fall: #FFD966;
     --body-bg-color: var(--color-white);
     --html-bg-color: var(--color-mist);
+    --focus-outline-color: var(--color-royal);
     --text-secondary-color: var(--color-void);
     --text-primary-color: var(--color-concrete);
     --text-tertiary-color: var(--color-stone);
@@ -288,6 +306,12 @@ ol {
     --detailsBlock-divider-color: var(--color-fog);
     --detailsBlock-term-color: var(--color-void);
     --detailsBlock-detail-color: var(--color-concrete);
+    --imageDialog-bg-color: var(--color-void);
+    --imageDialogCloseButton-bg-color: var(--color-concrete);
+    --imageDialogCloseButton-text-color: var(--color-mist);
+    --imageDialogFigcaption-bg-color: var(--color-void);
+    --imageDialogFigcaption-text-color: var(--color-mist);
+    --imageDialogCloseButton-color-focus: var(--color-fall);
   }
   :root:not(.theme-inverted) {
     --color-milk: #f7f8f8;
@@ -310,6 +334,7 @@ ol {
     --color-scale-gray-10: #1c1f27;
     --html-bg-color: var(--color-scale-gray-10);
     --body-bg-color: var(--color-scale-gray-9);
+    --focus-outline-color: var(--color-malibu);
     --text-primary-color: var(--color-scale-gray-2);
     --text-secondary-color: var(--color-scale-white);
     --text-tertiary-color: var(--color-scale-gray-3);
@@ -339,7 +364,7 @@ ol {
     --someLink-bg-color-hover: var(--color-scale-gray-8);
     --someLink-text-color: var(--color-scale-gray-2);
     --callout-border-color: var(--color-scale-gray-7);
-    --callout-bg-color: var(--color-scale-gray-8);
+    --callout-bg-color: var(--color-scale-gray-9);
     --callout-text-color: var(--color-scale-gray-2);
     --textLink-color: var(--color-malibu);
     --textLink-color-hover: var(--color-violet);
@@ -358,6 +383,12 @@ ol {
     --detailsBlock-divider-color: var(--color-scale-gray-7);
     --detailsBlock-term-color: var(--color-scale-gray-0);
     --detailsBlock-detail-color: var(--color-scale-gray-2);
+    --imageDialog-bg-color: var(--color-scale-gray-9);
+    --imageDialogCloseButton-bg-color: var(--color-scale-gray-7);
+    --imageDialogCloseButton-text-color: var(--color-scale-gray-1);
+    --imageDialogFigcaption-bg-color: var(--color-scale-gray-7);
+    --imageDialogFigcaption-text-color: var(--color-scale-gray-1);
+    --imageDialogCloseButton-color-focus: var(--color-malibu);
   }
 }
 
@@ -378,7 +409,7 @@ body {
 }
 
 :focus-visible {
-  outline-color: var(--textLink-color);
+  outline-color: var(--focus-outline-color);
   outline-offset: 0.125rem;
   outline-width: 0.125rem;
   outline-style: solid;
@@ -497,6 +528,10 @@ body {
   flex-shrink: 0;
   position: relative;
 }
+.header__logo svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
 .header__actions {
   display: flex;
   gap: var(--header-nav-gap);
@@ -524,6 +559,10 @@ body {
 .header__theme-toggle:hover {
   background-color: var(--headerLink-bg-color-hover);
 }
+.header__theme-toggle svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
 .header__menu-toggle {
   display: flex;
   align-items: center;
@@ -537,6 +576,10 @@ body {
   .header__menu-toggle {
     display: none;
   }
+}
+.header__menu-toggle svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 @container header-actions (max-width: 40rem) {
@@ -683,6 +726,10 @@ body {
 .footer__back-to-top:hover, .footer__back-to-top:focus-visible {
   background-color: var(--toTopButton-bg-color-hover);
   color: var(--toTopButton-text-color-hover);
+}
+.footer__back-to-top svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .tag {
@@ -1126,12 +1173,12 @@ body {
   }
 }
 .post__title {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   line-height: 1.25;
 }
 @media (min-width: 40rem) {
   .post__title {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     line-height: 1.125;
   }
 }
@@ -1141,9 +1188,10 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
+  font-size: 0.875rem;
 }
 .post__meta-item {
-  font-size: 0.875rem;
+  font-size: 1rem;
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -1155,22 +1203,22 @@ body {
 }
 .post__leading {
   margin-top: 0.875em;
-  font-size: 1.25rem;
+  font-size: 1.375rem;
 }
 @media (min-width: 40rem) {
   .post__leading {
-    font-size: 1.375rem;
+    font-size: 1.5rem;
   }
 }
 .post__body {
   margin-top: 2em;
-  font-size: 1rem;
+  font-size: 1.125rem;
   max-width: 35rem;
   margin-inline: auto;
 }
 @media (min-width: 40rem) {
   .post__body {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
   }
 }
 
@@ -1228,6 +1276,10 @@ body {
 .some-list__link:hover, .some-list__link:focus-visible {
   background-color: var(--someLink-bg-color-hover);
 }
+.some-list__link svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
 
 .section {
   padding-bottom: 4rem;
@@ -1279,11 +1331,11 @@ body {
 .code-block {
   color: var(--codeBlock-text-color);
   position: relative;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 @media (min-width: 40rem) {
   .code-block {
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 }
 .code-block ::-moz-selection {
@@ -1504,6 +1556,8 @@ body {
 }
 .menu__link svg {
   flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .details-block {
@@ -1560,6 +1614,67 @@ body {
   }
 }
 
+.image-dialog {
+  inset: 0;
+  max-height: 100%;
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  z-index: 100;
+  background-color: var(--imageDialog-bg-color);
+  position: fixed;
+}
+.image-dialog figure {
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.image-dialog figure img {
+  margin-inline: auto;
+  border-radius: 0.5rem;
+  min-height: 0;
+  min-width: 0;
+  max-height: 100%;
+  max-width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.image-dialog figcaption {
+  color: var(--imageDialogFigcaption-text-color);
+  background-color: var(--imageDialogFigcaption-bg-color);
+  position: absolute;
+  bottom: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  margin-inline: auto;
+  max-width: 600px;
+  text-align: center;
+}
+.image-dialog button {
+  --focus-outline-color: var(--imageDialogCloseButton-color-focus);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--imageDialogCloseButton-bg-color);
+  color: var(--imageDialogCloseButton-text-color);
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.image-dialog button svg {
+  width: 2rem;
+  height: 2rem;
+}
+
 .u-hidden {
   clip: rect(0 0 0 0);
   -webkit-clip-path: inset(50%);
@@ -1608,12 +1723,12 @@ body {
   line-height: 1.375;
 }
 .u-rich-text > h2:not([class]) {
-  font-size: 1.25rem;
+  font-size: 1.375rem;
   line-height: 1.375;
 }
 @media (min-width: 40rem) {
   .u-rich-text > h2:not([class]) {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 }
 .u-rich-text > h3:not([class]) {

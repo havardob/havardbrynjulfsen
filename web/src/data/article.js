@@ -20,21 +20,14 @@ const query = `*[_type == "article"] {
         _type == "imageBlock" => {
             "imageFile": imageFile.asset->url,
         }, 
-        markDefs[] {  
+        markDefs[] {    
             ..., 
             _type == "internalLink" => {
-                "href": internalDocument-> slug.current 
+                "href": internalDocument-> slug.current  
             }
         } 
-    }     
-}`     
- 
- 
-
-
-
-
-
+    }       
+}`       
 
 const getArticleData = async function () {  
     const data = await client.fetch(query);

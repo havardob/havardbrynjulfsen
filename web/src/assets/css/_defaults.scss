@@ -15,7 +15,7 @@ body {
 }
 
 :focus-visible {
-    outline-color: var(--textLink-color);
+    outline-color: var(--focus-outline-color);
     outline-offset: .125rem;
     outline-width: .125rem;
     outline-style: solid;

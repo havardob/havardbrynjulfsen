@@ -24,7 +24,18 @@ layout: base
       <header class="post__header">
         {% if article.featuredImage and article.showAsBanner == true %}
           <figure class="post__featured-image">
-            <img src="{{ article.featuredImage }}" alt="" />
+            <img
+              src="{{ article.featuredImage }}"
+              alt=""
+              data-dialog-trigger />
+            <dialog class="image-dialog">
+              <figure>
+                <img src="{{ article.featuredImage }}" alt="" />
+                <button class="image-dialog__close">
+                  {% include "icons/close" %}
+                </button>
+              </figure>
+            </dialog>
           </figure>
         {% endif %}
         <div class="post__meta">

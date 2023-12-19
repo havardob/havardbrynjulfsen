@@ -38,4 +38,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document.onload = setStoredTheme();
+
+
+    // Open image dialog
+    const imageDialogTriggers = document.querySelectorAll("[data-dialog-trigger]");
+    imageDialogTriggers.forEach(trigger => {
+        trigger.style.cursor = "pointer";
+        const dialog = trigger.nextElementSibling;
+        const closeButton = dialog.querySelector("button");
+        trigger.addEventListener("click", () => {
+            html.style.overflowY = "hidden";
+            dialog.showModal();
+        });
+        
+        closeButton.addEventListener("click", () => {
+            html.style.overflowY = "initial";
+            dialog.close();
+        })
+    });
 })

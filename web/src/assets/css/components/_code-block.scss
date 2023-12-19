@@ -1,9 +1,9 @@
 .code-block {
     color: var(--codeBlock-text-color);
     position: relative;
-    font-size: .75rem;
+    font-size: .875rem;
     @media (min-width: 40rem) {
-        font-size: .875rem;
+        font-size: 1rem;
     }
     
     ::selection {
