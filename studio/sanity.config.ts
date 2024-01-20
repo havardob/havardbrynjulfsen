@@ -1,5 +1,5 @@
 import { defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
+import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
 import deskStructure from './src/deskStructure'
@@ -14,7 +14,7 @@ export default defineConfig({
   dataset: process.env.SANITY_STUDIO_DATASET || "",
 
   plugins: [
-    deskTool({
+    structureTool({
       structure: deskStructure,
       title: "Innhold"
     }),
