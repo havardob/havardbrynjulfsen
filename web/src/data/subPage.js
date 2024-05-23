@@ -6,7 +6,16 @@ const query = `*[_type == "subPage"] {
     "parentSlug": parent -> slug.current, 
     "slug": slug.current,
     body[] { 
-        ...
+        ...,
+        _type == "imageBlock" => {
+            "imageFile": imageFile.asset->url,
+        }, 
+        markDefs[] {    
+            ..., 
+            _type == "internalLink" => {
+                "href": internalDocument-> slug.current  
+            }
+        } 
     }  
 }`
 
@@ -24,4 +33,4 @@ const getSubPageData = async function () {
     return data;  
 }
 
-module.exports = getSubPageData(); 
+module.exports = getSubPageData();  
