@@ -6,10 +6,10 @@ eleventyExcludeFromCollections: true
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>{{ siteSettings.metaTitle }}</title>
     <subtitle>{{ siteSettings.metaDescription }}</subtitle>
-    <link href="https://havardbrynjulfsen.design/feed.xml" rel="self"/>
-    <link href="https://havardbrynjulfsen.design"/>
+    <link href="https://www.havardbrynjulfsen.design/feed.xml" rel="self"/>
+    <link href="https://www.havardbrynjulfsen.design"/>
     <updated>{{ collections.articlesCollection | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
-    <id>https://havardbrynjulfsen.design</id>
+    <id>https://www.havardbrynjulfsen.design/</id>
     <author>
         <name>Håvard Brynjulfsen</name>
         <email>havardob@hotmail.com</email>
@@ -21,7 +21,7 @@ eleventyExcludeFromCollections: true
             <a href="mailto:havardob@hotmail.com?subject=Re: “{{ post.data.article.title }}”">Reply via email</a>
         </p>{%- endset -%}
         {%- if post.data.article.body -%}
-        {%- set finalHTMLContent = ["<p>" + post.data.article.leading + "</p>", post.data.article.body, emailReplyHTML] | join -%}
+        {%- set finalHTMLContent = ["&amp;lt;p&amp;rt;" + post.data.article.leading + "&amp;lt;/&amp;rt;>", post.data.article.body, emailReplyHTML] | join -%}
         {%- endif -%}
         <entry>
             <title>{{ post.data.article.title }}</title>
