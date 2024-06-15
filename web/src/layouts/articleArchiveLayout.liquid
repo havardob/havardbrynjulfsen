@@ -20,20 +20,6 @@ layout: base
         </div>
       </div>
       <div class="posts">
-        {% comment %} <div class="tags">
-                              <p class="tags__label">Tags:</p>
-                              <ul class="tag-list">
-                                {% for item in collections.tagCollection %}
-                                  {% for post in collections.articleCollection %}
-                                    {% if item.data.tag.type == "article" %}
-                                      <li class="tag-list__item">
-                                        <a href="{{ item.data.tag.fullSlug }}" class="tag | {% if item.data.tag.title == tag.title %}active{% endif %}">{{ item.data.tag.title }}</a>
-                                      </li>
-                                    {% endif %}
-                                  {% endfor %}
-                                {% endfor %}
-                              </ul>
-                        </div> {% endcomment %}
         <ul class="posts-list">
           {% assign sortedArticles = collections.articlesCollection | sort: "data.article.dateForSorting" | reverse %}
           {% for post in sortedArticles %}

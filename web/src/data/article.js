@@ -53,6 +53,8 @@ const getArticleData = async function () {
         // Get a sortable date format and a formatted date
         if (article.publishedDate) {
             const dateForSorting = new Date(article.publishedDate);
+            const rssDate = new Date(article.publishedDate);
+            article.rssDate = rssDate;
             article.dateForSorting = dateForSorting.getTime();
             article.publishedDate = formatDate(article.publishedDate);
         }
