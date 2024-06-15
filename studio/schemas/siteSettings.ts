@@ -142,6 +142,14 @@ export default {
                                     {
                                         title: "Codepen",
                                         value: "codepen"
+                                    },
+                                    {
+                                        title: "Feed",
+                                        value: "rss"
+                                    },
+                                    {
+                                        title: "Mastodon",
+                                        value: "mastodon"
                                     }
                                 ],
                             }

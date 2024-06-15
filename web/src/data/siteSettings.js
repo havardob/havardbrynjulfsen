@@ -17,7 +17,7 @@ const query = `*[_id == "siteSettings"][0]{
         label,
         icon,
         isExternal,
-        href,
+        href, 
         internalDocument {
             ... 
         }
