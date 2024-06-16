@@ -8,13 +8,13 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://havardbrynjulfsen.design" />
-    <meta property="og:title" content="{% if metaTitle %}{{ metaTitle }}{% else %}{{ siteSettings.metaTitle }}{% endif %}" />
+    <meta property="og:title" content="{% if metaTitle %}{{ metaTitle }} | {% endif %}{{ siteSettings.metaTitle }}" />
     <meta property="og:description" content="{% if metaDescription %}{{ metaDescription }}{% else %}{{ siteSettings.metaDescription }}{% endif %}" />
     <meta property="og:image" content="{% if metaImageUrl %}{{ metaImageUrl }}{% else %}{{ siteSettings.metaImageUrl }}{% endif %}">
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://havardbrynjulfsen.design" />
-    <meta property="twitter:title" content="{% if metaTitle %}{{ metaTitle }}{% else %}{{ siteSettings.metaTitle }}{% endif %}" />
+    <meta property="twitter:title" content="{% if metaTitle %}{{ metaTitle }} | {% endif %}{{ siteSettings.metaTitle }}" />
     <meta property="twitter:description" content="{% if metaDescription %}{{ metaDescription }}{% else %}{{ siteSettings.metaDescription }}{% endif %}" />
     <meta property="twitter:image" content="{% if metaImageUrl %}{{ metaImageUrl }}{% else %}{{ siteSettings.metaImageUrl }}{% endif %}" />
     <!-- Google Search Console -->
