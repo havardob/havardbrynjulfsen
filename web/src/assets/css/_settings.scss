@@ -22,6 +22,7 @@
     --color-royal: #2554e4;
     --color-cobalt: #1b3b9a;
     --color-fall: #FFD966;
+    --color-fire: #FF7F3E;
 
     --body-bg-color: var(--color-white);
     --html-bg-color: var(--color-mist);
@@ -108,6 +109,9 @@
     --imageDialogFigcaption-bg-color: var(--color-void);
     --imageDialogFigcaption-text-color: var(--color-mist);
     --imageDialogCloseButton-color-focus: var(--color-fall);
+
+    --rssLink-border-color: var(--color-fog);
+    --rssLinkIcon-text-color: var(--color-fire);
 }
 
 @mixin dark-mode() {
@@ -117,6 +121,7 @@
     --color-violet: #5e6ad2;
     --color-fall: #FFD966;
     --color-abyss: #000313;
+    --color-fire: #FF7F3E;
 
     --color-scale-white: #cdd9e5;
     --color-scale-gray-0: #cdd9e5;
@@ -210,6 +215,9 @@
     --imageDialogFigcaption-bg-color: var(--color-scale-gray-7);
     --imageDialogFigcaption-text-color: var(--color-scale-gray-1);
     --imageDialogCloseButton-color-focus: var(--color-malibu);
+    
+    --rssLink-border-color: var(--color-scale-gray-7);
+    --rssLinkIcon-text-color: var(--color-fire);
 }
 
 :root {

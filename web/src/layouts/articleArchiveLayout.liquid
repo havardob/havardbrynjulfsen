@@ -18,6 +18,17 @@ layout: base
         <div class="archive-page__intro | u-rich-text">
           {{ articleArchive.leading }}
         </div>
+        <div class="archive-page__rss">
+          <a href="/feed.xml" class="rss-link">
+          <span class="rss-link__icon">
+            {% include "icons/rss" %}
+          </span>
+          <div class="rss-link__content"> 
+            <span class="rss-link__title">Stay up to date</span>
+            <span class="rss-link__desc">Subscribe to feed</span>
+          </div>
+          </a>
+        </div>
       </div>
       <div class="posts">
         <ul class="posts-list">
