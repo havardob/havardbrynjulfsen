@@ -10,6 +10,7 @@ pagination:
 eleventyComputed: 
   metaTitle: "{{ article.title }}"
   metaDescription: "{{ article.leading }}"
+  metaImageUrl: "{{ article.featuredImage | default: siteSettings.metaImageUrl }}"
   id: "{{ article._id }}"
 permalink: "{{ article.fullSlug }}/"    
----
+--- 

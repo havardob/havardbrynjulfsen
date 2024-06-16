@@ -2,6 +2,6 @@
 layout: articleArchiveLayout
 eleventyComputed: 
   metaTitle: "{{ articleArchive.title }}"
-  metaDescription: "{{ articleArchive.leading }}"
+  metaDescription: "{{ articleArchive.leading | strip_html }}"
 permalink: "{{ articleArchive.slug }}/index.html"
 ---

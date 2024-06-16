@@ -17,12 +17,12 @@ layout: base
             {% if selectedCreation._ref == item.data.id %}
               <li class="section__grid-item">
                 {% include "components/projectPreview"
- featuredImage: item.data.creation.featuredImage
- title: item.data.creation.title
- fullSlug: item.data.creation.fullSlug 
- tagline: item.data.creation.tagline
- tag: item.data.creation.tag
- tagSlug: item.data.creation.tagSlug
+                  featuredImage: item.data.creation.featuredImage
+                  title: item.data.creation.title
+                  fullSlug: item.data.creation.fullSlug 
+                  tagline: item.data.creation.tagline
+                  tag: item.data.creation.tag
+                  tagSlug: item.data.creation.tagSlug
                 %}
               </li>
             {% endif %}
@@ -41,14 +41,14 @@ layout: base
             {% if item._ref == article.data.id %}
               <li class="section__list-item">
                 {% include "components/postPreview" 
- title: article.data.article.title
- leading: article.data.article.leading
- readingTime: article.data.article.readingTime
- publishedDate: article.data.article.publishedDate
- tag: article.data.article.tag
- tagSlug: article.data.article.tagSlug
- fullSlug: article.data.page.url
- publishedExternally: article.data.article.publishedExternally
+                  title: article.data.article.title
+                  leading: article.data.article.leading
+                  readingTime: article.data.article.readingTime
+                  publishedDate: article.data.article.publishedDate
+                  tag: article.data.article.tag
+                  tagSlug: article.data.article.tagSlug
+                  fullSlug: article.data.page.url
+                  publishedExternally: article.data.article.publishedExternally
                 %}
               </li>
             {% endif %}
