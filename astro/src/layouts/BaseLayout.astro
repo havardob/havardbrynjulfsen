@@ -1,0 +1,100 @@
+---
+import { getSiteSettingsData } from "../data/siteSettings";
+
+const siteSettings = await getSiteSettingsData();
+
+interface Props {
+    metaTitle?: string;
+    metaDescription?: string;
+    metaImageUrl?: string;
+}
+
+const { metaTitle, metaDescription, metaImageUrl } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <!-- Metadata  -->
+        <title>
+            {
+                metaTitle
+                    ? `${metaTitle} | ` + siteSettings.metaTitle
+                    : siteSettings.metaTitle
+            }
+        </title>
+        <meta
+            name="description"
+            content={metaDescription ?? siteSettings.metaDescription}
+        />
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://havardbrynjulfsen.design" />
+        <meta
+            property="og:title"
+            content={metaTitle
+                ? `${metaTitle} | ` + siteSettings.metaTitle
+                : siteSettings.metaTitle}
+        />
+        <meta
+            property="og:description"
+            content={metaDescription ?? siteSettings.metaDescription}
+        />
+        <meta
+            property="og:image"
+            content={metaImageUrl ?? siteSettings.metaImageUrl}
+        />
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+            property="twitter:url"
+            content="https://havardbrynjulfsen.design"
+        />
+        <meta
+            property="twitter:title"
+            content={metaTitle
+                ? `${metaTitle} | ` + siteSettings.metaTitle
+                : siteSettings.metaTitle}
+        />
+        <meta
+            property="twitter:description"
+            content={metaDescription ?? siteSettings.metaDescription}
+        />
+        <meta
+            property="twitter:image"
+            content={metaImageUrl ?? siteSettings.metaImageUrl}
+        />
+        <!-- Google Search Console -->
+        <meta
+            name="google-site-verification"
+            content="W4au0EUTG_HOrZVHMhDQVLX_rkPpXVFfLEakRCqYemQ"
+        />
+        <!-- Google Analytics -->
+        <!-- Google tag (gtag.js) -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-RH36PND6MY"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-RH36PND6MY");
+        </script>
+        <!-- -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/panda-syntax-dark.min.css"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>

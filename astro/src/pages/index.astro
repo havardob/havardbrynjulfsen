@@ -1,0 +1,36 @@
+---
+import Hero from "../components/Hero.astro";
+import PostPreview from "../components/PostPreview.astro";
+import ProjectPreview from "../components/ProjectPreview.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout metaTitle="Home">
+	<div class="l-site">
+		<SiteHeader />
+		<main>
+			<div class="l-constraint">
+				<Hero />
+				<section class="section section--featured-creations">
+					<h2 class="section__title">Creations</h2>
+					<ul class="section__grid">
+						<li class="section__grid-item">
+							<ProjectPreview />
+						</li>
+					</ul>
+				</section>
+				<section class="section section--featured-posts">
+					<h2 class="section__title">Articles</h2>
+					<ul class="section__list">
+						<li class="section__list-item">
+							<PostPreview />
+						</li>
+					</ul>
+				</section>
+			</div>
+		</main>
+		<SiteFooter />
+	</div>
+</BaseLayout>
