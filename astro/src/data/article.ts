@@ -2,6 +2,7 @@ import { client } from "./_sanityClient";
 import mql from "@microlink/mql";
 import { generateSlug, generateRichText, getReadingTime, formatDate } from "./_utils";
 
+
 export const getArticleData = async function (slug: any) {
     const query = `*[_type == "article" && slug.current == "${slug}"][0] { 
         _id,

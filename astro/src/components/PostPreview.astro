@@ -1,24 +1,55 @@
+---
+interface Props {
+  slug: string;
+  tag?: {
+    title: string,
+    href: string
+  },
+  readingTime: string;
+  publishedDate: string;
+  title: string;
+  excerpt?: string;
+  external?: {
+    image: string,
+    href: string,
+    text: string
+  };
+}
+
+const {
+  slug,
+  tag,
+  readingTime,
+  publishedDate,
+  title,
+  excerpt,
+  external,
+} = Astro.props;
+---
+
 <div class="[ cq--post-preview ]">
-    <article class="post-preview">
-      <div class="post-preview__meta">
-          <a href="{{ tagSlug }}" class="tag">Tips</a>
-        <span class="post-preview__meta-item">8 minute read</span>
-        <span class="post-preview__meta-item">Sep 12, 2024</span>
-      </div>
-      <h2 class="post-preview__title">
-        <a href="{{ fullSlug }}">Tip of the week #010: Embrace simplicity</a>
-      </h2>
-      <p class="post-preview__excerpt">
-        Building for the web has never been easier, but it's also never been easier to over engineer the simplest of things. 
-      </p>
+  <article class="post-preview">
+    <div class="post-preview__meta">
+      <a href={tag?.href} class="tag">{tag?.title}</a>
+      <span class="post-preview__meta-item">{readingTime} minute read</span>
+      <span class="post-preview__meta-item">{publishedDate}</span>
+    </div>
+    <h2 class="post-preview__title">
+      <a href={slug}>{title}</a>
+    </h2>
+    {excerpt && <p class="post-preview__excerpt">{excerpt}</p>}
+    {
+      external?.href && (
         <div class="post-preview__footer">
-          <img
-            src="{{ publishedExternally.image }}"
-            class="post-preview__footer-image"
-            alt="" />
-          <p>Published at
-            <a href="#" target="_blank">css-tricks.com</a>
+          <img class="post-preview__footer-image" src={external?.image} alt="" />
+          <p>
+            Published at
+            <a href={external?.href} target="_blank">
+              {external?.text}
+            </a>
           </p>
         </div>
-    </article>
-  </div>
+      )
+    }
+  </article>
+</div>

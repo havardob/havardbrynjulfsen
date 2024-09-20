@@ -1,21 +1,36 @@
+---
+interface Props {
+  title: string,
+  slug: string,
+  image?: string,
+  tagline?: string,
+  tagTitle: string,
+  tagHref: string
+}
+
+const { title, slug, image, tagHref, tagTitle, tagline} = Astro.props;
+---
+
 <div class="[ cq--project-preview ]">
     <article class="project-preview">
       <div class="project-preview__image-wrapper">
           <img
-            src="{{ featuredImage }}?w=400"
+            src={image + "?w=400"}
             alt=""
             class="project-preview__image" />
       </div>
       <div class="project-preview__content">
         <h2 class="project-preview__title">
-          <a href="{{ fullSlug }}">
-            Squishy button
+          <a href={slug}>
+            { title }
           </a>
         </h2>
-        <p class="project-preview__tagline">
-          You know you want to click it
-        </p>
-        <a href="{{ tagSlug }}" class="tag">CodePen</a>
+        {tagline && (
+          <p class="project-preview__tagline">
+            { tagline }
+          </p>
+        )}  
+        <a href={tagHref} class="tag">{tagTitle}</a>
       </div>
     </article>
   </div>

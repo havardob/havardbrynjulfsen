@@ -1,5 +1,6 @@
+import mql from "@microlink/mql";
 import { client } from "./_sanityClient";
-import { generateSlug, generateRichText } from "./_utils";
+import { generateSlug, generateRichText, formatDate, getReadingTime } from "./_utils";
 
 const query = `*[_id == "frontPage"][0] {
     ...,
@@ -17,7 +18,7 @@ const query = `*[_id == "frontPage"][0] {
     },
     creations {
         title, 
-        items[] {
+        items[]-> {
             ...,
         },
         moreLink {
@@ -29,8 +30,14 @@ const query = `*[_id == "frontPage"][0] {
     },
     articles { 
         title, 
-        items[] { 
+        items[]-> { 
             ...,
+            tag ->, 
+            "featuredImage": featuredImage.asset->url, 
+            showAsBanner,
+            "tagSlug": tag -> slug.current, 
+            "tagTitle": tag -> title, 
+            "slug": slug.current
         },
         moreLink {
             ...,
@@ -57,6 +64,47 @@ export const getFrontPageData = async function () {
         data.articles.moreLink.href = moreLink.slug;
     }
 
-    console.log(data.articles.moreLink);
+    for (let article of data.articles.items) {
+        const fullSlug = await generateSlug(article._id)
+        article.fullSlug = fullSlug.slug;
+    
+        // Convert body text to html
+        if (article.body) {
+            article.body = await generateRichText(article.body);
+            article.readingTime = getReadingTime(article.body);
+        } else {
+            article.readingTime = 1;
+        }
+    
+        // Get external data with MQL
+        if (article.publishedExternally) {
+            const externalSiteData = await mql(article.publishedExternally.href);
+            article.publishedExternally.image = externalSiteData.data.logo.url;
+        }
+    
+        // Get a sortable date format and a formatted date
+        if (article.publishedDate) {
+            const dateForSorting = new Date(article.publishedDate);
+            const rssDate = new Date(article.publishedDate);
+            article.rssDate = rssDate;
+            article.dateForSorting = dateForSorting.getTime();
+            article.publishedDate = formatDate(article.publishedDate);
+        }
+    
+        // Generate tag slug 
+        if (article.tag) {
+            const tag = await generateSlug(article.tag._id)
+            article.tagSlug = tag.slug;
+        }
+
+        if (article.publishedDate) {
+            const dateForSorting = new Date(article.publishedDate);
+            const rssDate = new Date(article.publishedDate);
+            article.rssDate = rssDate;
+            article.dateForSorting = dateForSorting.getTime();
+            article.publishedDate = formatDate(article.publishedDate);
+        }
+    } 
+
     return data;
 } 
