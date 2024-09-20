@@ -4,7 +4,11 @@ import PostPreview from "../components/PostPreview.astro";
 import ProjectPreview from "../components/ProjectPreview.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
+import { getFrontPageData } from "../data/frontPage";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const frontPage = await getFrontPageData();
+
 ---
 
 <BaseLayout metaTitle="Home">
@@ -12,9 +16,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		<SiteHeader />
 		<main>
 			<div class="l-constraint">
-				<Hero />
+				<Hero 
+					title={frontPage.hero.title}
+					intro={frontPage.hero.intro}
+				/>
 				<section class="section section--featured-creations">
-					<h2 class="section__title">Creations</h2>
+					<h2 class="section__title">{ frontPage.creations.title }</h2>
 					<ul class="section__grid">
 						<li class="section__grid-item">
 							<ProjectPreview />
@@ -22,7 +29,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					</ul>
 				</section>
 				<section class="section section--featured-posts">
-					<h2 class="section__title">Articles</h2>
+					<h2 class="section__title">{frontPage.articles.title}</h2>
 					<ul class="section__list">
 						<li class="section__list-item">
 							<PostPreview />

@@ -1,8 +1,16 @@
+---
+  interface Props {
+    title: string,
+    intro?: string 
+  }
+
+  const { title, intro } = Astro.props;
+---
+
 <div class="hero">
-    <h1 class="hero__title">Hi! I'm Håvard Brynjulfsen, a front-end designer based in Bergen, Norway</h1>
-    <div class="hero__intro | u-rich-text">
-      <p>Designer who codes</p>
-      <p>Sometimes I draw boxes. Other times I create boxes. Occasionally I even write about boxes.</p>
-      <p>Currently creating and repairing boxes at Knowit Experience</p>
-    </div>
+    <h1 class="hero__title">{title}</h1>
+    {intro && (
+      <div class="hero__intro | u-rich-text" set:html={intro}>
+      </div>
+    )}
   </div>

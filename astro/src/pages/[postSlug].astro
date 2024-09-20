@@ -3,6 +3,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import { client } from "../data/_sanityClient";
 import { getArticleData } from "../data/article";
+import Close from "../icons/Close.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
@@ -46,6 +47,22 @@ const { post } = Astro.props;
         </ol>
         <article class="post">
           <header class="post__header">
+            {(post.featuredImage && post.showAsBanner) && (
+              <figure class="post__featured-image">
+                <img
+                  src={post.featuredImage}
+                  alt=""
+                  data-dialog-trigger />
+                <dialog class="image-dialog">
+                  <figure>
+                    <img src={post.featuredImage} alt="" />
+                    <button class="image-dialog__close">
+                      <Close />
+                    </button>
+                  </figure>
+                </dialog>
+              </figure>
+            )}
             <div class="post__meta">
               <a href={post.tagSlug} class="tag">{ post.tag.title}</a>
               <span class="post__meta-item">{post.readingTime} minute read</span>
@@ -58,8 +75,7 @@ const { post } = Astro.props;
               </p>
             )}
           </header>
-          <div class="post__body | u-rich-text" set:html={post.body}>
-          </div>
+          <div class="post__body | u-rich-text" set:html={post.body}></div>
         </article>
       </div>
     </main>
