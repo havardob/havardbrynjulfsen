@@ -1,0 +1,26 @@
+---
+interface Props {
+    items: [];
+    current: string;
+}
+
+const { items, current } = Astro.props;
+---
+
+<ol class="breadcrumbs">
+    <li class="breadcrumbs__item">
+        <a href="/" class="breadcrumbs__link">Home</a>
+    </li>
+    {
+        items.map((item: any) => (
+            <li class="breadcrumbs__item">
+                <a href={item.slug} class="breadcrumbs__link">
+                    {item.title}
+                </a>
+            </li>
+        ))
+    }
+    <li class="breadcrumbs__item">
+        <span title={current}>{current}</span>
+    </li>
+</ol>
