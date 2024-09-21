@@ -3,8 +3,8 @@ import mql from "@microlink/mql";
 import { generateSlug, generateRichText, getReadingTime, formatDate } from "./_utils";
 
 
-export const getArticleData = async function (slug: any) {
-    const query = `*[_type == "article" && slug.current == "${slug}"][0] { 
+export const getArticleData = async function (slug?: string) {
+    const query = `*[_type == "article" ${slug && `&& slug.current == "${slug}"`}][0] { 
         _id,
         title,
         leading,

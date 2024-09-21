@@ -16,46 +16,56 @@ const frontPage = await getFrontPageData();
 		<SiteHeader />
 		<main>
 			<div class="l-constraint">
-				<Hero 
+				<Hero
 					title={frontPage.hero.title}
 					intro={frontPage.hero.intro}
 				/>
 				<section class="section section--featured-creations">
-					<h2 class="section__title">{ frontPage.creations.title }</h2>
+					<h2 class="section__title">{frontPage.creations.title}</h2>
 					<ul class="section__grid">
-						{frontPage.creations.items.map((item: any) => (
-							<li class="section__grid-item">
-								<ProjectPreview 
-									title={item.title}
-									image={item.featuredImage}
-									slug={item.fullSlug}
-									tagline={item.tagline}
-									tagTitle={item.title} 
-									tagHref= {item.tagSlug}
-								/>
-							</li>
-						))}
+						{
+							frontPage.creations.items.map((item: any) => (
+								<li class="section__grid-item">
+									<ProjectPreview
+										title={item.title}
+										image={item.featuredImage}
+										slug={item.fullSlug}
+										tagline={item.tagline}
+										tagTitle={item.tagTitle}
+										tagHref={item.tagSlug}
+									/>
+								</li>
+							))
+						}
 					</ul>
 				</section>
 				<section class="section section--featured-posts">
 					<h2 class="section__title">{frontPage.articles.title}</h2>
 					<ul class="section__list">
-						{frontPage.articles.items.map((article: any) => (
-							<li class="section__list-item">
-								<PostPreview 
-									title={article.title}
-									slug={article.fullSlug}
-									readingTime={article.readingTime}
-									publishedDate={article.publishedDate}
-									tag={{title: article.tagTitle, href: article.tagSlug}}
-									external={{
-										image: article.publishedExternally?.image, 
-										href: article.publishedExternally?.href, 
-										text: article.publishedExternally?.text
-									}}
-								/>
-							</li>
-						))}
+						{
+							frontPage.articles.items.map((article: any) => (
+								<li class="section__list-item">
+									<PostPreview
+										title={article.title}
+										slug={article.fullSlug}
+										readingTime={article.readingTime}
+										publishedDate={article.publishedDate}
+										tag={{
+											title: article.tagTitle,
+											href: article.tagSlug,
+										}}
+										external={{
+											image: article.publishedExternally
+												?.image,
+											href: article.publishedExternally
+												?.href,
+											text: article.publishedExternally
+												?.text,
+										}}
+									/>
+								</li>
+							))
+						}
 					</ul>
 				</section>
 			</div>

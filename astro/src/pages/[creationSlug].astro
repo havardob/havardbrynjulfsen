@@ -2,22 +2,22 @@
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import { client } from "../data/_sanityClient";
-import { getArticleData } from "../data/article";
+import { getCreationData } from "../data/creation";
 import Close from "../icons/Close.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
-  const data = await client.fetch(`*[_type == "article"]`);
+  const data = await client.fetch(`*[_type == "creation"]`);
 
   const slugs = await Promise.all(
     data.map(async (result: any) => {
-      const article = await getArticleData(result.slug.current);
+      const creation = await getCreationData(result.slug.current);
       return {
         params: {
-          postSlug: result.slug.current,
+          creationSlug: result.slug.current,
         },
         props: {
-          post: article,
+          creation: creation,
         },
       };
     }),
@@ -26,7 +26,7 @@ export async function getStaticPaths() {
   return slugs;
 }
 
-const { post } = Astro.props;
+const { creation } = Astro.props;
 ---
 
 <BaseLayout metaTitle="Hello World">
@@ -39,7 +39,7 @@ const { post } = Astro.props;
             <a href="/" class="breadcrumbs__link">Home</a>
           </li>
           {
-            post.breadcrumbs.map((item: any) => (
+            creation.breadcrumbs.map((item: any) => (
               <li class="breadcrumbs__item">
                 <a href={item.slug} class="breadcrumbs__link">
                   {item.title}
@@ -48,18 +48,22 @@ const { post } = Astro.props;
             ))
           }
           <li class="breadcrumbs__item">
-            <span title={post.title}>{post.title}</span>
+            <span title={creation.title}>{creation.title}</span>
           </li>
         </ol>
         <article class="post">
           <header class="post__header">
             {
-              post.featuredImage && post.showAsBanner && (
+              creation.featuredImage && creation.showAsBanner && (
                 <figure class="post__featured-image">
-                  <img src={post.featuredImage} alt="" data-dialog-trigger />
+                  <img
+                    src={creation.featuredImage}
+                    alt=""
+                    data-dialog-trigger
+                  />
                   <dialog class="image-dialog">
                     <figure>
-                      <img src={post.featuredImage} alt="" />
+                      <img src={creation.featuredImage} alt="" />
                       <button class="image-dialog__close">
                         <Close />
                       </button>
@@ -69,15 +73,35 @@ const { post } = Astro.props;
               )
             }
             <div class="post__meta">
-              <a href={post.tagSlug} class="tag">{post.tag.title}</a>
-              <span class="post__meta-item">{post.readingTime} minute read</span
-              >
-              <span class="post__meta-item">{post.publishedDate}</span>
+              <a href={creation.tagSlug} class="tag">{creation.tag.title}</a>
             </div>
-            <h1 class="post__title">{post.title}</h1>
-            {post.leading && <p class="post__leading">{post.leading}</p>}
+            <h1 class="post__title">{creation.title}</h1>
+            <p class="post__leading">{creation.leading}</p>
           </header>
-          <div class="post__body | u-rich-text" set:html={post.body} />
+          <div class="post__body | u-rich-text">
+            <dl class="details-block">
+              {
+                creation.detailsList.map((item: any) => (
+                  <div class="details-block__item">
+                    <dt class="details-block__term">{item.title}</dt>
+                    <dd class="details-block__detail">
+                      {item.isLinked && (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          class="details-block__link"
+                        >
+                          {item.subtitle}
+                        </a>
+                      )}
+                      {item.subtitle}
+                    </dd>
+                  </div>
+                ))
+              }
+            </dl>
+            <div class="u-rich-text" set:html={creation.body} />
+          </div>
         </article>
       </div>
     </main>
