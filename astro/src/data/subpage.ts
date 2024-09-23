@@ -26,7 +26,5 @@ export const getSubPageData = async function (slug: string) {
         data.body = await generateRichText(data.body);
     }
 
-    console.log(data)
-
     return data;
 }
