@@ -1,4 +1,5 @@
 ---
+import { generateSlug } from "src/data/_utils";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
@@ -8,14 +9,18 @@ import Close from "../icons/Close.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
-  const data = await client.fetch(`*[_type == "creation"]`);
+  const data = await client.fetch(
+    `*[_type == "creation"] { _id, "slug": slug.current }`,
+  );
 
-  const slugs = await Promise.all(
+  const slugList = await Promise.all(
     data.map(async (result: any) => {
-      const creation = await getCreationData(result.slug.current);
+      const creation = await getCreationData(result.slug);
+      const slugData = await generateSlug(result._id);
+      const slug = slugData.slug.replace("/", "");
       return {
         params: {
-          creationSlug: result.slug.current,
+          creationSlug: slug,
         },
         props: {
           creation: creation,
@@ -24,13 +29,17 @@ export async function getStaticPaths() {
     }),
   );
 
-  return slugs;
+  return slugList;
 }
 
 const { creation } = Astro.props;
 ---
 
-<BaseLayout metaTitle="Hello World">
+<BaseLayout
+  metaTitle={creation.title}
+  metaDescription={creation.leading}
+  metaImageUrl={creation.featuredImage}
+>
   <div class="l-site">
     <SiteHeader />
     <main>

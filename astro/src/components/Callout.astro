@@ -1,0 +1,19 @@
+---
+interface Props {
+    text?: string;
+    href?: string;
+    image?: string;
+}
+
+const { text, image, href } = Astro.props;
+---
+
+<div class="[ cq--callout ]">
+    <a href={href} class="callout" target="_blank">
+        <img src={image} alt="" class="callout__image" />
+        <span class="callout__text"
+            >This post was originally written and published at
+            <strong>{text}</strong>. Click to read it there</span
+        >
+    </a>
+</div>

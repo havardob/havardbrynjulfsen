@@ -84,8 +84,8 @@ export const getFrontPageData = async function () {
 
         // Get external data with MQL
         if (article.publishedExternally) {
-            const externalSiteData = await mql(article.publishedExternally.href);
-            article.publishedExternally.image = externalSiteData.data.logo.url;
+            const { data }: any = await mql(article.publishedExternally.href);
+            article.publishedExternally.image = data.logo.url;
         }
 
         // Get a sortable date format and a formatted date

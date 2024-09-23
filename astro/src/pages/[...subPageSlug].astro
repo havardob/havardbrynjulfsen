@@ -1,0 +1,62 @@
+---
+import SiteFooter from "src/components/SiteFooter.astro";
+import SiteHeader from "src/components/SiteHeader.astro";
+import { client } from "src/data/_sanityClient";
+import { generateSlug } from "src/data/_utils";
+import { getSubPageData } from "src/data/subpage";
+import BaseLayout from "src/layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+    const data = await client.fetch(
+        `*[_type == "subPage"] { _id, "slug": slug.current }`,
+    );
+
+    const slugs = await Promise.all(
+        data.map(async (result: any) => {
+            const subPage = await getSubPageData(result.slug);
+
+            return {
+                params: {
+                    subPageSlug: result.slug,
+                },
+                props: {
+                    subPage: subPage,
+                },
+            };
+        }),
+    );
+
+    return slugs;
+}
+
+const { subPage } = Astro.props;
+---
+
+<BaseLayout metaTitle={subPage.title}>
+    <div class="l-site">
+        <SiteHeader />
+        <main>
+            <div class="l-constraint">
+                <div class="page">
+                    <div class="page__column">
+                        <h2 class="page__title">{subPage.title}</h2>
+                        {
+                            subPage.leading && (
+                                <p class="page__intro">{subPage.leading}</p>
+                            )
+                        }
+                        {
+                            subPage.body && (
+                                <div
+                                    class="page__body | u-rich-text"
+                                    set:html={subPage.body}
+                                />
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
+        </main>
+        <SiteFooter />
+    </div>
+</BaseLayout>

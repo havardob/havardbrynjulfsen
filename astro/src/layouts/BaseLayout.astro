@@ -77,7 +77,7 @@ const { metaTitle, metaDescription, metaImageUrl } = Astro.props;
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-RH36PND6MY"
         ></script>
-        <script>
+        <script is:inline>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
                 dataLayer.push(arguments);

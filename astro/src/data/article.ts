@@ -30,45 +30,45 @@ export const getArticleData = async function (slug?: string) {
         }       
     }`
 
-    const data = await client.fetch(query);
+    const result = await client.fetch(query);
     // Get fullSlug
-    const fullSlug = await generateSlug(data._id)
-    data.fullSlug = fullSlug.slug;
+    const fullSlug = await generateSlug(result._id)
+    result.fullSlug = fullSlug.slug;
 
     // Convert body text to html
-    if (data.body) {
-        data.body = await generateRichText(data.body);
-        data.readingTime = getReadingTime(data.body);
+    if (result.body) {
+        result.body = await generateRichText(result.body);
+        result.readingTime = getReadingTime(result.body);
     } else {
-        data.readingTime = 1;
+        result.readingTime = 1;
     }
 
-    // Get external data with MQL
-    if (data.publishedExternally) {
-        const externalSiteData = await mql(data.publishedExternally.href);
-        data.publishedExternally.image = externalSiteData.data.logo.url;
+    // Get external result with MQL
+    if (result.publishedExternally) {
+        const { data }: any = await mql(result.publishedExternally.href);
+        result.publishedExternally.image = data.logo.url;
     }
 
     // Get a sortable date format and a formatted date
-    if (data.publishedDate) {
-        const dateForSorting = new Date(data.publishedDate);
-        const rssDate = new Date(data.publishedDate);
-        data.rssDate = rssDate;
-        data.dateForSorting = dateForSorting.getTime();
-        data.publishedDate = formatDate(data.publishedDate);
+    if (result.publishedDate) {
+        const dateForSorting = new Date(result.publishedDate);
+        const rssDate = new Date(result.publishedDate);
+        result.rssDate = rssDate;
+        result.dateForSorting = dateForSorting.getTime();
+        result.publishedDate = formatDate(result.publishedDate);
     }
 
     // Generate tag slug 
-    if (data.tag) {
-        const tag = await generateSlug(data.tag._id)
-        data.tagSlug = tag.slug;
+    if (result.tag) {
+        const tag = await generateSlug(result.tag._id)
+        result.tagSlug = tag.slug;
     }
 
     let breadcrumbs = [];
     const grandParent = await generateSlug('articleArchive');
     breadcrumbs.push({ title: grandParent.title, slug: grandParent.slug });
-    breadcrumbs.push({ title: data.tag.title, slug: data.tagSlug });
-    data.breadcrumbs = breadcrumbs;
+    breadcrumbs.push({ title: result.tag.title, slug: result.tagSlug });
+    result.breadcrumbs = breadcrumbs;
 
-    return data;
+    return result;
 } 

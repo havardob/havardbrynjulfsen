@@ -1,6 +1,6 @@
 ---
 interface Props {
-    items: [];
+    items?: [];
     current: string;
 }
 
@@ -12,7 +12,7 @@ const { items, current } = Astro.props;
         <a href="/" class="breadcrumbs__link">Home</a>
     </li>
     {
-        items.map((item: any) => (
+        items?.map((item: any) => (
             <li class="breadcrumbs__item">
                 <a href={item.slug} class="breadcrumbs__link">
                     {item.title}

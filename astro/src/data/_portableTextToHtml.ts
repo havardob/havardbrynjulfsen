@@ -2,15 +2,15 @@ import hljs from "highlight.js";
 
 export const portableTextToHtml = {
     marks: {
-        externalLink: ({ children, value }) => {
+        externalLink: ({ children, value }: any) => {
             return `<a href="${value.href}">${children}</a>`;
         },
-        internalLink: ({ children, value }) => {
+        internalLink: ({ children, value }: any) => {
             return `<a href="${value.href}">${children}</a>`;
         },
     },
     types: {
-        horizontalRule: ({ value }) => {
+        horizontalRule: ({ value }: any) => {
             return `
                 <hr style="${value.isDashed && 'dashed'}" />
             `
@@ -32,7 +32,7 @@ export const portableTextToHtml = {
                 </div>
             </div>`
         },
-        imageBlock: ({ value }) => {
+        imageBlock: ({ value }: any) => {
             return `
                 <figure class="image-block | ${value.size}">
                     <div class="image-block__frame"> 
@@ -60,7 +60,7 @@ export const portableTextToHtml = {
                     ` : ''}
                 </figure>`
         },
-        embedBlock: ({ value }) => {
+        embedBlock: ({ value }: any) => {
             return `
                 <div class="embed-block ${value.size}">
                     ${value.code}

@@ -1,0 +1,50 @@
+---
+import Breadcrumbs from "src/components/Breadcrumbs.astro";
+import SiteFooter from "src/components/SiteFooter.astro";
+import SiteHeader from "src/components/SiteHeader.astro";
+import { getAboutPageData } from "src/data/aboutPage";
+import BaseLayout from "src/layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+    const aboutPageData = await getAboutPageData();
+    return [
+        {
+            params: {
+                aboutPageSlug: aboutPageData.slug,
+            },
+            props: {
+                aboutPage: aboutPageData,
+            },
+        },
+    ];
+}
+
+const { aboutPage } = Astro.props;
+---
+
+<BaseLayout metaTitle={aboutPage.title}>
+    <div class="l-site">
+        <SiteHeader />
+        <main>
+            <div class="l-constraint">
+                <Breadcrumbs current={aboutPage.title} />
+                <div class="page">
+                    <div class="page__column">
+                        <h2 class="page__title">{aboutPage.title}</h2>
+                        <p class="page__intro">
+                            {aboutPage.leading}
+                        </p>
+                        <div
+                            class="page__body | u-rich-text"
+                            set:html={aboutPage.body}
+                        />
+                    </div>
+                    <div class="page__column">
+                        <img src={aboutPage.profileImage} class="page__image" />
+                    </div>
+                </div>
+            </div>
+        </main>
+        <SiteFooter />
+    </div>
+</BaseLayout>
