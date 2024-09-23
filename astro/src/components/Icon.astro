@@ -1,0 +1,27 @@
+---
+import Codepen from "../icons/Codepen.astro";
+import X from "../icons/X.astro";
+import Mastodon from "../icons/Mastodon.astro";
+import Medium from "../icons/Medium.astro";
+import Sanity from "../icons/Sanity.astro";
+import Rss from "../icons/Rss.astro";
+import Github from "../icons/Github.astro";
+import ChevronUp from "../icons/ChevronUp.astro";
+
+interface Props {
+    name: string
+}
+
+const { name } = Astro.props;
+---
+
+<>
+    {name === 'codepen' && <Codepen />}
+    {name === 'x' && <X />}
+    {name === 'mastodon' && <Mastodon />}
+    {name === 'medium' && <Medium />}
+    {name === 'sanity' && <Sanity />}
+    {name === 'rss' && <Rss />}
+    {name === 'github' && <Github />}
+    {name === 'chevron' && <ChevronUp />}
+</>

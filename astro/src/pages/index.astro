@@ -1,0 +1,75 @@
+---
+import Hero from "../components/Hero.astro";
+import PostPreview from "../components/PostPreview.astro";
+import ProjectPreview from "../components/ProjectPreview.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { getArticleData } from "../data/article";
+import { getFrontPageData } from "../data/frontPage";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const frontPage = await getFrontPageData();
+---
+
+<BaseLayout metaTitle="Home">
+	<div class="l-site">
+		<SiteHeader />
+		<main>
+			<div class="l-constraint">
+				<Hero
+					title={frontPage.hero.title}
+					intro={frontPage.hero.intro}
+				/>
+				<section class="section section--featured-creations">
+					<h2 class="section__title">{frontPage.creations.title}</h2>
+					<ul class="section__grid">
+						{
+							frontPage.creations.items.map((item: any) => (
+								<li class="section__grid-item">
+									<ProjectPreview
+										title={item.title}
+										image={item.featuredImage}
+										slug={item.fullSlug}
+										tagline={item.tagline}
+										tagTitle={item.tagTitle}
+										tagHref={item.tagSlug}
+									/>
+								</li>
+							))
+						}
+					</ul>
+				</section>
+				<section class="section section--featured-posts">
+					<h2 class="section__title">{frontPage.articles.title}</h2>
+					<ul class="section__list">
+						{
+							frontPage.articles.items.map((article: any) => (
+								<li class="section__list-item">
+									<PostPreview
+										title={article.title}
+										slug={article.fullSlug}
+										readingTime={article.readingTime}
+										publishedDate={article.publishedDate}
+										tag={{
+											title: article.tagTitle,
+											href: article.tagSlug,
+										}}
+										external={{
+											image: article.publishedExternally
+												?.image,
+											href: article.publishedExternally
+												?.href,
+											text: article.publishedExternally
+												?.text,
+										}}
+									/>
+								</li>
+							))
+						}
+					</ul>
+				</section>
+			</div>
+		</main>
+		<SiteFooter />
+	</div>
+</BaseLayout>

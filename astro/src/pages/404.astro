@@ -1,0 +1,23 @@
+---
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+	<div class="l-site">
+		<SiteHeader />
+		<main>
+            <div class="l-constraint">
+                <article class="post">
+                  <header class="post__header">
+                    <h1 class="post__title">Page not found</h1>
+                      <p class="post__leading">This page must have been moved or deleted. I know, it's annoying, but that's just how it is sometimes <br /><br />(¬_¬ )</p>
+                  </header>
+                  <div class="article-body"></div>
+                </article>
+              </div>
+		</main>
+		<SiteFooter />
+	</div>
+</BaseLayout>

@@ -1,0 +1,16 @@
+---
+  interface Props {
+    title: string,
+    intro?: string 
+  }
+
+  const { title, intro } = Astro.props;
+---
+
+<div class="hero">
+    <h1 class="hero__title">{title}</h1>
+    {intro && (
+      <div class="hero__intro | u-rich-text" set:html={intro}>
+      </div>
+    )}
+  </div>

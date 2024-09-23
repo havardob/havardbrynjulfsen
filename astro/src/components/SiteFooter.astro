@@ -1,0 +1,47 @@
+---
+import ChevronUp from "../icons/ChevronUp.astro";
+
+import { getSiteSettingsData } from "../data/siteSettings";
+import Icon from "./Icon.astro";
+
+const siteSettings = await getSiteSettingsData();
+
+---
+
+<footer class="footer">
+  <div class="l-constraint">
+    <div class="footer__inner">
+      <div class="footer__some">
+        <ul class="some-list">
+          {
+            siteSettings?.someLinks?.map((item: any) => (
+              <li class="some-list__item">
+                <a href={item.href} class="some-list__link | has-tooltip">
+                  <span class="tooltip tooltip--lb">{item.label}</span>
+                  <Icon name={item.icon} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="footer__menu">
+        <ul class="footer__menu-list">
+          {
+            siteSettings?.footerNav?.map((item: any) => (
+              <li class="footer__menu-item">
+                <a href={item.href} class="footer__menu-link">
+                  {item.text}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <a href="#top" class="footer__back-to-top | has-tooltip">
+        <span class="tooltip tooltip--rb">To the top</span>
+        <ChevronUp />
+      </a>
+    </div>
+  </div>
+</footer>

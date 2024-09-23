@@ -1,0 +1,133 @@
+---
+import Menu from "../icons/Menu.astro";
+import Moon from "../icons/Moon.astro";
+import { getSiteSettingsData } from "../data/siteSettings";
+
+const siteSettings = await getSiteSettingsData();
+---
+
+<header class="header">
+    <div class="l-constraint">
+        <div class="header__inner">
+            <a class="header__logo | has-tooltip" href="/">
+                <svg
+                    width="24"
+                    height="20"
+                    viewBox="0 0 24 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M12.0005 0L0.742188 19.5H23.2589L12.0005 0ZM12.0005 4L4.20629 17.5H19.7947L12.0005 4Z"
+                        fill="currentColor"></path>
+                </svg>
+                <span class="tooltip tooltip--lt">Home</span>
+            </a>
+            <div class="header__actions">
+                <nav class="main-nav">
+                    <ul class="main-nav__list">
+                        {
+                            siteSettings?.mainNav?.map((item: any) => (
+                                <li class="main-nav__item">
+                                    <a href={item.href} class="main-nav__link">
+                                        <span>{item.text}</span>
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </nav>
+                <button
+                    class="header__theme-toggle | has-tooltip"
+                    id="themeToggle"
+                >
+                    <span class="tooltip tooltip--rt">Change theme</span>
+                    <Moon />
+                </button>
+                <button
+                    class="header__menu-toggle"
+                    id="menuThemeToggle"
+                    aria-label="Change theme"
+                >
+                    <span class="header__menu-toggle-label">Theme</span>
+                    <Moon />
+                </button>
+                <button
+                    class="header__menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open menu"
+                >
+                    <span class="header__menu-toggle-label">Menu</span>
+                    <Menu />
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="menu" id="menuContainer">
+    <div class="l-constraint">
+        <nav class="menu__nav">
+            <ul class="menu__list">
+                {
+                    siteSettings?.mainNav?.map((item: any) => (
+                        <li class="menu__item">
+                            <a href={item.href} class="menu__link">
+                                <span>{item.text}</span>
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<script>
+    const html = document.documentElement;
+    const themeToggle = document.getElementById("themeToggle");
+    const menuThemeToggle = document.getElementById("menuThemeToggle");
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", function () {
+            toggleDarkTheme();
+        });
+    }
+
+    if (menuThemeToggle) {
+        menuThemeToggle.addEventListener("click", function () {
+            toggleDarkTheme();
+        });
+    }
+
+    function toggleDarkTheme() {
+        html.classList.toggle("theme-inverted");
+        if (localStorage.getItem("theme") === "theme-inverted") {
+            localStorage.removeItem("theme");
+        } else {
+            localStorage.setItem("theme", "theme-inverted");
+        }
+    }
+
+    const menuToggle = document.getElementById("menuToggle");
+    const menuContainer = document.getElementById("menuContainer");
+
+    if (menuToggle && menuContainer) {
+        menuToggle.addEventListener("click", function () {
+            menuToggle.classList.toggle("is-open");
+            menuContainer.classList.toggle("is-open");
+            html.classList.toggle("menu-is-open");
+        });
+    }
+
+    function setStoredTheme() {
+        let storedTheme = localStorage.getItem("theme");
+        if (storedTheme) {
+            html.classList.add(storedTheme);
+        }
+    }
+
+    setStoredTheme();
+</script>
