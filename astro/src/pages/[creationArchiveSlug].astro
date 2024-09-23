@@ -1,13 +1,74 @@
 ---
+import Breadcrumbs from "src/components/Breadcrumbs.astro";
+import ProjectPreview from "src/components/ProjectPreview.astro";
+import SiteFooter from "src/components/SiteFooter.astro";
+import SiteHeader from "src/components/SiteHeader.astro";
+import { getCreationData } from "src/data/creation";
+import { getCreationArchiveData } from "src/data/creationArchive";
+import BaseLayout from "src/layouts/BaseLayout.astro";
+
 export async function getStaticPaths() {
+    const creationArchiveData = await getCreationArchiveData();
+
+    let creations: any[] = [];
+    creationArchiveData.creationList.map(async (item: any) => {
+        item = await getCreationData(item.slug);
+        creations.push(item);
+    });
+
     return [
         {
             params: {
-                creationArchiveSlug: "creations",
+                creationArchiveSlug: creationArchiveData.slug,
+            },
+            props: {
+                creationArchive: creationArchiveData,
+                creations: creations,
             },
         },
     ];
 }
+
+let { creationArchive, creations } = Astro.props;
 ---
 
-<h1>Creations</h1>
+<BaseLayout metaTitle={creationArchive.title}>
+    <div class="l-site">
+        <SiteHeader />
+        <main>
+            <div class="l-constraint">
+                <Breadcrumbs current={creationArchive.title} />
+                <div class="archive-page">
+                    <div class="archive-page__header">
+                        <h2 class="archive-page__title">
+                            {creationArchive.title}
+                        </h2>
+                        <div
+                            class="archive-page__intro | u-rich-text"
+                            set:html={creationArchive.leading}
+                        />
+                    </div>
+                    <div class="projects">
+                        <ul class="projects__list">
+                            {
+                                creations.map((item: any) => (
+                                    <li class="projects__item">
+                                        <ProjectPreview
+                                            title={item.title}
+                                            image={item.featuredImage}
+                                            slug={item.fullSlug}
+                                            tagline={item.tagline}
+                                            tagTitle={item.tagTitle}
+                                            tagHref={item.tagSlug}
+                                        />
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <SiteFooter />
+    </div>
+</BaseLayout>

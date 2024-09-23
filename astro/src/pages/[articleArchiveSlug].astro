@@ -1,13 +1,116 @@
 ---
+import PostPreview from "src/components/PostPreview.astro";
+import SiteFooter from "src/components/SiteFooter.astro";
+import SiteHeader from "src/components/SiteHeader.astro";
+import { client } from "src/data/_sanityClient";
+import { getArticleData } from "src/data/article";
+import { getArticleArchiveData } from "src/data/articleArchive";
+import Rss from "src/icons/Rss.astro";
+import BaseLayout from "src/layouts/BaseLayout.astro";
+
 export async function getStaticPaths() {
+    const articleArchiveData = await getArticleArchiveData();
+    const allArticles = await client.fetch(
+        `*[_type == "article"] { "slug": slug.current }`,
+    );
+
+    let articles: any[] = [];
+    allArticles.map(async (item: any) => {
+        item = await getArticleData(item.slug);
+        articles.push(item);
+    });
+
     return [
         {
             params: {
-                articleArchiveSlug: "writing",
+                articleArchiveSlug: articleArchiveData.slug,
+            },
+            props: {
+                articleArchive: articleArchiveData,
+                articles: articles,
             },
         },
     ];
 }
+
+let { articleArchive, articles } = Astro.props;
+
+articles = articles.sort(
+    (a: any, b: any) => b.dateForSorting - a.dateForSorting,
+);
 ---
 
-<h1>Writing</h1>
+<BaseLayout metaTitle={articleArchive.title}>
+    <div class="l-site">
+        <SiteHeader />
+        <main>
+            <div class="l-constraint">
+                <ol class="breadcrumbs">
+                    <li class="breadcrumbs__item">
+                        <a href="/" class="breadcrumbs__link">Home</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <span title="{{ articleArchive.title }}"
+                            >{articleArchive.title}</span
+                        >
+                    </li>
+                </ol>
+                <div class="archive-page">
+                    <div class="archive-page__header">
+                        <h2 class="archive-page__title">
+                            {articleArchive.title}
+                        </h2>
+                        <div
+                            class="archive-page__intro | u-rich-text"
+                            set:html={articleArchive.leading}
+                        />
+                        <div class="archive-page__rss">
+                            <a href="/feed.xml" class="rss-link">
+                                <span class="rss-link__icon">
+                                    <Rss />
+                                </span>
+                                <div class="rss-link__content">
+                                    <span class="rss-link__title"
+                                        >Stay up to date</span
+                                    >
+                                    <span class="rss-link__desc"
+                                        >Subscribe to feed</span
+                                    >
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="posts">
+                        <ul class="posts-list">
+                            {
+                                articles.map((item: any) => (
+                                    <li class="posts-list__item">
+                                        <PostPreview
+                                            title={item.title}
+                                            slug={item.fullSlug}
+                                            readingTime={item.readingTime}
+                                            publishedDate={item.publishedDate}
+                                            tag={{
+                                                title: item.tagTitle,
+                                                href: item.tagSlug,
+                                            }}
+                                            external={{
+                                                image: item.publishedExternally
+                                                    ?.image,
+                                                href: item.publishedExternally
+                                                    ?.href,
+                                                text: item.publishedExternally
+                                                    ?.text,
+                                            }}
+                                        />
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <SiteFooter />
+    </div>
+</BaseLayout>
