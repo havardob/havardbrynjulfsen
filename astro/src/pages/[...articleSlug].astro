@@ -1,37 +1,27 @@
 ---
-import { generateSlug } from "src/data/_utils";
-import Breadcrumbs from "src/components/Breadcrumbs.astro";
-import SiteFooter from "src/components/SiteFooter.astro";
-import SiteHeader from "src/components/SiteHeader.astro";
-import { client } from "src/data/_sanityClient";
-import { getArticleData } from "src/data/article";
-import Close from "src/icons/Close.astro";
-import BaseLayout from "src/layouts/BaseLayout.astro";
-import Callout from "src/components/Callout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { getArticleData } from "../data/article";
+import Close from "../icons/Close.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Callout from "../components/Callout.astro";
 
 export async function getStaticPaths() {
-  const data = await client.fetch(
-    `*[_type == "article"] { _id, "slug": slug.current }`,
-  );
+  const articles = await getArticleData();
 
-  const slugs = await Promise.all(
-    data.map(async (result: any) => {
-      const article = await getArticleData(result.slug);
-      const slugData = await generateSlug(result._id);
-
-      const slug = slugData.slug.replace("/", "");
+  return await Promise.all(
+    articles.map(async (result: any) => {
       return {
         params: {
-          articleSlug: slug,
+          articleSlug: result.fullSlug,
         },
         props: {
-          article: article,
+          article: result,
         },
       };
     }),
   );
-
-  return slugs;
 }
 
 const { article } = Astro.props;
@@ -65,7 +55,7 @@ const { article } = Astro.props;
               )
             }
             <div class="post__meta">
-              <a href={article.tagSlug} class="tag">{article.tag.title}</a>
+              <a href={article.tag.slug} class="tag">{article.tag.title}</a>
               <span class="post__meta-item"
                 >{article.readingTime} minute read</span
               >

@@ -1,60 +1,36 @@
 ---
-import PostPreview from "src/components/PostPreview.astro";
-import SiteFooter from "src/components/SiteFooter.astro";
-import SiteHeader from "src/components/SiteHeader.astro";
-import { client } from "src/data/_sanityClient";
-import { getArticleData } from "src/data/article";
-import { getArticleArchiveData } from "src/data/articleArchive";
-import Rss from "src/icons/Rss.astro";
-import BaseLayout from "src/layouts/BaseLayout.astro";
+import PostPreview from "../components/PostPreview.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { getArticleArchiveData } from "../data/articleArchive";
+import Rss from "../icons/Rss.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
 
 export async function getStaticPaths() {
-    const articleArchiveData = await getArticleArchiveData();
-    const allArticles = await client.fetch(
-        `*[_type == "article"] { "slug": slug.current }`,
-    );
-
-    let articles: any[] = [];
-    allArticles.map(async (item: any) => {
-        item = await getArticleData(item.slug);
-        articles.push(item);
-    });
+    const articleArchive = await getArticleArchiveData();
 
     return [
         {
             params: {
-                articleArchiveSlug: articleArchiveData.slug,
+                articleArchiveSlug: articleArchive.slug,
             },
             props: {
-                articleArchive: articleArchiveData,
-                articles: articles,
+                articleArchive: articleArchive
             },
         },
     ];
 }
 
-let { articleArchive, articles } = Astro.props;
-
-articles = articles.sort(
-    (a: any, b: any) => b.dateForSorting - a.dateForSorting,
-);
+let { articleArchive } = Astro.props;
 ---
 
-<BaseLayout metaTitle={articleArchive.title}>
+<BaseLayout metaTitle={articleArchive.title} metaDescription={articleArchive.leading}>
     <div class="l-site">
         <SiteHeader />
         <main>
             <div class="l-constraint">
-                <ol class="breadcrumbs">
-                    <li class="breadcrumbs__item">
-                        <a href="/" class="breadcrumbs__link">Home</a>
-                    </li>
-                    <li class="breadcrumbs__item">
-                        <span title="{{ articleArchive.title }}"
-                            >{articleArchive.title}</span
-                        >
-                    </li>
-                </ol>
+                <Breadcrumbs current={articleArchive.title} />
                 <div class="archive-page">
                     <div class="archive-page__header">
                         <h2 class="archive-page__title">
@@ -83,16 +59,17 @@ articles = articles.sort(
                     <div class="posts">
                         <ul class="posts-list">
                             {
-                                articles.map((item: any) => (
+                                articleArchive.articles.map((item: any) => (
                                     <li class="posts-list__item">
                                         <PostPreview
                                             title={item.title}
+                                            excerpt={item.leading}
                                             slug={item.fullSlug}
                                             readingTime={item.readingTime}
                                             publishedDate={item.publishedDate}
                                             tag={{
-                                                title: item.tagTitle,
-                                                href: item.tagSlug,
+                                                title: item.tag.title,
+                                                href: item.tag.slug,
                                             }}
                                             external={{
                                                 image: item.publishedExternally

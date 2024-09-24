@@ -1,35 +1,26 @@
 ---
-import { generateSlug } from "src/data/_utils";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import { client } from "../data/_sanityClient";
 import { getCreationData } from "../data/creation";
 import Close from "../icons/Close.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
-  const data = await client.fetch(
-    `*[_type == "creation"] { _id, "slug": slug.current }`,
-  );
+  const creations = await getCreationData();
 
-  const slugList = await Promise.all(
-    data.map(async (result: any) => {
-      const creation = await getCreationData(result.slug);
-      const slugData = await generateSlug(result._id);
-      const slug = slugData.slug.replace("/", "");
+  return await Promise.all(
+    creations.map(async (result: any) => {
       return {
         params: {
-          creationSlug: slug,
+          creationSlug: result.fullSlug,
         },
         props: {
-          creation: creation,
+          creation: result,
         },
       };
     }),
   );
-
-  return slugList;
 }
 
 const { creation } = Astro.props;

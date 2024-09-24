@@ -1,78 +1,36 @@
 ---
-import { client } from "src/data/_sanityClient";
-import { generateSlug } from "src/data/_utils";
-import BaseLayout from "src/layouts/BaseLayout.astro";
-import { getTagPageData } from "src/data/tag";
-import Breadcrumbs from "src/components/Breadcrumbs.astro";
-import SiteHeader from "src/components/SiteHeader.astro";
-import SiteFooter from "src/components/SiteFooter.astro";
-import { getArticleData } from "src/data/article";
-import { getCreationData } from "src/data/creation";
-import ProjectPreview from "src/components/ProjectPreview.astro";
-import PostPreview from "src/components/PostPreview.astro";
+import { client } from "../data/_sanityClient";
+import { generateSlug } from "../data/_utils";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getTagPageData } from "../data/tag";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 
 export async function getStaticPaths() {
     const data = await client.fetch(
         `*[_type == "tag"] { _id, "slug": slug.current }`,
     );
 
-    const allArticles = await client.fetch(
-        `*[_type == "article"] { "slug": slug.current, tag-> }`,
-    );
-    const allCreations = await client.fetch(
-        `*[_type == "creation"] { "slug": slug.current, tag-> }`,
-    );
-
-    const slugList = await Promise.all(
+    return await Promise.all(
         data.map(async (result: any) => {
             let tag = await getTagPageData(result.slug);
             const slugData = await generateSlug(result._id);
             const slug = slugData.slug.replace("/", "");
-
-            let articlesWithTag: any[] = [];
-            let creationsWithTag: any[] = [];
-
-            if (tag.type === "article") {
-                allArticles.map(async (item: any) => {
-                    if (tag.title === item.tag.title) {
-                        item = await getArticleData(item.slug);
-                        articlesWithTag.push(item);
-                    }
-                });
-            }
-
-            if (tag.type === "creation") {
-                allCreations.map(async (item: any) => {
-                    if (tag.title === item.tag.title) {
-                        item = await getCreationData(item.slug);
-                        creationsWithTag.push(item);
-                    }
-                });
-            }
 
             return {
                 params: {
                     tagSlug: slug,
                 },
                 props: {
-                    tag: tag,
-                    articles: articlesWithTag,
-                    creations: creationsWithTag,
+                    tag: tag
                 },
             };
         }),
     );
-
-    return slugList;
 }
 
-let { tag, articles, creations } = Astro.props;
-
-articles = articles.sort(
-    (a: any, b: any) => b.dateForSorting - a.dateForSorting,
-);
-
-creations = creations.sort((a: any, b: any) => b._createdAt - a._createdAt);
+let { tag } = Astro.props;
 ---
 
 <BaseLayout metaTitle={tag.title}>
@@ -95,50 +53,12 @@ creations = creations.sort((a: any, b: any) => b._createdAt - a._createdAt);
                         tag.type === "article" ? (
                             <div class="posts">
                                 <ul class="posts-list">
-                                    {articles.map((item: any) => (
-                                        <li class="posts-list__item">
-                                            <PostPreview
-                                                title={item.title}
-                                                slug={item.fullSlug}
-                                                readingTime={item.readingTime}
-                                                publishedDate={
-                                                    item.publishedDate
-                                                }
-                                                tag={{
-                                                    title: item.tagTitle,
-                                                    href: item.tagSlug,
-                                                }}
-                                                external={{
-                                                    image: item
-                                                        .publishedExternally
-                                                        ?.image,
-                                                    href: item
-                                                        .publishedExternally
-                                                        ?.href,
-                                                    text: item
-                                                        .publishedExternally
-                                                        ?.text,
-                                                }}
-                                            />
-                                        </li>
-                                    ))}
                                 </ul>
                             </div>
                         ) : (
                             <div class="projects">
                                 <ul class="projects__list">
-                                    {creations.map((item: any) => (
-                                        <li class="projects__list-item">
-                                            <ProjectPreview
-                                                title={item.title}
-                                                image={item.featuredImage}
-                                                slug={item.fullSlug}
-                                                tagline={item.tagline}
-                                                tagTitle={item.tagTitle}
-                                                tagHref={item.tagSlug}
-                                            />
-                                        </li>
-                                    ))}
+
                                 </ul>
                             </div>
                         )
