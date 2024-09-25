@@ -2,128 +2,127 @@
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import { getCreationData } from "../data/creation";
+import {getCreationData} from "../data/creation";
 import Close from "../icons/Close.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
-  const creations = await getCreationData();
+    const creations = await getCreationData();
 
-  return await Promise.all(
-    creations.map(async (result: any) => {
-      return {
-        params: {
-          creationSlug: result.fullSlug,
-        },
-        props: {
-          creation: result,
-        },
-      };
-    }),
-  );
+    return await Promise.all(
+        creations.map(async (result: any) => {
+            return {
+                params: {
+                    creationSlug: result.fullSlug,
+                },
+                props: {
+                    creation: result,
+                },
+            };
+        }),
+    );
 }
 
-const { creation } = Astro.props;
+const {creation} = Astro.props;
 ---
 
 <BaseLayout
-  metaTitle={creation.title}
-  metaDescription={creation.leading}
-  metaImageUrl={creation.featuredImage}
+        metaTitle={creation.title}
+        metaDescription={creation.leading}
+        metaImageUrl={creation.featuredImage}
 >
   <div class="l-site">
-    <SiteHeader />
+    <SiteHeader/>
     <main>
       <div class="l-constraint">
-        <Breadcrumbs items={creation.breadcrumbs} current={creation.title} />
+        <Breadcrumbs items={creation.breadcrumbs} current={creation.title}/>
         <article class="post">
           <header class="post__header">
-            {
-              creation.featuredImage && creation.showAsBanner && (
-                <figure class="post__featured-image">
-                  <img
-                    src={creation.featuredImage}
-                    alt=""
-                    data-dialog-trigger
-                  />
-                  <dialog class="image-dialog">
-                    <figure>
-                      <img src={creation.featuredImage} alt="" />
-                      <button class="image-dialog__close">
-                        <Close />
-                      </button>
-                    </figure>
-                  </dialog>
-                </figure>
-              )
-            }
+              {
+                  creation.featuredImage && creation.showAsBanner && (
+                              <figure class="post__featured-image">
+                                <img
+                                        src={creation.featuredImage}
+                                        alt=""
+                                        data-dialog-trigger
+                                />
+                                <dialog class="image-dialog">
+                                  <figure>
+                                    <img src={creation.featuredImage} alt=""/>
+                                    <button class="image-dialog__close">
+                                      <Close/>
+                                    </button>
+                                  </figure>
+                                </dialog>
+                              </figure>
+                  )
+              }
             <div class="post__meta">
-              <a href={creation.tagSlug} class="tag">{creation.tag.title}</a>
+              <a href={creation.tag.slug} class="tag">{creation.tag.title}</a>
             </div>
             <h1 class="post__title">{creation.title}</h1>
             <p class="post__leading">{creation.leading}</p>
           </header>
           <div class="post__body | u-rich-text">
             <dl class="details-block">
-              {
-                creation.detailsList.map((item: any) => (
-                  <div class="details-block__item">
-                    <dt class="details-block__term">{item.title}</dt>
-                    <dd class="details-block__detail">
-                      {item.isLinked && (
-                        <a
-                          href={item.href}
-                          target="_blank"
-                          class="details-block__link"
-                        >
-                          {item.subtitle}
-                        </a>
-                      )}
-                      {item.subtitle}
-                    </dd>
-                  </div>
-                ))
-              }
+                {
+                    creation.detailsList.map((item: any) => (
+                            <div class="details-block__item">
+                              <dt class="details-block__term">{item.title}</dt>
+                              <dd class="details-block__detail">
+                                  {item.isLinked ? (
+                                          <a
+                                                  href={item.href}
+                                                  target="_blank"
+                                                  class="details-block__link"
+                                          >
+                                              {item.subtitle}
+                                          </a>
+                                  ) : item.subtitle}
+                              </dd>
+                            </div>
+                    ))
+                }
             </dl>
-            <div class="u-rich-text" set:html={creation.body} />
+            <div class="u-rich-text" set:html={creation.body}/>
           </div>
         </article>
       </div>
     </main>
-    <SiteFooter />
+    <SiteFooter/>
   </div>
 </BaseLayout>
 
 <script is:inline>
-  // Open image dialog
-  const imageDialogTriggers = document.querySelectorAll(
-    "[data-dialog-trigger]",
-  );
+    // Open image dialog
+    const imageDialogTriggers = document.querySelectorAll(
+        "[data-dialog-trigger]",
+    );
 
-  if (imageDialogTriggers) {
-    imageDialogTriggers.forEach((trigger) => {
-      if (trigger) {
-        trigger.style.cursor = "pointer";
-        const dialog = trigger.nextElementSibling;
+    if (imageDialogTriggers) {
+        imageDialogTriggers.forEach((trigger) => {
+            if (trigger) {
+                trigger.style.cursor = "pointer";
+                const dialog = trigger.nextElementSibling;
 
-        if (dialog) {
-          const html = document.querySelector("html");
-          const closeButton = dialog.querySelector("button");
-          trigger.addEventListener("click", () => {
-            html.style.overflowY = "hidden";
-            dialog.showModal();
-          });
+                if (dialog) {
+                    const html = document.querySelector("html");
+                    const closeButton = dialog.querySelector("button");
+                    trigger.addEventListener("click", () => {
+                        html.style.overflowY = "hidden";
+                        dialog.showModal();
+                    });
 
-          if (closeButton) {
-            closeButton.addEventListener("click", () => {
-              html.style.overflowY = "initial";
-              dialog.close();
-            });
-          }
-        }
-      } else {
-        return;
-      }
-    });
-  }
+                    if (closeButton) {
+                        closeButton.addEventListener("click", () => {
+                            html.style.overflowY = "initial";
+                            dialog.close();
+                        });
+                    }
+                }
+            } else {
+                return;
+            }
+        });
+    }
 </script>

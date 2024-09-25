@@ -1,62 +1,43 @@
 import {client} from "./_sanityClient";
-import {generateSlug, generateRichText} from "./_utils";
+import {generateRichText} from "./_utils";
+import {groqGetBody, groqGetGrandparent, groqGetSlug} from "../helpers/queries.ts";
 
 
 export const getCreationData = async function () {
     const query = `*[_type == "creation"] { 
         _id,
+        _type,
         title,
+        "fullSlug": ${groqGetSlug()}, 
+        "grandparent": ${groqGetGrandparent()},       
         tagline,
         leading,
-        tag ->,
+        tag -> {
+            _id,
+            title,
+            "slug": ${groqGetSlug()}
+        },
         "featuredImage": featuredImage.asset->url, 
-        showAsBanner,
-        "tagSlug": tag -> slug.current, 
-        "tagTitle": tag -> title, 
-        "slug": slug.current, 
+        showAsBanner, 
         detailsList[] {      
             ...,  
         }, 
-        body[] {  
-            ..., 
-            _type == "imageBlock" => {
-                ...,
-                "imageFile": imageFile.asset->url, 
-            }, 
-            markDefs[] { 
-                ..., 
-                _type == "internalLink" => {
-                    "href": internalDocument-> slug.current  
-                } 
-            }   
-        }      
+        "body": ${groqGetBody()}
     }`
-
 
     const result = await client.fetch(query);
 
     for (let creation of result) {
-        // Get fullSlug
-        const fullSlug = await generateSlug(creation._id)
-        creation.fullSlug = fullSlug.slug;
 
         // Convert body text to html
         if (creation.body) {
-            creation.body = await generateRichText(creation.body);
-        }
-
-        // Generate tag slug 
-        if (creation.tag) {
-            const tag = await generateSlug(creation.tag._id)
-            creation.tagSlug = tag.slug;
+            creation.body = generateRichText(creation.body);
         }
 
         let breadcrumbs = [];
-        const grandParent = await generateSlug('creationArchive');
-        breadcrumbs.push({title: grandParent.title, slug: grandParent.slug});
-        breadcrumbs.push({title: creation.tag.title, slug: creation.tagSlug});
+        breadcrumbs.push({title: creation.grandparent.title, slug: creation.grandparent.slug});
+        breadcrumbs.push({title: creation.tag.title, slug: creation.tag.slug});
         creation.breadcrumbs = breadcrumbs;
-
     }
     return result;
 } 
