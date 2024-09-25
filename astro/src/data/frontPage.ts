@@ -76,7 +76,7 @@ export const getFrontPageData = async function () {
 
         // Convert body text to html
         if (article.body) {
-            article.body = await generateRichText(article.body);
+            article.body = generateRichText(article.body);
             article.readingTime = getReadingTime(article.body);
         } else {
             article.readingTime = 1;

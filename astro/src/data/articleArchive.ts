@@ -50,7 +50,7 @@ export const getArticleArchiveData = async function () {
         article.fullSlug = slugData.slug;
         article.readingTime = 1;
         if (article.body) {
-            article.body = await generateRichText(article.body);
+            article.body = generateRichText(article.body);
             article.readingTime = getReadingTime(article.body);
         }
 

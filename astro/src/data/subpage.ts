@@ -2,7 +2,7 @@ import {client} from "./_sanityClient";
 import {generateRichText} from "./_utils";
 import {groqGetBody} from "../helpers/queries.ts";
 
-export const getSubPageData = async function (slug: string) {
+export const getSubPageData = async function () {
     const query = `*[_type == "subPage"] {
         title, 
         leading,
