@@ -1,5 +1,5 @@
-import { client } from "./_sanityClient";
-import { generateRichText } from "./_utils";
+import {client} from "./_sanityClient";
+import {generateRichText} from "./_utils";
 
 export const getCreationArchiveData = async function () {
     const query = `*[_id == "creationArchive"][0] {
@@ -8,8 +8,7 @@ export const getCreationArchiveData = async function () {
         "slug": slug.current,
         leading,
         creationList[]-> {
-            ...,
-            "slug": slug.current
+            _id
         }
     }`
     const data = await client.fetch(query);

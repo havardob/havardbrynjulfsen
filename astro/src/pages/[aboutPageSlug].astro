@@ -1,9 +1,9 @@
 ---
-import Breadcrumbs from "src/components/Breadcrumbs.astro";
-import SiteFooter from "src/components/SiteFooter.astro";
-import SiteHeader from "src/components/SiteHeader.astro";
-import { getAboutPageData } from "src/data/aboutPage";
-import BaseLayout from "src/layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { getAboutPageData } from "../data/aboutPage";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
     const aboutPageData = await getAboutPageData();

@@ -1,26 +1,26 @@
-import { client } from "./_sanityClient";
-import { generateSlug } from "./_utils";
+import {client} from "./_sanityClient";
+import {groqGetSlug} from "../helpers/queries.ts";
 
-export const getTagPageData = async function (slug: string) {
-    const query = `*[_type == "tag" ${slug && `&& slug.current == "${slug}"`}][0] {
+export const getTagPageData = async function () {
+    const query = `*[_type == "tag"] {
         _id,
-        title, 
-        "slug": slug.current,
-        type
+        title,
+        "fullSlug": ${groqGetSlug()},
+        type,
+        "parent": select(
+            type == "creation" => *[_id == "creationArchive"][0] { title, "slug": "/" + slug.current },
+            type == "article" =>  *[_id == "articleArchive"][0] { title, "slug": "/" + slug.current },
+            null
+        )
     }`
 
     const data = await client.fetch(query);
 
-    let breadcrumbs = [];
-    let parentType = "articleArchive";
-
-    if (data.type === "creation") {
-        parentType = "creationArchive";
+    for (let tagPage of data) {
+        let breadcrumbs = [];
+        breadcrumbs.push({title: tagPage.parent.title, slug: tagPage.parent.slug});
+        tagPage.breadcrumbs = breadcrumbs;
     }
-
-    const parent = await generateSlug(parentType);
-    breadcrumbs.push({ title: parent.title, slug: parent.slug });
-    data.breadcrumbs = breadcrumbs;
 
     return data;
 }   

@@ -1,0 +1,65 @@
+---
+import { client } from "./astro/src/data/_sanityClient";
+import BaseLayout from "./astro/src/layouts/BaseLayout.astro";
+import Breadcrumbs from "./astro/src/components/Breadcrumbs.astro";
+import SiteHeader from "./astro/src/components/SiteHeader.astro";
+import SiteFooter from "./astro/src/components/SiteFooter.astro";
+
+export async function getStaticPaths() {
+    const data = await client.fetch(
+        `*[_type == "tag"] { _id, "slug": slug.current }`,
+    );
+
+    return await Promise.all(
+        data.map(async (result: any) => {
+            return {
+                params: {
+                    tagSlug: result.slug.current,
+                },
+                props: {
+                    tag: tag
+                },
+            };
+        }),
+    );
+}
+
+let { tag } = Astro.props;
+---
+
+<BaseLayout metaTitle={tag.title}>
+    <div class="l-site">
+        <SiteHeader />
+        <main>
+            <div class="l-constraint">
+                <Breadcrumbs items={tag.breadcrumbs} current={tag.title} />
+                <div class="archive-page">
+                    <header class="archive-page__header">
+                        <h2 class="archive-page__title">
+                            {tag.title}
+                        </h2>
+                        <div class="archive-page__intro | u-rich-text">
+                            {tag.type === "creation" ? "Creations" : "Posts"}
+                            tagged "{tag.title}"
+                        </div>
+                    </header>
+                    {
+                        tag.type === "article" ? (
+                            <div class="posts">
+                                <ul class="posts-list">
+                                </ul>
+                            </div>
+                        ) : (
+                            <div class="projects">
+                                <ul class="projects__list">
+
+                                </ul>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+        </main>
+        <SiteFooter />
+    </div>
+</BaseLayout>
