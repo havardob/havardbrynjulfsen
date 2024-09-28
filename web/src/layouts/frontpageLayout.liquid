@@ -34,9 +34,9 @@ layout: base
 
 
     <section class="section section--featured-posts">
-      <h2 class="section__title">{{ frontPage.articles.title }}</h2>
+      <h2 class="section__title">{{ frontPage.articlesJson.title }}</h2>
       <ul class="section__list">
-        {% for item in frontPage.articles.items %}
+        {% for item in frontPage.articlesJson.items %}
           {% for article in collections.articlesCollection %}
             {% if item._ref == article.data.id %}
               <li class="section__list-item">
@@ -55,7 +55,7 @@ layout: base
           {% endfor %}
         {% endfor %}
       </ul>
-      {% include "components/moreButton" url: frontPage.articles.moreLink.href text: frontPage.articles.moreLink.text %}
+      {% include "components/moreButton" url: frontPage.articlesJson.moreLink.href text: frontPage.articlesJson.moreLink.text %}
     </section>
   </div>
 </main>

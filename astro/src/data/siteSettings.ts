@@ -2,6 +2,7 @@ import { generateSlug } from "./_utils";
 import { client } from "./_sanityClient";
 
 const query = `*[_id == "siteSettings"][0]{
+    _id,
     metaTitle,
     metaDescription,
     "metaImageUrl": metaImage.asset->url,
