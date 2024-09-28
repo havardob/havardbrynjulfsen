@@ -1,60 +1,43 @@
-import { client } from "./_sanityClient";
-import { generateSlug, generateRichText } from "./_utils";
+import {client} from "./_sanityClient";
+import {generateRichText} from "./_utils";
+import {groqGetBody, groqGetGrandparent, groqGetSlug} from "../helpers/queries.ts";
 
 
-export const getCreationData = async function (slug?: string) {
-    const query = `*[_type == "creation" ${slug && `&& slug.current == "${slug}"`}][0] { 
+export const getCreationData = async function () {
+    const query = `*[_type == "creation"] { 
         _id,
+        _type,
         title,
+        "fullSlug": ${groqGetSlug()}, 
+        "grandparent": ${groqGetGrandparent()},       
         tagline,
         leading,
-        tag ->,
+        tag -> {
+            _id,
+            title,
+            "slug": ${groqGetSlug()}
+        },
         "featuredImage": featuredImage.asset->url, 
-        showAsBanner,
-        "tagSlug": tag -> slug.current, 
-        "tagTitle": tag -> title, 
-        "slug": slug.current, 
+        showAsBanner, 
         detailsList[] {      
             ...,  
         }, 
-        body[] {  
-            ..., 
-            _type == "imageBlock" => {
-                ...,
-                "imageFile": imageFile.asset->url, 
-            }, 
-            markDefs[] { 
-                ..., 
-                _type == "internalLink" => {
-                    "href": internalDocument-> slug.current  
-                } 
-            }   
-        }      
+        "body": ${groqGetBody('body')}
     }`
 
+    const result = await client.fetch(query);
 
-    const data = await client.fetch(query);
+    for (let creation of result) {
 
-    // Get fullSlug
-    const fullSlug = await generateSlug(data._id)
-    data.fullSlug = fullSlug.slug;
+        // Convert body text to html
+        if (creation.body) {
+            creation.body = generateRichText(creation.body);
+        }
 
-    // Convert body text to html
-    if (data.body) {
-        data.body = await generateRichText(data.body);
+        let breadcrumbs = [];
+        breadcrumbs.push({title: creation.grandparent.title, slug: creation.grandparent.slug});
+        breadcrumbs.push({title: creation.tag.title, slug: creation.tag.slug});
+        creation.breadcrumbs = breadcrumbs;
     }
-
-    // Generate tag slug 
-    if (data.tag) {
-        const tag = await generateSlug(data.tag._id)
-        data.tagSlug = tag.slug;
-    }
-
-    let breadcrumbs = [];
-    const grandParent = await generateSlug('creationArchive');
-    breadcrumbs.push({ title: grandParent.title, slug: grandParent.slug });
-    breadcrumbs.push({ title: data.tag.title, slug: data.tagSlug });
-    data.breadcrumbs = breadcrumbs;
-
-    return data;
+    return result;
 } 

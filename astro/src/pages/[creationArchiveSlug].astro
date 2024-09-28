@@ -1,20 +1,25 @@
 ---
-import Breadcrumbs from "src/components/Breadcrumbs.astro";
-import ProjectPreview from "src/components/ProjectPreview.astro";
-import SiteFooter from "src/components/SiteFooter.astro";
-import SiteHeader from "src/components/SiteHeader.astro";
-import { getCreationData } from "src/data/creation";
-import { getCreationArchiveData } from "src/data/creationArchive";
-import BaseLayout from "src/layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import ProjectPreview from "../components/ProjectPreview.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { getCreationArchiveData } from "../data/creationArchive";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {getCollection} from "astro:content";
 
 export async function getStaticPaths() {
     const creationArchiveData = await getCreationArchiveData();
+    const creationsCollection = await getCollection('creations');
 
     let creations: any[] = [];
-    creationArchiveData.creationList.map(async (item: any) => {
-        item = await getCreationData(item.slug);
-        creations.push(item);
-    });
+
+    creationArchiveData.creationList.map((selectedCreation: any) => {
+        creationsCollection.map((creation: any) => {
+            if (selectedCreation._id === creation.data._id) {
+                creations.push(creation.data);
+            }
+        })
+    })
 
     return [
         {
@@ -23,7 +28,7 @@ export async function getStaticPaths() {
             },
             props: {
                 creationArchive: creationArchiveData,
-                creations: creations,
+                creations: creations
             },
         },
     ];
@@ -58,8 +63,7 @@ let { creationArchive, creations } = Astro.props;
                                             image={item.featuredImage}
                                             slug={item.fullSlug}
                                             tagline={item.tagline}
-                                            tagTitle={item.tagTitle}
-                                            tagHref={item.tagSlug}
+                                            tag={item.tag}
                                         />
                                     </li>
                                 ))

@@ -847,6 +847,7 @@ body {
 }
 .callout__text {
   max-width: 60ch;
+  text-wrap: pretty;
 }
 .callout__icon {
   flex-shrink: 0;

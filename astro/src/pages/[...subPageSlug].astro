@@ -1,22 +1,17 @@
 ---
-import SiteFooter from "src/components/SiteFooter.astro";
-import SiteHeader from "src/components/SiteHeader.astro";
-import { client } from "src/data/_sanityClient";
-import { getSubPageData } from "src/data/subpage";
-import BaseLayout from "src/layouts/BaseLayout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { getSubPageData } from "../data/subpage";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
 
 export async function getStaticPaths() {
-    const data = await client.fetch(
-        `*[_type == "subPage"] { _id, "slug": slug.current }`,
-    );
-
-    const slugs = await Promise.all(
-        data.map(async (result: any) => {
-            const subPage = await getSubPageData(result.slug);
-
+    const subPages = await getSubPageData();
+    return await Promise.all(
+        subPages.map(async (subPage: any) => {
             return {
                 params: {
-                    subPageSlug: result.slug,
+                    subPageSlug: subPage.slug,
                 },
                 props: {
                     subPage: subPage,
@@ -24,18 +19,17 @@ export async function getStaticPaths() {
             };
         }),
     );
-
-    return slugs;
 }
 
 const { subPage } = Astro.props;
 ---
 
-<BaseLayout metaTitle={subPage.title}>
+<BaseLayout metaTitle={subPage.title} metaDescription={subPage.leading}>
     <div class="l-site">
         <SiteHeader />
         <main>
             <div class="l-constraint">
+              <Breadcrumbs current={subPage.title} />
                 <div class="page">
                     <div class="page__column">
                         <h2 class="page__title">{subPage.title}</h2>

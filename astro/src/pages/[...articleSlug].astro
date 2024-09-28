@@ -1,128 +1,115 @@
 ---
-import { generateSlug } from "src/data/_utils";
-import Breadcrumbs from "src/components/Breadcrumbs.astro";
-import SiteFooter from "src/components/SiteFooter.astro";
-import SiteHeader from "src/components/SiteHeader.astro";
-import { client } from "src/data/_sanityClient";
-import { getArticleData } from "src/data/article";
-import Close from "src/icons/Close.astro";
-import BaseLayout from "src/layouts/BaseLayout.astro";
-import Callout from "src/components/Callout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import Close from "../icons/Close.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Callout from "../components/Callout.astro";
+import {getCollection} from 'astro:content';
+
 
 export async function getStaticPaths() {
-  const data = await client.fetch(
-    `*[_type == "article"] { _id, "slug": slug.current }`,
-  );
+    const articles = await getCollection('articles');
 
-  const slugs = await Promise.all(
-    data.map(async (result: any) => {
-      const article = await getArticleData(result.slug);
-      const slugData = await generateSlug(result._id);
-
-      const slug = slugData.slug.replace("/", "");
-      return {
+    return articles.map((result: any) => ({
         params: {
-          articleSlug: slug,
+            articleSlug: result.data.fullSlug,
         },
         props: {
-          article: article,
+            article: result.data,
         },
-      };
-    }),
-  );
-
-  return slugs;
+    }))
 }
 
-const { article } = Astro.props;
+const {article} = Astro.props;
 ---
 
 <BaseLayout
-  metaTitle={article.title}
-  metaDescription={article.leading}
-  metaImageUrl={article.featuredImage}
+        metaTitle={article.title}
+        metaDescription={article.leading}
+        metaImageUrl={article.featuredImage}
 >
   <div class="l-site">
-    <SiteHeader />
+    <SiteHeader/>
     <main>
       <div class="l-constraint">
-        <Breadcrumbs items={article.breadcrumbs} current={article.title} />
+        <Breadcrumbs items={article.breadcrumbs} current={article.title}/>
         <article class="post">
           <header class="post__header">
-            {
-              article.featuredImage && article.showAsBanner && (
-                <figure class="post__featured-image">
-                  <img src={article.featuredImage} alt="" data-dialog-trigger />
-                  <dialog class="image-dialog">
-                    <figure>
-                      <img src={article.featuredImage} alt="" />
-                      <button class="image-dialog__close">
-                        <Close />
-                      </button>
-                    </figure>
-                  </dialog>
-                </figure>
-              )
-            }
+              {
+                  article.featuredImage && article.showAsBanner && (
+                              <figure class="post__featured-image">
+                                <img src={article.featuredImage} alt="" data-dialog-trigger/>
+                                <dialog class="image-dialog">
+                                  <figure>
+                                    <img src={article.featuredImage} alt=""/>
+                                    <button class="image-dialog__close">
+                                      <Close/>
+                                    </button>
+                                  </figure>
+                                </dialog>
+                              </figure>
+                  )
+              }
             <div class="post__meta">
-              <a href={article.tagSlug} class="tag">{article.tag.title}</a>
+              <a href={article.tag.slug} class="tag">{article.tag.title}</a>
               <span class="post__meta-item"
-                >{article.readingTime} minute read</span
+              >{article.readingTime} minute read</span
               >
               <span class="post__meta-item">{article.publishedDate}</span>
             </div>
             <h1 class="post__title">{article.title}</h1>
-            {article.leading && <p class="post__leading">{article.leading}</p>}
+              {article.leading && <p class="post__leading">{article.leading}</p>}
           </header>
           <div class="post__body | u-rich-text">
-            {
-              article.publishedExternally && (
-                <Callout
-                  text={article.publishedExternally.text}
-                  href={article.publishedExternally.href}
-                  image={article.publishedExternally.image}
-                />
-              )
-            }
-            <div class="u-rich-text" set:html={article.body} />
+              {
+                  article.publishedExternally && (
+                              <Callout
+                                      text={article.publishedExternally.text}
+                                      href={article.publishedExternally.href}
+                                      image={article.publishedExternally.image}
+                              />
+                  )
+              }
+            <div class="u-rich-text" set:html={article.body}/>
           </div>
         </article>
       </div>
     </main>
-    <SiteFooter />
+    <SiteFooter/>
   </div>
 </BaseLayout>
 
 <script is:inline>
-  // Open image dialog
-  const imageDialogTriggers = document.querySelectorAll(
-    "[data-dialog-trigger]",
-  );
+    // Open image dialog
+    const imageDialogTriggers = document.querySelectorAll(
+        "[data-dialog-trigger]",
+    );
 
-  if (imageDialogTriggers) {
-    imageDialogTriggers.forEach((trigger) => {
-      if (trigger) {
-        trigger.style.cursor = "pointer";
-        const dialog = trigger.nextElementSibling;
+    if (imageDialogTriggers) {
+        imageDialogTriggers.forEach((trigger) => {
+            if (trigger) {
+                trigger.style.cursor = "pointer";
+                const dialog = trigger.nextElementSibling;
 
-        if (dialog) {
-          const html = document.querySelector("html");
-          const closeButton = dialog.querySelector("button");
-          trigger.addEventListener("click", () => {
-            html.style.overflowY = "hidden";
-            dialog.showModal();
-          });
+                if (dialog) {
+                    const html = document.querySelector("html");
+                    const closeButton = dialog.querySelector("button");
+                    trigger.addEventListener("click", () => {
+                        html.style.overflowY = "hidden";
+                        dialog.showModal();
+                    });
 
-          if (closeButton) {
-            closeButton.addEventListener("click", () => {
-              html.style.overflowY = "initial";
-              dialog.close();
-            });
-          }
-        }
-      } else {
-        return;
-      }
-    });
-  }
+                    if (closeButton) {
+                        closeButton.addEventListener("click", () => {
+                            html.style.overflowY = "initial";
+                            dialog.close();
+                        });
+                    }
+                }
+            } else {
+                return;
+            }
+        });
+    }
 </script>

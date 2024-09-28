@@ -29,8 +29,7 @@ export const generateSlug = async function (id: string) {
         }
     }` 
 
-    const data = await client.fetch(query);
-    return data;
+    return await client.fetch(query);
 }
 
 export const formatDate = function (date: any) {
@@ -68,18 +67,19 @@ export const getReadingTime = function (bodyText: any) {
     return time;
 }
 
-export const generateRichText = async function (source: any) {
+export function generateRichText(source: any) {
     if (source) {
         for (let block of source) {
             if (block.markDefs) {
                 for (let mark of block.markDefs) {
                     if (mark.internalDocument) {
-                        const document = await generateSlug(mark.internalDocument._ref);
-                        mark.href = document.slug;
+                        mark.href = mark.internalDocument.href;
                     }
                 }
             }
         }  
-        return source = toHTML(source, { components: portableTextToHtml });   
+        return toHTML(source, { components: portableTextToHtml });
+    } else {
+        return;
     }
 }
