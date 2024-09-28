@@ -22,4 +22,4 @@ const creations = defineCollection({
     }
 });
 
-export const collections = { articles, creations };
+export const collections = { "articles": articles, "creations": creations };

@@ -1,6 +1,5 @@
 import {client} from "./_sanityClient";
-import {generateSlug} from "./_utils";
-import {groqGetBody, groqGetSlug} from "../helpers/queries.ts";
+import {groqGetSlug} from "../helpers/queries.ts";
 
 export const getTagPageData = async function () {
     const query = `*[_type == "tag"] {

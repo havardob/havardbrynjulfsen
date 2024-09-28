@@ -19,7 +19,5 @@ export async function GET(context: any) {
         }))
     }
 
-    console.log(rssObj);
-
     return rss(rssObj);
 }
