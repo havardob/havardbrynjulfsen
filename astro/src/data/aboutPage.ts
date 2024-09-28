@@ -9,7 +9,7 @@ export const getAboutPageData = async function () {
         leading,
         "profileImage": profileImage.asset -> url,
         "slug": slug.current,
-        "body": ${groqGetBody()}
+        "body": ${groqGetBody('body')}
     }`
 
     const data = await client.fetch(query);

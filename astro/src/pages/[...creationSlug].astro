@@ -1,26 +1,21 @@
 ---
+import {getCollection} from "astro:content";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import {getCreationData} from "../data/creation";
 import Close from "../icons/Close.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
-    const creations = await getCreationData();
-
-    return await Promise.all(
-        creations.map(async (result: any) => {
-            return {
-                params: {
-                    creationSlug: result.fullSlug,
-                },
-                props: {
-                    creation: result,
-                },
-            };
-        }),
-    );
+    const creations = await getCollection('creations');
+    return creations.map((result: any) => ({
+        params: {
+            creationSlug: result.data.fullSlug,
+        },
+        props: {
+            creation: result.data,
+        }
+    }))
 }
 
 const {creation} = Astro.props;
@@ -95,34 +90,34 @@ const {creation} = Astro.props;
 
 <script is:inline>
     // Open image dialog
-    const imageDialogTriggers = document.querySelectorAll(
-        "[data-dialog-trigger]",
-    );
+        const imageDialogTriggers = document.querySelectorAll(
+            "[data-dialog-trigger]",
+            );
 
-    if (imageDialogTriggers) {
-        imageDialogTriggers.forEach((trigger) => {
-            if (trigger) {
-                trigger.style.cursor = "pointer";
-                const dialog = trigger.nextElementSibling;
+        if (imageDialogTriggers) {
+            imageDialogTriggers.forEach((trigger) => {
+                if (trigger) {
+                    trigger.style.cursor = "pointer";
+                    const dialog = trigger.nextElementSibling;
 
-                if (dialog) {
-                    const html = document.querySelector("html");
-                    const closeButton = dialog.querySelector("button");
-                    trigger.addEventListener("click", () => {
-                        html.style.overflowY = "hidden";
-                        dialog.showModal();
-                    });
+                    if (dialog) {
+                        const html = document.querySelector("html");
+                        const closeButton = dialog.querySelector("button");
+                        trigger.addEventListener("click", () => {
+                            html.style.overflowY = "hidden";
+                            dialog.showModal();
+                            });
 
-                    if (closeButton) {
-                        closeButton.addEventListener("click", () => {
-                            html.style.overflowY = "initial";
-                            dialog.close();
-                        });
+                        if (closeButton) {
+                            closeButton.addEventListener("click", () => {
+                                html.style.overflowY = "initial";
+                                dialog.close();
+                                });
+                            }
+                        }
+                    } else {
+                    return;
                     }
-                }
-            } else {
-                return;
+                });
             }
-        });
-    }
 </script>

@@ -3,16 +3,19 @@ export function groqGetSlug() {
         _type == "frontPage" => "/",
         _type == "article" => "/" + *[_type == "articleArchive"][0].slug.current + "/" + tag->slug.current + "/" + slug.current,
         _type == "creation" => "/" + *[_type == "creationArchive"][0].slug.current + "/" + tag->slug.current + "/" + slug.current,
-        _type == "subPage" => "/" + slug.current,
         _type == "tag" && type == "article" => "/" + *[_type == "articleArchive"][0].slug.current + "/" + slug.current,
         _type == "tag" && type == "creation" => "/" + *[_type == "creationArchive"][0].slug.current + "/" + slug.current,
+        _type == "creationArchive" => "/" + slug.current,
+        _type == "articleArchive" => "/" + slug.current,
+        _type == "aboutPage" => "/" + slug.current,
+        _type == "subPage" => "/" + slug.current,
         null
   )`
 }
 
-export function groqGetBody() {
-    return `body[] {
-    ...,
+export function groqGetBody(key: string) {
+    return `${key}[] {
+        ...,
         _type == "imageBlock" => {
             "imageFile": imageFile.asset->url,
         },

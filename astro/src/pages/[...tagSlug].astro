@@ -1,71 +1,128 @@
 ---
-import { client } from "../data/_sanityClient";
-import { generateSlug } from "../data/_utils";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getTagPageData } from "../data/tag";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import {getCollection} from "astro:content";
+import {getTagPageData} from "../data/tag";
 import SiteHeader from "../components/SiteHeader.astro";
+import PostPreview from "../components/PostPreview.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import Rss from "../icons/Rss.astro";
+import ProjectPreview from "../components/ProjectPreview.astro";
 
 export async function getStaticPaths() {
-    const data = await client.fetch(
-        `*[_type == "tag"] { _id, "slug": slug.current }`,
-    );
+    const tagPages = await getTagPageData();
+    const articleCollection = await getCollection('articles');
+    const creationCollection = await getCollection('creations');
+
+    let articles: any[] = [];
+    let creations: any[] = [];
+    articleCollection.map((article: any) => articles.push(article.data));
+    creationCollection.map((creation: any) => creations.push(creation.data));
 
     return await Promise.all(
-        data.map(async (result: any) => {
-            let tag = await getTagPageData(result.slug);
-            const slugData = await generateSlug(result._id);
-            const slug = slugData.slug.replace("/", "");
-
+        tagPages.map(async (result: any) => {
+            const filteredArticles = articles.filter(article => article.tag._id === result._id);
+            const filteredCreations = creations.filter(creation => creation.tag._id === result._id);
             return {
                 params: {
-                    tagSlug: slug,
+                    tagSlug: result.fullSlug,
                 },
                 props: {
-                    tag: tag
-                },
-            };
-        }),
-    );
+                    tagPage: result,
+                    articles: filteredArticles,
+                    creations: filteredCreations
+                }
+            }
+        }))
 }
 
-let { tag } = Astro.props;
+const {tagPage, articles, creations} = Astro.props;
 ---
 
-<BaseLayout metaTitle={tag.title}>
-    <div class="l-site">
-        <SiteHeader />
-        <main>
-            <div class="l-constraint">
-                <Breadcrumbs items={tag.breadcrumbs} current={tag.title} />
-                <div class="archive-page">
-                    <header class="archive-page__header">
-                        <h2 class="archive-page__title">
-                            {tag.title}
-                        </h2>
-                        <div class="archive-page__intro | u-rich-text">
-                            {tag.type === "creation" ? "Creations" : "Posts"}
-                            tagged "{tag.title}"
-                        </div>
-                    </header>
-                    {
-                        tag.type === "article" ? (
-                            <div class="posts">
-                                <ul class="posts-list">
-                                </ul>
-                            </div>
-                        ) : (
-                            <div class="projects">
-                                <ul class="projects__list">
-
-                                </ul>
-                            </div>
-                        )
-                    }
-                </div>
+<BaseLayout metaTitle={tagPage.title} metaDescription={tagPage.leading}>
+  <div class="l-site">
+    <SiteHeader/>
+    <main>
+      <div class="l-constraint">
+        <Breadcrumbs items={tagPage.breadcrumbs} current={tagPage.title}/>
+        <div class="archive-page">
+          <div class="archive-page__header">
+            <h2 class="archive-page__title">
+                {tagPage.title}
+            </h2>
+            <div class="archive-page__intro">
+                {tagPage.type == "creation" ? (
+                        <p>Creations tagged "{tagPage.title}"</p>
+                ) : (
+                        <p>Posts tagged "{tagPage.title}"</p>
+                )}
             </div>
-        </main>
-        <SiteFooter />
-    </div>
+              {tagPage.type == "article" && (
+                      <div class="archive-page__rss">
+                        <a href="/feed.xml" class="rss-link">
+                                <span class="rss-link__icon">
+                                    <Rss/>
+                                </span>
+                          <div class="rss-link__content">
+                                    <span class="rss-link__title"
+                                    >Stay up to date</span
+                                    >
+                            <span class="rss-link__desc"
+                            >Subscribe to feed</span
+                            >
+                          </div>
+                        </a>
+                      </div>
+              )}
+          </div>
+            {tagPage.type == "creation" && (
+                <div class="projects">
+                  <ul class="projects__list">
+                    {creations.map((item: any) => (
+                        <li class="projects__list-item">
+                          <ProjectPreview
+                              title={item.title}
+                              image={item.featuredImage}
+                              slug={item.fullSlug}
+                              tagline={item.tagline}
+                              tag={item.tag}
+                          />
+                        </li>
+                    ))}
+                  </ul>
+                </div>
+            )}
+            {tagPage.type == "article" && (
+                    <div class="posts">
+                      <ul class="posts-list">
+                          {
+                              articles.map((item: any) => (
+                                      <li class="posts-list__item">
+                                        <PostPreview
+                                                title={item.title}
+                                                excerpt={item.leading}
+                                                slug={item.fullSlug}
+                                                readingTime={item.readingTime}
+                                                publishedDate={item.publishedDate}
+                                                tag={item.tag}
+                                                external={{
+                                                    image: item.publishedExternally
+                                                        ?.image,
+                                                    href: item.publishedExternally
+                                                        ?.href,
+                                                    text: item.publishedExternally
+                                                        ?.text,
+                                                }}
+                                        />
+                                      </li>
+                              ))
+                          }
+                      </ul>
+                    </div>
+            )}
+        </div>
+      </div>
+    </main>
+    <SiteFooter/>
+  </div>
 </BaseLayout>

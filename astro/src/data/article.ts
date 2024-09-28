@@ -4,7 +4,7 @@ import {generateRichText, getReadingTime, formatDate} from "./_utils";
 import {groqGetBody, groqGetGrandparent, groqGetSlug} from "../helpers/queries.ts";
 
 export const getArticleData = async function () {
-    const query = `*[_type == "article"] { 
+    const query = `*[_type == "article"] | order(publishedDate desc) { 
         _id,
         _type,
         "fullSlug": ${groqGetSlug()}, 
@@ -24,7 +24,7 @@ export const getArticleData = async function () {
         },
         "featuredImage": featuredImage.asset->url, 
         showAsBanner,
-        "body": ${groqGetBody()}      
+        "body": ${groqGetBody('body')}      
     }`
 
     const data = await client.fetch(query);

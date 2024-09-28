@@ -22,7 +22,7 @@ export const getCreationData = async function () {
         detailsList[] {      
             ...,  
         }, 
-        "body": ${groqGetBody()}
+        "body": ${groqGetBody('body')}
     }`
 
     const result = await client.fetch(query);

@@ -3,6 +3,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import { getSubPageData } from "../data/subpage";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
 
 export async function getStaticPaths() {
     const subPages = await getSubPageData();
@@ -28,6 +29,7 @@ const { subPage } = Astro.props;
         <SiteHeader />
         <main>
             <div class="l-constraint">
+              <Breadcrumbs current={subPage.title} />
                 <div class="page">
                     <div class="page__column">
                         <h2 class="page__title">{subPage.title}</h2>

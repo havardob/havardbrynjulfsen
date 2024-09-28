@@ -5,9 +5,21 @@ import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import { getCreationArchiveData } from "../data/creationArchive";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import {getCollection} from "astro:content";
 
 export async function getStaticPaths() {
     const creationArchiveData = await getCreationArchiveData();
+    const creationsCollection = await getCollection('creations');
+
+    let creations: any[] = [];
+
+    creationArchiveData.creationList.map((selectedCreation: any) => {
+        creationsCollection.map((creation: any) => {
+            if (selectedCreation._id === creation.data._id) {
+                creations.push(creation.data);
+            }
+        })
+    })
 
     return [
         {
@@ -15,13 +27,14 @@ export async function getStaticPaths() {
                 creationArchiveSlug: creationArchiveData.slug,
             },
             props: {
-                creationArchive: creationArchiveData
+                creationArchive: creationArchiveData,
+                creations: creations
             },
         },
     ];
 }
 
-let { creationArchive } = Astro.props;
+let { creationArchive, creations } = Astro.props;
 ---
 
 <BaseLayout metaTitle={creationArchive.title}>
@@ -43,15 +56,14 @@ let { creationArchive } = Astro.props;
                     <div class="projects">
                         <ul class="projects__list">
                             {
-                                creationArchive.creationList.map((item: any) => (
+                                creations.map((item: any) => (
                                     <li class="projects__item">
                                         <ProjectPreview
                                             title={item.title}
                                             image={item.featuredImage}
                                             slug={item.fullSlug}
                                             tagline={item.tagline}
-                                            tagTitle={item.tag.title}
-                                            tagHref={item.tag.slug}
+                                            tag={item.tag}
                                         />
                                     </li>
                                 ))

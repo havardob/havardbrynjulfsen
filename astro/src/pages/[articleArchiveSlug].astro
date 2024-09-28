@@ -6,9 +6,14 @@ import { getArticleArchiveData } from "../data/articleArchive";
 import Rss from "../icons/Rss.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import {getCollection} from "astro:content";
 
 export async function getStaticPaths() {
     const articleArchive = await getArticleArchiveData();
+    const articleCollection = await getCollection('articles');
+
+    let articles: any[] = [];
+    articleCollection.map((article: any) => articles.push(article.data));
 
     return [
         {
@@ -16,13 +21,14 @@ export async function getStaticPaths() {
                 articleArchiveSlug: articleArchive.slug,
             },
             props: {
-                articleArchive: articleArchive
+                articleArchive: articleArchive,
+                articles: articles
             },
         },
     ];
 }
 
-let { articleArchive } = Astro.props;
+let { articleArchive, articles } = Astro.props;
 ---
 
 <BaseLayout metaTitle={articleArchive.title} metaDescription={articleArchive.leading}>
@@ -59,7 +65,7 @@ let { articleArchive } = Astro.props;
                     <div class="posts">
                         <ul class="posts-list">
                             {
-                                articleArchive.articles.map((item: any) => (
+                                articles.map((item: any) => (
                                     <li class="posts-list__item">
                                         <PostPreview
                                             title={item.title}
@@ -67,10 +73,7 @@ let { articleArchive } = Astro.props;
                                             slug={item.fullSlug}
                                             readingTime={item.readingTime}
                                             publishedDate={item.publishedDate}
-                                            tag={{
-                                                title: item.tag.title,
-                                                href: item.tag.slug,
-                                            }}
+                                            tag={item.tag}
                                             external={{
                                                 image: item.publishedExternally
                                                     ?.image,

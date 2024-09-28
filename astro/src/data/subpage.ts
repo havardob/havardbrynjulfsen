@@ -7,7 +7,7 @@ export const getSubPageData = async function () {
         title, 
         leading,
         "slug": slug.current,
-        "body": ${groqGetBody()} 
+        "body": ${groqGetBody('body')} 
     }`
 
     const data = await client.fetch(query);
