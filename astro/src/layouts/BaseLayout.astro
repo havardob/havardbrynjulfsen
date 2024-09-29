@@ -1,7 +1,8 @@
 ---
-import { getSiteSettingsData } from "../data/siteSettings";
+import {getCollection} from "astro:content";
 
-const siteSettings = await getSiteSettingsData();
+const siteSettingsCollection = await getCollection('siteSettings');
+const siteSettings = siteSettingsCollection[0].data;
 
 interface Props {
     metaTitle?: string;

@@ -1,11 +1,11 @@
 ---
 import ChevronUp from "../icons/ChevronUp.astro";
-
-import { getSiteSettingsData } from "../data/siteSettings";
 import Icon from "./Icon.astro";
 
-const siteSettings = await getSiteSettingsData();
+import {getCollection} from "astro:content";
 
+const siteSettingsCollection = await getCollection('siteSettings');
+const siteSettings = siteSettingsCollection[0].data;
 ---
 
 <footer class="footer">
