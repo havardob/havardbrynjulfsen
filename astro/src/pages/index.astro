@@ -7,6 +7,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import {getFrontPageData} from "../data/frontPage";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ChevronRight from "../icons/ChevronRight.astro";
 
 const frontPage = await getFrontPageData();
 const articles = await getCollection('articles');
@@ -34,7 +35,6 @@ frontPage.creations.items.map((selectedCreation: any) => {
 })
 
 frontPage.featuredCreations = featuredCreations;
-
 ---
 
 <BaseLayout metaTitle="Home">
@@ -46,24 +46,6 @@ frontPage.featuredCreations = featuredCreations;
                 title={frontPage.hero.title}
                 intro={frontPage.hero.intro}
         />
-        <section class="section section--featured-creations">
-          <h2 class="section__title">{frontPage.creations.title}</h2>
-          <ul class="section__grid">
-              {
-                  frontPage.featuredCreations.map((creation: any) => (
-                          <li class="section__grid-item">
-                            <ProjectPreview
-                                    title={creation.title}
-                                    image={creation.featuredImage}
-                                    slug={creation.fullSlug}
-                                    tagline={creation.tagline}
-                                    tag={creation.tag}
-                            />
-                          </li>
-                  ))
-              }
-          </ul>
-        </section>
         <section class="section section--featured-posts">
           <h2 class="section__title">{frontPage.articles.title}</h2>
           <ul class="section__list">
@@ -90,6 +72,36 @@ frontPage.featuredCreations = featuredCreations;
                   ))
               }
           </ul>
+          <div class="more-button">
+            <a href={frontPage.articles.moreLink.href}>
+              <span>{frontPage.articles.moreLink.text}</span>
+              <ChevronRight />
+            </a>
+          </div>
+        </section>
+        <section class="section section--featured-creations">
+          <h2 class="section__title">{frontPage.creations.title}</h2>
+          <ul class="section__grid">
+            {
+              frontPage.featuredCreations.map((creation: any) => (
+                  <li class="section__grid-item">
+                    <ProjectPreview
+                        title={creation.title}
+                        image={creation.featuredImage}
+                        slug={creation.fullSlug}
+                        tagline={creation.tagline}
+                        tag={creation.tag}
+                    />
+                  </li>
+              ))
+            }
+          </ul>
+          <div class="more-button">
+            <a href={frontPage.creations.moreLink.href}>
+              <span>{frontPage.creations.moreLink.text}</span>
+              <ChevronRight />
+            </a>
+          </div>
         </section>
       </div>
     </main>
