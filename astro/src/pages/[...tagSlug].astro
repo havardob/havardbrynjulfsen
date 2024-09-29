@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import {getCollection} from "astro:content";
-import {getTagPageData} from "../data/tag";
 import SiteHeader from "../components/SiteHeader.astro";
 import PostPreview from "../components/PostPreview.astro";
 import SiteFooter from "../components/SiteFooter.astro";
@@ -10,7 +9,7 @@ import Rss from "../icons/Rss.astro";
 import ProjectPreview from "../components/ProjectPreview.astro";
 
 export async function getStaticPaths() {
-    const tagPages = await getTagPageData();
+    const tagCollection = await getCollection('tags');
     const articleCollection = await getCollection('articles');
     const creationCollection = await getCollection('creations');
 
@@ -20,15 +19,15 @@ export async function getStaticPaths() {
     creationCollection.map((creation: any) => creations.push(creation.data));
 
     return await Promise.all(
-        tagPages.map(async (result: any) => {
-            const filteredArticles = articles.filter(article => article.tag._id === result._id);
-            const filteredCreations = creations.filter(creation => creation.tag._id === result._id);
+        tagCollection.map(async (result: any) => {
+            const filteredArticles = articles.filter(article => article.tag._id === result.data._id);
+            const filteredCreations = creations.filter(creation => creation.tag._id === result.data._id);
             return {
                 params: {
-                    tagSlug: result.fullSlug,
+                    tagSlug: result.data.fullSlug,
                 },
                 props: {
-                    tagPage: result,
+                    tagPage: result.data,
                     articles: filteredArticles,
                     creations: filteredCreations
                 }

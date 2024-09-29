@@ -2,14 +2,15 @@
 import PostPreview from "../components/PostPreview.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import { getArticleArchiveData } from "../data/articleArchive";
 import Rss from "../icons/Rss.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import {getCollection} from "astro:content";
 
 export async function getStaticPaths() {
-    const articleArchive = await getArticleArchiveData();
+
+    const articleArchiveCollection = await getCollection('articleArchive');
+    const articleArchive = articleArchiveCollection[0].data;
     const articleCollection = await getCollection('articles');
 
     let articles: any[] = [];
