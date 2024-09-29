@@ -1778,7 +1778,7 @@ body:has(.archive-page__rss) .posts {
   line-height: 1.375;
 }
 .u-rich-text > h2:not([class]) {
-  font-size: 1.375rem;
+  font-size: 1.5rem;
   line-height: 1.375;
   text-wrap: balance;
 }
@@ -1788,14 +1788,25 @@ body:has(.archive-page__rss) .posts {
   }
 }
 .u-rich-text > h3:not([class]) {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   text-wrap: balance;
 }
 @media (min-width: 40rem) {
   .u-rich-text > h3:not([class]) {
-    font-size: 1.25rem;
+    font-size: 1.375rem;
   }
 }
+
+.u-rich-text > h4:not([class]) {
+  font-size: .875rem;
+  text-transform: uppercase;
+}
+@media (min-width: 40rem) {
+  .u-rich-text > h4:not([class]) {
+    font-size: 1rem;
+  }
+}
+
 .u-rich-text a:not([class]) {
   font-weight: 500;
   color: var(--textLink-color);
