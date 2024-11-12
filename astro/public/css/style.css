@@ -77,14 +77,18 @@ ol {
   src: url("../fonts/Gabarito-VariableFont_wght.ttf");
   font-weight: 400 900;
 }
+
 @font-face {
-  font-family: "Cabinet Grotesk";
-  src: url("../fonts/CabinetGrotesk-Variable.ttf");
+  font-family: "Peachi";
+  src: url("../fonts/peachi.woff2") format("woff2");
   font-weight: 400 900;
 }
+
 :root {
   --ff-primary: "Gabarito", sans-serif;
+  --ff-secondary: "Peachi", serif;
 }
+
 @media (prefers-color-scheme: light) {
   :root.theme-inverted {
     --color-milk: #f7f8f8;
@@ -418,6 +422,10 @@ body {
 
 :where(h1, h2, h3, h4, h5, h6, a) {
   color: var(--text-secondary-color);
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--ff-secondary);
 }
 
 :focus-visible {
@@ -960,6 +968,7 @@ body {
 .project-preview__title {
   font-weight: 600;
   font-size: 1.25rem;
+  font-family: var(--ff-primary);
 }
 .project-preview__title a {
   display: block;
@@ -1000,6 +1009,7 @@ body {
   font-weight: 600;
   font-size: 1.375rem;
   text-wrap: pretty;
+  font-family: var(--ff-primary);
 }
 .post-preview__title a:hover {
   text-underline-offset: 0.125em;
@@ -1309,6 +1319,7 @@ body:has(.archive-page__rss) .posts {
   line-height: 1.375;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-family: var(--ff-primary);
 }
 .section__grid {
   padding: 0;
