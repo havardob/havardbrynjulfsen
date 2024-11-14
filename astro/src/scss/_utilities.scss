@@ -35,17 +35,17 @@
 
     // Styling
 
-    &>ul:not([class]),
-    &>ol:not([class]) {
+    &>:where(ul),
+    &>:where(ol) {
         ::marker {
             color: var(--listMarker-color);
         }
     }
 
-    & > hr {
+    & > :where(hr) {
         border: 0;
-        margin-top: 4em;
-        margin-bottom: 4em;
+        margin-top: 2.5em;
+        margin-bottom: 2.5em;
         background-color: var(--border-primary-color);
         height: 0.0625rem;
         
@@ -55,7 +55,7 @@
         }
     }
 
-    &>blockquote:not([class]) {
+    &>:where(blockquote) {
         padding-left: 1em;
         border-left: .25rem solid var(--blockquote-divider-color);
         padding-block: 1em;
@@ -63,7 +63,7 @@
         line-height: 1.375;
     }
 
-    & > h2:not([class]) {
+    & > :where(h2) {
         font-size: 1.5rem;
         line-height: 1.375;
         text-wrap: balance;
@@ -72,7 +72,7 @@
         }
     }
     
-    & > h3:not([class]) {
+    & > :where(h3) {
         font-size: 1.25rem;
         text-wrap: balance;
         @media (min-width: 40rem) {
@@ -80,9 +80,10 @@
         }
     }
 
-    & > h4:not([class]) {
+    & > :where(h4) {
         font-size: .875rem;
         text-transform: uppercase;
+        font-family: var(--ff-primary);
         @media (min-width: 40rem) {
             font-size: 1rem;
         }
