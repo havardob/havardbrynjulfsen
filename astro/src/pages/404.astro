@@ -2,6 +2,11 @@
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+import {getCollection} from "astro:content";
+
+const siteSettingsCollection = await getCollection('siteSettings');
+const siteSettings = siteSettingsCollection[0].data;
 ---
 
 <BaseLayout>
@@ -12,9 +17,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 <article class="post">
                   <header class="post__header">
                     <h1 class="post__title">Page not found</h1>
-                      <p class="post__leading">This page must have been moved or deleted. I know, it's annoying, but that's just how it is sometimes <br /><br />(¬_¬ )</p>
+                      <p class="post__leading">This page must have been moved or deleted. I know, it's annoying, but that's just how it is sometimes.</p>
                   </header>
-                  <div class="article-body"></div>
+                  <div class="post__body u-rich-text">
+                    <p>I suggest you check out these pages:</p>
+                    <ul>
+                        {
+                            siteSettings?.mainNav?.map((item: any) => (
+                                <li>
+                                  <a href={item.href}>{item.text}</a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                    <p></p>
+                  </div>
                 </article>
               </div>
 		</main>
