@@ -103,8 +103,8 @@
     --moreLink-text-color-hover: var(--color-void);
     --moreLink-divider-color: var(--color-fog);
 
-    --codeMark-bg-color: var(--color-mist);
-    --codeMark-text-color: var(--color-concrete);
+    --codeMark-bg-color: var(--color-ivory);
+    --codeMark-text-color: var(--color-grit);
 
     --codeBlock-bg-color: var(--color-void);
     --codeBlock-text-color: var(--color-ivory);
@@ -156,10 +156,11 @@
     --color-malibu: #828fff;
     --color-violet: #5e6ad2;
     --color-fall: #FFD966;
+    --color-fall-dark: #c19e2f;
     --color-abyss: #000313;
     --color-fire: #FF7F3E;
 
-    --color-scale-white: #cdd9e5;
+    --color-scale-white: #e0e7f1;
     --color-scale-gray-0: #cdd9e5;
     --color-scale-gray-1: #adbac7;
     --color-scale-gray-2: #909dab;
@@ -172,25 +173,25 @@
     --color-scale-gray-9: #22272e;
     --color-scale-gray-10: #1c1f27;
 
-    --html-bg-color: var(--color-scale-gray-10);
-    --body-bg-color: var(--color-scale-gray-9);
+    --html-bg-color: var(--color-scale-gray-9);
+    --body-bg-color: var(--color-scale-gray-10);
 
     --focus-outline-color: var(--color-malibu);
 
-    --text-primary-color: var(--color-scale-gray-2);
+    --text-primary-color: var(--color-scale-gray-1);
     --text-secondary-color: var(--color-scale-white);
-    --text-tertiary-color: var(--color-scale-gray-3);
+    --text-tertiary-color: var(--color-scale-gray-2);
 
-    --menu-bg-color: var(--color-scale-gray-10);
+    --menu-bg-color: var(--color-scale-gray-8);
     --menuThemeToggle-bg-color: var(--color-scale-gray-8);
 
     --tag-bg-color: var(--color-scale-gray-8);
     --tag-bg-color-hover: var(--color-scale-gray-7);
-    --tag-text-color: var(--color-scale-gray-2);
+    --tag-text-color: var(--color-scale-gray-1);
 
-    --headerLink-text-color: var(--color-scale-gray-2);
+    --headerLink-text-color: var(--color-scale-gray-1);
     --headerLink-text-color-hover: var(--color-scale-gray-1);
-    --headerLink-bg-color: var(--color-scale-gray-9);
+    --headerLink-bg-color: var(--color-scale-gray-10);
     --headerLink-bg-color-hover: var(--color-scale-gray-8);
 
     --banner-bg-color: var(--color-fall);
@@ -212,7 +213,7 @@
     --moreLink-text-color: var(--color-scale-gray-1);
     --moreLink-divider-color: var(--color-scale-gray-8);
 
-    --someLink-bg-color: var(--color-scale-gray-9);
+    --someLink-bg-color: var(--color-scale-gray-10);
     --someLink-bg-color-hover: var(--color-scale-gray-8);
     --someLink-text-color: var(--color-scale-gray-2);
 
@@ -220,16 +221,16 @@
     --callout-bg-color: var(--color-scale-gray-9);
     --callout-text-color: var(--color-scale-gray-2);
 
-    --textLink-color: var(--color-malibu);
-    --textLink-color-hover: var(--color-violet);
+    --textLink-color: var(--color-fall);
+    --textLink-color-hover: var(--color-fall-dark);
 
-    --codeMark-bg-color: var(--color-scale-gray-10);
-    --codeMark-text-color: var(--color-scale-gray-2);
+    --codeMark-bg-color: var(--color-scale-gray-6);
+    --codeMark-text-color: var(--color-scale-gray-1);
 
-    --codeBlock-bg-color: var(--color-scale-gray-10);
+    --codeBlock-bg-color: var(--color-scale-gray-8);
     --codeBlock-text-color: var(--color-scale-gray-0);
-    --codeBlockLang-bg-color: var(--color-scale-gray-8);
-    --codeBlockLang-text-color: var(--color-scale-gray-1);
+    --codeBlockLang-bg-color: var(--color-scale-gray-7);
+    --codeBlockLang-text-color: var(--color-scale-gray-2);
 
     --footerMarquee-text-color: var(--color-scale-gray-2);
 
