@@ -15,23 +15,23 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
-img,
+:where(img,
 picture,
 video,
 canvas,
-svg {
+svg) {
   display: block;
   max-width: 100%;
 }
 
-input,
+:where(input,
 button,
 textarea,
-select {
+select) {
   font: inherit;
 }
 
-button {
+:where(button) {
   color: inherit;
   border: 0;
   background-color: transparent;
@@ -42,7 +42,7 @@ button {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-a {
+:where(a) {
   color: inherit;
 }
 
@@ -1116,7 +1116,7 @@ body {
   }
 }
 .archive-page__rss {
-  margin-block-start: 4rem;
+  margin-block-start: 2rem;
 }
 
 .page {
@@ -1791,52 +1791,53 @@ body:has(.archive-page__rss) .posts {
 .u-rich-text > :where(ul, ol) li {
   margin-top: 0.5em;
 }
-.u-rich-text > ul:not([class]) ::marker, .u-rich-text > ol:not([class]) ::marker {
+.u-rich-text > :where(ul) ::marker, .u-rich-text > :where(ol) ::marker {
   color: var(--listMarker-color);
 }
-.u-rich-text > hr {
+.u-rich-text > :where(hr) {
   border: 0;
-  margin-top: 4em;
-  margin-bottom: 4em;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
   background-color: var(--border-primary-color);
   height: 0.0625rem;
 }
-.u-rich-text > hr.dashed {
+.u-rich-text > :where(hr).dashed {
   background-color: transparent;
   background-image: repeating-linear-gradient(to right, var(--border-primary-color) 0, var(--border-primary-color) 0.625rem, transparent 0.625rem, transparent 1.25rem);
 }
-.u-rich-text > blockquote:not([class]) {
+.u-rich-text > :where(blockquote) {
   padding-left: 1em;
   border-left: 0.25rem solid var(--blockquote-divider-color);
   padding-block: 1em;
   font-size: 1.125em;
   line-height: 1.375;
 }
-.u-rich-text > h2:not([class]) {
+.u-rich-text > :where(h2) {
   font-size: 1.5rem;
   line-height: 1.375;
   text-wrap: balance;
 }
 @media (min-width: 40rem) {
-  .u-rich-text > h2:not([class]) {
+  .u-rich-text > :where(h2) {
     font-size: 1.75rem;
   }
 }
-.u-rich-text > h3:not([class]) {
+.u-rich-text > :where(h3) {
   font-size: 1.25rem;
   text-wrap: balance;
 }
 @media (min-width: 40rem) {
-  .u-rich-text > h3:not([class]) {
+  .u-rich-text > :where(h3) {
     font-size: 1.375rem;
   }
 }
-.u-rich-text > h4:not([class]) {
+.u-rich-text > :where(h4) {
   font-size: 0.875rem;
   text-transform: uppercase;
+  font-family: var(--ff-primary);
 }
 @media (min-width: 40rem) {
-  .u-rich-text > h4:not([class]) {
+  .u-rich-text > :where(h4) {
     font-size: 1rem;
   }
 }
