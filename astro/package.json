@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "npm-run-all --parallel astro:dev sass:watch",
     "astro:dev": "astro dev",
-    "astro:start": "astro dev",
-    "astro:build": "astro check && astro build",
-    "astro:preview": "astro preview",
+    "start": "astro dev",
+    "build": "astro check && astro build && npm run sass:build",
+    "preview": "astro preview",
     "astro": "astro",
     "sass:watch": "sass src/scss/style.scss public/css/style.css --no-source-map --watch",
     "sass:build": "sass src/scss/style.scss public/css/style.css --no-source-map",
