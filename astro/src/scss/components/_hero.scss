@@ -1,0 +1,52 @@
+.hero {
+    padding-block-start: 3rem;
+    padding-block-end: 6rem;
+
+    @media (min-width: 40rem) {
+        padding-block-start: 6rem;
+        padding-block-end: 10rem;
+    }
+
+    &>* {
+        max-width: 35rem; // ~550px
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        line-height: 1.25;
+        font-weight: 700;
+        font-family: var(--ff-secondary);
+
+        @media (min-width: 40rem) {
+            font-size: 2.5rem;
+            line-height: 1.125;
+        }
+    }
+
+    &__intro {
+        margin-block-start: 1.5rem;
+        font-size: 1.125rem;
+        line-height: 1.5;
+
+        @media (min-width: 40rem) {
+            font-size: 1.25rem;
+            line-height: 1.375;
+        }
+
+        &>*+* {
+            margin-top: 1em;
+        }
+
+        a:not([class]) {
+            font-weight: 500;
+            color: var(--textLink-color);
+            text-underline-offset: .125em;
+            text-decoration-thickness: .0625em;
+
+            &:hover {
+                color: var(--textLink-color-hover);
+                text-decoration-thickness: .125em;
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+.l-constraint {
+    margin-inline: auto;
+    width: calc(100% - 2rem); // minus gutter on each side
+    max-width: 50rem; // 800px
+}
+
+.l-site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background-color: var(--body-bg-color);
+    max-width: 65rem;
+    margin-inline: auto;
+}

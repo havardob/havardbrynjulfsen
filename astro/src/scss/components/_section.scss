@@ -1,0 +1,54 @@
+.section {
+    padding-bottom: 4rem;
+
+    &__title {
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.375;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    &__grid {
+        padding: 0;
+        margin: 0;
+
+        ::marker {
+            font-size: 0;
+            color: transparent;
+        }
+
+        display: grid;
+        gap: 3.5rem;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+
+        @media (min-width: 40rem) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        gap: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        // border-top: 0.0625rem solid var(--border-primary-color);
+
+        ::marker {
+            color: transparent;
+            font-size: 0;
+        }
+    }
+
+    &__list-item {
+        padding-top: 2.5rem;
+        border-top: 0.0625rem dashed var(--border-primary-color);
+
+        &:first-child {
+            margin-top: 1rem;
+        }
+    }
+}

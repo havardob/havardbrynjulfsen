@@ -1,0 +1,31 @@
+.archive-page {
+    &__header {
+        padding-top: 3rem;
+        width: min(100%, 40rem);
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        line-height: 1.25;
+        font-family: var(--ff-secondary);
+
+        @media (min-width: 40rem) {
+            font-size: 2.25rem;
+            line-height: 1.125;
+        }
+    }
+
+    &__intro {
+        margin-top: .875em;
+        font-size: 1.25rem;
+
+        @media (min-width: 40rem) {
+            font-size: 1.375rem;
+        }
+    }
+
+    &__rss {
+        margin-block-start: 4rem;
+    }
+
+}

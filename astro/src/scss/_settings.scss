@@ -1,0 +1,282 @@
+@font-face {
+    font-family: "Gabarito";
+    src: url("../fonts/Gabarito-VariableFont_wght.ttf");
+    font-weight: 400 900;
+}
+
+@font-face {
+    font-family: "Peachi";
+    src: url("../fonts/Peachi-Thin.otf") format("otf");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Peachi";
+    src: url("../fonts/Peachi-Light.otf") format("otf");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Peachi";
+    src: url("../fonts/Peachi-Regular.otf") format("otf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Peachi";
+    src: url("../fonts/Peachi-Medium.otf") format("otf");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Peachi";
+    src: url("../fonts/Peachi-Bold.otf") format("otf");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Peachi";
+    src: url("../fonts/Peachi-Black.otf") format("otf");
+    font-weight: 900;
+    font-style: normal;
+}
+
+@mixin light-mode() {
+    --color-white: #FFF;
+    --color-mist: #EEE;
+    --color-ivory: #E6E6E6;
+    --color-fog: #DDD;
+    --color-stone: #787A85;
+    --color-concrete: #565862;
+    --color-grit: #353738;
+    --color-void: #292a2d;
+    --color-royal: #2554e4;
+    --color-cobalt: #1b3b9a;
+    --color-fall: #FFD966;
+    --color-fire: #FF7F3E;
+
+    --body-bg-color: var(--color-white);
+    --html-bg-color: var(--color-mist);
+
+    --focus-outline-color: var(--color-royal);
+
+    --text-secondary-color: var(--color-void);
+    --text-primary-color: var(--color-concrete);
+    --text-tertiary-color: var(--color-stone);
+
+    --border-primary-color: var(--color-fog);
+
+    --headerLink-text-color: var(--color-concrete);
+    --headerLink-text-color-hover: var(--color-void);
+    --headerLink-bg-color: var(--color-white);
+    --headerLink-bg-color-hover: var(--color-mist);
+
+    --banner-bg-color: var(--color-void);
+    --banner-text-color: var(--color-white);
+
+    --breadcrumbLink-text-color: var(--color-concrete);
+
+    --blockquote-divider-color: var(--color-fog);
+
+    --callout-border-color: var(--color-fog);
+    --callout-bg-color: var(--color-white);
+    --callout-text-color: var(--color-concrete);
+
+    --tag-bg-color: var(--color-mist);
+    --tag-bg-color-hover: var(--color-fog);
+    --tag-text-color: var(--color-concrete);
+
+    --textLink-color: var(--color-royal);
+    --textLink-color-hover: var(--color-cobalt);
+
+    --menu-bg-color: var(--color-mist);
+    --menuThemeToggle-bg-color: var(--color-fog);
+
+    --moreLink-bg-color: var(--color-mist);
+    --moreLink-bg-color-hover: var(--color-fog);
+    --moreLink-text-color: var(--color-concrete);
+    --moreLink-text-color-hover: var(--color-void);
+    --moreLink-divider-color: var(--color-fog);
+
+    --codeMark-bg-color: var(--color-mist);
+    --codeMark-text-color: var(--color-concrete);
+
+    --codeBlock-bg-color: var(--color-void);
+    --codeBlock-text-color: var(--color-ivory);
+    --codeBlockLang-bg-color: var(--color-grit);
+    --codeBlockLang-text-color: var(--color-fog);
+
+    --someLink-bg-color: var(--color-white);
+    --someLink-bg-color-hover: var(--color-mist);
+    --someLink-text-color: var(--color-void);
+
+    --footerMarquee-text-color: var(--color-stone);
+
+    --tooltip-bg-color: var(--color-concrete);
+    --tooltip-text-color: var(--color-mist);
+
+    --footerLink-text-color: var(--color-stone);
+
+    --toTopButton-text-color: var(--color-concrete);
+    --toTopButton-text-color-hover: var(--color-void);
+    --toTopButton-bg-color: var(--color-mist);
+    --toTopButton-bg-color-hover: var(--color-fog);
+
+    --listMarker-color: var(--color-royal);
+
+    --postFooter-text-color: var(--color-stone);
+    --postFooterImage-bg-color: var(--color-white);
+
+    --projectImage-bg-color: var(--color-mist);
+
+    --detailsBlock-bg-color: var(--color-mist);
+    --detailsBlock-divider-color: var(--color-fog);
+    --detailsBlock-term-color: var(--color-void);
+    --detailsBlock-detail-color: var(--color-concrete);
+
+    --imageDialog-bg-color: var(--color-void);
+    --imageDialogCloseButton-bg-color: var(--color-concrete);
+    --imageDialogCloseButton-text-color: var(--color-mist);
+    --imageDialogFigcaption-bg-color: var(--color-void);
+    --imageDialogFigcaption-text-color: var(--color-mist);
+    --imageDialogCloseButton-color-focus: var(--color-fall);
+
+    --rssLink-border-color: var(--color-fog);
+    --rssLinkIcon-text-color: var(--color-fire);
+}
+
+@mixin dark-mode() {
+    --color-milk: #f7f8f8;
+    --color-cement: #b4bcd0;
+    --color-malibu: #828fff;
+    --color-violet: #5e6ad2;
+    --color-fall: #FFD966;
+    --color-abyss: #000313;
+    --color-fire: #FF7F3E;
+
+    --color-scale-white: #cdd9e5;
+    --color-scale-gray-0: #cdd9e5;
+    --color-scale-gray-1: #adbac7;
+    --color-scale-gray-2: #909dab;
+    --color-scale-gray-3: #768390;
+    --color-scale-gray-4: #636e7b;
+    --color-scale-gray-5: #545d68;
+    --color-scale-gray-6: #444c56;
+    --color-scale-gray-7: #373e47;
+    --color-scale-gray-8: #2d333b;
+    --color-scale-gray-9: #22272e;
+    --color-scale-gray-10: #1c1f27;
+
+    --html-bg-color: var(--color-scale-gray-10);
+    --body-bg-color: var(--color-scale-gray-9);
+
+    --focus-outline-color: var(--color-malibu);
+
+    --text-primary-color: var(--color-scale-gray-2);
+    --text-secondary-color: var(--color-scale-white);
+    --text-tertiary-color: var(--color-scale-gray-3);
+
+    --menu-bg-color: var(--color-scale-gray-10);
+    --menuThemeToggle-bg-color: var(--color-scale-gray-8);
+
+    --tag-bg-color: var(--color-scale-gray-8);
+    --tag-bg-color-hover: var(--color-scale-gray-7);
+    --tag-text-color: var(--color-scale-gray-2);
+
+    --headerLink-text-color: var(--color-scale-gray-2);
+    --headerLink-text-color-hover: var(--color-scale-gray-1);
+    --headerLink-bg-color: var(--color-scale-gray-9);
+    --headerLink-bg-color-hover: var(--color-scale-gray-8);
+
+    --banner-bg-color: var(--color-fall);
+    --banner-text-color: var(--color-abyss);
+
+    --blockquote-divider-color: var(--color-malibu);
+
+    --toTopButton-text-color: var(--color-scale-gray-2);
+    --toTopButton-text-color-hover: var(--color-scale-gray-1);
+    --toTopButton-bg-color: var(--color-scale-gray-8);
+    --toTopButton-bg-color-hover: var(--color-scale-gray-7);
+
+    --tooltip-bg-color: var(--color-scale-gray-8);
+    --tooltip-text-color: var(--color-scale-gray-1);
+
+    --border-primary-color: var(--color-scale-gray-8);
+
+    --moreLink-bg-color: var(--color-scale-gray-8);
+    --moreLink-text-color: var(--color-scale-gray-1);
+    --moreLink-divider-color: var(--color-scale-gray-8);
+
+    --someLink-bg-color: var(--color-scale-gray-9);
+    --someLink-bg-color-hover: var(--color-scale-gray-8);
+    --someLink-text-color: var(--color-scale-gray-2);
+
+    --callout-border-color: var(--color-scale-gray-7);
+    --callout-bg-color: var(--color-scale-gray-9);
+    --callout-text-color: var(--color-scale-gray-2);
+
+    --textLink-color: var(--color-malibu);
+    --textLink-color-hover: var(--color-violet);
+
+    --codeMark-bg-color: var(--color-scale-gray-10);
+    --codeMark-text-color: var(--color-scale-gray-2);
+
+    --codeBlock-bg-color: var(--color-scale-gray-10);
+    --codeBlock-text-color: var(--color-scale-gray-0);
+    --codeBlockLang-bg-color: var(--color-scale-gray-8);
+    --codeBlockLang-text-color: var(--color-scale-gray-1);
+
+    --footerMarquee-text-color: var(--color-scale-gray-2);
+
+    --footerLink-text-color: var(--color-scale-gray-2);
+
+    --listMarker-color: var(--color-malibu);
+
+    --postFooter-text-color: var(--color-scale-gray-1);
+    --postFooterImage-bg-color: var(--color-scale-gray-0);
+
+    --detailsBlock-bg-color: var(--color-scale-gray-8);
+    --detailsBlock-divider-color: var(--color-scale-gray-7);
+    --detailsBlock-term-color: var(--color-scale-gray-0);
+    --detailsBlock-detail-color: var(--color-scale-gray-2);
+
+    --imageDialog-bg-color: var(--color-scale-gray-9);
+    --imageDialogCloseButton-bg-color: var(--color-scale-gray-7);
+    --imageDialogCloseButton-text-color: var(--color-scale-gray-1);
+    --imageDialogFigcaption-bg-color: var(--color-scale-gray-7);
+    --imageDialogFigcaption-text-color: var(--color-scale-gray-1);
+    --imageDialogCloseButton-color-focus: var(--color-malibu);
+    
+    --rssLink-border-color: var(--color-scale-gray-7);
+    --rssLinkIcon-text-color: var(--color-fire);
+}
+
+:root {
+    --ff-primary: "Gabarito", sans-serif;
+    --ff-secondary: "Peachi", serif;
+
+    @media (prefers-color-scheme: light) {
+        &.theme-inverted {
+            @include dark-mode();
+        }
+
+        &:not(.theme-inverted) {
+            @include light-mode();
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        &.theme-inverted {
+            @include light-mode();
+        }
+
+        &:not(.theme-inverted) {
+            @include dark-mode();
+        }
+    }
+}

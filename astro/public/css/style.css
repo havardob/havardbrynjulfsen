@@ -77,18 +77,46 @@ ol {
   src: url("../fonts/Gabarito-VariableFont_wght.ttf");
   font-weight: 400 900;
 }
-
 @font-face {
   font-family: "Peachi";
-  src: url("../fonts/peachi.woff2") format("woff2");
-  font-weight: 400 900;
+  src: url("../fonts/Peachi-Thin.otf") format("otf");
+  font-weight: 200;
+  font-style: normal;
 }
-
+@font-face {
+  font-family: "Peachi";
+  src: url("../fonts/Peachi-Light.otf") format("otf");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Peachi";
+  src: url("../fonts/Peachi-Regular.otf") format("otf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Peachi";
+  src: url("../fonts/Peachi-Medium.otf") format("otf");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Peachi";
+  src: url("../fonts/Peachi-Bold.otf") format("otf");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Peachi";
+  src: url("../fonts/Peachi-Black.otf") format("otf");
+  font-weight: 900;
+  font-style: normal;
+}
 :root {
   --ff-primary: "Gabarito", sans-serif;
   --ff-secondary: "Peachi", serif;
 }
-
 @media (prefers-color-scheme: light) {
   :root.theme-inverted {
     --color-milk: #f7f8f8;
@@ -422,10 +450,6 @@ body {
 
 :where(h1, h2, h3, h4, h5, h6, a) {
   color: var(--text-secondary-color);
-}
-
-:where(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--ff-secondary);
 }
 
 :focus-visible {
@@ -881,11 +905,12 @@ body {
 .hero__title {
   font-size: 1.5rem;
   line-height: 1.25;
-  font-weight: 650;
+  font-weight: 700;
+  font-family: var(--ff-secondary);
 }
 @media (min-width: 40rem) {
   .hero__title {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     line-height: 1.125;
   }
 }
@@ -928,15 +953,13 @@ body {
   .project-preview {
     flex-direction: row;
     align-items: flex-start;
-    -moz-column-gap: 1.25rem;
-         column-gap: 1.25rem;
+    column-gap: 1.25rem;
   }
 }
 @container project-preview (min-width: 37.5rem) {
   .project-preview {
     align-items: center;
-    -moz-column-gap: 1.5rem;
-         column-gap: 1.5rem;
+    column-gap: 1.5rem;
   }
 }
 .project-preview__image-wrapper {
@@ -948,8 +971,7 @@ body {
   flex-shrink: 0;
 }
 .project-preview__image-wrapper img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -968,7 +990,6 @@ body {
 .project-preview__title {
   font-weight: 600;
   font-size: 1.25rem;
-  font-family: var(--ff-primary);
 }
 .project-preview__title a {
   display: block;
@@ -1009,7 +1030,6 @@ body {
   font-weight: 600;
   font-size: 1.375rem;
   text-wrap: pretty;
-  font-family: var(--ff-primary);
 }
 .post-preview__title a:hover {
   text-underline-offset: 0.125em;
@@ -1071,6 +1091,7 @@ body {
 .archive-page__title {
   font-size: 1.5rem;
   line-height: 1.25;
+  font-family: var(--ff-secondary);
 }
 @media (min-width: 40rem) {
   .archive-page__title {
@@ -1117,6 +1138,7 @@ body {
 .page__title {
   font-size: 1.5rem;
   line-height: 1.25;
+  font-family: var(--ff-secondary);
 }
 @media (min-width: 40rem) {
   .page__title {
@@ -1136,10 +1158,8 @@ body {
 .page__image {
   width: 100%;
   aspect-ratio: 1/1;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: 50% 50%;
-     object-position: 50% 50%;
+  object-fit: cover;
+  object-position: 50% 50%;
   max-width: 15rem;
   border-radius: 0.5rem;
   margin: 0.5rem;
@@ -1201,6 +1221,7 @@ body {
 .post__title {
   font-size: 1.75rem;
   line-height: 1.25;
+  font-family: var(--ff-secondary);
 }
 @media (min-width: 40rem) {
   .post__title {
@@ -1319,7 +1340,6 @@ body:has(.archive-page__rss) .posts {
   line-height: 1.375;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-family: var(--ff-primary);
 }
 .section__grid {
   padding: 0;
@@ -1367,10 +1387,6 @@ body:has(.archive-page__rss) .posts {
   .code-block {
     font-size: 1rem;
   }
-}
-.code-block ::-moz-selection {
-  background-color: #19f9d8;
-  color: var(--codeBlock-bg-color);
 }
 .code-block ::selection {
   background-color: #19f9d8;
@@ -1672,8 +1688,7 @@ body:has(.archive-page__rss) .posts {
   min-width: 0;
   max-height: 100%;
   max-width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 .image-dialog figcaption {
   color: var(--imageDialogFigcaption-text-color);
@@ -1743,8 +1758,7 @@ body:has(.archive-page__rss) .posts {
 
 .u-hidden {
   clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-          clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
   overflow: hidden;
   position: absolute;
@@ -1755,16 +1769,19 @@ body:has(.archive-page__rss) .posts {
 .u-rich-text > * + * {
   margin-top: 1.25em;
 }
-.u-rich-text > * + :is(h1, h2, h3, h4) {
+.u-rich-text > :where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--ff-secondary);
+}
+.u-rich-text > * + :where(h1, h2, h3, h4) {
   margin-top: 2em;
 }
-.u-rich-text > :is(h1, h2, h3, h4) + * {
+.u-rich-text > :where(h1, h2, h3, h4) + * {
   margin-top: 0.75em;
 }
-.u-rich-text > :is(p) + :is(ul, ol) {
+.u-rich-text > :where(p) + :where(ul, ol) {
   margin-top: 0.75em;
 }
-.u-rich-text > :is(ul, ol) li {
+.u-rich-text > :where(ul, ol) li {
   margin-top: 0.5em;
 }
 .u-rich-text > ul:not([class]) ::marker, .u-rich-text > ol:not([class]) ::marker {
@@ -1807,9 +1824,8 @@ body:has(.archive-page__rss) .posts {
     font-size: 1.375rem;
   }
 }
-
 .u-rich-text > h4:not([class]) {
-  font-size: .875rem;
+  font-size: 0.875rem;
   text-transform: uppercase;
 }
 @media (min-width: 40rem) {
@@ -1817,7 +1833,6 @@ body:has(.archive-page__rss) .posts {
     font-size: 1rem;
   }
 }
-
 .u-rich-text a:not([class]) {
   font-weight: 500;
   color: var(--textLink-color);
@@ -1867,4 +1882,4 @@ body:has(.archive-page__rss) .posts {
 }
 .u-rich-text > .details-block + * {
   margin-top: 2em;
-}/*# sourceMappingURL=style.css.map */
+}

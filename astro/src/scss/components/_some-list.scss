@@ -1,0 +1,37 @@
+.some-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    padding-right: .75rem;
+    border-right: 0.0625rem solid var(--border-primary-color);
+
+    @media (max-width: 40rem) {
+        border-right: 0;
+    }
+
+    &__item {}
+
+    &__link {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: .25rem;
+        position: relative;
+        background-color: var(--someLink-bg-color);
+
+        &:hover, &:focus-visible {
+            background-color: var(--someLink-bg-color-hover);
+        }
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}

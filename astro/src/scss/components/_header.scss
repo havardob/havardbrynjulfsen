@@ -1,0 +1,190 @@
+.header {
+    --header-nav-gap: .25rem;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        padding-block: 2rem;
+        border-bottom: .0625rem solid var(--border-primary-color);
+
+        width: 100%;
+
+        @media (max-width: 40rem) {
+            padding-block: 1rem;
+        }
+
+        .menu-is-open & {
+            border-bottom: 0;
+        }
+    }
+
+    &__logo {
+        font-weight: 600;
+        text-decoration: none;
+        flex-shrink: 0;
+        position: relative;
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        gap: var(--header-nav-gap);
+        container-name: header-actions;
+        container-type: inline-size;
+        justify-content: flex-end;
+        align-items: center;
+        flex-grow: 1;
+    }
+
+    &__theme-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: .25rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        flex-shrink: 0;
+        background-color: var(--headerLink-bg-color);
+
+        @container header-actions (max-width: 40rem) {
+            display: none;
+        }
+
+        &:hover {
+            background-color: var(--headerLink-bg-color-hover);
+        }
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+
+    &__menu-toggle {
+        display: flex;
+        align-items: center;
+        gap: .25rem;
+        border-radius: .25rem;
+        padding-inline: .75em;
+        margin-right: -.75em;
+        height: 2.5rem;
+
+        @container header-actions (min-width: 40rem) {
+            display: none;
+        }
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}
+
+.main-nav {
+    @container header-actions (max-width: 40rem) {
+        display: none;
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: var(--header-nav-gap);
+    }
+
+    &__item {
+        position: relative;
+    }
+
+    &__link,
+    &__dropdown-toggle {
+        cursor: pointer;
+        background-color: transparent;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: .125rem;
+        height: 2.5rem;
+        padding-inline: .75rem;
+        border-radius: .25rem;
+        background-color: var(--headerLink-bg-color);
+        color: var(--headerLink-text-color);
+
+        &.has-icon {
+            padding-inline-end: .5rem;
+
+            svg {
+                height: 1.25em;
+                width: 1.25em;
+            }
+        }
+
+        &:hover,
+        &.active {
+            color: var(--headerLink-text-color-hover);
+            background-color: var(--headerLink-bg-color-hover);
+        }
+    }
+
+    &__dropdown-toggle {
+        &:focus {
+            background-color: var(--headerLink-bg-color-hover);
+
+            &+.dropdown-menu {
+                scale: 1 1;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: .25rem;
+    padding: .5rem;
+    background-color: var(--headerDropdown-bg-color);
+    border-radius: .375rem;
+    opacity: 0;
+    scale: 1 0;
+    transition: scale .15s ease, opacity .15s ease;
+    transform-origin: top center;
+    position: absolute;
+    right: 0;
+    top: calc(100% + .25rem);
+
+    &:focus-within,
+    &:hover {
+        scale: 1 1;
+        opacity: 1;
+    }
+
+    &__item {
+        display: flex;
+    }
+
+    &__link {
+        display: flex;
+        flex-basis: 100%;
+        padding-block: .5rem;
+        padding-inline: .75rem;
+        text-decoration: none;
+        background-color: var(--headerDropdownLink-bg-color);
+        color: var(--headerDropdownLink-text-color);
+
+        &:hover,
+        &:focus {
+            background-color: var(--headerDropdownLink-bg-color-hover);
+            border-radius: .25rem;
+        }
+    }
+}
