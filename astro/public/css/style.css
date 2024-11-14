@@ -15,19 +15,12 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
-:where(img,
-picture,
-video,
-canvas,
-svg) {
+:where(img, picture, video, canvas, svg) {
   display: block;
   max-width: 100%;
 }
 
-:where(input,
-button,
-textarea,
-select) {
+:where(input, button, textarea, select) {
   font: inherit;
 }
 
@@ -46,19 +39,11 @@ select) {
   color: inherit;
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-li {
+:where(p, h1, h2, h3, h4, h5, h6, li) {
   overflow-wrap: break-word;
 }
 
-ul,
-ol {
+:where(ul, ol) {
   padding-inline-start: 1.5rem;
 }
 
