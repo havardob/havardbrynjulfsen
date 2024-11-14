@@ -12,7 +12,7 @@ export const portableTextToHtml = {
     types: {
         horizontalRule: ({ value }: any) => {
             return `
-                <hr style="${value.isDashed && 'dashed'}" />
+                <hr class="${value.isDashed ? 'dashed' : ''}" />
             `
         },
         codeBlock: ({ value }: any) => {
