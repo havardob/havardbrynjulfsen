@@ -78,6 +78,11 @@ ol {
   font-weight: 400 900;
 }
 @font-face {
+  font-family: "Geist";
+  src: url("../fonts/Geist.ttf");
+  font-weight: 200 900;
+}
+@font-face {
   font-family: "Peachi";
   src: url("../fonts/Peachi-Thin.otf") format("otf");
   font-weight: 200;
@@ -114,7 +119,7 @@ ol {
   font-style: normal;
 }
 :root {
-  --ff-primary: "Gabarito", sans-serif;
+  --ff-primary: "Geist", sans-serif;
   --ff-secondary: "Peachi", serif;
 }
 @media (prefers-color-scheme: light) {
@@ -445,7 +450,7 @@ html {
 
 body {
   font-family: var(--ff-primary);
-  font-weight: 400;
+  font-weight: 450;
   color: var(--text-primary-color);
   min-height: 100dvh;
 }
