@@ -1,48 +1,48 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 * {
-    margin: 0;
+  margin: 0;
 }
 
 body {
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
 }
 
-img,
+:where(img,
 picture,
 video,
 canvas,
-svg {
-    display: block;
-    max-width: 100%;
+svg) {
+  display: block;
+  max-width: 100%;
 }
 
-input,
+:where(input,
 button,
 textarea,
-select {
-    font: inherit;
+select) {
+  font: inherit;
 }
 
-button {
-    color: inherit;
-    border: 0;
-    background-color: transparent;
-    border-radius: 0;
-    padding: 0;
-    cursor: pointer;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+:where(button) {
+  color: inherit;
+  border: 0;
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-a {
-    color: inherit;
+:where(a) {
+  color: inherit;
 }
 
 p,
@@ -51,23 +51,23 @@ h2,
 h3,
 h4,
 h5,
-h6, 
+h6,
 li {
-    overflow-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 ul,
 ol {
-    padding-inline-start: 1.5rem;
+  padding-inline-start: 1.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
