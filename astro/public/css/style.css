@@ -68,6 +68,11 @@ body {
   font-weight: 200 900;
 }
 @font-face {
+  font-family: "Geist Mono";
+  src: url("../fonts/GeistMono.ttf");
+  font-weight: 200 900;
+}
+@font-face {
   font-family: "Peachi";
   src: url("../fonts/Peachi-Thin.otf") format("otf");
   font-weight: 200;
@@ -106,6 +111,7 @@ body {
 :root {
   --ff-primary: "Geist", sans-serif;
   --ff-secondary: "Peachi", serif;
+  --ff-code: "Geist Mono", monospace;
 }
 @media (prefers-color-scheme: light) {
   :root.theme-inverted {
@@ -1385,7 +1391,9 @@ body:has(.archive-page__rss) .posts {
   color: var(--codeBlock-bg-color);
 }
 .code-block pre, .code-block code {
-  font-size: inherit !important;
+  font-size: 0.875em;
+  font-family: var(--ff-code);
+  font-weight: 400;
 }
 .code-block__code {
   background-color: var(--codeBlock-bg-color);
@@ -1848,6 +1856,7 @@ body:has(.archive-page__rss) .posts {
   border-radius: 0.25rem;
   font-size: 0.875em;
   -webkit-box-decoration-break: clone;
+  font-family: var(--ff-code);
 }
 .u-rich-text > .code-block, .u-rich-text > .embed-block {
   width: 100%;

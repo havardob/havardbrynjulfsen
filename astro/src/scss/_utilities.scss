@@ -113,6 +113,7 @@
         border-radius: .25rem;
         font-size: .875em;
         -webkit-box-decoration-break: clone;
+        font-family: var(--ff-code);
     }
 
     & > .code-block, & > .embed-block {

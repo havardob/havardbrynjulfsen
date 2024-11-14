@@ -14,7 +14,9 @@
     }
 
     pre, code {
-        font-size: inherit !important;
+        font-size: .875em;
+        font-family: var(--ff-code);
+        font-weight: 400;
     }
     
     &__code {

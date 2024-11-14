@@ -11,6 +11,12 @@
 }
 
 @font-face {
+    font-family: "Geist Mono";
+    src: url("../fonts/GeistMono.ttf");
+    font-weight: 200 900;
+}
+
+@font-face {
     font-family: "Peachi";
     src: url("../fonts/Peachi-Thin.otf") format("otf");
     font-weight: 200;
@@ -266,6 +272,7 @@
 :root {
     --ff-primary: "Geist", sans-serif;
     --ff-secondary: "Peachi", serif;
+    --ff-code: "Geist Mono", monospace;
 
     @media (prefers-color-scheme: light) {
         &.theme-inverted {
