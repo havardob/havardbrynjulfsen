@@ -150,6 +150,10 @@ export default {
                                     {
                                         title: "Mastodon",
                                         value: "mastodon"
+                                    },
+                                    {
+                                        title: "Bluesky",
+                                        value: "bluesky",
                                     }
                                 ],
                             }

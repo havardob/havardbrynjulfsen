@@ -7,6 +7,7 @@ import Sanity from "../icons/Sanity.astro";
 import Rss from "../icons/Rss.astro";
 import Github from "../icons/Github.astro";
 import ChevronUp from "../icons/ChevronUp.astro";
+import Bluesky from "../icons/Bluesky.astro";
 
 interface Props {
     name: string
@@ -24,4 +25,5 @@ const { name } = Astro.props;
     {name === 'rss' && <Rss />}
     {name === 'github' && <Github />}
     {name === 'chevron' && <ChevronUp />}
+    {name === 'bluesky' && <Bluesky />}
 </>
