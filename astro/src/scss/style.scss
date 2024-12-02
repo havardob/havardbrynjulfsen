@@ -6,7 +6,6 @@
 @use 'components/tooltip';
 @use 'components/four-o-four';
 @use 'components/banner';
-@use 'components/baseline-block';
 @use 'components/header';
 @use 'components/footer';
 @use 'components/tag';
@@ -28,6 +27,8 @@
 @use 'components/tag-list';
 @use 'components/menu';
 @use 'components/details-block';
+@use 'components/baseline-block';
+@use 'components/review-block';
 @use 'components/projects';
 @use 'components/image-dialog';
 @use 'components/rss-link';

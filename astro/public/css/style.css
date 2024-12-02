@@ -194,6 +194,7 @@ body {
     --imageDialogCloseButton-color-focus: var(--color-malibu);
     --rssLink-border-color: var(--color-scale-gray-7);
     --rssLinkIcon-text-color: var(--color-fire);
+    --baselineBlock-bg-color: var(--color-scale-gray-9);
   }
   :root:not(.theme-inverted) {
     --color-white: #FFF;
@@ -271,6 +272,7 @@ body {
     --imageDialogCloseButton-color-focus: var(--color-fall);
     --rssLink-border-color: var(--color-fog);
     --rssLinkIcon-text-color: var(--color-fire);
+    --baselineBlock-bg-color: var(--color-white);
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -350,6 +352,7 @@ body {
     --imageDialogCloseButton-color-focus: var(--color-fall);
     --rssLink-border-color: var(--color-fog);
     --rssLinkIcon-text-color: var(--color-fire);
+    --baselineBlock-bg-color: var(--color-white);
   }
   :root:not(.theme-inverted) {
     --color-milk: #f7f8f8;
@@ -431,6 +434,7 @@ body {
     --imageDialogCloseButton-color-focus: var(--color-malibu);
     --rssLink-border-color: var(--color-scale-gray-7);
     --rssLinkIcon-text-color: var(--color-fire);
+    --baselineBlock-bg-color: var(--color-scale-gray-9);
   }
 }
 
@@ -542,13 +546,6 @@ body {
   color: var(--banner-text-color);
   padding-block: 0.75rem;
   font-size: 0.875rem;
-}
-
-@media (min-width: 45rem) {
-  .baseline-block {
-    width: calc(100% + 4rem);
-    margin-left: -2rem;
-  }
 }
 
 .header {
@@ -1644,6 +1641,118 @@ body:has(.archive-page__rss) .posts {
   text-decoration-thickness: 0.125em;
 }
 
+.baseline-block {
+  background-color: var(--baselineBlock-bg-color);
+  border-radius: 0.5rem;
+}
+@media (min-width: 45rem) {
+  .baseline-block {
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+  }
+}
+
+.review-block {
+  container-name: reviewBlock;
+  container-type: inline-size;
+}
+@media (min-width: 45rem) {
+  .review-block {
+    width: calc(100% + 6rem);
+    margin-left: -3rem;
+  }
+}
+.review-block__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+@container reviewBlock (min-width: 30rem) {
+  .review-block__inner {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+.review-block__content {
+  border: 2px solid #DDD;
+  border-radius: 0.5rem;
+  padding-block-start: 3rem;
+  padding-block-end: 1rem;
+  padding-inline: 1rem;
+  font-size: 1rem;
+  margin-block-start: -2rem;
+  background-color: #fcfcfc;
+}
+@container reviewBlock (min-width: 30rem) {
+  .review-block__content {
+    width: calc(65% + 1rem);
+    margin-block-start: 0;
+    margin-inline-start: -1rem;
+    padding-inline-end: 1.5rem;
+    padding-inline-start: 2.5rem;
+    padding-block: 2rem;
+  }
+}
+.review-block__media {
+  width: 40%;
+  position: relative;
+  margin-inline-start: 1rem;
+}
+@container reviewBlock (min-width: 30rem) {
+  .review-block__media {
+    width: 35%;
+    margin-block-start: 1.5rem;
+    margin-inline-start: 0;
+  }
+}
+.review-block__media img {
+  border-radius: 0.5rem;
+  outline: 0.375rem solid #FFF;
+}
+.review-block__rating {
+  color: orange;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 0.25rem;
+}
+.review-block__rating svg {
+  flex-shrink: 0;
+}
+.review-block__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: var(--ff-secondary);
+  line-height: 1.125;
+  margin-block-start: 0.75rem;
+}
+.review-block__subtitle {
+  margin-block-start: 0.25rem;
+}
+.review-block__separator {
+  width: 3rem;
+  height: 0.25rem;
+  border: 0;
+  background-color: #DDD;
+  margin-block-start: 1rem;
+}
+.review-block__info {
+  margin-block-start: 1rem;
+}
+.review-block__link {
+  display: inline-flex;
+  margin-block-start: 1.5rem;
+  font-weight: 500;
+  color: var(--textLink-color);
+  text-underline-offset: 0.125em;
+  text-decoration-thickness: 0.0625em;
+}
+.review-block__link:hover {
+  color: var(--textLink-color-hover);
+  text-decoration-thickness: 0.125em;
+}
+
 .projects {
   margin-top: 4rem;
   margin-bottom: 6rem;
@@ -1873,6 +1982,9 @@ body:has(.archive-page__rss) .posts {
     width: calc(100% + 4rem);
     margin-left: -2rem;
   }
+}
+.u-rich-text > * + .review-block {
+  margin-block-start: 3em;
 }
 .u-rich-text > * + .image-block {
   margin-top: 2em;

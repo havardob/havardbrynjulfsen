@@ -124,7 +124,11 @@
                 margin-left: -2rem;
             }
         }
-    } 
+    }
+
+    & > * + .review-block {
+        margin-block-start: 3em;
+    }
     
     & > * + .image-block {
         margin-top: 2em;

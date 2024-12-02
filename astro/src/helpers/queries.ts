@@ -19,6 +19,9 @@ export function groqGetBody(key: string) {
         _type == "imageBlock" => {
             "imageFile": imageFile.asset->url,
         },
+        _type == "reviewBlock" => {
+            "imageFile": imageFile.asset->url,
+        },
         markDefs[] {
         ...,
             _type == "internalLink" => {

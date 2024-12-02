@@ -160,6 +160,8 @@
 
     --rssLink-border-color: var(--color-fog);
     --rssLinkIcon-text-color: var(--color-fire);
+
+    --baselineBlock-bg-color: var(--color-white);
 }
 
 @mixin dark-mode() {
@@ -267,6 +269,8 @@
     
     --rssLink-border-color: var(--color-scale-gray-7);
     --rssLinkIcon-text-color: var(--color-fire);
+
+    --baselineBlock-bg-color: var(--color-scale-gray-9);
 }
 
 :root {

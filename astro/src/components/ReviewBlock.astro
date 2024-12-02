@@ -1,0 +1,52 @@
+---
+import StarFilled from "../icons/StarFilled.astro";
+import StarHalf from "../icons/StarHalf.astro";
+import StarEmpty from "../icons/StarEmpty.astro";
+
+const {imageFile, alt, title, subtitle, info, rating, link} = Astro.props.node;
+
+let starsArray: string[] = [];
+if (rating) {
+    const scaledRating = (rating / 10) * 5;
+    const fullStars = Math.floor(scaledRating);
+    const hasHalfStar = scaledRating % 1 !== 0;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    starsArray = [
+        ...Array(fullStars).fill('full'),
+        ...(hasHalfStar ? ['half'] : []),
+        ...Array(emptyStars).fill('empty'),
+    ];
+}
+---
+
+<div class="review-block">
+  <div class="review-block__inner">
+    <figure class="review-block__media">
+      <img src={imageFile} alt={alt}/>
+    </figure>
+    <div class="review-block__content">
+        {starsArray.length > 0 && (
+                <div class="review-block__rating">
+                    {starsArray.map((type: any, index: number) => (
+                            <>
+                                {type === "full" && (
+                                        <StarFilled/>
+                                )}
+                                {type === "half" && (
+                                        <StarHalf/>
+                                )}
+                                {type === "empty" && (
+                                        <StarEmpty/>
+                                )}
+                            </>
+                    ))}
+                </div>
+        )}
+      <h3 class="review-block__title">{title}</h3>
+      <p class="review-block__subtitle">{subtitle}</p>
+      <hr class="review-block__separator"/>
+      <p class="review-block__info">{info}</p>
+      <a href={link.href} class="review-block__link">{link.text}</a>
+    </div>
+  </div>
+</div>

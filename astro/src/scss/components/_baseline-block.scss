@@ -1,4 +1,7 @@
 .baseline-block {
+  background-color: var(--baselineBlock-bg-color);
+  border-radius: .5rem;
+
   @media (min-width: 45rem) {
     width: calc(100% + 4rem);
     margin-left: -2rem;

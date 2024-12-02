@@ -1,0 +1,107 @@
+.review-block {
+  container-name: reviewBlock;
+  container-type: inline-size;
+
+  @media (min-width: 45rem) {
+    width: calc(100% + 6rem);
+    margin-left: -3rem;
+  }
+
+  &__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @container reviewBlock (min-width: 30rem) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  &__content {
+    border: 2px solid #DDD;
+    border-radius: .5rem;
+    padding-block-start: 3rem;
+    padding-block-end: 1rem;
+    padding-inline: 1rem;
+    font-size: 1rem;
+    margin-block-start: -2rem;
+    background-color: #fcfcfc;
+
+    @container reviewBlock (min-width: 30rem) {
+      width: calc(65% + 1rem);
+      margin-block-start: 0;
+      margin-inline-start: -1rem;
+      padding-inline-end: 1.5rem;
+      padding-inline-start: 2.5rem;
+      padding-block: 2rem;
+    }
+  }
+
+  &__media {
+    width: 40%;
+    position: relative;
+    margin-inline-start: 1rem;
+
+    @container reviewBlock (min-width: 30rem) {
+      width: 35%;
+      margin-block-start: 1.5rem;
+      margin-inline-start: 0;
+    }
+
+    img {
+      border-radius: .5rem;
+      outline: .375rem solid #FFF;
+    }
+  }
+
+  &__rating {
+    color: orange;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: .25rem;
+
+    svg {
+      flex-shrink: 0;
+    }
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: var(--ff-secondary);
+    line-height: 1.125;
+    margin-block-start: .75rem;
+  }
+
+  &__subtitle {
+    margin-block-start: .25rem;
+  }
+
+  &__separator {
+    width: 3rem;
+    height: .25rem;
+    border: 0;
+    background-color: #DDD;
+    margin-block-start: 1rem;
+  }
+
+  &__info {
+    margin-block-start: 1rem;
+  }
+
+  &__link {
+    display: inline-flex;
+    margin-block-start: 1.5rem;
+    font-weight: 500;
+    color: var(--textLink-color);
+    text-underline-offset: .125em;
+    text-decoration-thickness: .0625em;
+
+    &:hover {
+      color: var(--textLink-color-hover);
+      text-decoration-thickness: .125em;
+    }
+  }
+}
