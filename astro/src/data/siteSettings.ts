@@ -1,5 +1,5 @@
-import { generateSlug } from "./_utils";
-import { client } from "./_sanityClient";
+import {generateSlug} from "./_utils";
+import {client} from "./_sanityClient";
 
 const query = `*[_id == "siteSettings"][0]{
     _id,
@@ -10,6 +10,12 @@ const query = `*[_id == "siteSettings"][0]{
         ...,
         internalDocument {
             ...
+        },
+        subNav[] {
+            ...,
+            internalDocument {
+                ...
+            },
         }
     },
     someLinks[] {
@@ -33,12 +39,21 @@ const query = `*[_id == "siteSettings"][0]{
 
 export async function getSiteSettingsData() {
     const data = await client.fetch(query);
-    for (let link of data.mainNav) { 
-        if (link._type == "internalLink") {
+    for (let link of data.mainNav) {
+        if (link._type === "internalLink") {
             const internalLink = await generateSlug(link.internalDocument._ref);
             link.href = internalLink.slug
         }
-    } 
+
+        if (link.subNav !== null) {
+            for (let subItem of link.subNav) {
+                if (subItem.internalDocument._ref) {
+                    const internalLink = await generateSlug(subItem.internalDocument._ref);
+                    subItem.href = internalLink.slug
+                }
+            }
+        }
+    }
 
     for (let link of data.someLinks) {
         if (!link.isExternal) {
@@ -53,5 +68,5 @@ export async function getSiteSettingsData() {
             link.href = internalLink.slug
         }
     }
-    return data; 
-} 
+    return data;
+}

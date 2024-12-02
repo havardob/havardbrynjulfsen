@@ -82,6 +82,20 @@
         svg {
             width: 1.5rem;
             height: 1.5rem;
+
+            &:nth-of-type(2) {
+                display: none;
+            }
+        }
+
+        &.is-open:has(svg:nth-of-type(2)) {
+            svg:first-of-type {
+                display: none;
+            }
+
+            svg:last-of-type {
+                display: block;
+            }
         }
     }
 }
@@ -118,7 +132,7 @@
         background-color: var(--headerLink-bg-color);
         color: var(--headerLink-text-color);
 
-        &.has-icon {
+        &:has(svg) {
             padding-inline-end: .5rem;
 
             svg {
@@ -135,10 +149,16 @@
     }
 
     &__dropdown-toggle {
+        &:has(+ .main-nav__submenu:focus-within),
         &:focus {
+            color: var(--headerLink-text-color-hover);
             background-color: var(--headerLink-bg-color-hover);
 
-            &+.dropdown-menu {
+            svg {
+                rotate: 180deg;
+            }
+
+            & + .main-nav__submenu {
                 scale: 1 1;
                 opacity: 1;
             }
@@ -146,7 +166,7 @@
     }
 }
 
-.dropdown-menu {
+.main-nav__submenu {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -160,7 +180,7 @@
     transform-origin: top center;
     position: absolute;
     right: 0;
-    top: calc(100% + .25rem);
+    top: calc(100% + .5rem);
 
     &:focus-within,
     &:hover {
@@ -168,11 +188,11 @@
         opacity: 1;
     }
 
-    &__item {
+    &-item {
         display: flex;
     }
 
-    &__link {
+    &-link {
         display: flex;
         flex-basis: 100%;
         padding-block: .5rem;

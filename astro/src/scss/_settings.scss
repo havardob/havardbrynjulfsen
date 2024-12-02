@@ -89,6 +89,11 @@
     --headerLink-bg-color: var(--color-white);
     --headerLink-bg-color-hover: var(--color-mist);
 
+    --headerDropdown-bg-color: var(--color-mist);
+    --headerDropdownLink-bg-color: var(--color-mist);
+    --headerDropdownLink-bg-color-hover: var(--color-white);
+    --headerDropdownLink-text-color: var(--color-concrete);
+
     --banner-bg-color: var(--color-void);
     --banner-text-color: var(--color-white);
 
@@ -108,6 +113,7 @@
     --textLink-color-hover: var(--color-cobalt);
 
     --menu-bg-color: var(--color-mist);
+    --menu-border-color: var(--color-fog);
     --menuThemeToggle-bg-color: var(--color-fog);
 
     --moreLink-bg-color: var(--color-mist);
@@ -201,6 +207,7 @@
     --text-tertiary-color: var(--color-scale-gray-2);
 
     --menu-bg-color: var(--color-scale-gray-8);
+    --menu-border-color: var(--color-scale-gray-6);
     --menuThemeToggle-bg-color: var(--color-scale-gray-8);
 
     --tag-bg-color: var(--color-scale-gray-8);
@@ -211,6 +218,11 @@
     --headerLink-text-color-hover: var(--color-scale-gray-1);
     --headerLink-bg-color: var(--color-scale-gray-10);
     --headerLink-bg-color-hover: var(--color-scale-gray-8);
+
+    --headerDropdown-bg-color: var(--color-scale-gray-8);
+    --headerDropdownLink-bg-color: var(--color-scale-gray-8);
+    --headerDropdownLink-bg-color-hover: var(--color-scale-gray-10);
+    --headerDropdownLink-text-color: var(--color-scale-gray-1);
 
     --banner-bg-color: var(--color-fall);
     --banner-text-color: var(--color-abyss);

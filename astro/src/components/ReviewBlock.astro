@@ -27,7 +27,7 @@ if (rating) {
     <div class="review-block__content">
         {starsArray.length > 0 && (
                 <div class="review-block__rating">
-                    {starsArray.map((type: any, index: number) => (
+                    {starsArray.map((type: any) => (
                             <>
                                 {type === "full" && (
                                         <StarFilled/>

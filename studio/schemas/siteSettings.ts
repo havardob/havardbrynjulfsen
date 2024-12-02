@@ -64,6 +64,37 @@ export default {
                         },
                         {
                             ...internalLinkRef,
+                        },
+                        {
+                            title: "Sub-navigation",
+                            name: "subNav",
+                            type: "array",
+                            of: [
+                                {
+                                    title: "Sub-navigation item",
+                                    name: "subItem",
+                                    type: "object",
+                                    fields: [
+                                        {
+                                            title: "Text",
+                                            name: "text",
+                                            type: "string"
+                                        },
+                                        {
+                                            title: "Open in new tab",
+                                            name: "openInNewTab",
+                                            type: "boolean",
+                                            initialValue: false,
+                                            options: {
+                                                layout: "checkbox"
+                                            }
+                                        },
+                                        {
+                                            ...internalLinkRef,
+                                        },
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
@@ -88,6 +119,37 @@ export default {
                             options: {
                                 layout: "checkbox"
                             }
+                        },
+                        {
+                            title: "Sub-navigation",
+                            name: "subNav",
+                            type: "array",
+                            of: [
+                                {
+                                    title: "Sub-navigation item",
+                                    name: "subItem",
+                                    type: "object",
+                                    fields: [
+                                        {
+                                            title: "Text",
+                                            name: "text",
+                                            type: "string"
+                                        },
+                                        {
+                                            title: "Open in new tab",
+                                            name: "openInNewTab",
+                                            type: "boolean",
+                                            initialValue: false,
+                                            options: {
+                                                layout: "checkbox"
+                                            }
+                                        },
+                                        {
+                                            ...internalLinkRef,
+                                        },
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
