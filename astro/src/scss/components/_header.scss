@@ -159,7 +159,7 @@
             }
 
             & + .main-nav__submenu {
-                scale: 1 1;
+                transform: scale(1);
                 opacity: 1;
             }
         }
@@ -175,16 +175,16 @@
     background-color: var(--headerDropdown-bg-color);
     border-radius: .375rem;
     opacity: 0;
-    scale: 1 0;
-    transition: scale .15s ease, opacity .15s ease;
-    transform-origin: top center;
+    transform: scale(0);
+    transition: transform .15s ease, opacity .15s ease;
+    transform-origin: top right;
     position: absolute;
     right: 0;
     top: calc(100% + .5rem);
 
     &:focus-within,
     &:hover {
-        scale: 1 1;
+        transform: scale(1);
         opacity: 1;
     }
 
