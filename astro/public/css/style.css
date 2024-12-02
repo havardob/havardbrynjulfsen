@@ -1744,7 +1744,7 @@ body:has(.archive-page__rss) .posts {
   width: 3rem;
   height: 0.25rem;
   border: 0;
-  background-color: #DDD;
+  background-color: var(--reviewBlock-border-color);
   margin-block-start: 1rem;
 }
 .review-block__info {
