@@ -2,17 +2,15 @@
 import PortableText from "./portableText/PortableText.astro";
 interface Props {
     title: string,
-    intro?: string 
-  }
+    intro?: string
+}
 
-  const { title, intro } = Astro.props;
+const {title, intro} = Astro.props;
 ---
 
 <div class="hero">
-    <h1 class="hero__title">{title}</h1>
-    {intro && (
-      <div class="hero__intro | u-rich-text">
-        <PortableText value={intro} />
-      </div>
-    )}
+  <h1 class="hero__title">{title}</h1>
+  <div class="hero__intro | u-rich-text">
+    <PortableText portableText={intro}/>
   </div>
+</div>

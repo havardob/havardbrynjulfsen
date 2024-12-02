@@ -45,7 +45,7 @@ let { articleArchive, articles } = Astro.props;
                             {articleArchive.title}
                         </h2>
                       <div class="archive-page__intro | u-rich-text">
-                        <PortableText value={articleArchive.leading} />
+                        <PortableText portableText={articleArchive.leading} />
                       </div>
                         <div class="archive-page__rss">
                             <a href="/feed.xml" class="rss-link">
