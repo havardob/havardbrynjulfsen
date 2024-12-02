@@ -3,10 +3,10 @@ import Menu from "../icons/Menu.astro";
 import Moon from "../icons/Moon.astro";
 import {getCollection} from "astro:content";
 
+
 const siteSettingsCollection = await getCollection('siteSettings');
 const siteSettings = siteSettingsCollection[0].data;
 ---
-
 <header class="header">
     <div class="l-constraint">
         <div class="header__inner">

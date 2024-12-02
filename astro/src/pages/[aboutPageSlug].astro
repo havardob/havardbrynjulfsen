@@ -2,8 +2,9 @@
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import { getAboutPageData } from "../data/aboutPage";
+import {getAboutPageData} from "../data/aboutPage";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PortableText from "../components/portableText/PortableText.astro";
 
 export async function getStaticPaths() {
     const aboutPageData = await getAboutPageData();
@@ -19,32 +20,33 @@ export async function getStaticPaths() {
     ];
 }
 
-const { aboutPage } = Astro.props;
+const {aboutPage} = Astro.props;
 ---
 
 <BaseLayout metaTitle={aboutPage.title}>
-    <div class="l-site">
-        <SiteHeader />
-        <main>
-            <div class="l-constraint">
-                <Breadcrumbs current={aboutPage.title} />
-                <div class="page">
-                    <div class="page__column">
-                        <h2 class="page__title">{aboutPage.title}</h2>
-                        <p class="page__intro">
-                            {aboutPage.leading}
-                        </p>
-                        <div
-                            class="page__body | u-rich-text"
-                            set:html={aboutPage.body}
-                        />
-                    </div>
-                    <div class="page__column">
-                        <img src={aboutPage.profileImage} class="page__image" />
-                    </div>
-                </div>
-            </div>
-        </main>
-        <SiteFooter />
-    </div>
+  <div class="l-site">
+    <SiteHeader/>
+    <main>
+      <div class="l-constraint">
+        <Breadcrumbs current={aboutPage.title}/>
+        <div class="page">
+          <div class="page__column">
+            <h2 class="page__title">{aboutPage.title}</h2>
+            <p class="page__intro">
+                {aboutPage.leading}
+            </p>
+              {aboutPage.body && (
+                      <div class="page__body | u-rich-text">
+                        <PortableText portableText={aboutPage.body}/>
+                      </div>
+              )}
+          </div>
+          <div class="page__column">
+            <img src={aboutPage.profileImage} alt="" class="page__image"/>
+          </div>
+        </div>
+      </div>
+    </main>
+    <SiteFooter/>
+  </div>
 </BaseLayout>

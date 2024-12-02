@@ -1,0 +1,9 @@
+---
+const { isDashed } = Astro.props.node;
+
+const className = isDashed ? "dashed" : "";
+---
+
+<hr class={className} />
+
+

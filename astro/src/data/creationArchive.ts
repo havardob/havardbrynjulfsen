@@ -1,5 +1,4 @@
 import {client} from "./_sanityClient";
-import {generateRichText} from "./_utils";
 
 export const getCreationArchiveData = async function () {
     const query = `*[_id == "creationArchive"][0] {
@@ -11,11 +10,5 @@ export const getCreationArchiveData = async function () {
             _id
         }
     }`
-    const data = await client.fetch(query);
-
-    if (data.leading) {
-        data.leading = generateRichText(data.leading);
-    }
-
-    return data;
+    return await client.fetch(query);
 }

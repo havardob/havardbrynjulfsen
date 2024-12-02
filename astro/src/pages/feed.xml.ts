@@ -14,7 +14,7 @@ export async function GET(context: any) {
             title: article.data.title,
             description: article.data.leading,
             pubDate: article.data.rssDate.toISOString(),
-            content: article.data.body ?? '',
+            content: article.data.rawHtml ?? '',
             link: "/" + article.data.fullSlug
         }))
     }

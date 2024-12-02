@@ -1,0 +1,27 @@
+---
+import {PortableText as PortableTextInternal} from 'astro-portabletext';
+import InlineLink from '../InlineLink.astro';
+import HorizontalRule from '../HorizontalRule.astro';
+import CodeBlock from '../CodeBlock.astro';
+import ImageBlock from '../ImageBlock.astro';
+import EmbedBlock from '../EmbedBlock.astro';
+import BaselineBlock from '../BaselineBlock.astro';
+
+const {portableText} = Astro.props;
+
+const components = {
+    mark: {
+        externalLink: InlineLink,
+        internalLink: InlineLink
+    },
+    type: {
+        horizontalRule: HorizontalRule,
+        codeBlock: CodeBlock,
+        imageBlock: ImageBlock,
+        embedBlock: EmbedBlock,
+        baselineBlock: BaselineBlock,
+    }
+};
+---
+
+<PortableTextInternal value={portableText} components={components}/>

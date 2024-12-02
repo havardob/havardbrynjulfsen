@@ -1,0 +1,4 @@
+---
+const { size, code } = Astro.props.node;
+---
+<div class={`embed-block | ${size}`} set:html={code}></div>

@@ -1,9 +1,10 @@
 ---
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import { getSubPageData } from "../data/subpage";
+import {getSubPageData} from "../data/subpage";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import PortableText from "../components/portableText/PortableText.astro";
 
 export async function getStaticPaths() {
     const subPages = await getSubPageData();
@@ -21,35 +22,35 @@ export async function getStaticPaths() {
     );
 }
 
-const { subPage } = Astro.props;
+const {subPage} = Astro.props;
 ---
 
 <BaseLayout metaTitle={subPage.title} metaDescription={subPage.leading}>
-    <div class="l-site">
-        <SiteHeader />
-        <main>
-            <div class="l-constraint">
-              <Breadcrumbs current={subPage.title} />
-                <div class="page">
-                    <div class="page__column">
-                        <h2 class="page__title">{subPage.title}</h2>
-                        {
-                            subPage.leading && (
-                                <p class="page__intro">{subPage.leading}</p>
-                            )
-                        }
-                        {
-                            subPage.body && (
-                                <div
-                                    class="page__body | u-rich-text"
-                                    set:html={subPage.body}
-                                />
-                            )
-                        }
-                    </div>
-                </div>
-            </div>
-        </main>
-        <SiteFooter />
-    </div>
+  <div class="l-site">
+    <SiteHeader/>
+    <main>
+      <div class="l-constraint">
+        <Breadcrumbs current={subPage.title}/>
+        <div class="page">
+          <div class="page__column">
+            <h2 class="page__title">{subPage.title}</h2>
+              {
+                  subPage.leading && (
+                              <p class="page__intro">{subPage.leading}</p>
+                  )
+              }
+              {
+                  subPage.body && (
+                              <div
+                                      class="page__body | u-rich-text">
+                                <PortableText portableText={subPage.body}/>
+                              </div>
+                  )
+              }
+          </div>
+        </div>
+      </div>
+    </main>
+    <SiteFooter/>
+  </div>
 </BaseLayout>

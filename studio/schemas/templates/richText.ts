@@ -1,4 +1,15 @@
-import { BiCard, BiCode, BiCodeAlt, BiCodeBlock, BiDetail, BiImage, BiLinkAlt, BiLinkExternal, BiReflectHorizontal } from "react-icons/bi";
+import {
+  BiCard,
+  BiCheckShield,
+  BiCode,
+  BiCodeAlt,
+  BiCodeBlock,
+  BiDetail,
+  BiImage,
+  BiLinkAlt,
+  BiLinkExternal,
+  BiReflectHorizontal
+} from "react-icons/bi";
 import { externalLinkUrl, internalLinkRef } from "./linkObject";
 import { descriptionList } from "./descriptionList";
 
@@ -203,6 +214,19 @@ export const richTextMain = {
             layout: "radio"
           },
           initialValue: "original"
+        }
+      ]
+    },
+    {
+      title: "Baseline Block",
+      icon: BiCheckShield,
+      name: "baselineBlock",
+      type: "object",
+      fields: [
+        {
+          name: "baselineId",
+          type: "string",
+          title: "Baseline-ID"
         }
       ]
     }

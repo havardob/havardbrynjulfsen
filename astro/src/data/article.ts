@@ -31,10 +31,10 @@ export const getArticleData = async function () {
 
     for (let article of data) {
 
-        // Convert body text to html
+        // Get reading time
         if (article.body) {
-            article.body = generateRichText(article.body);
-            article.readingTime = getReadingTime(article.body);
+            article.rawHtml = generateRichText(article.body);
+            article.readingTime = getReadingTime(article.rawHtml);
         } else {
             article.readingTime = 1;
         }

@@ -5,6 +5,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {getCollection} from "astro:content";
+import PortableText from "../components/portableText/PortableText.astro";
 
 export async function getStaticPaths() {
     const creationArchiveCollection = await getCollection('creationArchive');
@@ -48,10 +49,9 @@ let { creationArchive, creations } = Astro.props;
                         <h2 class="archive-page__title">
                             {creationArchive.title}
                         </h2>
-                        <div
-                            class="archive-page__intro | u-rich-text"
-                            set:html={creationArchive.leading}
-                        />
+                      <div class="archive-page__intro | u-rich-text">
+                        <PortableText value={creationArchive.leading} />
+                      </div>
                     </div>
                     <div class="projects">
                         <ul class="projects__list">

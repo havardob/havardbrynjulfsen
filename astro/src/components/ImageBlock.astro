@@ -1,0 +1,33 @@
+---
+import Icon from "./Icon.astro";
+
+const {size, imageFile, hasBorder, text, credits, alt} = Astro.props.node;
+console.log(alt);
+---
+
+<figure class={`image-block | ${size}`}>
+  <div class="image-block__frame">
+    <img src={imageFile} alt={alt ?? ""} } loading="lazy" class={hasBorder && "has-border"} data-dialog-trigger/>
+    <dialog class="image-dialog">
+      <figure>
+        <img src={imageFile} alt={alt ?? ""}/>
+        <button class="image-dialog__close">
+          <Icon name="close"/>
+        </button>
+          {(text || credits) && (
+                  <figcaption class="image-block__caption">
+                      {text && (<span class="image-block__description">{text}</span>)}
+                      {credits && (
+                              <span class="image-block__source"><span class="u-hidden">Credit:</span>{credits}</span>)}
+                  </figcaption>
+          )}
+      </figure>
+    </dialog>
+  </div>
+    {(text || credits) && (
+            <figcaption class="image-block__caption">
+                {text && (<span class="image-block__description">{text}</span>)}
+                {credits && (<span class="image-block__source"><span class="u-hidden">Credit:</span>{credits}</span>)}
+            </figcaption>
+    )}
+</figure>

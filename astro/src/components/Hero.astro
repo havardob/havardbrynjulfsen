@@ -1,5 +1,6 @@
 ---
-  interface Props {
+import PortableText from "./portableText/PortableText.astro";
+interface Props {
     title: string,
     intro?: string 
   }
@@ -10,7 +11,8 @@
 <div class="hero">
     <h1 class="hero__title">{title}</h1>
     {intro && (
-      <div class="hero__intro | u-rich-text" set:html={intro}>
+      <div class="hero__intro | u-rich-text">
+        <PortableText value={intro} />
       </div>
     )}
   </div>

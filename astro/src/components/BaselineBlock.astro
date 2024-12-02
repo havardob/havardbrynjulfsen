@@ -1,0 +1,9 @@
+---
+import {BaselineStatus} from '@astro-community/astro-embed-baseline-status';
+
+const {baselineId} = Astro.props.node;
+---
+
+<div class="baseline-block">
+  <BaselineStatus id={baselineId}/>
+</div>

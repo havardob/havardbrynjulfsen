@@ -1,5 +1,4 @@
 import { client } from "./_sanityClient";
-import { generateRichText } from "./_utils";
 import {groqGetBody, groqGetSlug} from "../helpers/queries.ts";
 
 const query = `*[_id == "frontPage"][0] {
@@ -32,10 +31,6 @@ const query = `*[_id == "frontPage"][0] {
 
 export const getFrontPageData = async function () {
     const frontPage = await client.fetch(query);
-
-    if (frontPage.hero.intro !== undefined) {
-        frontPage.hero.intro = generateRichText(frontPage.hero.intro);
-    }
 
     if (frontPage.creations.moreLink) {
         if (!frontPage.creations.moreLink.isExternal) {

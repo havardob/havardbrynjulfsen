@@ -1,0 +1,20 @@
+---
+import hljs from "highlight.js";
+const {code, size, altTitle} = Astro.props.node;
+
+
+const highlightedCode = hljs.highlight(
+    `${code.code}`,
+    {language: code.language}
+).value
+---
+
+<div class={`code-block ${size}`}>
+  <div class="code-block__lang">
+    <span class="u-hidden">Language:</span>
+    <span>{altTitle ? altTitle : code.language}</span>
+  </div>
+  <div class="code-block__code">
+    <pre set:html={highlightedCode}></pre>
+  </div>
+</div>

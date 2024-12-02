@@ -6,6 +6,7 @@ import Rss from "../icons/Rss.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import {getCollection} from "astro:content";
+import PortableText from "../components/portableText/PortableText.astro";
 
 export async function getStaticPaths() {
 
@@ -43,10 +44,9 @@ let { articleArchive, articles } = Astro.props;
                         <h2 class="archive-page__title">
                             {articleArchive.title}
                         </h2>
-                        <div
-                            class="archive-page__intro | u-rich-text"
-                            set:html={articleArchive.leading}
-                        />
+                      <div class="archive-page__intro | u-rich-text">
+                        <PortableText value={articleArchive.leading} />
+                      </div>
                         <div class="archive-page__rss">
                             <a href="/feed.xml" class="rss-link">
                                 <span class="rss-link__icon">

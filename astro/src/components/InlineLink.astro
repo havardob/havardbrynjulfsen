@@ -1,0 +1,14 @@
+---
+const { markDef, children } = Astro.props.node;
+
+const text = children[0].text;
+let href = "";
+
+if (markDef._type == "internalLink") {
+    href = markDef.internalDocument.href;
+} else {
+    href = markDef.href
+}
+---
+
+<a href={href}>{text}</a>

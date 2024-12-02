@@ -544,6 +544,13 @@ body {
   font-size: 0.875rem;
 }
 
+@media (min-width: 45rem) {
+  .baseline-block {
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+  }
+}
+
 .header {
   --header-nav-gap: .25rem;
 }

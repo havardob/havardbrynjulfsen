@@ -1,5 +1,4 @@
-import { client } from "./_sanityClient";
-import { generateRichText } from "./_utils";
+import {client} from "./_sanityClient";
 import {groqGetBody} from "../helpers/queries.ts";
 
 
@@ -12,12 +11,5 @@ export const getAboutPageData = async function () {
         "body": ${groqGetBody('body')}
     }`
 
-    const data = await client.fetch(query);
-
-    if (data.body !== undefined) {
-        data.body = generateRichText(data.body);
-    }
-
-    return data;
-
+    return await client.fetch(query);
 }

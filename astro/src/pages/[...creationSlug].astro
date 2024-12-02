@@ -5,6 +5,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import Close from "../icons/Close.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PortableText from "../components/portableText/PortableText.astro";
 
 export async function getStaticPaths() {
     const creations = await getCollection('creations');
@@ -79,7 +80,9 @@ const {creation} = Astro.props;
                     ))
                 }
             </dl>
-            <div class="u-rich-text" set:html={creation.body}/>
+            <div class="u-rich-text" >
+              <PortableText portableText={creation.body} />
+            </div>
           </div>
         </article>
       </div>

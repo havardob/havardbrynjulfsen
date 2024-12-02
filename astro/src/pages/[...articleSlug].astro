@@ -6,6 +6,7 @@ import Close from "../icons/Close.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Callout from "../components/Callout.astro";
 import {getCollection} from 'astro:content';
+import PortableText from "../components/portableText/PortableText.astro";
 
 
 export async function getStaticPaths() {
@@ -71,7 +72,9 @@ const {article} = Astro.props;
                               />
                   )
               }
-            <div class="u-rich-text" set:html={article.body}/>
+            <div class="u-rich-text">
+              <PortableText portableText={article.body} />
+            </div>
           </div>
         </article>
       </div>
