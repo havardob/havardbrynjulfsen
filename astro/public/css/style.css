@@ -195,9 +195,12 @@ body {
     --rssLink-border-color: var(--color-scale-gray-7);
     --rssLinkIcon-text-color: var(--color-fire);
     --baselineBlock-bg-color: var(--color-scale-gray-9);
+    --reviewBlock-bg-color: var(--color-scale-gray-10);
+    --reviewBlock-border-color: var(--color-scale-gray-7);
   }
   :root:not(.theme-inverted) {
     --color-white: #FFF;
+    --color-damp: #FCFCFC;
     --color-mist: #EEE;
     --color-ivory: #E6E6E6;
     --color-fog: #DDD;
@@ -273,11 +276,14 @@ body {
     --rssLink-border-color: var(--color-fog);
     --rssLinkIcon-text-color: var(--color-fire);
     --baselineBlock-bg-color: var(--color-white);
+    --reviewBlock-bg-color: var(--color-white);
+    --reviewBlock-border-color: var(--color-fog);
   }
 }
 @media (prefers-color-scheme: dark) {
   :root.theme-inverted {
     --color-white: #FFF;
+    --color-damp: #FCFCFC;
     --color-mist: #EEE;
     --color-ivory: #E6E6E6;
     --color-fog: #DDD;
@@ -353,6 +359,8 @@ body {
     --rssLink-border-color: var(--color-fog);
     --rssLinkIcon-text-color: var(--color-fire);
     --baselineBlock-bg-color: var(--color-white);
+    --reviewBlock-bg-color: var(--color-white);
+    --reviewBlock-border-color: var(--color-fog);
   }
   :root:not(.theme-inverted) {
     --color-milk: #f7f8f8;
@@ -435,6 +443,8 @@ body {
     --rssLink-border-color: var(--color-scale-gray-7);
     --rssLinkIcon-text-color: var(--color-fire);
     --baselineBlock-bg-color: var(--color-scale-gray-9);
+    --reviewBlock-bg-color: var(--color-scale-gray-10);
+    --reviewBlock-border-color: var(--color-scale-gray-7);
   }
 }
 
@@ -1675,14 +1685,14 @@ body:has(.archive-page__rss) .posts {
   }
 }
 .review-block__content {
-  border: 2px solid #DDD;
+  border: 2px solid var(--reviewBlock-border-color);
   border-radius: 0.5rem;
   padding-block-start: 3rem;
   padding-block-end: 1rem;
   padding-inline: 1rem;
   font-size: 1rem;
   margin-block-start: -2rem;
-  background-color: #fcfcfc;
+  background-color: var(--reviewBlock-bg-color);
 }
 @container reviewBlock (min-width: 30rem) {
   .review-block__content {
@@ -1708,7 +1718,7 @@ body:has(.archive-page__rss) .posts {
 }
 .review-block__media img {
   border-radius: 0.5rem;
-  outline: 0.375rem solid #FFF;
+  outline: 0.375rem solid var(--reviewBlock-bg-color);
 }
 .review-block__rating {
   color: orange;

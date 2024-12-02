@@ -60,6 +60,7 @@
 
 @mixin light-mode() {
     --color-white: #FFF;
+    --color-damp: #FCFCFC;
     --color-mist: #EEE;
     --color-ivory: #E6E6E6;
     --color-fog: #DDD;
@@ -162,6 +163,9 @@
     --rssLinkIcon-text-color: var(--color-fire);
 
     --baselineBlock-bg-color: var(--color-white);
+
+    --reviewBlock-bg-color: var(--color-white);
+    --reviewBlock-border-color: var(--color-fog);
 }
 
 @mixin dark-mode() {
@@ -271,6 +275,10 @@
     --rssLinkIcon-text-color: var(--color-fire);
 
     --baselineBlock-bg-color: var(--color-scale-gray-9);
+
+
+    --reviewBlock-bg-color: var(--color-scale-gray-10);
+    --reviewBlock-border-color: var(--color-scale-gray-7);
 }
 
 :root {

@@ -19,14 +19,14 @@
   }
 
   &__content {
-    border: 2px solid #DDD;
+    border: 2px solid var(--reviewBlock-border-color);
     border-radius: .5rem;
     padding-block-start: 3rem;
     padding-block-end: 1rem;
     padding-inline: 1rem;
     font-size: 1rem;
     margin-block-start: -2rem;
-    background-color: #fcfcfc;
+    background-color: var(--reviewBlock-bg-color);
 
     @container reviewBlock (min-width: 30rem) {
       width: calc(65% + 1rem);
@@ -51,7 +51,7 @@
 
     img {
       border-radius: .5rem;
-      outline: .375rem solid #FFF;
+      outline: .375rem solid var(--reviewBlock-bg-color);
     }
   }
 
