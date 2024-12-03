@@ -34,27 +34,31 @@ const siteSettings = siteSettingsCollection[0].data;
           <ul class="main-nav__list">
               {
                   siteSettings?.mainNav?.map((item: any) => (
-                          <li class="main-nav__item">
+                          <>
                               {(item.subNav !== null) ? (
-                                      <button class="main-nav__dropdown-toggle">
-                                        <span>{item.text}</span>
-                                        <ChevronDown/>
-                                      </button>
-                                      <ul class="main-nav__submenu">
-                                          {item.subNav?.map((subItem: any) => (
-                                                  <li class="main-nav__submenu-item">
-                                                    <a href={subItem.href} class="main-nav__submenu-link">
-                                                      <span>{subItem.text}</span>
-                                                    </a>
-                                                  </li>
-                                          ))}
-                                      </ul>
+                                      <li class="main-nav__item" data-dropdown-toggle>
+                                        <button class="main-nav__dropdown-toggle">
+                                          <span>{item.text}</span>
+                                          <ChevronDown/>
+                                        </button>
+                                        <ul class="main-nav__submenu">
+                                            {item.subNav?.map((subItem: any) => (
+                                                    <li class="main-nav__submenu-item">
+                                                      <a href={subItem.href} class="main-nav__submenu-link">
+                                                        <span>{subItem.text}</span>
+                                                      </a>
+                                                    </li>
+                                            ))}
+                                        </ul>
+                                      </li>
                               ) : (
-                                      <a href={item.href} class="main-nav__link">
-                                        <span>{item.text}</span>
-                                      </a>
+                                      <li class="main-nav__item">
+                                        <a href={item.href} class="main-nav__link">
+                                          <span>{item.text}</span>
+                                        </a>
+                                      </li>
                               )}
-                          </li>
+                          </>
                   ))
               }
           </ul>
@@ -80,8 +84,8 @@ const siteSettings = siteSettingsCollection[0].data;
                 aria-label="Open menu"
         >
           <span class="header__menu-toggle-label">Menu</span>
-          <Menu />
-          <Close />
+          <Menu/>
+          <Close/>
         </button>
       </div>
     </div>

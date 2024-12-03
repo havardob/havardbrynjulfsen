@@ -67,4 +67,32 @@ document.addEventListener("DOMContentLoaded", function () {
             dialogElement.close();
         }
     })
+
+    const dropdownMenuToggles = document.querySelectorAll("[data-dropdown-toggle]");
+
+    if (dropdownMenuToggles.length > 0) {
+        dropdownMenuToggles.forEach(toggle => {
+            const button = toggle.querySelector("button");
+            const dropdown = toggle.querySelector("ul");
+
+            button.addEventListener('click', (event) => {
+                event.stopPropagation();
+                dropdown.classList.add('is-open');
+                button.classList.add('is-open');
+            })
+
+            document.addEventListener("click", (event) => {
+                if (event.target !== dropdown) {
+                    dropdown.classList.remove("is-open");
+                    button.classList.remove("is-open");
+                }
+            });
+
+            document.addEventListener("focusin", (event) => {
+                if (!dropdown.contains(event.target)) {
+                    dropdown.classList.remove("open");
+                }
+            });
+        })
+    }
 })

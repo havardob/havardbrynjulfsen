@@ -90,37 +90,3 @@ const {creation} = Astro.props;
     <SiteFooter/>
   </div>
 </BaseLayout>
-
-<script is:inline>
-    // Open image dialog
-        const imageDialogTriggers = document.querySelectorAll(
-            "[data-dialog-trigger]",
-            );
-
-        if (imageDialogTriggers) {
-            imageDialogTriggers.forEach((trigger) => {
-                if (trigger) {
-                    trigger.style.cursor = "pointer";
-                    const dialog = trigger.nextElementSibling;
-
-                    if (dialog) {
-                        const html = document.querySelector("html");
-                        const closeButton = dialog.querySelector("button");
-                        trigger.addEventListener("click", () => {
-                            html.style.overflowY = "hidden";
-                            dialog.showModal();
-                            });
-
-                        if (closeButton) {
-                            closeButton.addEventListener("click", () => {
-                                html.style.overflowY = "initial";
-                                dialog.close();
-                                });
-                            }
-                        }
-                    } else {
-                    return;
-                    }
-                });
-            }
-</script>
