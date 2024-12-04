@@ -87,7 +87,7 @@ export default {
         },
         {
             title: "Articles Section",
-            name: "articlesJson",
+            name: "articles",
             type: "object",
             fields: [
                 {
