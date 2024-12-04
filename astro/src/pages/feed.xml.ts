@@ -11,9 +11,9 @@ export async function GET(context: any) {
         description: siteSettings.metaDescription,
         site: context.site,
         items: articles.map((article: any) => ({
-            title: article.data.title,
-            description: article.data.leading,
-            pubDate: article.data.rssDate.toISOString(),
+            title: article.data.title ?? '',
+            description: article.data.leading ?? '',
+            pubDate: article.data.rssDate.toISOString() ?? '',
             content: article.data.rawHtml ?? '',
             link: "/" + article.data.fullSlug
         }))

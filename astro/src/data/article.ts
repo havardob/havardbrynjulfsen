@@ -55,7 +55,9 @@ export const getArticleData = async function () {
 
         let breadcrumbs = [];
         breadcrumbs.push({title: article.grandparent.title, slug: article.grandparent.slug});
-        breadcrumbs.push({title: article.tag.title, slug: article.tag.slug});
+        if (article.tag.title) {
+            breadcrumbs.push({title: article.tag.title, slug: article.tag.slug});
+        }
         article.breadcrumbs = breadcrumbs;
     }
 

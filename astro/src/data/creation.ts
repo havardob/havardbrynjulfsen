@@ -29,7 +29,9 @@ export const getCreationData = async function () {
     for (let creation of result) {
         let breadcrumbs = [];
         breadcrumbs.push({title: creation.grandparent.title, slug: creation.grandparent.slug});
-        breadcrumbs.push({title: creation.tag.title, slug: creation.tag.slug});
+        if (creation.tag.title) {
+            breadcrumbs.push({title: creation.tag.title, slug: creation.tag.slug});
+        }
         creation.breadcrumbs = breadcrumbs;
     }
     return result;

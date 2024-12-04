@@ -27,6 +27,7 @@ if (rating) {
     <div class="review-block__content">
         {starsArray.length > 0 && (
                 <div class="review-block__rating">
+                  <span class="u-hidden">Rating: {rating} of 10</span>
                     {starsArray.map((type: any) => (
                             <>
                                 {type === "full" && (
