@@ -1,3 +1,17 @@
+@use '../theming';
+
+@include theming.light-colors() {
+    --callout-border-color: var(--c-fog);
+    --callout-bg-color: var(--c-white);
+    --callout-text-color: var(--c-concrete);
+}
+
+@include theming.dark-colors() {
+    --callout-border-color: var(--c-scale-gray-7);
+    --callout-bg-color: var(--c-scale-gray-9);
+    --callout-text-color: var(--c-scale-gray-2);
+}
+
 .cq--callout {
     container-type: inline-size;
     container-name: callout;

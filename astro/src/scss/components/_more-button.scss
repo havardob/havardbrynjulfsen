@@ -1,3 +1,21 @@
+@use '../theming';
+
+@include theming.light-colors() {
+    --moreLink-bg-color: var(--c-mist);
+    --moreLink-bg-color-hover: var(--c-fog);
+    --moreLink-text-color: var(--c-concrete);
+    --moreLink-text-color-hover: var(--c-void);
+    --moreLink-divider-color: var(--c-fog);
+}
+
+@include theming.dark-colors() {
+    --moreLink-bg-color: var(--c-scale-gray-8);
+    --moreLink-bg-color-hover: var(--c-scale-gray-7);
+    --moreLink-text-color: var(--c-scale-gray-1);
+    --moreLink-text-color-hover: var(--c-scale-gray-0);
+    --moreLink-divider-color: var(--c-scale-gray-8);
+}
+
 .more-button {
     margin-block: 4rem; // TODO
     display: flex;

@@ -1,3 +1,27 @@
+@use '../theming';
+
+@include theming.light-colors() {
+  --headerLink-text-color: var(--c-concrete);
+  --headerLink-text-color-hover: var(--c-void);
+  --headerLink-bg-color: var(--c-white);
+  --headerLink-bg-color-hover: var(--c-mist);
+  --headerDropdown-bg-color: var(--c-mist);
+  --headerDropdownLink-bg-color: var(--c-mist);
+  --headerDropdownLink-bg-color-hover: var(--c-white);
+  --headerDropdownLink-text-color: var(--c-concrete);
+}
+
+@include theming.dark-colors() {
+  --headerLink-text-color: var(--c-scale-gray-1);
+  --headerLink-text-color-hover: var(--c-white);
+  --headerLink-bg-color: var(--c-scale-gray-10);
+  --headerLink-bg-color-hover: var(--c-scale-gray-8);
+  --headerDropdown-bg-color: var(--c-scale-gray-8);
+  --headerDropdownLink-bg-color: var(--c-scale-gray-8);
+  --headerDropdownLink-bg-color-hover: var(--c-scale-gray-10);
+  --headerDropdownLink-text-color: var(--c-scale-gray-1);
+}
+
 .header {
   --header-nav-gap: .25rem;
 

@@ -1,3 +1,11 @@
+@use '../theming';
+
+@include theming.light-colors() {
+}
+
+@include theming.dark-colors() {
+}
+
 .section {
     padding-bottom: 4rem;
 

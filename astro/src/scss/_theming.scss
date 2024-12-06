@@ -1,0 +1,23 @@
+@mixin light-colors {
+  :root[data-theme="system"] {
+    @media (prefers-color-scheme: light) {
+      @content;
+    }
+  }
+
+  :root[data-theme="light"] {
+    @content;
+  }
+}
+
+@mixin dark-colors {
+  :root[data-theme="system"] {
+    @media (prefers-color-scheme: dark) {
+      @content;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    @content;
+  }
+}

@@ -4,6 +4,9 @@ import Moon from "../icons/Moon.astro";
 import {getCollection} from "astro:content";
 import ChevronDown from "../icons/ChevronDown.astro";
 import Close from "../icons/Close.astro";
+import Logo from "../icons/Logo.astro";
+import Cog from "../icons/Cog.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
 
 
 const siteSettingsCollection = await getCollection('siteSettings');
@@ -13,20 +16,7 @@ const siteSettings = siteSettingsCollection[0].data;
   <div class="l-constraint">
     <div class="header__inner">
       <a class="header__logo | has-tooltip" href="/">
-        <svg
-                width="24"
-                height="20"
-                viewBox="0 0 24 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-        >
-          <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M12.0005 0L0.742188 19.5H23.2589L12.0005 0ZM12.0005 4L4.20629 17.5H19.7947L12.0005 4Z"
-                  fill="currentColor"></path>
-        </svg>
+        <Logo />
         <span class="tooltip tooltip--lt">Home</span>
       </a>
       <div class="header__actions">
@@ -34,58 +24,42 @@ const siteSettings = siteSettingsCollection[0].data;
           <ul class="main-nav__list">
               {
                   siteSettings?.mainNav?.map((item: any) => (
-                          <>
-                              {(item.subNav !== null) ? (
-                                      <li class="main-nav__item" data-dropdown-toggle>
-                                        <button class="main-nav__dropdown-toggle">
-                                          <span>{item.text}</span>
-                                          <ChevronDown/>
-                                        </button>
-                                        <ul class="main-nav__submenu">
-                                            {item.subNav?.map((subItem: any) => (
-                                                    <li class="main-nav__submenu-item">
-                                                      <a href={subItem.href} class="main-nav__submenu-link">
-                                                        <span>{subItem.text}</span>
-                                                      </a>
-                                                    </li>
-                                            ))}
-                                        </ul>
-                                      </li>
-                              ) : (
-                                      <li class="main-nav__item">
-                                        <a href={item.href} class="main-nav__link">
-                                          <span>{item.text}</span>
-                                        </a>
-                                      </li>
-                              )}
-                          </>
+                    <>
+                    {(item.subNav !== null) ? (
+                      <li class="main-nav__item" data-dropdown-toggle>
+                        <button class="main-nav__dropdown-toggle">
+                          <span>{item.text}</span>
+                          <ChevronDown />
+                        </button>
+                        <ul class="main-nav__submenu">
+                            {item.subNav?.map((subItem: any) => (
+                              <li class="main-nav__submenu-item">
+                                <a href={subItem.href} class="main-nav__submenu-link">
+                                  <span>{subItem.text}</span>
+                                </a>
+                              </li>
+                            ))}
+                        </ul>
+                      </li>
+                    ) : (
+                      <li class="main-nav__item">
+                        <a href={item.href} class="main-nav__link">
+                          <span>{item.text}</span>
+                        </a>
+                      </li>
+                    )}
+                    </>
                   ))
               }
           </ul>
         </nav>
-        <button
-                class="header__theme-toggle | has-tooltip"
-                id="themeToggle"
-        >
-          <span class="tooltip tooltip--rt">Change theme</span>
-          <Moon/>
-        </button>
-        <button
-                class="header__menu-toggle"
-                id="menuThemeToggle"
-                aria-label="Change theme"
-        >
-          <span class="header__menu-toggle-label">Theme</span>
-          <Moon/>
-        </button>
-        <button
-                class="header__menu-toggle"
-                id="menuToggle"
-                aria-label="Open menu"
-        >
-          <span class="header__menu-toggle-label">Menu</span>
-          <Menu/>
-          <Close/>
+        <ThemeSwitcher />
+        <button class="header__menu-toggle" id="menuToggle">
+          <Menu />
+          <Close />
+          <span class="header__menu-toggle-label">
+            <span class="u-hidden">Toggle</span> Menu
+          </span>
         </button>
       </div>
     </div>
@@ -97,11 +71,11 @@ const siteSettings = siteSettingsCollection[0].data;
       <ul class="menu__list">
           {
               siteSettings?.mainNav?.map((item: any) => (
-                      <li class="menu__item">
-                        <a href={item.href} class="menu__link">
-                          <span>{item.text}</span>
-                        </a>
-                      </li>
+                <li class="menu__item">
+                  <a href={item.href} class="menu__link">
+                    <span>{item.text}</span>
+                  </a>
+                </li>
               ))
           }
       </ul>

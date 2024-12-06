@@ -1,3 +1,15 @@
+@use '../theming';
+
+@include theming.light-colors() {
+    --tooltip-bg-color: var(--c-concrete);
+    --tooltip-text-color: var(--c-mist);
+}
+
+@include theming.dark-colors() {
+    --tooltip-bg-color: var(--c-scale-gray-8);
+    --tooltip-text-color: var(--c-scale-gray-1);
+}
+
 .has-tooltip {
     position: relative;
     &:hover, &:focus-visible {

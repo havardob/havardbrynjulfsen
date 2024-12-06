@@ -1,3 +1,13 @@
+@use '../theming';
+
+@include theming.light-colors() {
+    --projectImage-bg-color: var(--c-mist);
+}
+
+@include theming.dark-colors() {
+    --projectImage-bg-color: var(--c-scale-gray-8);
+}
+
 .cq--project-preview {
     container-name: project-preview;
     container-type: inline-size;

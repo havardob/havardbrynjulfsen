@@ -1,3 +1,15 @@
+@use '../theming';
+
+@include theming.light-colors() {
+    --rssLink-border-color: var(--c-fog);
+    --rssLinkIcon-text-color: var(--c-fire);
+}
+
+@include theming.dark-colors() {
+    --rssLink-border-color: var(--c-scale-gray-7);
+    --rssLinkIcon-text-color: var(--c-fire);
+}
+
 .rss-link {
     display: inline-flex;
     align-items: center;

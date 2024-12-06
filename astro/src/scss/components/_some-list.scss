@@ -1,3 +1,17 @@
+@use '../theming';
+
+@include theming.light-colors() {
+    --someLink-bg-color: var(--c-white);
+    --someLink-bg-color-hover: var(--c-mist);
+    --someLink-text-color: var(--c-void);
+}
+
+@include theming.dark-colors() {
+    --someLink-bg-color: var(--c-scale-gray-10);
+    --someLink-bg-color-hover: var(--c-scale-gray-8);
+    --someLink-text-color: var(--c-scale-gray-2);
+}
+
 .some-list {
     list-style: none;
     padding: 0;

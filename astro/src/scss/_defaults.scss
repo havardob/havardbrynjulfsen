@@ -1,23 +1,57 @@
+@use 'theming';
+
+@include theming.light-colors() {
+  --body-bg-color: var(--c-white);
+  --html-bg-color: var(--c-mist);
+  --focus-outline-color: var(--c-royal);
+  --text-secondary-color: var(--c-void);
+  --text-primary-color: var(--c-concrete);
+  --text-tertiary-color: var(--c-stone);
+  --textLink-color: var(--c-royal);
+  --textLink-color-hover: var(--c-cobalt);
+  --border-primary-color: var(--c-fog);
+  --blockquote-divider-color: var(--c-fog);
+  --listMarker-color: var(--c-royal);
+  --codeMark-bg-color: var(--c-ivory);
+  --codeMark-text-color: var(--c-grit);
+}
+
+@include theming.dark-colors() {
+  --html-bg-color: var(--c-scale-gray-9);
+  --body-bg-color: var(--c-scale-gray-10);
+  --focus-outline-color: var(--c-malibu);
+  --text-primary-color: var(--c-scale-gray-1);
+  --text-secondary-color: var(--c-white);
+  --text-tertiary-color: var(--c-scale-gray-2);
+  --textLink-color: var(--c-fall);
+  --textLink-color-hover: var(--c-fall-dark);
+  --border-primary-color: var(--c-scale-gray-8);
+  --blockquote-divider-color: var(--c-malibu);
+  --listMarker-color: var(--c-fall);
+  --codeMark-bg-color: var(--c-scale-gray-6);
+  --codeMark-text-color: var(--c-scale-gray-1);
+}
+
 html {
-    scroll-behavior: smooth;
-    background-color: var(--html-bg-color);
+  scroll-behavior: smooth;
+  background-color: var(--html-bg-color);
 }
 
 body {
-    font-family: var(--ff-primary);
-    font-weight: 450;
-    color: var(--text-primary-color); 
-    min-height: 100dvh;
-}  
+  font-family: var(--ff-primary);
+  font-weight: 450;
+  color: var(--text-primary-color);
+  min-height: 100dvh;
+}
 
 :where(h1,h2,h3,h4,h5,h6, a) {
-    color: var(--text-secondary-color);
+  color: var(--text-secondary-color);
 }
 
 :focus-visible {
-    outline-color: var(--focus-outline-color);
-    outline-offset: .125rem;
-    outline-width: .125rem;
-    outline-style: solid;
+  outline-color: var(--focus-outline-color);
+  outline-offset: .125rem;
+  outline-width: .125rem;
+  outline-style: solid;
 }
 

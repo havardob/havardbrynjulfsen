@@ -1,3 +1,11 @@
+@use '../theming';
+
+@include theming.light-colors() {
+}
+
+@include theming.dark-colors() {
+}
+
 .hero {
     padding-block-start: 3rem;
     padding-block-end: 6rem;

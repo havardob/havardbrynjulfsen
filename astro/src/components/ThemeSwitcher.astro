@@ -1,0 +1,68 @@
+---
+import Moon from "../icons/Moon.astro";
+import Cog from "../icons/Cog.astro";
+import Sun from "../icons/Sun.astro";
+import Brush from "../icons/Brush.astro";
+---
+
+<div class="theme-switcher">
+  <button class="theme-switcher__toggle">
+    <Brush />
+    <span><span class="u-hidden">Change</span> Theme</span>
+  </button>
+  <div class="theme-switcher__dropdown">
+    <button class="theme-switcher__button" data-theme-value="system">
+      <Cog />
+      <span>System</span>
+    </button>
+    <button class="theme-switcher__button" data-theme-value="light">
+      <Sun />
+      <span>Light</span>
+    </button>
+    <button class="theme-switcher__button" data-theme-value="dark">
+      <Moon />
+      <span>Dark</span>
+    </button>
+  </div>
+</div>
+
+<script>
+    const html = document.documentElement;
+    const toggle = document.querySelector('.theme-switcher__toggle');
+    const dropdown = document.querySelector('.theme-switcher__dropdown');
+    const buttons = document.querySelectorAll('[data-theme-value]');
+    const storedTheme = localStorage.getItem('theme');
+
+    html.setAttribute('data-theme', storedTheme ?? 'system');
+
+    toggle?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        toggle.classList.toggle('is-open');
+        dropdown?.classList.toggle('is-open');
+    })
+
+    document.addEventListener('click', (event) => {
+        if (event.target !== dropdown) {
+            dropdown?.classList.remove('is-open');
+            toggle?.classList.remove('is-open');
+        }
+    })
+
+    buttons.forEach(button => {
+        if (button.getAttribute('data-theme-value') === html.getAttribute('data-theme')) {
+            button.classList.add('is-active');
+        }
+
+        button.addEventListener('click', () => {
+            buttons.forEach(otherButton => {
+                otherButton.classList.remove("is-active");
+            })
+            const theme = button.getAttribute('data-theme-value');
+            console.log(theme);
+            html.setAttribute('data-theme', theme ?? '')
+            localStorage.setItem('theme', theme ?? '');
+            button.classList.add('is-active');
+            dropdown?.classList.remove('is-open');
+        })
+    })
+</script>

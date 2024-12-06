@@ -1,3 +1,23 @@
+@use '../theming';
+
+@include theming.light-colors() {
+    --toTopButton-text-color: var(--c-concrete);
+    --toTopButton-text-color-hover: var(--c-void);
+    --toTopButton-bg-color: var(--c-mist);
+    --toTopButton-bg-color-hover: var(--c-fog);
+    --footerMarquee-text-color: var(--c-stone);
+    --footerLink-text-color: var(--c-stone);
+}
+
+@include theming.dark-colors() {
+    --footerMarquee-text-color: var(--c-scale-gray-2);
+    --footerLink-text-color: var(--c-scale-gray-2);
+    --toTopButton-text-color: var(--c-scale-gray-2);
+    --toTopButton-text-color-hover: var(--c-scale-gray-1);
+    --toTopButton-bg-color: var(--c-scale-gray-8);
+    --toTopButton-bg-color-hover: var(--c-scale-gray-7);
+}
+
 .footer {
     padding-top: 4rem;
     margin-top: auto;

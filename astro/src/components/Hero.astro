@@ -11,6 +11,8 @@ const {title, intro} = Astro.props;
 <div class="hero">
   <h1 class="hero__title">{title}</h1>
   <div class="hero__intro | u-rich-text">
-    <PortableText portableText={intro}/>
+    <PortableText
+      portableText={intro}
+    />
   </div>
 </div>

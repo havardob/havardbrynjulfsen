@@ -1,3 +1,17 @@
+@use '../theming';
+
+@include theming.light-colors() {
+    --tag-bg-color: var(--c-mist);
+    --tag-bg-color-hover: var(--c-fog);
+    --tag-text-color: var(--c-concrete);
+}
+
+@include theming.dark-colors() {
+    --tag-bg-color: var(--c-scale-gray-8);
+    --tag-bg-color-hover: var(--c-scale-gray-7);
+    --tag-text-color: var(--c-scale-gray-1);
+}
+
 .tag {
     text-decoration: none;
     font-size: .875rem;

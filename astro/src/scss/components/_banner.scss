@@ -1,3 +1,15 @@
+@use '../theming';
+
+@include theming.light-colors() {
+    --banner-bg-color: var(--c-void);
+    --banner-text-color: var(--c-white);
+}
+
+@include theming.dark-colors() {
+    --banner-bg-color: var(--c-fall);
+    --banner-text-color: var(--c-abyss);
+}
+
 .banner {
     text-align: center;
     background-color: var(--banner-bg-color);

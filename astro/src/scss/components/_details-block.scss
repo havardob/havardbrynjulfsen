@@ -1,3 +1,19 @@
+@use '../theming';
+
+@include theming.light-colors() {
+    --detailsBlock-bg-color: var(--c-mist);
+    --detailsBlock-divider-color: var(--c-fog);
+    --detailsBlock-term-color: var(--c-void);
+    --detailsBlock-detail-color: var(--c-concrete);
+}
+
+@include theming.dark-colors() {
+    --detailsBlock-bg-color: var(--c-scale-gray-8);
+    --detailsBlock-divider-color: var(--c-scale-gray-7);
+    --detailsBlock-term-color: var(--c-scale-gray-0);
+    --detailsBlock-detail-color: var(--c-scale-gray-2);
+}
+
 .details-block {
     display: flex;
     flex-direction: column;

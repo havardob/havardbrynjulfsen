@@ -1,6 +1,7 @@
+@use 'font-faces';
 @use 'reset';
 @use 'settings';
-@use 'defaults'; 
+@use 'defaults';
 @use 'layout'; 
 // Components
 @use 'components/tooltip';
@@ -22,6 +23,7 @@
 @use 'components/some-list';
 @use 'components/section';
 @use 'components/code-block';
+@use 'components/theme-switcher';
 @use 'components/image-block';
 @use 'components/breadcrumbs';
 @use 'components/tag-list';

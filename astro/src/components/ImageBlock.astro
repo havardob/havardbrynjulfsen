@@ -6,27 +6,62 @@ const {size, imageFile, hasBorder, text, credits, alt} = Astro.props.node;
 
 <figure class={`image-block | ${size}`}>
   <div class="image-block__frame">
-    <img src={imageFile} alt={alt ?? ""} } loading="lazy" class={hasBorder && "has-border"} data-dialog-trigger/>
+    <img src={imageFile} alt={alt ?? ""} } loading="lazy" class={hasBorder && "has-border"} data-dialog-trigger />
     <dialog class="image-dialog">
       <figure>
-        <img src={imageFile} alt={alt ?? ""}/>
+        <img src={imageFile} alt={alt ?? ""} />
         <button class="image-dialog__close">
-          <Icon name="close"/>
+          <Icon name="close" />
         </button>
           {(text || credits) && (
-                  <figcaption class="image-block__caption">
-                      {text && (<span class="image-block__description">{text}</span>)}
-                      {credits && (
-                              <span class="image-block__source"><span class="u-hidden">Credit:</span>{credits}</span>)}
-                  </figcaption>
+            <figcaption class="image-block__caption">
+                {text && (<span class="image-block__description">{text}</span>)}
+                {credits && (
+                  <span class="image-block__source"><span class="u-hidden">Credit:</span>{credits}</span>)}
+            </figcaption>
           )}
       </figure>
     </dialog>
   </div>
     {(text || credits) && (
-            <figcaption class="image-block__caption">
-                {text && (<span class="image-block__description">{text}</span>)}
-                {credits && (<span class="image-block__source"><span class="u-hidden">Credit:</span>{credits}</span>)}
-            </figcaption>
+      <figcaption class="image-block__caption">
+          {text && (<span class="image-block__description">{text}</span>)}
+          {credits && (<span class="image-block__source"><span class="u-hidden">Credit:</span>{credits}</span>)}
+      </figcaption>
     )}
 </figure>
+
+<script>
+    const html = document.documentElement as HTMLElement;
+    // Open image dialog
+    const imageDialogTriggers = document.querySelectorAll("[data-dialog-trigger]");
+
+    imageDialogTriggers?.forEach((trigger) => {
+        if (trigger instanceof HTMLElement) {
+            trigger.style.cursor = "pointer";
+            const dialog = trigger.nextElementSibling;
+            const closeButton = dialog?.querySelector("button");
+            trigger.addEventListener("click", () => {
+                html.style.overflowY = "hidden";
+                if (dialog instanceof HTMLDialogElement) {
+                    dialog.showModal();
+                    closeDialogListener(dialog);
+                }
+            });
+
+            closeButton?.addEventListener("click", () => {
+                html.style.overflowY = "initial";
+                if (dialog instanceof HTMLDialogElement) {
+                    dialog.close();
+                }
+            })
+        }
+    });
+
+    const closeDialogListener = (dialogElement: HTMLDialogElement) => document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            html.style.overflowY = "initial";
+            dialogElement.close();
+        }
+    })
+</script>

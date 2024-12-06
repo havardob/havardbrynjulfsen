@@ -1,0 +1,105 @@
+@use '../theming';
+
+@include theming.light-colors() {
+   --themeSwitcherToggle-bg-color: var(--c-white);
+   --themeSwitcherToggle-bg-color-hover: var(--c-mist);
+   --themeSwitcherToggle-text-color: var(--c-concrete);
+   --themeSwitcherToggle-text-color-hover: var(--c-void);
+   --themeSwitcherDropdown-bg-color: var(--c-mist);
+   --themeSwitcherButton-bg-color: var(--c-mist);
+   --themeSwitcherButton-bg-color-hover: var(--c-fog);
+   --themeSwitcherButton-bg-color-active: var(--c-white);
+   --themeSwitcherButton-text-color: var(--c-concrete);
+   --themeSwitcherButton-text-color-hover: var(--c-void);
+   --themeSwitcherButton-text-color-active: var(--c-void);
+}
+
+@include theming.dark-colors() {
+   --themeSwitcherToggle-bg-color: var(--c-scale-gray-10);
+   --themeSwitcherToggle-bg-color-hover: var(--c-scale-gray-8);
+   --themeSwitcherToggle-text-color: var(--c-scale-gray-1);
+   --themeSwitcherToggle-text-color-hover: var(--c-white);
+   --themeSwitcherDropdown-bg-color: var(--c-scale-gray-8);
+   --themeSwitcherButton-bg-color: var(--c-scale-gray-8);
+   --themeSwitcherButton-bg-color-hover: var(--c-scale-gray-7);
+   --themeSwitcherButton-bg-color-active: var(--c-scale-gray-10);
+   --themeSwitcherButton-text-color: var(--c-scale-gray-1);
+   --themeSwitcherButton-text-color-hover: var(--c-white);
+   --themeSwitcherButton-text-color-active: var(--c-white);
+}
+
+
+.theme-switcher {
+   position: relative;
+   
+   &__toggle {
+      display: inline-flex;
+      align-items: center;
+      column-gap: .375rem;
+      padding-block: .5em;
+      padding-inline: .625em .75em;
+      background-color: var(--themeSwitcherTogge-bg-color);
+      color: var(--themeSwitcherToggle-text-color);
+      border-radius: .375rem;
+      
+      &:hover {
+         background-color: var(--themeSwitcherToggle-bg-color-hover);
+         color: var(--themeSwitcherToggle-text-color-hover);
+      }
+      
+      svg {
+         flex-shrink: 0;
+         width: 1.25rem;
+         transition: rotate .15s ease;
+      }
+      
+      &.is-open svg {
+         rotate: -20deg;
+      }
+   }
+   
+   &__dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + .25rem);
+      right: 0;
+      background-color: var(--themeSwitcherDropdown-bg-color);
+      border-radius: .375rem;
+      padding: .375rem;
+      flex-direction: column;
+      row-gap: .125rem;
+      width: max-content;
+      z-index: 100;
+      
+      &.is-open {
+         display: flex;
+      }
+   }
+   
+   &__button {
+      padding-block: .5em;
+      padding-inline: .5em 1em;
+      border-radius: .25rem;
+      display: inline-flex;
+      align-items: center;
+      column-gap: .375rem;
+      white-space: nowrap;
+      background-color: var(--themeSwitcherButton-bg-color);
+      color: var(--themeSwitcherButton-text-color);
+      
+      svg {
+         flex-shrink: 0;
+         width: 1.25rem;
+      }
+      
+      &:hover {
+         background-color: var(--themeSwitcherButton-bg-color-hover);
+         color: var(--themeSwitcherButton-text-color-hover);
+      }
+      
+      &.is-active {
+         background-color: var(--themeSwitcherButton-bg-color-active);
+         color: var(--themeSwitcherButton-text-color-active);
+      }
+   }
+}

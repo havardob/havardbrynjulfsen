@@ -1,4 +1,16 @@
-.cq--post-preview {
+@use '../theming';
+
+@include theming.light-colors() {
+    --postPreviewFooter-text-color: var(--c-stone);
+    --postPreviewFooterImage-bg-color: var(--c-white);
+}
+
+@include theming.dark-colors() {
+    --postPreviewFooter-text-color: var(--c-scale-gray-1);
+    --postPreviewFooterImage-bg-color: var(--c-scale-gray-0);
+}
+
+.cq--postPreview-preview {
     container-type: inline-size;
     container-name: post-preview;
 }
@@ -51,14 +63,14 @@
         align-items: center;
         flex-wrap: wrap;
         gap: .75rem;
-        color: var(--postFooter-text-color);
+        color: var(--postPreviewFooter-text-color);
         font-size: 1rem;
         margin-top: 1.25rem;
         &-image {
             width: 2rem;
             height: 2rem;
             border-radius: 50%;
-            background-color: var(--postFooterImage-bg-color);
+            background-color: var(--postPreviewFooterImage-bg-color);
             border: 0.0625rem solid var(--border-primary-color);
         }
     }

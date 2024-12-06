@@ -1,3 +1,17 @@
+@use '../theming';
+
+@include theming.light-colors() {
+    --menu-bg-color: var(--c-mist);
+    --menu-border-color: var(--c-fog);
+    --menuThemeToggle-bg-color: var(--c-fog);
+}
+
+@include theming.dark-colors() {
+    --menu-bg-color: var(--c-scale-gray-8);
+    --menu-border-color: var(--c-scale-gray-6);
+    --menuThemeToggle-bg-color: var(--c-scale-gray-8);
+}
+
 .menu {
     background-color: var(--menu-bg-color);
     display: none;

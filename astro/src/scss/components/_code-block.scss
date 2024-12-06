@@ -1,3 +1,19 @@
+@use '../theming';
+
+@include theming.light-colors() {
+    --codeBlock-bg-color: var(--c-void);
+    --codeBlock-text-color: var(--c-ivory);
+    --codeBlockLang-bg-color: var(--c-grit);
+    --codeBlockLang-text-color: var(--c-fog);
+}
+
+@include theming.dark-colors() {
+    --codeBlock-bg-color: var(--c-scale-gray-8);
+    --codeBlock-text-color: var(--c-scale-gray-0);
+    --codeBlockLang-bg-color: var(--c-scale-gray-7);
+    --codeBlockLang-text-color: var(--c-scale-gray-2);
+}
+
 .code-block {
     color: var(--codeBlock-text-color);
     position: relative;

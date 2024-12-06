@@ -1,3 +1,23 @@
+@use '../theming';
+
+@include theming.light-colors() {
+  --imageDialog-bg-color: var(--c-void);
+  --imageDialogCloseButton-bg-color: var(--c-concrete);
+  --imageDialogCloseButton-text-color: var(--c-mist);
+  --imageDialogFigcaption-bg-color: var(--c-void);
+  --imageDialogFigcaption-text-color: var(--c-mist);
+  --imageDialogCloseButton-color-focus: var(--c-royal);
+}
+
+@include theming.dark-colors() {
+  --imageDialog-bg-color: var(--c-scale-gray-9);
+  --imageDialogCloseButton-bg-color: var(--c-scale-gray-7);
+  --imageDialogCloseButton-text-color: var(--c-scale-gray-1);
+  --imageDialogFigcaption-bg-color: var(--c-scale-gray-7);
+  --imageDialogFigcaption-text-color: var(--c-scale-gray-1);
+  --imageDialogCloseButton-color-focus: var(--c-fall);
+}
+
 .image-dialog {
     inset: 0;
     max-height: 100%;
