@@ -66,6 +66,12 @@ export const portableTextToHtml = {
                     ${value.code}
                 </div>
             `
+        },
+        reviewBlock: () => {
+            return ''
+        },
+        baselineBlock: () => {
+            return ''
         }
     }
 };
