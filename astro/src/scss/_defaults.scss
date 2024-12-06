@@ -19,17 +19,17 @@
 @include theming.dark-colors() {
   --html-bg-color: var(--c-scale-gray-9);
   --body-bg-color: var(--c-scale-gray-10);
-  --focus-outline-color: var(--c-malibu);
+  --focus-outline-color: var(--c-fall);
   --text-primary-color: var(--c-scale-gray-1);
   --text-secondary-color: var(--c-white);
   --text-tertiary-color: var(--c-scale-gray-2);
   --textLink-color: var(--c-fall);
   --textLink-color-hover: var(--c-fall-dark);
   --border-primary-color: var(--c-scale-gray-8);
-  --blockquote-divider-color: var(--c-malibu);
+  --blockquote-divider-color: var(--c-fall);
   --listMarker-color: var(--c-fall);
   --codeMark-bg-color: var(--c-scale-gray-6);
-  --codeMark-text-color: var(--c-scale-gray-1);
+  --codeMark-text-color: var(--c-white);
 }
 
 html {

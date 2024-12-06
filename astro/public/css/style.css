@@ -186,34 +186,34 @@ body {
   :root[data-theme=system] {
     --html-bg-color: var(--c-scale-gray-9);
     --body-bg-color: var(--c-scale-gray-10);
-    --focus-outline-color: var(--c-malibu);
+    --focus-outline-color: var(--c-fall);
     --text-primary-color: var(--c-scale-gray-1);
     --text-secondary-color: var(--c-white);
     --text-tertiary-color: var(--c-scale-gray-2);
     --textLink-color: var(--c-fall);
     --textLink-color-hover: var(--c-fall-dark);
     --border-primary-color: var(--c-scale-gray-8);
-    --blockquote-divider-color: var(--c-malibu);
+    --blockquote-divider-color: var(--c-fall);
     --listMarker-color: var(--c-fall);
     --codeMark-bg-color: var(--c-scale-gray-6);
-    --codeMark-text-color: var(--c-scale-gray-1);
+    --codeMark-text-color: var(--c-white);
   }
 }
 
 :root[data-theme=dark] {
   --html-bg-color: var(--c-scale-gray-9);
   --body-bg-color: var(--c-scale-gray-10);
-  --focus-outline-color: var(--c-malibu);
+  --focus-outline-color: var(--c-fall);
   --text-primary-color: var(--c-scale-gray-1);
   --text-secondary-color: var(--c-white);
   --text-tertiary-color: var(--c-scale-gray-2);
   --textLink-color: var(--c-fall);
   --textLink-color-hover: var(--c-fall-dark);
   --border-primary-color: var(--c-scale-gray-8);
-  --blockquote-divider-color: var(--c-malibu);
+  --blockquote-divider-color: var(--c-fall);
   --listMarker-color: var(--c-fall);
   --codeMark-bg-color: var(--c-scale-gray-6);
-  --codeMark-text-color: var(--c-scale-gray-1);
+  --codeMark-text-color: var(--c-white);
 }
 
 html {
@@ -481,8 +481,7 @@ body {
   }
 }
 .header__menu-toggle svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.25rem;
 }
 .header__menu-toggle svg:nth-of-type(2) {
   display: none;
@@ -1375,6 +1374,7 @@ body:has(.archive-page__rss) .posts {
   padding: 0;
   margin: 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.25rem;
   padding-right: 0.75rem;
@@ -1605,7 +1605,7 @@ body:has(.archive-page__rss) .posts {
   padding-inline: 0.625em 0.75em;
   background-color: var(--themeSwitcherTogge-bg-color);
   color: var(--themeSwitcherToggle-text-color);
-  border-radius: 0.375rem;
+  border-radius: 0.25rem;
 }
 .theme-switcher__toggle:hover {
   background-color: var(--themeSwitcherToggle-bg-color-hover);
@@ -1625,10 +1625,10 @@ body:has(.archive-page__rss) .posts {
   top: calc(100% + 0.25rem);
   right: 0;
   background-color: var(--themeSwitcherDropdown-bg-color);
-  border-radius: 0.375rem;
+  border-radius: 0.25rem;
   padding: 0.375rem;
   flex-direction: column;
-  row-gap: 0.125rem;
+  row-gap: 0.25rem;
   width: max-content;
   z-index: 100;
 }
@@ -1847,7 +1847,6 @@ body:has(.archive-page__rss) .posts {
 .menu__link svg {
   flex-shrink: 0;
   width: 1.5rem;
-  height: 1.5rem;
 }
 
 @media (prefers-color-scheme: light) {

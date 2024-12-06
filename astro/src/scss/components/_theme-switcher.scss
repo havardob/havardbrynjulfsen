@@ -40,7 +40,7 @@
       padding-inline: .625em .75em;
       background-color: var(--themeSwitcherTogge-bg-color);
       color: var(--themeSwitcherToggle-text-color);
-      border-radius: .375rem;
+      border-radius: .25rem;
       
       &:hover {
          background-color: var(--themeSwitcherToggle-bg-color-hover);
@@ -64,10 +64,10 @@
       top: calc(100% + .25rem);
       right: 0;
       background-color: var(--themeSwitcherDropdown-bg-color);
-      border-radius: .375rem;
+      border-radius: .25rem;
       padding: .375rem;
       flex-direction: column;
-      row-gap: .125rem;
+      row-gap: .25rem;
       width: max-content;
       z-index: 100;
       
