@@ -3,13 +3,11 @@
 @include theming.light-colors() {
     --menu-bg-color: var(--c-mist);
     --menu-border-color: var(--c-fog);
-    --menuThemeToggle-bg-color: var(--c-fog);
 }
 
 @include theming.dark-colors() {
     --menu-bg-color: var(--c-scale-gray-8);
     --menu-border-color: var(--c-scale-gray-6);
-    --menuThemeToggle-bg-color: var(--c-scale-gray-8);
 }
 
 .menu {
@@ -19,21 +17,6 @@
     
     &.is-open {
         display: block;
-    }
-    
-    &__toggle-theme {
-        display: flex;
-        gap: .5rem;
-        margin: auto;
-        margin-top: 1em;
-        padding: .375em .75em;
-        border-radius: .25rem;
-        align-items: center;
-        background-color: var(--menuThemeToggle-bg-color);
-
-        svg {
-            flex-shrink: 0;
-        }
     }
 
     &__list {

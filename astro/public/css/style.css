@@ -461,36 +461,19 @@ body {
   align-items: center;
   flex-grow: 1;
 }
-.header__theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.25rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  flex-shrink: 0;
-  background-color: var(--headerLink-bg-color);
-}
-@container header-actions (max-width: 40rem) {
-  .header__theme-toggle {
-    display: none;
-  }
-}
-.header__theme-toggle:hover {
-  background-color: var(--headerLink-bg-color-hover);
-}
-.header__theme-toggle svg {
-  width: 1.5rem;
-  height: 1.5rem;
-}
 .header__menu-toggle {
   display: flex;
   align-items: center;
   gap: 0.25rem;
   border-radius: 0.25rem;
-  padding-inline: 0.75em;
-  margin-right: -0.75em;
+  padding-inline: 0.625em 0.75em;
   height: 2.5rem;
+  background-color: var(--headerLink-bg-color);
+  color: var(--headerLink-text-color);
+}
+.header__menu-toggle:hover {
+  color: var(--headerLink-text-color-hover);
+  background-color: var(--headerLink-bg-color-hover);
 }
 @container header-actions (min-width: 40rem) {
   .header__menu-toggle {
@@ -529,7 +512,6 @@ body {
 }
 .main-nav__link, .main-nav__dropdown-toggle {
   cursor: pointer;
-  background-color: transparent;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -1811,28 +1793,24 @@ body:has(.archive-page__rss) .posts {
   :root[data-theme=system] {
     --menu-bg-color: var(--c-mist);
     --menu-border-color: var(--c-fog);
-    --menuThemeToggle-bg-color: var(--c-fog);
   }
 }
 
 :root[data-theme=light] {
   --menu-bg-color: var(--c-mist);
   --menu-border-color: var(--c-fog);
-  --menuThemeToggle-bg-color: var(--c-fog);
 }
 
 @media (prefers-color-scheme: dark) {
   :root[data-theme=system] {
     --menu-bg-color: var(--c-scale-gray-8);
     --menu-border-color: var(--c-scale-gray-6);
-    --menuThemeToggle-bg-color: var(--c-scale-gray-8);
   }
 }
 
 :root[data-theme=dark] {
   --menu-bg-color: var(--c-scale-gray-8);
   --menu-border-color: var(--c-scale-gray-6);
-  --menuThemeToggle-bg-color: var(--c-scale-gray-8);
 }
 
 .menu {
@@ -1842,19 +1820,6 @@ body:has(.archive-page__rss) .posts {
 }
 .menu.is-open {
   display: block;
-}
-.menu__toggle-theme {
-  display: flex;
-  gap: 0.5rem;
-  margin: auto;
-  margin-top: 1em;
-  padding: 0.375em 0.75em;
-  border-radius: 0.25rem;
-  align-items: center;
-  background-color: var(--menuThemeToggle-bg-color);
-}
-.menu__toggle-theme svg {
-  flex-shrink: 0;
 }
 .menu__list {
   margin: 0;
