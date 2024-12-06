@@ -1615,6 +1615,7 @@ body:has(.archive-page__rss) .posts {
   flex-shrink: 0;
   width: 1.25rem;
   transition: rotate 0.15s ease;
+  transform-origin: center;
 }
 .theme-switcher__toggle.is-open svg {
   rotate: -20deg;
