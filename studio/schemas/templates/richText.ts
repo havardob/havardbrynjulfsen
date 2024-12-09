@@ -7,7 +7,7 @@ import {
     BiDetail,
     BiImage,
     BiLinkAlt,
-    BiLinkExternal,
+    BiLinkExternal, BiQuestionMark,
     BiReflectHorizontal, BiStar
 } from "react-icons/bi";
 import {externalLinkUrl, internalLinkRef} from "./linkObject";
@@ -63,6 +63,20 @@ export const richTextMain = {
                             externalLinkUrl
                         ],
                     },
+                    {
+                        title: 'Description tag',
+                        name: 'descriptionTag',
+                        icon: BiQuestionMark,
+                        type: "object",
+                        fields: [
+                            {
+                                title: "Text",
+                                name: "text",
+                                type: "text",
+                                rows: 4
+                            }
+                        ]
+                    }
                 ],
             },
         },

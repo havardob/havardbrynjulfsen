@@ -1,0 +1,12 @@
+---
+const { markDef, children } = Astro.props.node;
+
+const words = children[0].text;
+---
+
+<span class="description-tag">
+  <span class="description-tag__words">{words}</span>
+    <span class="description-tag__text">
+      {markDef.text}
+    </span>
+</span>

@@ -7,13 +7,15 @@ import ImageBlock from '../ImageBlock.astro';
 import EmbedBlock from '../EmbedBlock.astro';
 import BaselineBlock from '../BaselineBlock.astro';
 import ReviewBlock from '../ReviewBlock.astro';
+import DescriptionTag from '../DescriptionTag.astro';
 
 const {portableText} = Astro.props;
 
 const components = {
     mark: {
         externalLink: InlineLink,
-        internalLink: InlineLink
+        internalLink: InlineLink,
+        descriptionTag: DescriptionTag,
     },
     type: {
         horizontalRule: HorizontalRule,

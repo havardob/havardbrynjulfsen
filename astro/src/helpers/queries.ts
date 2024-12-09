@@ -23,7 +23,7 @@ export function groqGetBody(key: string) {
             "imageFile": imageFile.asset->url,
         },
         markDefs[] {
-        ...,
+            ...,
             _type == "internalLink" => {
                 internalDocument-> { "href": ${groqGetSlug()} }
             }
