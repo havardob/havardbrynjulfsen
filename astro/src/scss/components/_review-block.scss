@@ -3,12 +3,21 @@
 @include theming.light-colors() {
   --reviewBlock-bg-color: var(--c-white);
   --reviewBlock-border-color: var(--c-fog);
+  --reviewBlockRating-text-color: var(--c-fire);
 }
 
 @include theming.dark-colors() {
   --reviewBlock-bg-color: var(--c-scale-gray-10);
   --reviewBlock-border-color: var(--c-scale-gray-7);
+  --reviewBlockRating-text-color: var(--c-sun);
 }
+
+@include theming.cake-colors() {
+  --reviewBlock-bg-color: var(--c-paste);
+  --reviewBlock-border-color: var(--c-cookie-dough);
+  --reviewBlockRating-text-color: var(--c-claret);
+}
+
 
 .review-block {
   container-name: reviewBlock;
@@ -68,7 +77,7 @@
   }
 
   &__rating {
-    color: orange;
+    color: var(--reviewBlockRating-text-color);
     display: flex;
     flex-wrap: wrap;
     align-items: center;

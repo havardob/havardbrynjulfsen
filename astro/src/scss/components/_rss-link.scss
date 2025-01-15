@@ -10,6 +10,11 @@
     --rssLinkIcon-text-color: var(--c-fire);
 }
 
+@include theming.cake-colors() {
+    --rssLink-border-color: var(--c-sapling);
+    --rssLinkIcon-text-color: var(--c-wild-strawberry);
+}
+
 .rss-link {
     display: inline-flex;
     align-items: center;

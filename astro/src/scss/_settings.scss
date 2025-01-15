@@ -1,5 +1,19 @@
+@use "theming";
+
 :root {
+    // Shared
     --c-white: #FFF;
+    --c-royal: #2554e4;
+    --c-cobalt: #1b3b9a;
+    --c-malibu: #828fff;
+    --c-violet: #5e6ad2;
+    --c-fall: #FFD966;
+    --c-fall-dark: #c19e2f;
+    --c-fire: #FF7F3E;
+    --c-abyss: #000313;
+    --c-cyan: #19f9d8;
+    
+    // Light palette
     --c-milk: #f7f8f8;
     --c-damp: #FCFCFC;
     --c-mist: #EEE;
@@ -10,15 +24,8 @@
     --c-concrete: #565862;
     --c-grit: #353738;
     --c-void: #292a2d;
-    --c-royal: #2554e4;
-    --c-cobalt: #1b3b9a;
-    --c-malibu: #828fff;
-    --c-violet: #5e6ad2;
-    --c-fall: #FFD966;
-    --c-fall-dark: #c19e2f;
-    --c-fire: #FF7F3E;
-    --c-abyss: #000313;
 
+    // Dark palette
     --c-scale-white: #e0e7f1;
     --c-scale-gray-0: #cdd9e5;
     --c-scale-gray-1: #adbac7;
@@ -31,10 +38,45 @@
     --c-scale-gray-8: #2d333b;
     --c-scale-gray-9: #22272e;
     --c-scale-gray-10: #1c1f27;
+    
+    // cake palette
+    --c-white-sand: #fdf9ed;
+    --c-paste: #F5F0CD;
+    --c-cookie-dough: #F4E0AF;
+    --c-sun: #e9bd60;
+    --c-tulip-tree: #e4a63b;
+    --c-rust: #dc8724;
+    --c-bourbon: #c2661d;
+    --c-cognac: #a2491b;
+    --c-copper: #843a1c;
+    --c-clay: #6d311a;
+    --c-soil: #3e170a;
+    
+    --c-snow: #fcf5f4;
+    --c-pale-skin: #fae9e9;
+    --c-pink-shade: #f4d7d8;
+    --c-light-pink: #ebb6b7;
+    --c-lips: #df8d90;
+    --c-rouge: #cf646a;
+    --c-rose: #b94552;
+    --c-wine: #9b3543;
+    --c-cherry: #822f3d;
+    --c-grape: #692835;
+    --c-troika: #3e131a;
+    
+    --c-wild-strawberry: #ff4f9f;
+    --c-claret: #b12b68;
+    --c-camelot: #953762;
+    --c-sapling: #ddd6a1;
 }
 
 :root {
     --ff-primary: "Geist", sans-serif;
     --ff-secondary: "Peachi", serif;
     --ff-code: "Geist Mono", monospace;
+}
+
+@include theming.cake-colors(){
+    --ff-primary: "Gabarito", sans-serif;
+    --ff-secondary: "Gabarito", sans-serif;
 }

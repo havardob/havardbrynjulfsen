@@ -110,6 +110,15 @@ body {
 }
 :root {
   --c-white: #FFF;
+  --c-royal: #2554e4;
+  --c-cobalt: #1b3b9a;
+  --c-malibu: #828fff;
+  --c-violet: #5e6ad2;
+  --c-fall: #FFD966;
+  --c-fall-dark: #c19e2f;
+  --c-fire: #FF7F3E;
+  --c-abyss: #000313;
+  --c-cyan: #19f9d8;
   --c-milk: #f7f8f8;
   --c-damp: #FCFCFC;
   --c-mist: #EEE;
@@ -120,14 +129,6 @@ body {
   --c-concrete: #565862;
   --c-grit: #353738;
   --c-void: #292a2d;
-  --c-royal: #2554e4;
-  --c-cobalt: #1b3b9a;
-  --c-malibu: #828fff;
-  --c-violet: #5e6ad2;
-  --c-fall: #FFD966;
-  --c-fall-dark: #c19e2f;
-  --c-fire: #FF7F3E;
-  --c-abyss: #000313;
   --c-scale-white: #e0e7f1;
   --c-scale-gray-0: #cdd9e5;
   --c-scale-gray-1: #adbac7;
@@ -140,12 +141,43 @@ body {
   --c-scale-gray-8: #2d333b;
   --c-scale-gray-9: #22272e;
   --c-scale-gray-10: #1c1f27;
+  --c-white-sand: #fdf9ed;
+  --c-paste: #F5F0CD;
+  --c-cookie-dough: #F4E0AF;
+  --c-sun: #e9bd60;
+  --c-tulip-tree: #e4a63b;
+  --c-rust: #dc8724;
+  --c-bourbon: #c2661d;
+  --c-cognac: #a2491b;
+  --c-copper: #843a1c;
+  --c-clay: #6d311a;
+  --c-soil: #3e170a;
+  --c-snow: #fcf5f4;
+  --c-pale-skin: #fae9e9;
+  --c-pink-shade: #f4d7d8;
+  --c-light-pink: #ebb6b7;
+  --c-lips: #df8d90;
+  --c-rouge: #cf646a;
+  --c-rose: #b94552;
+  --c-wine: #9b3543;
+  --c-cherry: #822f3d;
+  --c-grape: #692835;
+  --c-troika: #3e131a;
+  --c-wild-strawberry: #ff4f9f;
+  --c-claret: #b12b68;
+  --c-camelot: #953762;
+  --c-sapling: #ddd6a1;
 }
 
 :root {
   --ff-primary: "Geist", sans-serif;
   --ff-secondary: "Peachi", serif;
   --ff-code: "Geist Mono", monospace;
+}
+
+:root[data-theme=cake] {
+  --ff-primary: "Gabarito", sans-serif;
+  --ff-secondary: "Gabarito", sans-serif;
 }
 
 @media (prefers-color-scheme: light) {
@@ -214,6 +246,21 @@ body {
   --listMarker-color: var(--c-fall);
   --codeMark-bg-color: var(--c-scale-gray-6);
   --codeMark-text-color: var(--c-white);
+}
+
+:root[data-theme=cake] {
+  --html-bg-color: var(--c-cookie-dough);
+  --body-bg-color: var(--c-paste);
+  --text-primary-color: var(--c-grape);
+  --text-secondary-color: var(--c-cherry);
+  --text-tertiary-color: var(--c-cherry);
+  --textLink-color: var(--c-claret);
+  --textLink-color-hover: var(--c-camelot);
+  --border-primary-color: var(--c-sapling);
+  --blockquote-divider-color: var(--c-wild-strawberry);
+  --listMarker-color: var(--c-wild-strawberry);
+  --codeMark-bg-color: var(--c-cookie-dough);
+  --codeMark-text-color: var(--c-cherry);
 }
 
 html {
@@ -710,6 +757,12 @@ body {
   --tag-bg-color: var(--c-scale-gray-8);
   --tag-bg-color-hover: var(--c-scale-gray-7);
   --tag-text-color: var(--c-scale-gray-1);
+}
+
+:root[data-theme=cake] {
+  --tag-bg-color: var(--c-cookie-dough);
+  --tag-bg-color-hover: var(--c-sapling);
+  --tag-text-color: var(--c-grape);
 }
 
 .tag {
@@ -1457,6 +1510,7 @@ body:has(.archive-page__rss) .posts {
     --codeBlock-text-color: var(--c-ivory);
     --codeBlockLang-bg-color: var(--c-grit);
     --codeBlockLang-text-color: var(--c-fog);
+    --codeBlock-selector-color: var(--c-cyan);
   }
 }
 
@@ -1465,22 +1519,220 @@ body:has(.archive-page__rss) .posts {
   --codeBlock-text-color: var(--c-ivory);
   --codeBlockLang-bg-color: var(--c-grit);
   --codeBlockLang-text-color: var(--c-fog);
+  --codeBlock-selector-color: var(--c-cyan);
 }
 
 @media (prefers-color-scheme: dark) {
   :root[data-theme=system] {
-    --codeBlock-bg-color: var(--c-scale-gray-8);
+    --codeBlock-bg-color: var(--c-scale-gray-9);
     --codeBlock-text-color: var(--c-scale-gray-0);
     --codeBlockLang-bg-color: var(--c-scale-gray-7);
-    --codeBlockLang-text-color: var(--c-scale-gray-2);
+    --codeBlockLang-text-color: var(--c-white);
+    --codeBlock-selector-color: var(--c-cyan);
   }
 }
 
 :root[data-theme=dark] {
-  --codeBlock-bg-color: var(--c-scale-gray-8);
+  --codeBlock-bg-color: var(--c-scale-gray-9);
   --codeBlock-text-color: var(--c-scale-gray-0);
   --codeBlockLang-bg-color: var(--c-scale-gray-7);
-  --codeBlockLang-text-color: var(--c-scale-gray-2);
+  --codeBlockLang-text-color: var(--c-white);
+  --codeBlock-selector-color: var(--c-cyan);
+}
+
+:root[data-theme=cake] {
+  --codeBlock-bg-color: var(--c-cookie-dough);
+  --codeBlock-text-color: var(--c-cherry);
+  --codeBlockLang-bg-color: var(--c-paste);
+  --codeBlockLang-text-color: var(--c-grape);
+  --codeBlock-selector-color: var(--c-cherry);
+}
+
+:root[data-theme=cake] {
+  /**
+   * Panda Syntax Theme for Highlight.js
+   * Based on: https://github.com/tinkertrain/panda-syntax-vscode
+   * Author: Annmarie Switzer <https://github.com/annmarie-switzer>
+   */
+}
+:root[data-theme=cake] pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+:root[data-theme=cake] code.hljs {
+  padding: 3px 5px;
+}
+:root[data-theme=cake] .hljs {
+  color: #2a2c2d;
+  background: #e6e6e6;
+}
+:root[data-theme=cake] .hljs-emphasis {
+  font-style: italic;
+}
+:root[data-theme=cake] .hljs-strong {
+  font-weight: bold;
+}
+:root[data-theme=cake] .hljs-link {
+  text-decoration: underline;
+}
+:root[data-theme=cake] .hljs-comment,
+:root[data-theme=cake] .hljs-quote {
+  color: #676B79;
+  font-style: italic;
+}
+:root[data-theme=cake] .hljs-params {
+  color: #676B79;
+}
+:root[data-theme=cake] .hljs-punctuation,
+:root[data-theme=cake] .hljs-attr {
+  color: #2a2c2d;
+}
+:root[data-theme=cake] .hljs-selector-tag,
+:root[data-theme=cake] .hljs-name,
+:root[data-theme=cake] .hljs-meta,
+:root[data-theme=cake] .hljs-operator,
+:root[data-theme=cake] .hljs-char.escape_ {
+  color: #c56200;
+}
+:root[data-theme=cake] .hljs-keyword,
+:root[data-theme=cake] .hljs-deletion {
+  color: #d92792;
+}
+:root[data-theme=cake] .hljs-regexp,
+:root[data-theme=cake] .hljs-selector-pseudo,
+:root[data-theme=cake] .hljs-selector-attr,
+:root[data-theme=cake] .hljs-variable.language_ {
+  color: #cc5e91;
+}
+:root[data-theme=cake] .hljs-subst,
+:root[data-theme=cake] .hljs-property,
+:root[data-theme=cake] .hljs-code,
+:root[data-theme=cake] .hljs-formula,
+:root[data-theme=cake] .hljs-section,
+:root[data-theme=cake] .hljs-title.function_ {
+  color: #3787c7;
+}
+:root[data-theme=cake] .hljs-string,
+:root[data-theme=cake] .hljs-symbol,
+:root[data-theme=cake] .hljs-bullet,
+:root[data-theme=cake] .hljs-addition,
+:root[data-theme=cake] .hljs-selector-class,
+:root[data-theme=cake] .hljs-title.class_,
+:root[data-theme=cake] .hljs-title.class_.inherited__,
+:root[data-theme=cake] .hljs-meta .hljs-string {
+  color: #0d7d6c;
+}
+:root[data-theme=cake] .hljs-variable,
+:root[data-theme=cake] .hljs-template-variable,
+:root[data-theme=cake] .hljs-number,
+:root[data-theme=cake] .hljs-literal,
+:root[data-theme=cake] .hljs-type,
+:root[data-theme=cake] .hljs-link,
+:root[data-theme=cake] .hljs-built_in,
+:root[data-theme=cake] .hljs-title,
+:root[data-theme=cake] .hljs-selector-id,
+:root[data-theme=cake] .hljs-tag,
+:root[data-theme=cake] .hljs-doctag,
+:root[data-theme=cake] .hljs-attribute,
+:root[data-theme=cake] .hljs-template-tag,
+:root[data-theme=cake] .hljs-meta .hljs-keyword {
+  color: #7641bb;
+}
+
+:root:not([data-theme=cake]) {
+  /**
+   * Panda Syntax Theme for Highlight.js
+   * Based on: https://github.com/tinkertrain/panda-syntax-vscode
+   * Author: Annmarie Switzer <https://github.com/annmarie-switzer>
+   */
+}
+:root:not([data-theme=cake]) pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+:root:not([data-theme=cake]) code.hljs {
+  padding: 3px 5px;
+}
+:root:not([data-theme=cake]) .hljs {
+  color: #e6e6e6;
+  background: #2a2c2d;
+}
+:root:not([data-theme=cake]) .hljs-emphasis {
+  font-style: italic;
+}
+:root:not([data-theme=cake]) .hljs-strong {
+  font-weight: bold;
+}
+:root:not([data-theme=cake]) .hljs-link {
+  text-decoration: underline;
+}
+:root:not([data-theme=cake]) .hljs-comment,
+:root:not([data-theme=cake]) .hljs-quote {
+  color: #bbbbbb;
+  font-style: italic;
+}
+:root:not([data-theme=cake]) .hljs-params {
+  color: #bbbbbb;
+}
+:root:not([data-theme=cake]) .hljs-punctuation,
+:root:not([data-theme=cake]) .hljs-attr {
+  color: #e6e6e6;
+}
+:root:not([data-theme=cake]) .hljs-selector-tag,
+:root:not([data-theme=cake]) .hljs-name,
+:root:not([data-theme=cake]) .hljs-meta {
+  color: #ff4b82;
+}
+:root:not([data-theme=cake]) .hljs-operator,
+:root:not([data-theme=cake]) .hljs-char.escape_ {
+  color: #b084eb;
+}
+:root:not([data-theme=cake]) .hljs-keyword,
+:root:not([data-theme=cake]) .hljs-deletion {
+  color: #ff75b5;
+}
+:root:not([data-theme=cake]) .hljs-regexp,
+:root:not([data-theme=cake]) .hljs-selector-pseudo,
+:root:not([data-theme=cake]) .hljs-selector-attr,
+:root:not([data-theme=cake]) .hljs-variable.language_ {
+  color: #ff9ac1;
+}
+:root:not([data-theme=cake]) .hljs-subst,
+:root:not([data-theme=cake]) .hljs-property,
+:root:not([data-theme=cake]) .hljs-code,
+:root:not([data-theme=cake]) .hljs-formula,
+:root:not([data-theme=cake]) .hljs-section,
+:root:not([data-theme=cake]) .hljs-title.function_ {
+  color: #45a9f9;
+}
+:root:not([data-theme=cake]) .hljs-string,
+:root:not([data-theme=cake]) .hljs-symbol,
+:root:not([data-theme=cake]) .hljs-bullet,
+:root:not([data-theme=cake]) .hljs-addition,
+:root:not([data-theme=cake]) .hljs-selector-class,
+:root:not([data-theme=cake]) .hljs-title.class_,
+:root:not([data-theme=cake]) .hljs-title.class_.inherited__,
+:root:not([data-theme=cake]) .hljs-meta .hljs-string {
+  color: #19f9d8;
+}
+:root:not([data-theme=cake]) .hljs-variable,
+:root:not([data-theme=cake]) .hljs-template-variable,
+:root:not([data-theme=cake]) .hljs-number,
+:root:not([data-theme=cake]) .hljs-literal,
+:root:not([data-theme=cake]) .hljs-type,
+:root:not([data-theme=cake]) .hljs-link,
+:root:not([data-theme=cake]) .hljs-built_in,
+:root:not([data-theme=cake]) .hljs-title,
+:root:not([data-theme=cake]) .hljs-selector-id,
+:root:not([data-theme=cake]) .hljs-tag,
+:root:not([data-theme=cake]) .hljs-doctag,
+:root:not([data-theme=cake]) .hljs-attribute,
+:root:not([data-theme=cake]) .hljs-template-tag,
+:root:not([data-theme=cake]) .hljs-meta .hljs-keyword,
+:root:not([data-theme=cake]) .hljs-punctuation {
+  color: #ffb86c;
 }
 
 .code-block {
@@ -1494,7 +1746,7 @@ body:has(.archive-page__rss) .posts {
   }
 }
 .code-block ::selection {
-  background-color: #19f9d8;
+  background-color: var(--codeBlock-selector-color);
   color: var(--codeBlock-bg-color);
 }
 .code-block pre, .code-block code {
@@ -1948,24 +2200,34 @@ body:has(.archive-page__rss) .posts {
   :root[data-theme=system] {
     --reviewBlock-bg-color: var(--c-white);
     --reviewBlock-border-color: var(--c-fog);
+    --reviewBlockRating-text-color: var(--c-fire);
   }
 }
 
 :root[data-theme=light] {
   --reviewBlock-bg-color: var(--c-white);
   --reviewBlock-border-color: var(--c-fog);
+  --reviewBlockRating-text-color: var(--c-fire);
 }
 
 @media (prefers-color-scheme: dark) {
   :root[data-theme=system] {
     --reviewBlock-bg-color: var(--c-scale-gray-10);
     --reviewBlock-border-color: var(--c-scale-gray-7);
+    --reviewBlockRating-text-color: var(--c-sun);
   }
 }
 
 :root[data-theme=dark] {
   --reviewBlock-bg-color: var(--c-scale-gray-10);
   --reviewBlock-border-color: var(--c-scale-gray-7);
+  --reviewBlockRating-text-color: var(--c-sun);
+}
+
+:root[data-theme=cake] {
+  --reviewBlock-bg-color: var(--c-paste);
+  --reviewBlock-border-color: var(--c-cookie-dough);
+  --reviewBlockRating-text-color: var(--c-claret);
 }
 
 .review-block {
@@ -2027,7 +2289,7 @@ body:has(.archive-page__rss) .posts {
   outline: 0.375rem solid var(--reviewBlock-bg-color);
 }
 .review-block__rating {
-  color: orange;
+  color: var(--reviewBlockRating-text-color);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -2214,6 +2476,11 @@ body:has(.archive-page__rss) .posts {
 :root[data-theme=dark] {
   --rssLink-border-color: var(--c-scale-gray-7);
   --rssLinkIcon-text-color: var(--c-fire);
+}
+
+:root[data-theme=cake] {
+  --rssLink-border-color: var(--c-sapling);
+  --rssLinkIcon-text-color: var(--c-wild-strawberry);
 }
 
 .rss-link {

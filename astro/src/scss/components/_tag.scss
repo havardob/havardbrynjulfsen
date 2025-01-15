@@ -12,6 +12,12 @@
     --tag-text-color: var(--c-scale-gray-1);
 }
 
+@include theming.cake-colors() {
+    --tag-bg-color: var(--c-cookie-dough);
+    --tag-bg-color-hover: var(--c-sapling);
+    --tag-text-color: var(--c-grape);
+}
+
 .tag {
     text-decoration: none;
     font-size: .875rem;

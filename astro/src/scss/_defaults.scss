@@ -32,6 +32,21 @@
   --codeMark-text-color: var(--c-white);
 }
 
+@include theming.cake-colors() {
+  --html-bg-color: var(--c-cookie-dough);
+  --body-bg-color: var(--c-paste);
+  --text-primary-color: var(--c-grape);
+  --text-secondary-color: var(--c-cherry);
+  --text-tertiary-color: var(--c-cherry);
+  --textLink-color: var(--c-claret);
+  --textLink-color-hover: var(--c-camelot);
+  --border-primary-color: var(--c-sapling);
+  --blockquote-divider-color: var(--c-wild-strawberry);
+  --listMarker-color: var(--c-wild-strawberry);
+  --codeMark-bg-color: var(--c-cookie-dough);
+  --codeMark-text-color: var(--c-cherry);
+}
+
 html {
   scroll-behavior: smooth;
   background-color: var(--html-bg-color);
