@@ -1,11 +1,11 @@
 import {defineCollection} from 'astro:content';
-import {getArticleData} from "../data/article.ts";
-import {getCreationData} from "../data/creation.ts";
-import {getSiteSettingsData} from "../data/siteSettings.ts";
-import {getFrontPageData} from "../data/frontPage.ts";
-import {getArticleArchiveData} from "../data/articleArchive.ts";
-import {getCreationArchiveData} from "../data/creationArchive.ts";
-import {getTagPageData} from "../data/tag.ts";
+import {getArticleData} from "../data/article";
+import {getCreationData} from "../data/creation";
+import {getSiteSettingsData} from "../data/siteSettings";
+import {getFrontPageData} from "../data/frontPage";
+import {getArticleArchiveData} from "../data/articleArchive";
+import {getCreationArchiveData} from "../data/creationArchive";
+import {getTagPageData} from "../data/tag";
 
 const siteSettingsCollection = defineCollection({
     loader: async () => {
