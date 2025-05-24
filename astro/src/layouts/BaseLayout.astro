@@ -1,5 +1,6 @@
 ---
 import {getCollection} from "astro:content";
+import Analytics from '@vercel/analytics/astro'
 
 const siteSettingsCollection = await getCollection('siteSettings');
 const siteSettings = siteSettingsCollection[0].data;
@@ -59,5 +60,6 @@ const {metaTitle, metaDescription, metaImageUrl} = Astro.props;
   </head>
   <body>
     <slot />
+    <Analytics />
   </body>
 </html>
