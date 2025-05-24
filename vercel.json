@@ -1,0 +1,214 @@
+{
+  "redirects": [
+    {
+      "source": "/creations/codepen/fancy-checkboxes",
+      "destination": "/creations/fancy-checkboxes",
+      "permanent": true
+    },
+    {
+      "source": "/creations/codepen/music-app-concept",
+      "destination": "/creations/music-app-concept",
+      "permanent": true
+    },
+    {
+      "source": "/creations/codepen/skeumorphism-3d-switch",
+      "destination": "/creations/skeumorphism-3d-switch",
+      "permanent": true
+    },
+    {
+      "source": "/creations/codepen/squishy-button-design",
+      "destination": "/creations/squishy-button-design",
+      "permanent": true
+    },
+    {
+      "source": "/creations/misc/stage-os",
+      "destination": "/creations/stage-os",
+      "permanent": true
+    },
+    {
+      "source": "/creations/website/book-showcase",
+      "destination": "/creations/book-showcase",
+      "permanent": true
+    },
+    {
+      "source": "/creations/website/noel-fun/",
+      "destination": "/creations/noel-fun",
+      "permanent": true
+    },
+    {
+      "source": "/writing/posts/books-of-2024",
+      "destination": "/writing/books-of-2024",
+      "permanent": true
+    },
+    {
+      "source": "/writing/posts/creativity-is-only-impressive-when-there-s-restrictions",
+      "destination": "/writing/creativity-is-only-impressive-when-there-s-restrictions",
+      "permanent": true
+    },
+    {
+      "source": "/writing/posts/how-to-create-a-shrinking-header-on-scroll-without-javascript",
+      "destination": "/writing/how-to-create-a-shrinking-header-on-scroll-without-javascript",
+      "permanent": true
+    },
+    {
+      "source": "/writing/posts/i-ve-rebuilt-my-site-in-astro",
+      "destination": "/writing/i-ve-rebuilt-my-site-in-astro",
+      "permanent": true
+    },
+    {
+      "source": "/writing/posts/i-ve-rebuilt-my-site",
+      "destination": "/writing/i-ve-rebuilt-my-site",
+      "permanent": true
+    },
+    {
+      "source": "/writing/posts/removing-list-style-on-lists-and-the-accessibility-implications-that-follow",
+      "destination": "/writing/removing-list-style-on-lists-and-the-accessibility-implications-that-follow",
+      "permanent": true
+    },
+    {
+      "source": "/writing/posts/the-struggles-of-bem",
+      "destination": "/writing/the-struggles-of-bem",
+      "permanent": true
+    },
+    {
+      "source": "/writing/posts/users-will-break-your-design-and-it-s-not-their-fault",
+      "destination": "/writing/users-will-break-your-design-and-it-s-not-their-fault",
+      "permanent": true
+    },
+    {
+      "source": "/writing/thoughts/embracing-the-platform",
+      "destination": "/writing/embracing-the-platform",
+      "permanent": true
+    },
+    {
+      "source": "/writing/thoughts/my-issues-with-shorthand-properties",
+      "destination": "/writing/my-issues-with-shorthand-properties",
+      "permanent": true
+    },
+    {
+      "source": "/writing/thoughts/my-key-takeaways-from-cssday-2024",
+      "destination": "/writing/my-key-takeaways-from-cssday-2024",
+      "permanent": true
+    },
+    {
+      "source": "/writing/thoughts/on-reaching-1-million-views-on-codepen",
+      "destination": "/writing/on-reaching-1-million-views-on-codepen",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/a-good-way-to-structure-your-scss-files",
+      "destination": "/writing/a-good-way-to-structure-your-scss-files",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/a-new-way-to-remove-list-styles-in-safari",
+      "destination": "/writing/a-new-way-to-remove-list-styles-in-safari",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/become-better-at-css-using-codepen",
+      "destination": "/writing/become-better-at-css-using-codepen",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/color-variable-names-in-css",
+      "destination": "/writing/color-variable-names-in-css",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/create-modals-and-dialogs-with-the-dialog-element",
+      "destination": "/writing/create-modals-and-dialogs-with-the-dialog-element",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/embrace-simplicity",
+      "destination": "/writing/embrace-simplicity",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/go-to-class-names",
+      "destination": "/writing/go-to-class-names",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/how-to-style-cms-generated-rich-text",
+      "destination": "/writing/how-to-style-cms-generated-rich-text",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/icons-with-inline-svg",
+      "destination": "/writing/icons-with-inline-svg",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/my-css-reset",
+      "destination": "/writing/my-css-reset",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/nesting-in-scss",
+      "destination": "/writing/nesting-in-scss",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/pill-buttons",
+      "destination": "/writing/pill-buttons",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/replace-media-queries-with-container-queries",
+      "destination": "/writing/replace-media-queries-with-container-queries",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/responsive-youtube-videos-using-aspect-ratio",
+      "destination": "/writing/responsive-youtube-videos-using-aspect-ratio",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/self-aware-components-in-container-queries",
+      "destination": "/writing/self-aware-components-in-container-queries",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/simple-progressive-enhancements-in-css",
+      "destination": "/writing/simple-progressive-enhancements-in-css",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/stop-using-the-terms-mobile-and-tablet",
+      "destination": "/writing/stop-using-the-terms-mobile-and-tablet",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/the-where-selector",
+      "destination": "/writing/the-where-selector",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/use-logical-properties",
+      "destination": "/writing/use-logical-properties",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/use-rem-for-everything-not-only-font-size",
+      "destination": "/writing/use-rem-for-everything-not-only-font-size",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/use-the-description-list-element",
+      "destination": "/writing/use-the-description-list-element",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/view-css-selectors-as-queries",
+      "destination": "/writing/view-css-selectors-as-queries",
+      "permanent": true
+    },
+    {
+      "source": "/writing/tips/why-sticky-headers-can-be-bad",
+      "destination": "/writing/why-sticky-headers-can-be-bad",
+      "permanent": true
+    }
+  ]
+}
