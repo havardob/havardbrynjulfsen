@@ -27,14 +27,9 @@
         }
 
         display: grid;
-        gap: 3.5rem;
+        gap: 2.5rem;
         padding-top: 2.5rem;
         padding-bottom: 2.5rem;
-
-        @media (min-width: 40rem) {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-        }
     }
 
     &__list {
