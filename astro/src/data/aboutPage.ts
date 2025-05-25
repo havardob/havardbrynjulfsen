@@ -7,6 +7,7 @@ export const getAboutPageData = async function () {
         title, 
         leading,
         "profileImage": profileImage.asset -> url,
+        "profileImageRaw": profileImage,
         "slug": slug.current,
         "body": ${groqGetBody('body')}
     }`

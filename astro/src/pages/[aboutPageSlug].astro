@@ -5,6 +5,7 @@ import SiteHeader from "../components/SiteHeader.astro";
 import {getAboutPageData} from "../data/aboutPage";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PortableText from "../components/portableText/PortableText.astro";
+import {urlFor} from "../data/_utils";
 
 export async function getStaticPaths() {
     const aboutPageData = await getAboutPageData();
@@ -42,7 +43,7 @@ const {aboutPage} = Astro.props;
               )}
           </div>
           <div class="page__column">
-            <img src={aboutPage.profileImage} alt="" class="page__image"/>
+            <img src={urlFor(aboutPage.profileImage).width(400).url()} alt="" class="page__image"/>
           </div>
         </div>
       </div>
