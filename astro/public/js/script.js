@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
         menuContainer.classList.toggle('is-open');
         html.classList.toggle('menu-is-open');
     })
-    
-
 
     const dropdownMenuToggles = document.querySelectorAll("[data-dropdown-toggle]");
 
@@ -40,4 +38,36 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         })
     }
+    
+    // Open image dialog
+    const imageDialogTriggers = document.querySelectorAll("[data-dialog-trigger]");
+    
+    imageDialogTriggers?.forEach((trigger) => {
+        if (trigger instanceof HTMLElement) {
+            trigger.style.cursor = "pointer";
+            const dialog = trigger.nextElementSibling;
+            const closeButton = dialog?.querySelector("button");
+            trigger.addEventListener("click", () => {
+                html.style.overflowY = "hidden";
+                if (dialog instanceof HTMLDialogElement) {
+                    dialog.showModal();
+                    closeDialogListener(dialog);
+                }
+            });
+            
+            closeButton?.addEventListener("click", () => {
+                html.style.overflowY = "initial";
+                if (dialog instanceof HTMLDialogElement) {
+                    dialog.close();
+                }
+            })
+        }
+    });
+    
+    const closeDialogListener = (dialogElement) => document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            html.style.overflowY = "initial";
+            dialogElement.close();
+        }
+    })
 })

@@ -24,62 +24,62 @@ const {creation} = Astro.props;
 ---
 
 <BaseLayout
-        metaTitle={creation.title}
-        metaDescription={creation.leading}
-        metaImageUrl={creation.featuredImage && urlFor(creation.featuredImageRaw).width(1200).url()}
+  metaTitle={creation.title}
+  metaDescription={creation.leading}
+  metaImageUrl={creation.featuredImage && urlFor(creation.featuredImageRaw).width(1200).url()}
 >
   <div class="l-site">
-    <SiteHeader/>
+    <SiteHeader />
     <main>
       <div class="l-constraint">
-        <Breadcrumbs items={creation.breadcrumbs} current={creation.title}/>
+        <Breadcrumbs items={creation.breadcrumbs} current={creation.title} />
         <article class="post">
           <header class="post__header">
               {
                   creation.featuredImage && creation.showAsBanner && (
-                              <figure class="post__featured-image">
-                                <picture data-dialog-trigger>
-                                  <source
-                                      media="(max-width: 600px)"
-                                      srcset={urlFor(creation.featuredImageRaw).width(600).url()}
-                                  />
-                                  <img
-                                      src={urlFor(creation.featuredImageRaw).width(800).url()}
-                                      alt=""
-                                      loading="lazy"
-                                  />
-                                </picture>
-                                <dialog class="image-dialog">
-                                  <figure>
-                                    <picture>
-                                      <source
-                                          media="(max-width: 600px)"
-                                          srcset={urlFor(creation.featuredImageRaw).width(400).fit("max").url()}
-                                      />
-                                      <source
-                                          media="(max-width: 1000px)"
-                                          srcset={urlFor(creation.featuredImageRaw).width(1000).fit("max").url()}
-                                      />
-                                      <source
-                                          media="(max-width: 1200px)"
-                                          srcset={urlFor(creation.featuredImageRaw).width(1200).fit("max").url()}
-                                      />
-                                      <source
-                                          media="(max-width: 1600px)"
-                                          srcset={urlFor(creation.featuredImageRaw).width(1600).fit("max").url()}
-                                      />
-                                      <img
-                                          src={urlFor(creation.featuredImageRaw).width(2000).fit("max").url()}
-                                          alt=""
-                                          loading="lazy"
-                                      />
-                                    </picture>
-                                    <button class="image-dialog__close">
-                                      <Close/>
-                                    </button>
-                                  </figure>
-                                </dialog>
-                              </figure>
+                  <figure class="post__featured-image">
+                    <picture data-dialog-trigger>
+                      <source
+                        media="(max-width: 600px)"
+                        srcset={urlFor(creation.featuredImageRaw).width(600).url()}
+                      />
+                      <img
+                        src={urlFor(creation.featuredImageRaw).width(800).url()}
+                        alt=""
+                        loading="lazy"
+                      />
+                    </picture>
+                    <dialog class="image-dialog">
+                      <figure>
+                        <picture>
+                          <source
+                            media="(max-width: 600px)"
+                            srcset={urlFor(creation.featuredImageRaw).width(400).fit("max").url()}
+                          />
+                          <source
+                            media="(max-width: 1000px)"
+                            srcset={urlFor(creation.featuredImageRaw).width(1000).fit("max").url()}
+                          />
+                          <source
+                            media="(max-width: 1200px)"
+                            srcset={urlFor(creation.featuredImageRaw).width(1200).fit("max").url()}
+                          />
+                          <source
+                            media="(max-width: 1600px)"
+                            srcset={urlFor(creation.featuredImageRaw).width(1600).fit("max").url()}
+                          />
+                          <img
+                            src={urlFor(creation.featuredImageRaw).width(2000).fit("max").url()}
+                            alt=""
+                            loading="lazy"
+                          />
+                        </picture>
+                        <button class="image-dialog__close">
+                          <Close />
+                        </button>
+                      </figure>
+                    </dialog>
+                  </figure>
                   )
               }
             <div class="post__meta">
@@ -92,30 +92,30 @@ const {creation} = Astro.props;
             <dl class="details-block">
                 {
                     creation.detailsList.map((item: any) => (
-                            <div class="details-block__item">
-                              <dt class="details-block__term">{item.title}</dt>
-                              <dd class="details-block__detail">
-                                  {item.isLinked ? (
-                                          <a
-                                                  href={item.href}
-                                                  target="_blank"
-                                                  class="details-block__link"
-                                          >
-                                              {item.subtitle}
-                                          </a>
-                                  ) : item.subtitle}
-                              </dd>
-                            </div>
+                      <div class="details-block__item">
+                        <dt class="details-block__term">{item.title}</dt>
+                        <dd class="details-block__detail">
+                            {item.isLinked ? (
+                              <a
+                                href={item.href}
+                                target="_blank"
+                                class="details-block__link"
+                              >
+                                  {item.subtitle}
+                              </a>
+                            ) : item.subtitle}
+                        </dd>
+                      </div>
                     ))
                 }
             </dl>
-            <div class="u-rich-text" >
+            <div class="u-rich-text">
               <PortableText portableText={creation.body} />
             </div>
           </div>
         </article>
       </div>
     </main>
-    <SiteFooter/>
+    <SiteFooter />
   </div>
 </BaseLayout>

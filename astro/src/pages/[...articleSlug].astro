@@ -27,62 +27,62 @@ const {article} = Astro.props;
 ---
 
 <BaseLayout
-        metaTitle={article.title}
-        metaDescription={article.leading}
-        metaImageUrl={article.featuredImage && urlFor(article.featuredImageRaw).width(1200).url()}
+  metaTitle={article.title}
+  metaDescription={article.leading}
+  metaImageUrl={article.featuredImage && urlFor(article.featuredImageRaw).width(1200).url()}
 >
   <div class="l-site">
-    <SiteHeader/>
+    <SiteHeader />
     <main>
       <div class="l-constraint">
-        <Breadcrumbs items={article.breadcrumbs} current={article.title}/>
+        <Breadcrumbs items={article.breadcrumbs} current={article.title} />
         <article class="post">
           <header class="post__header">
               {
                   article.featuredImage && article.showAsBanner && (
-                              <figure class="post__featured-image">
-                                <picture data-dialog-trigger>
-                                  <source
-                                      media="(max-width: 600px)"
-                                      srcset={urlFor(article.featuredImageRaw).width(600).url()}
-                                  />
-                                  <img
-                                      src={urlFor(article.featuredImageRaw).width(800).url()}
-                                      alt=""
-                                      loading="lazy"
-                                  />
-                                </picture>
-                                <dialog class="image-dialog">
-                                  <figure>
-                                    <picture>
-                                      <source
-                                          media="(max-width: 600px)"
-                                          srcset={urlFor(article.featuredImageRaw).width(400).fit("max").url()}
-                                      />
-                                      <source
-                                          media="(max-width: 1000px)"
-                                          srcset={urlFor(article.featuredImageRaw).width(1000).fit("max").url()}
-                                      />
-                                      <source
-                                          media="(max-width: 1200px)"
-                                          srcset={urlFor(article.featuredImageRaw).width(1200).fit("max").url()}
-                                      />
-                                      <source
-                                          media="(max-width: 1600px)"
-                                          srcset={urlFor(article.featuredImageRaw).width(1600).fit("max").url()}
-                                      />
-                                      <img
-                                          src={urlFor(article.featuredImageRaw).width(2000).fit("max").url()}
-                                          alt=""
-                                          loading="lazy"
-                                      />
-                                    </picture>
-                                    <button class="image-dialog__close">
-                                      <Close/>
-                                    </button>
-                                  </figure>
-                                </dialog>
-                              </figure>
+                  <figure class="post__featured-image">
+                    <picture data-dialog-trigger>
+                      <source
+                        media="(max-width: 600px)"
+                        srcset={urlFor(article.featuredImageRaw).width(600).url()}
+                      />
+                      <img
+                        src={urlFor(article.featuredImageRaw).width(800).url()}
+                        alt=""
+                        loading="lazy"
+                      />
+                    </picture>
+                    <dialog class="image-dialog">
+                      <figure>
+                        <picture>
+                          <source
+                            media="(max-width: 600px)"
+                            srcset={urlFor(article.featuredImageRaw).width(400).fit("max").url()}
+                          />
+                          <source
+                            media="(max-width: 1000px)"
+                            srcset={urlFor(article.featuredImageRaw).width(1000).fit("max").url()}
+                          />
+                          <source
+                            media="(max-width: 1200px)"
+                            srcset={urlFor(article.featuredImageRaw).width(1200).fit("max").url()}
+                          />
+                          <source
+                            media="(max-width: 1600px)"
+                            srcset={urlFor(article.featuredImageRaw).width(1600).fit("max").url()}
+                          />
+                          <img
+                            src={urlFor(article.featuredImageRaw).width(2000).fit("max").url()}
+                            alt=""
+                            loading="lazy"
+                          />
+                        </picture>
+                        <button class="image-dialog__close">
+                          <Close />
+                        </button>
+                      </figure>
+                    </dialog>
+                  </figure>
                   )
               }
             <div class="post__meta">
@@ -98,11 +98,11 @@ const {article} = Astro.props;
           <div class="post__body | u-rich-text">
               {
                   article.publishedExternally && (
-                              <Callout
-                                      text={article.publishedExternally.text}
-                                      href={article.publishedExternally.href}
-                                      image={article.publishedExternally.image}
-                              />
+                  <Callout
+                    text={article.publishedExternally.text}
+                    href={article.publishedExternally.href}
+                    image={article.publishedExternally.image}
+                  />
                   )
               }
             <div class="u-rich-text">
@@ -112,7 +112,7 @@ const {article} = Astro.props;
         </article>
       </div>
     </main>
-    <SiteFooter/>
+    <SiteFooter />
   </div>
 </BaseLayout>
 
