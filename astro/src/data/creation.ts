@@ -16,6 +16,7 @@ export const getCreationData = async function () {
             title,
             "slug": ${groqGetSlug()}
         },
+        "featuredImageRaw": featuredImage,
         "featuredImage": featuredImage.asset->url, 
         showAsBanner, 
         detailsList[] {      

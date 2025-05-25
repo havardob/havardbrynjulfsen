@@ -17,9 +17,11 @@ export function groqGetBody(key: string) {
     return `${key}[] {
         ...,
         _type == "imageBlock" => {
+            "imageFileRaw": imageFile,
             "imageFile": imageFile.asset->url,
         },
         _type == "reviewBlock" => {
+            "imageFileRaw": imageFile,
             "imageFile": imageFile.asset->url,
         },
         markDefs[] {

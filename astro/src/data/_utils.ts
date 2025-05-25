@@ -1,7 +1,7 @@
 import { toHTML } from '@portabletext/to-html';
 import { portableTextToHtml } from './_portableTextToHtml';
 import { client } from './_sanityClient';
-
+import imageUrlBuilder from "@sanity/image-url";
 
 export const generateSlug = async function (id: string) {
     const query = `*[_id == "${id}"][0] {
@@ -82,4 +82,9 @@ export function generateRichText(source: any) {
     } else {
         return;
     }
+}
+
+export function urlFor(source: any) {
+    const builder = imageUrlBuilder(client);
+    return builder.image(source);
 }

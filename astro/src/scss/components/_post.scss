@@ -28,7 +28,6 @@
         margin-left: -1rem;
         width: calc(100% + 2rem);
         max-width: 50rem;
-        overflow: hidden;
         
         @media (min-width: 50rem) {
             width: 100%;
@@ -36,7 +35,12 @@
             margin-left: 0;
         }
         
-        img {
+        img, picture {
+            @media (min-width: 50rem) {
+                width: 100%;
+                border-radius: .375rem;
+                margin-left: 0;
+            }
         }
     }
     

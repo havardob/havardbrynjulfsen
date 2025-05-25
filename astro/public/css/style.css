@@ -1236,10 +1236,16 @@ body {
   margin-left: -1rem;
   width: calc(100% + 2rem);
   max-width: 50rem;
-  overflow: hidden;
 }
 @media (min-width: 50rem) {
   .post__featured-image {
+    width: 100%;
+    border-radius: 0.375rem;
+    margin-left: 0;
+  }
+}
+@media (min-width: 50rem) {
+  .post__featured-image img, .post__featured-image picture {
     width: 100%;
     border-radius: 0.375rem;
     margin-left: 0;
@@ -2124,7 +2130,7 @@ body:has(.archive-page__rss) .posts {
   align-items: center;
   justify-content: center;
 }
-.image-dialog figure img {
+.image-dialog figure img, .image-dialog figure picture {
   margin-inline: auto;
   border-radius: 0.5rem;
   min-height: 0;
@@ -2159,8 +2165,7 @@ body:has(.archive-page__rss) .posts {
   border-radius: 50%;
 }
 .image-dialog button svg {
-  width: 2rem;
-  height: 2rem;
+  font-size: 1.5rem;
 }
 
 @media (prefers-color-scheme: light) {

@@ -1,35 +1,71 @@
 ---
 import Icon from "./Icon.astro";
+import {urlFor} from "../data/_utils";
 
-const {size, imageFile, hasBorder, text, credits, alt} = Astro.props.node;
+const {size, imageFile, imageFileRaw, hasBorder, text, credits, alt} = Astro.props.node;
 ---
 
-<figure class={`image-block | ${size}`}>
-  <div class="image-block__frame">
-    <img src={imageFile} alt={alt ?? ""} } loading="lazy" class={hasBorder && "has-border"} data-dialog-trigger />
-    <dialog class="image-dialog">
-      <figure>
-        <img src={imageFile} alt={alt ?? ""} />
-        <button class="image-dialog__close">
-          <Icon name="close" />
-        </button>
-          {(text || credits) && (
-            <figcaption class="image-block__caption">
-                {text && (<span class="image-block__description">{text}</span>)}
-                {credits && (
-                  <span class="image-block__source"><span class="u-hidden">Credit:</span>{credits}</span>)}
-            </figcaption>
-          )}
-      </figure>
-    </dialog>
-  </div>
-    {(text || credits) && (
-      <figcaption class="image-block__caption">
-          {text && (<span class="image-block__description">{text}</span>)}
-          {credits && (<span class="image-block__source"><span class="u-hidden">Credit:</span>{credits}</span>)}
-      </figcaption>
+{imageFile && (
+  <figure class={`image-block | ${size}`}>
+    <div class="image-block__frame">
+      <picture data-dialog-trigger>
+        <source
+          media="(max-width: 600px)"
+          srcset={urlFor(imageFileRaw).width(600).url()}
+        />
+        <img
+          src={urlFor(imageFileRaw).width(800).url()}
+          alt={alt ?? ""}
+          loading="lazy"
+          class={hasBorder ? "has-border" : ""}
+        />
+      </picture>
+      <dialog class="image-dialog">
+        <figure>
+          <picture>
+            <source
+              media="(max-width: 600px)"
+              srcset={urlFor(imageFileRaw).width(600).fit("max").url()}
+            />
+            <source
+              media="(max-width: 1000px)"
+              srcset={urlFor(imageFileRaw).width(1000).fit("max").url()}
+            />
+            <source
+              media="(max-width: 1200px)"
+              srcset={urlFor(imageFileRaw).width(1200).fit("max").url()}
+            />
+            <source
+              media="(max-width: 1600px)"
+              srcset={urlFor(imageFileRaw).width(1600).fit("max").url()}
+            />
+            <img
+              src={urlFor(imageFileRaw).width(2000).fit("max").url()}
+              alt={alt ?? ""}
+              loading="lazy"
+            />
+          </picture>
+          <button class="image-dialog__close">
+            <Icon name="close" />
+          </button>
+            {(text || credits) && (
+              <figcaption class="image-block__caption">
+                  {text && (<span class="image-block__description">{text}</span>)}
+                  {credits && (
+                    <span class="image-block__source"><span class="u-hidden">Credit:</span>{credits}</span>)}
+              </figcaption>
+            )}
+        </figure>
+      </dialog>
+    </div>
+      {(text || credits) && (
+        <figcaption class="image-block__caption">
+            {text && (<span class="image-block__description">{text}</span>)}
+            {credits && (<span class="image-block__source"><span class="u-hidden">Credit:</span>{credits}</span>)}
+        </figcaption>
+      )}
+  </figure>
     )}
-</figure>
 
 <script>
     const html = document.documentElement as HTMLElement;

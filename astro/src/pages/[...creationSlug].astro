@@ -6,6 +6,7 @@ import SiteHeader from "../components/SiteHeader.astro";
 import Close from "../icons/Close.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PortableText from "../components/portableText/PortableText.astro";
+import {urlFor} from "../data/_utils";
 
 export async function getStaticPaths() {
     const creations = await getCollection('creations');
@@ -25,7 +26,7 @@ const {creation} = Astro.props;
 <BaseLayout
         metaTitle={creation.title}
         metaDescription={creation.leading}
-        metaImageUrl={creation.featuredImage}
+        metaImageUrl={creation.featuredImage && urlFor(creation.featuredImageRaw).width(1200).url()}
 >
   <div class="l-site">
     <SiteHeader/>
@@ -37,14 +38,42 @@ const {creation} = Astro.props;
               {
                   creation.featuredImage && creation.showAsBanner && (
                               <figure class="post__featured-image">
-                                <img
-                                        src={creation.featuredImage}
-                                        alt=""
-                                        data-dialog-trigger
-                                />
+                                <picture data-dialog-trigger>
+                                  <source
+                                      media="(max-width: 600px)"
+                                      srcset={urlFor(creation.featuredImageRaw).width(600).url()}
+                                  />
+                                  <img
+                                      src={urlFor(creation.featuredImageRaw).width(800).url()}
+                                      alt=""
+                                      loading="lazy"
+                                  />
+                                </picture>
                                 <dialog class="image-dialog">
                                   <figure>
-                                    <img src={creation.featuredImage} alt=""/>
+                                    <picture>
+                                      <source
+                                          media="(max-width: 600px)"
+                                          srcset={urlFor(creation.featuredImageRaw).width(400).fit("max").url()}
+                                      />
+                                      <source
+                                          media="(max-width: 1000px)"
+                                          srcset={urlFor(creation.featuredImageRaw).width(1000).fit("max").url()}
+                                      />
+                                      <source
+                                          media="(max-width: 1200px)"
+                                          srcset={urlFor(creation.featuredImageRaw).width(1200).fit("max").url()}
+                                      />
+                                      <source
+                                          media="(max-width: 1600px)"
+                                          srcset={urlFor(creation.featuredImageRaw).width(1600).fit("max").url()}
+                                      />
+                                      <img
+                                          src={urlFor(creation.featuredImageRaw).width(2000).fit("max").url()}
+                                          alt=""
+                                          loading="lazy"
+                                      />
+                                    </picture>
                                     <button class="image-dialog__close">
                                       <Close/>
                                     </button>

@@ -39,7 +39,7 @@
         align-items: center;
         justify-content: center;
         
-        img {
+        img, picture {
             margin-inline: auto;
             border-radius: .5rem;
             min-height: 0;
@@ -78,8 +78,7 @@
         border-radius: 50%;
 
         svg {
-            width: 2rem;
-            height: 2rem;
+           font-size: 1.5rem;
         }
      }
 }

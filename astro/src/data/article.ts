@@ -23,6 +23,7 @@ export const getArticleData = async function () {
             "slug": ${groqGetSlug()}
         },
         "featuredImage": featuredImage.asset->url, 
+        "featuredImageRaw": featuredImage,
         showAsBanner,
         "body": ${groqGetBody('body')}      
     }`
