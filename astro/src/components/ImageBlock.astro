@@ -11,10 +11,10 @@ const {size, imageFile, imageFileRaw, hasBorder, text, credits, alt} = Astro.pro
     <picture data-dialog-trigger>
       <source
         media="(max-width: 600px)"
-        srcset={urlFor(imageFileRaw).width(600).url()}
+        srcset={urlFor(imageFileRaw).width(600).fit("max").url()}
       />
       <img
-        src={urlFor(imageFileRaw).width(800).url()}
+        src={urlFor(imageFileRaw).width(800).fit("max").url()}
         alt={alt ?? ""}
         loading="lazy"
         class={hasBorder ? "has-border" : ""}
