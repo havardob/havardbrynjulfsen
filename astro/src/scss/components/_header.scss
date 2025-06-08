@@ -25,6 +25,14 @@
 .header {
    --header-nav-gap: .25rem;
    
+   body:has(.menu.is-open) & {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 950;
+   }
+   
    &__inner {
       display: flex;
       align-items: center;

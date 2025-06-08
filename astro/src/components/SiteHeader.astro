@@ -5,6 +5,7 @@ import ChevronDown from "../icons/ChevronDown.astro";
 import Close from "../icons/Close.astro";
 import Logo from "../icons/Logo.astro";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
+import Icon from "./Icon.astro";
 
 
 const siteSettingsCollection = await getCollection('siteSettings');
@@ -78,5 +79,17 @@ const siteSettings = siteSettingsCollection[0].data;
           }
       </ul>
     </nav>
+    <ul class="menu__some">
+      {
+        siteSettings?.someLinks?.map((item: any) => (
+            <li class="menu__some-item">
+              <a href={item.href} class="menu__some-link">
+                <span class="u-hidden">{item.label}</span>
+                <Icon name={item.icon} />
+              </a>
+            </li>
+        ))
+      }
+    </ul>
   </div>
 </div>

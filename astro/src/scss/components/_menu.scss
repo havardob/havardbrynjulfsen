@@ -1,52 +1,86 @@
 @use '../theming';
 
 @include theming.light-colors() {
-    --menu-bg-color: var(--c-mist);
-    --menu-border-color: var(--c-fog);
+   --menu-bg-color: var(--c-ivory);
+   --menu-border-color: var(--c-fog);
 }
 
 @include theming.dark-colors() {
-    --menu-bg-color: var(--c-scale-gray-8);
-    --menu-border-color: var(--c-scale-gray-6);
+   --menu-bg-color: var(--c-scale-gray-9);
+   --menu-border-color: var(--c-scale-gray-6);
+}
+
+html:has(.menu.is-open) {
+    overflow-y: hidden;
 }
 
 .menu {
-    background-color: var(--menu-bg-color);
-    display: none;
-    padding-block: 2rem;
-    
-    &.is-open {
-        display: block;
-    }
-
-    &__list {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        ::marker {
-            color: transparent;
-            font-size: 0;
-        }
-    }
-
-    &__item {
-        border-bottom: 0.0625rem solid var(--menu-border-color);
-        &:last-child {
-            border-bottom: 0;
-        }
-    }
-
-    &__link {
-        display: flex;
-        justify-content: space-between;
-        gap: .5rem;
-        text-decoration: none;
-        padding-block: .75rem;
-
-        svg {
-            flex-shrink: 0;
-            width: 1.5rem;
-        }
-    }
+   background-color: var(--menu-bg-color);
+   display: none;
+   padding-block: 2rem;
+   min-height: 100dvh;
+   
+   &.is-open {
+      display: block;
+      position: fixed;
+       inset: 0;
+       padding-block-start: 6rem;
+       z-index: 900;
+   }
+   
+   &__list {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+       align-items: flex-start;
+      
+      ::marker {
+         color: transparent;
+         font-size: 0;
+      }
+   }
+   
+   &__item {
+   }
+   
+   &__link {
+      display: flex;
+      justify-content: space-between;
+      gap: .5rem;
+      text-decoration: none;
+      padding-block: .5rem;
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      font-family: var(--ff-secondary), sans-serif;
+      
+      svg {
+         flex-shrink: 0;
+         width: 1.5rem;
+      }
+   }
+   
+   &__some {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .125rem;
+      border-block-start: 1px solid var(--menu-border-color);
+      margin-block-start: 1.5rem;
+      padding-block-start: 1rem;
+   }
+   
+   &__some-link {
+      display: grid;
+      place-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      
+      svg {
+         width: 1.5rem;
+         height: 1.5rem;
+      }
+   }
 }

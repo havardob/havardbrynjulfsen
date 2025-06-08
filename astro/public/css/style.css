@@ -425,6 +425,13 @@ body {
 .header {
   --header-nav-gap: .25rem;
 }
+body:has(.menu.is-open) .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 950;
+}
 .header__inner {
   display: flex;
   align-items: center;
@@ -1781,62 +1788,90 @@ body:has(.archive-page__rss) .posts {
 
 @media (prefers-color-scheme: light) {
   :root[data-theme=system] {
-    --menu-bg-color: var(--c-mist);
+    --menu-bg-color: var(--c-ivory);
     --menu-border-color: var(--c-fog);
   }
 }
 
 :root[data-theme=light] {
-  --menu-bg-color: var(--c-mist);
+  --menu-bg-color: var(--c-ivory);
   --menu-border-color: var(--c-fog);
 }
 
 @media (prefers-color-scheme: dark) {
   :root[data-theme=system] {
-    --menu-bg-color: var(--c-scale-gray-8);
+    --menu-bg-color: var(--c-scale-gray-9);
     --menu-border-color: var(--c-scale-gray-6);
   }
 }
 
 :root[data-theme=dark] {
-  --menu-bg-color: var(--c-scale-gray-8);
+  --menu-bg-color: var(--c-scale-gray-9);
   --menu-border-color: var(--c-scale-gray-6);
+}
+
+html:has(.menu.is-open) {
+  overflow-y: hidden;
 }
 
 .menu {
   background-color: var(--menu-bg-color);
   display: none;
   padding-block: 2rem;
+  min-height: 100dvh;
 }
 .menu.is-open {
   display: block;
+  position: fixed;
+  inset: 0;
+  padding-block-start: 6rem;
+  z-index: 900;
 }
 .menu__list {
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 .menu__list ::marker {
   color: transparent;
   font-size: 0;
-}
-.menu__item {
-  border-bottom: 0.0625rem solid var(--menu-border-color);
-}
-.menu__item:last-child {
-  border-bottom: 0;
 }
 .menu__link {
   display: flex;
   justify-content: space-between;
   gap: 0.5rem;
   text-decoration: none;
-  padding-block: 0.75rem;
+  padding-block: 0.5rem;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-family: var(--ff-secondary), sans-serif;
 }
 .menu__link svg {
   flex-shrink: 0;
   width: 1.5rem;
+}
+.menu__some {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.125rem;
+  border-block-start: 1px solid var(--menu-border-color);
+  margin-block-start: 1.5rem;
+  padding-block-start: 1rem;
+}
+.menu__some-link {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.menu__some-link svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 @media (prefers-color-scheme: light) {
