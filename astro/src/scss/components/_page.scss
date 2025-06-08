@@ -31,6 +31,7 @@
         font-size: 1.5rem;
         line-height: 1.25;
         font-family: var(--ff-secondary);
+        text-wrap: pretty;
 
         @media (min-width: 40rem) {
             font-size: 2.25rem;
@@ -41,6 +42,7 @@
     &__intro {
         margin-top: .875em;
         font-size: 1.25rem;
+        text-wrap: pretty;
 
         @media (min-width: 40rem) {
             font-size: 1.375rem;
