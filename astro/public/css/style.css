@@ -1005,9 +1005,10 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
+  font-size: 0.875rem;
 }
 .post-preview__meta-item {
-  font-size: 0.875rem;
+  font-size: 1rem;
   display: flex;
   gap: 0.5rem;
   align-items: center;

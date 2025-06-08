@@ -30,7 +30,9 @@ const {
 <div class="[ cq--post-preview ]">
   <article class="post-preview">
     <div class="post-preview__meta">
-      <a href={tag?.slug} class="tag">{tag?.title}</a>
+      <span>
+        <a href={tag?.slug} class="tag">{tag?.title}</a>
+      </span>
       <span class="post-preview__meta-item">{readingTime} minute read</span>
       <span class="post-preview__meta-item">{publishedDate}</span>
     </div>
@@ -39,19 +41,19 @@ const {
     </h2>
       {excerpt && <p class="post-preview__excerpt">{excerpt}</p>}
     <>
-        {
-          external?.href && (
-            <div class="post-preview__footer">
-              <img class="post-preview__footer-image" src={external?.image} alt=""/>
-              <p>
-                Published at
-                <a href={external?.href} target="_blank">
-                    {external?.text}
-                </a>
-              </p>
-            </div>
-          )
-        }
+    {
+        external?.href && (
+        <div class="post-preview__footer">
+          <img class="post-preview__footer-image" src={external?.image} alt="" />
+          <p>
+            Published at
+            <a href={external?.href} target="_blank">
+                {external?.text}
+            </a>
+          </p>
+        </div>
+        )
+    }
     </>
   </article>
 </div>

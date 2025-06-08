@@ -22,14 +22,16 @@
         align-items: center;
         flex-wrap: wrap;
         gap: .5rem;
+        font-size: .875rem;
         
         &-item {
-            font-size: .875rem;
+            font-size: 1rem;
             display: flex;
             gap: .5rem;
             align-items: center;
             font-weight: 500;
-            & + .post-preview__meta-item {
+            
+            &+& {
                 &:before {
                     content: "•";
                     display: inline;
