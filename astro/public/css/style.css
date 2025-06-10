@@ -2371,13 +2371,28 @@ html:has(.menu.is-open) {
   -webkit-box-decoration-break: clone;
   font-family: var(--ff-code);
 }
-.u-rich-text > .code-block, .u-rich-text > .embed-block {
+.u-rich-text > .code-block {
   width: 100%;
 }
 @media (min-width: 45rem) {
-  .u-rich-text > .code-block.full-bleed, .u-rich-text > .embed-block.full-bleed {
-    width: calc(100% + 4rem);
-    margin-left: -2rem;
+  .u-rich-text > .code-block.full-bleed {
+    width: calc(100% + 8rem);
+    margin-left: -4rem;
+  }
+}
+.u-rich-text > .embed-block {
+  width: 100%;
+}
+@media (min-width: 45rem) {
+  .u-rich-text > .embed-block.full-bleed {
+    width: calc(100% + 10rem);
+    margin-inline-start: -5rem;
+  }
+}
+@media (min-width: 55rem) {
+  .u-rich-text > .embed-block.full-bleed {
+    width: calc(100% + 14rem);
+    margin-inline-start: -7rem;
   }
 }
 .u-rich-text > * + .review-block {

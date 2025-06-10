@@ -116,12 +116,27 @@
         font-family: var(--ff-code);
     }
 
-    & > .code-block, & > .embed-block {
+    & > .code-block {
         width: 100%;
         &.full-bleed {
             @media (min-width: 45rem) {
-                width: calc(100% + 4rem);
-                margin-left: -2rem;
+                width: calc(100% + 8rem);
+                margin-left: -4rem;
+            }
+        }
+    }
+
+    & > .embed-block {
+        width: 100%;
+        &.full-bleed {
+            @media (min-width: 45rem) {
+                width: calc(100% + 10rem);
+                margin-inline-start: -5rem;
+            }
+
+            @media (min-width: 55rem) {
+                width: calc(100% + 14rem);
+                margin-inline-start: -7rem;
             }
         }
     }
