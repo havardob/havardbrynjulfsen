@@ -40,12 +40,12 @@ const {
       <span class="post-preview__meta-item">{publishedDate}</span>
       <span class="post-preview__meta-item">{readingTime} minute read</span>
         {(tags && tags.length > 0) ? tags?.map((tag: any) => (
-          <span key={tag._id}>
+          <span>
             <a href={tag.slug} class="tag">{tag.title}</a>
           </span>
         )) : (
           <span>
-            <a href={tag.slug} class="tag">{tag.title}</a>
+            <a href={tag?.slug} class="tag">{tag?.title}</a>
           </span>
         )}
     </div>

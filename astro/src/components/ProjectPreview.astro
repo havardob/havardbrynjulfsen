@@ -17,9 +17,9 @@ const {title, slug, image, tag, tagline} = Astro.props;
   <article class="project-preview">
     <div class="project-preview__image-wrapper">
       <img
-              src={image + "?w=400"}
-              alt=""
-              class="project-preview__image"/>
+        src={image + "?w=400"}
+        alt=""
+        class="project-preview__image" />
     </div>
     <div class="project-preview__content">
       <h2 class="project-preview__title">
@@ -28,9 +28,9 @@ const {title, slug, image, tag, tagline} = Astro.props;
         </a>
       </h2>
         {tagline && (
-                <p class="project-preview__tagline">
-                    {tagline}
-                </p>
+          <p class="project-preview__tagline">
+              {tagline}
+          </p>
         )}
       <a href={tag?.slug} class="tag">{tag?.title}</a>
     </div>

@@ -89,9 +89,9 @@ const {article} = Astro.props;
               <span class="post__meta-item">{article.publishedDate}</span>
               <span class="post__meta-item">{article.readingTime} minute read</span>
                 {article.tags ? article.tags?.map((tag: any) => (
-                  <span key={tag._id}>
-                  <a href={tag.slug} class="tag">{tag.title}</a>
-                </span>
+                  <span>
+                    <a href={tag.slug} class="tag">{tag.title}</a>
+                  </span>
                 )) : (
                   <span>
                   <a href={article.tag.slug} class="tag">{article.tag.title}</a>
