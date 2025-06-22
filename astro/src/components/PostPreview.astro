@@ -44,9 +44,11 @@ const {
             <a href={tag.slug} class="tag">{tag.title}</a>
           </span>
         )) : (
-          <span>
+            tag && (
+                <span>
             <a href={tag?.slug} class="tag">{tag?.title}</a>
           </span>
+            )
         )}
     </div>
     <h2 class="post-preview__title">

@@ -21,12 +21,10 @@ export async function getStaticPaths() {
         tagCollection.map(async (result: any) => {
             const filteredArticles = articles.filter((article) => {
               if (article.tags && article.tags.length > 0) {
-                article.tags.forEach((tag: any) => {
-                  return tag._id = result.data._id;
-                })
+              return article.tags.some((tag: any) => tag._id === result.data._id);
+              } else {
+                return article.tag._id === result.data._id;
               }
-
-              return article.tag._id = result.data._id;
             });
             const filteredCreations = creations.filter(creation => creation.tag._id === result.data._id);
             return {
@@ -47,10 +45,10 @@ const {tagPage, articles, creations} = Astro.props;
 
 <BaseLayout metaTitle={tagPage.title} metaDescription={tagPage.leading}>
   <div class="l-site">
-    <SiteHeader/>
+    <SiteHeader />
     <main>
       <div class="l-constraint">
-        <Breadcrumbs items={tagPage.breadcrumbs} current={tagPage.title}/>
+        <Breadcrumbs items={tagPage.breadcrumbs} current={tagPage.title} />
         <div class="archive-page">
           <div class="archive-page__header">
             <h2 class="archive-page__title">
@@ -58,61 +56,61 @@ const {tagPage, articles, creations} = Astro.props;
             </h2>
             <div class="archive-page__intro">
                 {tagPage.type == "creation" ? (
-                        <p>Creations tagged "{tagPage.title}"</p>
+                  <p>Creations tagged "{tagPage.title}"</p>
                 ) : (
-                        <p>Posts tagged "{tagPage.title}"</p>
+                  <p>Posts tagged "{tagPage.title}"</p>
                 )}
             </div>
           </div>
             {tagPage.type == "creation" && (
-                <div class="projects">
-                  <ul class="projects__list">
+              <div class="projects">
+                <ul class="projects__list">
                     {creations.map((item: any) => (
-                        <li class="projects__list-item">
-                          <ProjectPreview
-                              title={item.title}
-                              image={item.featuredImage}
-                              slug={item.fullSlug}
-                              tagline={item.tagline}
-                              tag={item.tag}
-                          />
-                        </li>
+                      <li class="projects__list-item">
+                        <ProjectPreview
+                          title={item.title}
+                          image={item.featuredImage}
+                          slug={item.fullSlug}
+                          tagline={item.tagline}
+                          tag={item.tag}
+                        />
+                      </li>
                     ))}
-                  </ul>
-                </div>
+                </ul>
+              </div>
             )}
             {tagPage.type == "article" && (
-                    <div class="posts">
-                      <ul class="posts-list">
-                          {
-                              articles.map((item: any) => (
-                                      <li class="posts-list__item">
-                                        <PostPreview
-                                                title={item.title}
-                                                excerpt={item.leading}
-                                                slug={item.fullSlug}
-                                                readingTime={item.readingTime}
-                                                publishedDate={item.publishedDate}
-                                                tag={item.tag}
-                                                tags={item.tags}
-                                                external={{
-                                                    image: item.publishedExternally
-                                                        ?.image,
-                                                    href: item.publishedExternally
-                                                        ?.href,
-                                                    text: item.publishedExternally
-                                                        ?.text,
-                                                }}
-                                        />
-                                      </li>
-                              ))
-                          }
-                      </ul>
-                    </div>
+              <div class="posts">
+                <ul class="posts-list">
+                    {
+                        articles.map((item: any) => (
+                          <li class="posts-list__item">
+                            <PostPreview
+                              title={item.title}
+                              excerpt={item.leading}
+                              slug={item.fullSlug}
+                              readingTime={item.readingTime}
+                              publishedDate={item.publishedDate}
+                              tag={item.tag}
+                              tags={item.tags}
+                              external={{
+                                  image: item.publishedExternally
+                                      ?.image,
+                                  href: item.publishedExternally
+                                      ?.href,
+                                  text: item.publishedExternally
+                                      ?.text,
+                              }}
+                            />
+                          </li>
+                        ))
+                    }
+                </ul>
+              </div>
             )}
         </div>
       </div>
     </main>
-    <SiteFooter/>
+    <SiteFooter />
   </div>
 </BaseLayout>
