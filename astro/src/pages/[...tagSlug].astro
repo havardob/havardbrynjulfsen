@@ -14,17 +14,25 @@ export async function getStaticPaths() {
 
     let articles: any[] = [];
     let creations: any[] = [];
+
     articleCollection.map((article: any) => articles.push(article.data));
     creationCollection.map((creation: any) => creations.push(creation.data));
+
+    const allTags = articles.flatMap((article: any) => article.tags || []);
+    const uniqueTagsMap = new Map();
+    allTags.forEach((tag: any) => {
+        uniqueTagsMap.set(tag._id, tag);
+    });
+    const uniqueTags = Array.from(uniqueTagsMap.values());
 
     return await Promise.all(
         tagCollection.map(async (result: any) => {
             const filteredArticles = articles.filter((article) => {
-              if (article.tags && article.tags.length > 0) {
-              return article.tags.some((tag: any) => tag._id === result.data._id);
-              } else {
-                return article.tag._id === result.data._id;
-              }
+                if (article.tags && article.tags.length > 0) {
+                    return article.tags.some((tag: any) => tag._id === result.data._id);
+                } else {
+                    return article.tag._id === result.data._id;
+                }
             });
             const filteredCreations = creations.filter(creation => creation.tag._id === result.data._id);
             return {
@@ -34,13 +42,14 @@ export async function getStaticPaths() {
                 props: {
                     tagPage: result.data,
                     articles: filteredArticles,
-                    creations: filteredCreations
+                    creations: filteredCreations,
+                    tags: uniqueTags
                 }
             }
         }))
 }
 
-const {tagPage, articles, creations} = Astro.props;
+const {tagPage, articles, creations, tags} = Astro.props;
 ---
 
 <BaseLayout metaTitle={tagPage.title} metaDescription={tagPage.leading}>
@@ -58,8 +67,16 @@ const {tagPage, articles, creations} = Astro.props;
                 {tagPage.type == "creation" ? (
                   <p>Creations tagged "{tagPage.title}"</p>
                 ) : (
-                  <p>Posts tagged "{tagPage.title}"</p>
+                  <p>Articles tagged "{tagPage.title}"</p>
                 )}
+            </div>
+            <div class="archive-page__tags">
+              <span>Categories</span>
+                {tags.map((tag: any) => (
+                  <a href={tag.slug} class="tag" data-active={tagPage.title === tag.title}>
+                      {tag.title}
+                  </a>
+                ))}
             </div>
           </div>
             {tagPage.type == "creation" && (

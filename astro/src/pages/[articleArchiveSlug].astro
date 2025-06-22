@@ -17,6 +17,13 @@ export async function getStaticPaths() {
     let articles: any[] = [];
     articleCollection.map((article: any) => articles.push(article.data));
 
+    const allTags = articles.flatMap((article: any) => article.tags || []);
+    const uniqueTagsMap = new Map();
+    allTags.forEach((tag: any) => {
+        uniqueTagsMap.set(tag._id, tag);
+    });
+    const uniqueTags = Array.from(uniqueTagsMap.values());
+
     return [
         {
             params: {
@@ -24,75 +31,84 @@ export async function getStaticPaths() {
             },
             props: {
                 articleArchive: articleArchive,
-                articles: articles
+                articles: articles,
+                tags: uniqueTags
             },
         },
     ];
 }
 
-let { articleArchive, articles } = Astro.props;
+let {articleArchive, articles, tags} = Astro.props;
 ---
 
 <BaseLayout metaTitle={articleArchive.title} metaDescription={articleArchive.leading}>
-    <div class="l-site">
-        <SiteHeader />
-        <main>
-            <div class="l-constraint">
-                <Breadcrumbs current={articleArchive.title} />
-                <div class="archive-page">
-                    <div class="archive-page__header">
-                        <h2 class="archive-page__title">
-                            {articleArchive.title}
-                        </h2>
-                      <div class="archive-page__intro | u-rich-text">
-                        <PortableText portableText={articleArchive.leading} />
-                      </div>
-                        <div class="archive-page__rss">
-                            <a href="/feed.xml" class="rss-link">
+  <div class="l-site">
+    <SiteHeader />
+    <main>
+      <div class="l-constraint">
+        <Breadcrumbs current={articleArchive.title} />
+        <div class="archive-page">
+          <div class="archive-page__header">
+            <h2 class="archive-page__title">
+                {articleArchive.title}
+            </h2>
+            <div class="archive-page__intro | u-rich-text">
+              <PortableText portableText={articleArchive.leading} />
+            </div>
+            <div class="archive-page__rss">
+              <a href="/feed.xml" class="rss-link">
                                 <span class="rss-link__icon">
                                     <Rss />
                                 </span>
-                                <div class="rss-link__content">
+                <div class="rss-link__content">
                                     <span class="rss-link__title"
-                                        >Stay up to date</span
+                                    >Stay up to date</span
                                     >
-                                    <span class="rss-link__desc"
-                                        >Subscribe to feed</span
-                                    >
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="posts">
-                        <ul class="posts-list">
-                            {
-                                articles.map((item: any) => (
-                                    <li class="posts-list__item">
-                                        <PostPreview
-                                            title={item.title}
-                                            excerpt={item.leading}
-                                            slug={item.fullSlug}
-                                            readingTime={item.readingTime}
-                                            publishedDate={item.publishedDate}
-                                            tag={item.tag}
-                                            tags={item.tags}
-                                            external={{
-                                                image: item.publishedExternally
-                                                    ?.image,
-                                                href: item.publishedExternally
-                                                    ?.href,
-                                                text: item.publishedExternally
-                                                    ?.text,
-                                            }}
-                                        />
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </div>
+                  <span class="rss-link__desc"
+                  >Subscribe to feed</span
+                  >
                 </div>
+              </a>
             </div>
-        </main>
-        <SiteFooter />
-    </div>
+            <div class="archive-page__tags">
+              <span>Categories</span>
+                {tags.map((tag: any) => (
+                  <a href={tag.slug} class="tag">
+                      {tag.title}
+                  </a>
+                ))}
+            </div>
+          </div>
+          <div class="posts">
+            <ul class="posts-list">
+                {
+                    articles.map((item: any) => (
+                      <li class="posts-list__item">
+                        <PostPreview
+                          title={item.title}
+                          excerpt={item.leading}
+                          slug={item.fullSlug}
+                          readingTime={item.readingTime}
+                          publishedDate={item.publishedDate}
+                          tag={item.tag}
+                          tags={item.tags}
+                          external={{
+                              image: item.publishedExternally
+                                  ?.image,
+                              href: item.publishedExternally
+                                  ?.href,
+                              text: item.publishedExternally
+                                  ?.text,
+                          }}
+                        />
+                      </li>
+                    ))
+                }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    <SiteFooter />
+  </div>
 </BaseLayout>

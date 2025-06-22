@@ -1,9 +1,13 @@
 .posts {
-    margin-block-start: 4rem;
+    margin-block-start: 3rem;
     margin-bottom: 6rem;
 
     body:has(.archive-page__rss) & {
         margin-block-start: 2rem;
+    }
+    
+    body:has(.archive-page__tags) & {
+        margin-block-start: 1.5rem;
     }
 }
 

@@ -27,5 +27,22 @@
     &__rss {
         margin-block-start: 2rem;
     }
-
+    
+    &__tags {
+        margin-block-start: 3rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: .5rem;
+        font-size: 1.125rem;
+        
+        & > span {
+            text-transform: uppercase;
+            font-size: .875rem;
+            letter-spacing: .05em;
+            font-weight: 600;
+            display: inline-block;
+            margin-inline-end: .25rem;
+        }
+    }
 }
