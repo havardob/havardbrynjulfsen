@@ -14,7 +14,7 @@
 
 .tag {
     text-decoration: none;
-    font-size: .875rem;
+    font-size: .75rem;
     display: inline-block;
     align-items: center;
     padding: .375rem .625rem;
@@ -24,6 +24,14 @@
     background-color: var(--tag-bg-color);
     color: var(--tag-text-color);
     gap: .375em;
+    
+    @container post-preview (min-width: 40rem) {
+        font-size: .875rem;
+    }
+    
+    @container project-preview (min-width: 40rem) {
+        font-size: .875rem;
+    }
 
     &:hover {
         background-color: var(--tag-bg-color-hover);

@@ -5,6 +5,12 @@ interface Props {
         title: string,
         slug: string
     },
+    tags?: [
+        {
+            title: string,
+            slug: string
+        },
+    ],
     readingTime: string;
     publishedDate: string;
     title: string;
@@ -19,6 +25,7 @@ interface Props {
 const {
     slug,
     tag,
+    tags,
     readingTime,
     publishedDate,
     title,
@@ -30,11 +37,17 @@ const {
 <div class="[ cq--post-preview ]">
   <article class="post-preview">
     <div class="post-preview__meta">
-      <span>
-        <a href={tag?.slug} class="tag">{tag?.title}</a>
-      </span>
-      <span class="post-preview__meta-item">{readingTime} minute read</span>
       <span class="post-preview__meta-item">{publishedDate}</span>
+      <span class="post-preview__meta-item">{readingTime} minute read</span>
+        {(tags && tags.length > 0) ? tags?.map((tag: any) => (
+          <span key={tag._id}>
+            <a href={tag.slug} class="tag">{tag.title}</a>
+          </span>
+        )) : (
+          <span>
+            <a href={tag.slug} class="tag">{tag.title}</a>
+          </span>
+        )}
     </div>
     <h2 class="post-preview__title">
       <a href={slug}>{title}</a>

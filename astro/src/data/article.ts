@@ -22,6 +22,11 @@ export const getArticleData = async function () {
             title,
             "slug": ${groqGetSlug()}
         },
+        tags[]-> {
+            _id,
+            title,
+            "slug": ${groqGetSlug()}
+        },
         "featuredImage": featuredImage.asset->url, 
         "featuredImageRaw": featuredImage,
         showAsBanner,
@@ -31,7 +36,6 @@ export const getArticleData = async function () {
     const data = await client.fetch(query);
 
     for (let article of data) {
-
         // Get reading time
         if (article.body) {
             article.rawHtml = generateRichText(article.body);

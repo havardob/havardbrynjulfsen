@@ -20,7 +20,15 @@ export async function getStaticPaths() {
 
     return await Promise.all(
         tagCollection.map(async (result: any) => {
-            const filteredArticles = articles.filter(article => article.tag._id === result.data._id);
+            const filteredArticles = articles.filter((article) => {
+              if (article.tags && article.tags.length > 0) {
+                article.tags.forEach((tag: any) => {
+                  return tag._id = result.data._id;
+                })
+              }
+
+              return article.tag._id = result.data._id;
+            });
             const filteredCreations = creations.filter(creation => creation.tag._id === result.data._id);
             return {
                 params: {
@@ -56,23 +64,6 @@ const {tagPage, articles, creations} = Astro.props;
                         <p>Posts tagged "{tagPage.title}"</p>
                 )}
             </div>
-              {tagPage.type == "article" && (
-                      <div class="archive-page__rss">
-                        <a href="/feed.xml" class="rss-link">
-                                <span class="rss-link__icon">
-                                    <Rss/>
-                                </span>
-                          <div class="rss-link__content">
-                                    <span class="rss-link__title"
-                                    >Stay up to date</span
-                                    >
-                            <span class="rss-link__desc"
-                            >Subscribe to feed</span
-                            >
-                          </div>
-                        </a>
-                      </div>
-              )}
           </div>
             {tagPage.type == "creation" && (
                 <div class="projects">
@@ -104,6 +95,7 @@ const {tagPage, articles, creations} = Astro.props;
                                                 readingTime={item.readingTime}
                                                 publishedDate={item.publishedDate}
                                                 tag={item.tag}
+                                                tags={item.tags}
                                                 external={{
                                                     image: item.publishedExternally
                                                         ?.image,

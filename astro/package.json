@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "npm-run-all --parallel astro:dev sass:watch",
-    "astro:dev": "astro dev",
+    "astro:dev": "astro dev --host",
     "start": "astro dev",
     "build": "astro check && astro build && npm run sass:build",
     "preview": "astro preview",

@@ -60,6 +60,19 @@ export default {
       to: [{ type: "tag" }],
     },
     {
+      title: "Tags",
+      name: "tags",
+      type: "array",
+      of: [
+        {
+          title: "Tag",
+          name: "tag",
+          type: "reference",
+          to: [{ type: "tag" }],
+        }
+      ]
+    },
+    {
       title: "Published Externally?",
       name: "publishedExternally",
       type: "object",
